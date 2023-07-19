@@ -21,7 +21,7 @@ import ShieldCore from "./components/ShieldCore";
 import BenefitsOfScan from "./components/BenefitsOfScan";
 import ProductHero from "./components/ProductHero";
 function App() {
-  const [selectedMenuItem, setSelectedMenuItem] = useState(0);
+  const [selectedMenuItem, setSelectedMenuItem] = useState(1);
 
   const handleMenuItemClick = (index) => {
     setSelectedMenuItem(index);
