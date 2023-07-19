@@ -1,0 +1,27 @@
+.hero1 {
+  background-image: url("../Assets/hero1.png");
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: max-content;
+}
+
+.App {
+  background-color: black;
+}
+
+.bg-radial-gradient {
+  background: radial-gradient(
+    circle at center,
+    rgba(18, 213, 118, 0.31) 0%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
+.prod {
+  background-image: url("../src/images/bg-prod.png");
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: max-content;
+}
