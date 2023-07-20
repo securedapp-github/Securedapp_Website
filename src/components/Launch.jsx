@@ -4,7 +4,13 @@ import hero from "../heroLaunch.png";
 import Heading from "./Heading";
 const Launch = () => {
   return (
-    <div className="md:pt-[30px] pt-[60px] lg:h-min  bg-gradient-to-tr from-neutral-800 via-stone-800 to-green-700 md:h-fit lg:h-[535px]  ">
+    <div
+      className="md:pt-[30px] pt-[60px] lg:h-min  md:h-fit lg:h-[535px]  "
+      style={{
+        background:
+          "radial-gradient(50% 50.00% at 0% 100.00%, rgba(18, 213, 118, 0.31) 0%, rgba(0, 0, 0, 0.00) 100%)",
+      }}
+    >
       <div className="flex lg:flex-row md:flex-row  md:pt-[100px] md:px-[80px] p-[30px] pb-0 flex-col-reverse">
         <div className="px-3 pt-7 flex-shrink h-fit">
           <Heading content="Unlocking the DeFi    Potential with SecurePAD" />
@@ -19,7 +25,7 @@ const Launch = () => {
             Exciting Upcoming Project
           </button>
         </div>
-        <div className="md:mb-[100px] mt-[40px] lg:-mt-[10px]">
+        <div className="md:mb-[100px] mt-[40px] -mt-[10px]">
           <img
             src={hero}
             className="md:w-[1400px] md:h-[360px] w-auto h-auto"
