@@ -2,7 +2,7 @@ import React from "react";
 
 const Request = () => {
   return (
-    <div className="bg-[#0c4126] bg-opacity-50 flex lg:flex-row flex-col ">
+    <div className="bg-[#0c4126] bg-opacity-50 flex lg:flex-row flex-col  ">
       <div className="md:mx-[100px] mx-[50px] md:my-[50px] mt-[50px] mb-[0px]">
         <div className="text-white md:text-[36px] text-[25px] md:mb-[0px] mb-[10px]  font-bold font-sans leading-[110%] ">
           Securing Your{" "}

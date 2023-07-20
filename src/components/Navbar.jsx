@@ -60,7 +60,7 @@ function Navbar({ onItemClick }) {
               href="/"
               className="text-sm font-semibold leading-6 text-gray-200"
             >
-              <button className=" border-[2px] bg-[#000000]  rounded-full shadow-lg	hover:bg-[#640074] border-white py-2 px-[30px] whitespace-nowrap ">
+              <button className=" border-[2px] bg-[#000000] z-50  rounded-full shadow-lg shadow-[17px_0px_36px_32px_#9ae6b4,0px_3px_8px_0px_#faf089] hover:bg-[#640074] border py-2 px-[30px] whitespace-nowrap ">
                 Request a quote
               </button>
             </a>

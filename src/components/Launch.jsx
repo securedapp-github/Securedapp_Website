@@ -4,12 +4,14 @@ import hero from "../heroLaunch.png";
 import Heading from "./Heading";
 const Launch = () => {
   return (
-    <div className="md:pt-[80px] pt-[60px]  bg-gradient-to-tr from-neutral-900 via-stone-800 to-green-700  ">
-      <div className="flex lg:flex-row md:flex-row  md:pt-[100px] md:px-[80px] p-[30px] flex-col-reverse">
-        <div className="px-3 pt-7 flex-shrink">
+    <div className="md:pt-[30px] pt-[60px] lg:h-min  bg-gradient-to-tr from-neutral-800 via-stone-800 to-green-700 md:h-fit lg:h-[535px]  ">
+      <div className="flex lg:flex-row md:flex-row  md:pt-[100px] md:px-[80px] p-[30px] pb-0 flex-col-reverse">
+        <div className="px-3 pt-7 flex-shrink h-fit">
           <Heading content="Unlocking the DeFi    Potential with SecurePAD" />
-          <Subheading content="Discover the Power of Tokenomics with SecurePAD. Experience Exclusive Early Access to the Next Unicorn in DeFi Tokenization. Trustworthy Audited and Vetted Web3 Projects." />
-          <h3 className="text-green-500 font-roboto md:text-[22px] text-xl  font-semibold leading-[110%] mt-[50px]">
+          <div className="mt-[10px]">
+            <Subheading content="Discover the Power of Tokenomics with SecurePAD. Experience Exclusive Early Access to the Next Unicorn in DeFi Tokenization. Trustworthy Audited and Vetted Web3 Projects." />
+          </div>
+          <h3 className="text-green-500 font-roboto md:text-[22px] text-xl  font-semibold leading-[110%] mt-[30px]">
             Embark on the Future of Fundraising with us.
           </h3>
 
@@ -17,10 +19,10 @@ const Launch = () => {
             Exciting Upcoming Project
           </button>
         </div>
-        <div className="md:mb-[100px] mt-[40px]">
+        <div className="md:mb-[100px] mt-[40px] lg:-mt-[10px]">
           <img
             src={hero}
-            className="md:w-[1400px] md:h-[400px] w-auto h-auto"
+            className="md:w-[1400px] md:h-[360px] w-auto h-auto"
             alt="hero"
           />
         </div>
