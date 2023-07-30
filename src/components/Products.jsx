@@ -45,7 +45,10 @@ const ProductCard = {
 
 const Card = ({ heading, description, link }) => {
   return (
-    <div className=" md:p-8 p-5 bg-gradient-to-r from-green-900 via-slate-800 to-slate-600 rounded-[20px]">
+    <div
+      className=" md:p-8 p-5  rounded-[20px]"
+      style={{ background: "rgba(255, 255, 255, 0.05)" }}
+    >
       <div className=" h-full flex flex-col justify-between rounded-lg overflow-hidden">
         <div>
           <h2 className="md:text-2xl text-xl text-white font-sans leading-[100%] font-bold mb-4">
@@ -66,9 +69,9 @@ const Card = ({ heading, description, link }) => {
 
 const Products = () => {
   return (
-    <div className="lg:py-[80px] lg:px-[100px] md:p-[70px] p-[50px] bg-gradient-to-b from-green-950 via-black to-green-900 ">
+    <div className="lg:py-[80px] lg:px-[125px] md:p-[70px] p-[50px] bg-gradient-to-r from-green-950 via-black to-blue-950 ">
       <SectionHeader content={"SecureDApp’s Products and Services"} />
-      <div className="lg:p-[30px] md:pt-[30px] pt-[30px] px-[5px]">
+      <div className="lg:p-[30px] lg:pl-0 md:pt-[30px] pt-[30px] px-[5px]">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {ProductCard.products.map((product, index) => (
             <Card

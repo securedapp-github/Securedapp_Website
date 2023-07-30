@@ -37,7 +37,7 @@ const value = {
 
 const Comp = ({ url, head, content }) => {
   return (
-    <div className=" md:p-[60px] p-[10px] lg:w-1/4 w-full  ">
+    <div className=" md:p-[60px] md:pl-0 p-[10px] lg:w-1/4 w-full  ">
       <div>
         <div className=" p-[10px]">
           <img src={url} alt="" />
@@ -54,7 +54,7 @@ const Comp = ({ url, head, content }) => {
 };
 const Benefits = () => {
   return (
-    <div className="lg:py-[80px] lg:px-[100px] md:p-[70px] p-[50px] bg-[#0c4126] bg-opacity-30">
+    <div className="lg:py-[80px] lg:px-[125px] md:p-[70px] p-[50px] bg-[#0c4126] bg-opacity-30">
       <SectionHeader content={"Benefits of Smart Contracts Audits "} />
       <div className="flex flex-wrap lg:flex-row ">
         {value.sections.map((val, index) => (

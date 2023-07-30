@@ -28,7 +28,7 @@ const AuditCard = {
 
 const Card = ({ heading, description }) => {
   return (
-    <div className="p-4">
+    <div className="p-4 pl-0">
       <div className="bg-transparent border-white border rounded-[20px] p-6">
         <h2 className="md:text-2xl text-xl text-white font-sans leading-[100%] font-bold mb-4">
           {heading}
@@ -41,9 +41,12 @@ const Card = ({ heading, description }) => {
 
 const Audit = () => {
   return (
-    <div className="lg:py-[80px] lg:px-[100px] md:p-[70px] p-[50px]  bg-[#0c4126] bg-opacity-30 ">
+    <div
+      className="lg:py-[80px] lg:px-[125px] md:p-[70px] p-[50px]  "
+      style={{ background: "rgba(217, 217, 217, 0.04)" }}
+    >
       <SectionHeader content={"The Audit Process"} />
-      <div className="lg:pt-[30px] md:pt-[30px] pt-[30px] px-[5px]">
+      <div className="lg:pt-[30px] md:pt-[30px] pt-[30px] px-[5px] pl-0">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4">
           {AuditCard.audits.map((audit, index) => (
             <Card

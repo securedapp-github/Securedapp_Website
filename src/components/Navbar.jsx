@@ -2,13 +2,13 @@
 import { useState } from "react";
 import { Dialog } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-import Logo from "../logo.png";
+import Logo from "../images/logoblacktextsdlogowhite-1@2x.png";
 
 const navigation = [
   { name: "Solidity Shield Scan", href: "#" },
   { name: "Our Services", href: "#" },
   { name: "About Us", href: "#", special: true },
-  { name: "Contact Us", href: "#" },
+  // { name: "Contact Us", href: "#" },
   { name: "Blog", href: "#" },
 ];
 
@@ -27,10 +27,14 @@ function Navbar({ onItemClick }) {
           className="flex items-center justify-between p-6 lg:px-8 border-b-2 border-gray-500"
           aria-label="Global"
         >
-          <div className="flex lg:flex-1">
+          <div className="flex lg:flex-1 lg:ml-[70px]">
             <a href="/" className="-m-1.5 p-1.5">
               <div className="flex ml-3">
-                <img className="h-16 w-auto" src={Logo} alt="" />
+                <img
+                  className="w-[267px] h-[81px] object-cover"
+                  src={Logo}
+                  alt=""
+                />
               </div>
             </a>
           </div>
@@ -44,12 +48,12 @@ function Navbar({ onItemClick }) {
               <Bars3Icon className="h-6 w-6" aria-hidden="true" />
             </button>
           </div>
-          <div className="hidden lg:flex lg:gap-x-10  lg:flex-1 lg:justify-end lg:mr-7">
+          <div className="hidden lg:flex lg:gap-x-10 items-center  lg:flex-1  lg:justify-end lg:mr-7">
             {navigation.map((item, index) => (
               <a
                 key={item.name}
                 href={item.href}
-                className="text-[16px] font-normal text-center font-sans whitespace-nowrap leading-6 pt-4 w-max  text-gray-100"
+                className="text-[16px] font-normal text-center my-auto font-sans whitespace-nowrap leading-6 pt-0 w-max  text-gray-100"
                 onClick={() => handleItemClick(index)}
               >
                 {item.name}
@@ -60,7 +64,7 @@ function Navbar({ onItemClick }) {
               href="/"
               className="text-sm font-semibold leading-6 text-gray-200"
             >
-              <button className=" border-[2px] bg-[#000000] z-50  rounded-full shadow-lg shadow-[0px_0px_16px_12px_#9ae6b4,0px_0px_0px_0px_#faf089] hover:bg-[#640074] border py-2 px-[30px] whitespace-nowrap ">
+              <button className="mr-[35px] border-[2px] border-solid border-white bg-black shadow-[0px_0px_84px_#12d576] box-border z-50  rounded-full shadow-lg  hover:bg-[#640074] border py-2 px-[30px] whitespace-nowrap ">
                 Request a quote
               </button>
             </a>

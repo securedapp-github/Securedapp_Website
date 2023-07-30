@@ -2,8 +2,12 @@ import React from "react";
 import { FaFacebook, FaTwitter, FaInstagram, FaTelegram } from "react-icons/fa";
 import logo from "../images/logo.png";
 const Footer = () => {
+  const style = {
+    background:
+      "radial-gradient(50% 50.00% at 50% 50.00%, rgba(18, 213, 118, 0.24) 0%, rgba(0, 0, 0, 0.00) 100%)",
+  };
   return (
-    <footer className="bg-black">
+    <footer className="bg-[#2D5C8F] bg-opacity-10">
       <div className="container px-6 py-8 mx-auto">
         <div className="grid grid-cols-2 gap-6 mt-12 sm:grid-cols-2 md:grid-cols-3 lg:px-[50px] lg:grid-cols-4 xl:grid-cols-5">
           <div>
