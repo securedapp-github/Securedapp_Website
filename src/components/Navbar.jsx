@@ -64,9 +64,13 @@ function Navbar({ onItemClick }) {
               href="/"
               className="text-sm font-semibold leading-6 text-gray-200"
             >
-              <button className="mr-[35px] border-[2px] border-solid border-white bg-black shadow-[0px_0px_84px_#12d576] box-border z-50  rounded-full shadow-lg  hover:bg-[#640074] border py-2 px-[30px] whitespace-nowrap ">
+              {/* <button className="mr-[35px] border-[2px] border-solid border-white bg-black shadow-[0px_0px_84px_#12d576] box-border z-50  rounded-full shadow-lg  hover:bg-[#640074] border py-2 px-[30px] whitespace-nowrap ">
                 Request a quote
-              </button>
+              </button> */}
+
+              <div className=" top-[37px] left-[1250px] flex justify-center items-center rounded-full bg-black shadow-[0px_0px_84px_#12d576] box-border w-[175px] h-10 border-[2px] border-solid border-white">
+                <b className="">Request a quote</b>
+              </div>
             </a>
           </div>
         </nav>

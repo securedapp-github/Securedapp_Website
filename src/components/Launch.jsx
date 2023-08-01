@@ -12,7 +12,7 @@ const Launch = () => {
           "linear-gradient(rgba(18, 213, 118, 0.7) 0%, rgba(rgba(18, 213, 118, 0.1) 100%)",
       }}
     >
-      <div className="lg:absolute lg:top-[-2300px] lg:left-[12px] lg:rounded-[50%] lg:[background:radial-gradient(50%_50%_at_50%_50%,_rgba(18,_213,_118,_0.7),_rgba(0,_0,_0,_0))] lg:w-[2707px] lg:h-[2707px]" />
+      <div className="absolute top-[-2010px] left-[-12px] rounded-[50%] [background:radial-gradient(50%_50%_at_50%_50%,_rgba(18,_213,_118,_0.7),_rgba(0,_0,_0,_0))] w-[2707px] h-[2707px]" />
 
       <div className="flex lg:flex-row md:flex-row  md:pt-[100px] md:px-[80px] p-[30px] pb-0 flex-col-reverse">
         <div className="px-5 pt-7 flex-shrink h-fit lg:w-2/4 mt-[57px] lg:pl-[40px] lg:pb-0 pb-[30px]">
