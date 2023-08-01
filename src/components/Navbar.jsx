@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Dialog } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import Logo from "../images/logoblacktextsdlogowhite-1@2x.png";
-
+import RequestModal from "./AuditModal";
 const navigation = [
   { name: "Solidity Shield Scan", href: "#" },
   { name: "Our Services", href: "#" },
@@ -60,18 +60,20 @@ function Navbar({ onItemClick }) {
                 {/* <span className="flex flex-wrap px-4"> </span> */}
               </a>
             ))}
-            <a
-              href="/"
-              className="text-sm font-semibold leading-6 text-gray-200"
-            >
+            <div className="text-sm font-semibold leading-6 text-gray-200">
               {/* <button className="mr-[35px] border-[2px] border-solid border-white bg-black shadow-[0px_0px_84px_#12d576] box-border z-50  rounded-full shadow-lg  hover:bg-[#640074] border py-2 px-[30px] whitespace-nowrap ">
                 Request a quote
               </button> */}
 
-              <div className=" top-[37px] left-[1250px] flex justify-center items-center rounded-full bg-black shadow-[0px_0px_84px_#12d576] box-border w-[175px] h-10 border-[2px] border-solid border-white">
+              <button
+                type="button"
+                data-modal-target="defaultModal"
+                data-modal-toggle="defaultModal"
+                className=" top-[37px] left-[1250px] flex justify-center items-center rounded-full bg-black shadow-[0px_0px_84px_#12d576] box-border w-[175px] h-10 border-[2px] border-solid border-white"
+              >
                 <b className="">Request a quote</b>
-              </div>
-            </a>
+              </button>
+            </div>
           </div>
         </nav>
         <Dialog
@@ -119,7 +121,11 @@ function Navbar({ onItemClick }) {
                     href="/"
                     className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-100 hover:bg-gray-800"
                   >
-                    <button className="border  rounded-xl	 border-white p-3 ">
+                    <button
+                      data-modal-target="defaultModal"
+                      data-modal-toggle="defaultModal"
+                      className="border  rounded-xl	 border-white p-3 "
+                    >
                       Request a quote
                     </button>
                   </a>

@@ -1,6 +1,11 @@
-import React from "react";
-
+import React, { useState } from "react";
+import AuditModal from "./AuditModal";
 const Request = () => {
+  const [showModal, setShowModal] = useState(false);
+
+  const handleModalClose = () => {
+    setShowModal(false);
+  };
   return (
     <div
       className=" flex lg:flex-row flex-col  lg:h-[140px] lg:pt-[0px] pt-[40px]  "
@@ -18,10 +23,18 @@ const Request = () => {
         </div>
       </div>
       <div className="flex justify-center items-center md:mb-[20px] mb-[50px] md:ml-0 ml-[40px] pr-[30px] ">
-        <button className=" lg:mt-[50px] md:mb-[10px] md:mt-[5px] mt-[25px] h-[60px] w-[341px] py-2 px-8  border border-transparent text-black  rounded-full [background:linear-gradient(90deg,_#12d576,_#2d5c8f)] shadow-[0px_0px_80px_rgba(18,_213,_118,_0.25)]  text-center font-sans md:text-2xl text-xl font-normal leading-normal">
+        <button
+          onClick={() => {
+            setShowModal(true);
+            alert(showModal);
+          }}
+          className=" lg:mt-[50px] md:mb-[10px] md:mt-[5px] mt-[25px] h-[60px] w-[341px] py-2 px-8  border border-transparent text-black  rounded-full [background:linear-gradient(90deg,_#12d576,_#2d5c8f)] shadow-[0px_0px_80px_rgba(18,_213,_118,_0.25)]  text-center font-sans md:text-2xl text-xl font-normal leading-normal"
+        >
           Request Your Audit Today
         </button>
       </div>
+
+      {showModal && <AuditModal onClose={handleModalClose} />}
     </div>
   );
 };
