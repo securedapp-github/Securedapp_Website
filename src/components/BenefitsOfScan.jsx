@@ -5,7 +5,13 @@ import DescriptionFor from "./DescriptionFor";
 
 const BenefitsOfScan = () => {
   return (
-    <div className="md:px-[100px]  md:py-[50px] lg:pb-[60px] py-[50px] bg-black w-full mb-[0px] flex lg:flex-row flex-col gap-[60px]">
+    <div
+      className="md:px-[100px]  md:py-[50px] lg:pb-[60px] py-[50px]  w-full mb-[0px] flex lg:flex-row flex-col gap-[60px]"
+      style={{
+        background:
+          "radial-gradient(50% 75.00% at 0% 50.00%, rgba(18, 213, 118, 0.31) 0%, rgba(0, 0, 0, 0.00) 100%)",
+      }}
+    >
       <div className="lg:w-7/12 lg:px-[0px] md:px-[0px] px-[50px] md:pt-0 pt-[50px] ">
         <SectionHeader content={"Solidity Shields Benefits"} />
         <Description content={"Security:"} />

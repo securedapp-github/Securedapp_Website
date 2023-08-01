@@ -1,13 +1,13 @@
 import React from "react";
 
 import Subheading from "./Subheading";
-import hero from "../images/scanner.png";
+import hero from "../images/schield.png";
 import SectionHeader from "./SectionHeader";
 import DescriptionFor from "./DescriptionFor";
 export const Scanner = () => {
   return (
-    <div className="md:pt-[60px] pt-[60px]  bg-gradient-to-tr from-neutral-900 via-stone-800 to-green-700 w-full h-fit ">
-      <div className="flex lg:flex-row md:flex-row w-full md:pt-[30px] md:px-[80px] px-[30px] flex-col-reverse h-fit">
+    <div className="md:pt-[60px] pt-[60px] pb-0  bg-gradient-to-tr from-neutral-900 via-stone-800 to-green-700 w-full h-fit ">
+      <div className="flex lg:flex-row md:flex-row w-full md:pt-[30px] md:px-[80px] px-[30px] py-0 pb-[80px] flex-col-reverse h-[600px]">
         <div className="px-3 pt-7 md:pb-0 pb-[50px] flex-shrink lg:w-11/12 h-fit">
           <div className="md:w-3/4">
             <SectionHeader content="Smart Contract Scanner - Solidity Shield" />
@@ -26,7 +26,7 @@ export const Scanner = () => {
         <div className="md:mb-[100px] lg:-mt-[80px] mt-[0px] lg:w-10/12 h-10/12">
           <img
             src={hero}
-            className="md:w-[1400px] md:h-[600px] w-auto h-full"
+            className="md:w-[496px] md:h-[633px] w-auto h-full"
             alt="hero"
           />
         </div>

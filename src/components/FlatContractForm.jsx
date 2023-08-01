@@ -1,11 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import Heading from "./Heading";
 import Subheading from "./Subheading";
 import SectionHeader from "./SectionHeader";
 
-const FlatContractForm = () => {
+const FlatContractForm = ({ onScanButtonClick }) => {
+  const [showScanResult, setShowScanResult] = useState(false);
+
+  const OnclickHandler = () => {
+    onScanButtonClick(); // Notify the parent component that the "Analyze" button is clicked
+    setShowScanResult(true); // Set the state to show the "ScanResult" component
+  };
+
   return (
-    <div className="lg:pt-[110px] pt-[110px] py-[60px]  bg-gradient-to-tr from-neutral-900 via-stone-800 to-green-700  ">
+    <div
+      className="lg:pt-[110px] pt-[110px] py-[60px]    "
+      style={{ background: "rgba(0, 0, 0, 0.20)" }}
+    >
       <div className="flex justify-center items-center mt-[50px]">
         <SectionHeader content={"Select a Flatten Contract"} />
       </div>
@@ -25,7 +35,10 @@ const FlatContractForm = () => {
           />
         </div>
         <div className="md:w-1/6">
-          <button className="md:w-4/6 bg-[#12D576] rounded-[20px] p-3 uppercase">
+          <button
+            className="md:w-4/6 bg-[#12D576] rounded-[20px] p-3 uppercase"
+            onClick={OnclickHandler}
+          >
             analyse
           </button>
         </div>

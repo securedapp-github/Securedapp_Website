@@ -20,15 +20,20 @@ import { Scanner } from "./components/Scanner";
 import ShieldCore from "./components/ShieldCore";
 import BenefitsOfScan from "./components/BenefitsOfScan";
 import ProductHero from "./components/ProductHero";
+import ScanResult from "./components/ScanResult";
 function App() {
   const [selectedMenuItem, setSelectedMenuItem] = useState(1);
+  const [showScanResult, setShowScanResult] = useState(false);
 
   const handleMenuItemClick = (index) => {
     setSelectedMenuItem(index);
   };
-
+  const handleAnalyzeButtonClick = () => {
+    setShowScanResult(true);
+  };
   useEffect(() => {
     console.log(selectedMenuItem);
+    setShowScanResult(false);
   }, [selectedMenuItem]);
   return (
     <section className="bg-black mt-[00px]">
@@ -43,9 +48,17 @@ function App() {
             </>
           ) : selectedMenuItem === 0 ? (
             <>
-              <FlatContractForm />
-              <Scanner />
-              <ShieldCore />
+              <FlatContractForm onScanButtonClick={handleAnalyzeButtonClick} />
+              {showScanResult ? (
+                <ScanResult />
+              ) : (
+                <>
+                  {" "}
+                  <Scanner />
+                  <ShieldCore />
+                </>
+              )}
+
               <BenefitsOfScan />
             </>
           ) : selectedMenuItem === 3 ? (
