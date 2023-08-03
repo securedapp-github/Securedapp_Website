@@ -54,7 +54,7 @@ const Comp = ({ url, head, content }) => {
 };
 const Benefits = () => {
   return (
-    <div className="lg:py-[80px] lg:px-[125px] md:p-[70px] p-[50px] bg-[#0c4126] bg-opacity-30">
+    <div className="lg:py-[80px] lg:px-[125px] md:p-[70px] p-[50px] benefit">
       <SectionHeader content={"Benefits of Smart Contracts Audits "} />
       <div className="flex flex-wrap lg:flex-row ">
         {value.sections.map((val, index) => (

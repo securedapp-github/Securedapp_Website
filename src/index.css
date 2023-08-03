@@ -4,12 +4,164 @@
 
 .hero {
   /* Set the background image URL here */
-  background-image: url("./images/H.png");
 
-  /* Set the background properties */
-  background-repeat: no-repeat;
-  background-size: auto;
-  background-position: center center;
+  background-image: url("./newhome1.png");
+
+  /* Full height and width of the viewport */
+  width: auto;
+  height: max-content;
+
+  /* Background image should cover the entire element */
+  background-size: cover;
+
+  /* Center the background image */
+  background-position: initial;
+
+  /* Optionally, you can set the background attachment to fixed for a fixed background */
+  /* background-attachment: fixed; */
+}
+.client {
+  /* Set the background image URL here */
+
+  background-image: url("./client.png");
+
+  /* Full height and width of the viewport */
+  width: auto;
+  height: max-content;
+
+  /* Background image should cover the entire element */
+  background-size: cover;
+
+  /* Center the background image */
+  background-position: initial;
+
+  /* Optionally, you can set the background attachment to fixed for a fixed background */
+  /* background-attachment: fixed; */
+}
+.benefit {
+  /* Set the background image URL here */
+
+  background-image: url("./benefits.png");
+
+  /* Full height and width of the viewport */
+  width: auto;
+  height: max-content;
+
+  /* Background image should cover the entire element */
+  background-size: cover;
+
+  /* Center the background image */
+  background-position: initial;
+
+  /* Optionally, you can set the background attachment to fixed for a fixed background */
+  /* background-attachment: fixed; */
+}
+.product {
+  /* Set the background image URL here */
+
+  background-image: url("./producrs.png");
+
+  /* Full height and width of the viewport */
+  width: auto;
+  height: max-content;
+
+  /* Background image should cover the entire element */
+  background-size: cover;
+
+  /* Center the background image */
+  background-position: initial;
+
+  /* Optionally, you can set the background attachment to fixed for a fixed background */
+  /* background-attachment: fixed; */
+}
+.audit {
+  /* Set the background image URL here */
+
+  background-image: url("./audit.png");
+
+  /* Full height and width of the viewport */
+  width: auto;
+  height: max-content;
+
+  /* Background image should cover the entire element */
+  background-size: cover;
+
+  /* Center the background image */
+  background-position: initial;
+
+  /* Optionally, you can set the background attachment to fixed for a fixed background */
+  /* background-attachment: fixed; */
+}
+.core {
+  /* Set the background image URL here */
+
+  background-image: url("./realcore.png");
+
+  /* Full height and width of the viewport */
+  width: auto;
+  height: max-content;
+
+  /* Background image should cover the entire element */
+  background-size: cover;
+
+  /* Center the background image */
+  background-position: initial;
+
+  /* Optionally, you can set the background attachment to fixed for a fixed background */
+  /* background-attachment: fixed; */
+}
+.faq {
+  /* Set the background image URL here */
+
+  background-image: url("./faq.png");
+
+  /* Full height and width of the viewport */
+  width: auto;
+  height: max-content;
+
+  /* Background image should cover the entire element */
+  background-size: cover;
+
+  /* Center the background image */
+  background-position: initial;
+
+  /* Optionally, you can set the background attachment to fixed for a fixed background */
+  /* background-attachment: fixed; */
+}
+.foot {
+  /* Set the background image URL here */
+
+  background-image: url("./footer.png");
+
+  /* Full height and width of the viewport */
+  width: auto;
+  height: max-content;
+
+  /* Background image should cover the entire element */
+  background-size: cover;
+
+  /* Center the background image */
+  background-position: initial;
+
+  /* Optionally, you can set the background attachment to fixed for a fixed background */
+  /* background-attachment: fixed; */
+}
+.hero1 {
+  /* Set the background image URL here */
+
+  background-image: url("./newhome2.png");
+
+  /* Full height and width of the viewport */
+  width: auto;
+  height: max-content;
+
+  /* Background image should cover the entire element */
+  background-size: cover;
+
+  /* Center the background image */
+  background-position: initial;
+  z-index: 123123121231231;
+
   /* Optionally, you can set the background attachment to fixed for a fixed background */
   /* background-attachment: fixed; */
 }

@@ -37,7 +37,7 @@ function App() {
   }, [selectedMenuItem]);
   return (
     <section className="bg-black mt-[00px]">
-      <div className="hero1 h-screen">
+      <div className="App">
         <Navbar onItemClick={handleMenuItemClick} />
         <div>
           {selectedMenuItem === 2 ? (

@@ -99,7 +99,7 @@ const FAQ = () => {
   };
 
   return (
-    <div className="lg:py-[40px] lg:px-[100px] md:p-[70px] p-[20px] flex md:flex-row flex-col bg-[#2D5C8F] bg-opacity-10">
+    <div className="lg:py-[40px] lg:px-[100px] md:p-[70px] p-[20px] flex md:flex-row flex-col faq">
       <div className="md:w-3/6  lg:p-8 md:p-2 p-1.5">
         <SectionHeader content={"Frequently Asked Questions"} />
         <p className="text-[#FFFFFFB2] py-3 text-opacity-70 font-sans md:text-lg text-base font-normal leading-[150%]">

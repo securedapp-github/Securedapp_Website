@@ -17,13 +17,13 @@ const Launch = () => {
   return (
     <>
       <div
-        className=" md:pt-[30px] pt-[60px] lg:h-[570px]    relative   "
+        className=" md:pt-[30px] pt-[60px] lg:h-[570px] hero   relative   "
         style={{
           background:
-            "linear-gradient(rgba(18, 213, 118, 0.7) 0%, rgba(rgba(18, 213, 118, 0.1) 100%)",
+            " radial-gradient(10% 40% 50.00% at 10% 40% 50.00%, rgba(18, 213, 118, 0.31) 0%, rgba(0, 0, 0, 0.00) 100%) ",
         }}
       >
-        <div className="absolute top-[-2010px] left-[-12px] rounded-[50%] [background:radial-gradient(50%_50%_at_50%_50%,_rgba(18,_213,_118,_0.7),_rgba(0,_0,_0,_0))] w-[2707px] h-[2707px]" />
+        {/* <div className="absolute top-[-2010px] left-[-12px] rounded-[50%] [background:radial-gradient(50%_50%_at_50%_50%,_rgba(18,_213,_118,_0.7),_rgba(0,_0,_0,_0))] w-[2707px] h-[2707px]" /> */}
 
         <div className="flex lg:flex-row md:flex-row  md:pt-[100px] md:px-[80px] p-[30px] pb-0 flex-col-reverse">
           <div className="px-5 pt-7 flex-shrink h-fit lg:w-2/4 mt-[57px] lg:pl-[40px] lg:pb-0 pb-[30px]">
@@ -72,10 +72,7 @@ const Launch = () => {
         </div>
       </div> */}
       </div>
-      <div
-        className=" flex lg:flex-row flex-col  lg:h-[140px] lg:pt-[0px] pt-[40px]  "
-        style={{ background: "rgba(217, 217, 217, 0.04)" }}
-      >
+      <div className=" flex lg:flex-row flex-col  lg:h-[140px] lg:pt-[0px] pt-[40px] hero1 ">
         <div className="md:mx-[100px] mx-[25px] md:my-[30px]  mb-[0px] pl-[20px]">
           <div className="text-white md:text-[36px] text-[25px] md:mb-[0px] mb-[10px]  font-semibold font-sans leading-[110%] ">
             Securing Your{" "}
