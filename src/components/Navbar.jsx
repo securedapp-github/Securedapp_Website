@@ -3,9 +3,9 @@ import { useState } from "react";
 import { Dialog } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import Logo from "../images/logoblacktextsdlogowhite-1@2x.png";
-import RequestModal from "./AuditModal";
+import AuditModal from "./AuditModal";
 const navigation = [
-  { name: "Solidity Shield Scan", href: "#" },
+  { name: "Solidity Shield Scan", href: "/scan" },
   { name: "Our Services", href: "#" },
   { name: "About Us", href: "#", special: true },
   // { name: "Contact Us", href: "#" },
@@ -13,6 +13,13 @@ const navigation = [
 ];
 
 function Navbar({ onItemClick }) {
+  const [showModal, setShowModal] = useState(false);
+
+  const handleModalClose = () => {
+    setShowModal(false);
+  };
+
+  console.log("showModal:", showModal); // Add this line to check the state
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const handleItemClick = (index) => {
@@ -67,8 +74,10 @@ function Navbar({ onItemClick }) {
 
               <button
                 type="button"
-                data-modal-target="defaultModal"
-                data-modal-toggle="defaultModal"
+                onClick={() => {
+                  setShowModal(true);
+                  alert(showModal);
+                }}
                 className=" top-[37px] left-[1250px] flex justify-center items-center rounded-full bg-black shadow-[0px_0px_84px_#12d576] box-border w-[175px] h-10 border-[2px] border-solid border-white"
               >
                 <b className="">Request a quote</b>
@@ -122,8 +131,10 @@ function Navbar({ onItemClick }) {
                     className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-100 hover:bg-gray-800"
                   >
                     <button
-                      data-modal-target="defaultModal"
-                      data-modal-toggle="defaultModal"
+                      onClick={() => {
+                        setShowModal(true);
+                        alert(showModal);
+                      }}
                       className="border  rounded-xl	 border-white p-3 "
                     >
                       Request a quote
@@ -135,6 +146,8 @@ function Navbar({ onItemClick }) {
           </Dialog.Panel>
         </Dialog>
       </header>
+
+      {showModal && <AuditModal onClose={handleModalClose} />}
     </div>
   );
 }

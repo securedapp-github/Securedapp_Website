@@ -12,10 +12,7 @@ const FlatContractForm = ({ onScanButtonClick }) => {
   };
 
   return (
-    <div
-      className="lg:pt-[110px] pt-[110px] py-[60px]    "
-      style={{ background: "rgba(0, 0, 0, 0.20)" }}
-    >
+    <div className="lg:pt-[110px] pt-[110px] py-[60px]    ">
       <div className="flex justify-center items-center mt-[50px]">
         <SectionHeader content={"Select a Flatten Contract"} />
       </div>
@@ -35,12 +32,11 @@ const FlatContractForm = ({ onScanButtonClick }) => {
           />
         </div>
         <div className="md:w-1/6">
-          <button
-            className="md:w-4/6 bg-[#12D576] rounded-[20px] p-3 uppercase"
-            onClick={OnclickHandler}
-          >
-            analyse
-          </button>
+          <a href="scanResult">
+            <button className="md:w-4/6 bg-[#12D576] rounded-[20px] p-3 uppercase">
+              analyse
+            </button>
+          </a>
         </div>
       </div>
     </div>

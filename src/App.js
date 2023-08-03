@@ -1,26 +1,12 @@
 import "./App.css";
-import AboutUsHero from "./components/AboutUsHero";
-import Audit from "./components/Audit";
-import Benefits from "./components/Benefits";
-import Clients from "./components/Clients";
-import Core from "./components/Core";
-import FAQ from "./components/FAQ";
-import Footer from "./components/Footer";
-import Launch from "./components/Launch";
-import Navbar from "./components/Navbar";
-import Products from "./components/Products";
-import Request from "./components/Request";
-import Stats from "./components/Stats";
-import Transmission from "./components/Transmission";
+
 import { useEffect, useState } from "react";
-import WhySecureDapp from "./components/WhySecureDapp";
-import FounderSection from "./components/MeettheTeam";
-import FlatContractForm from "./components/FlatContractForm";
-import { Scanner } from "./components/Scanner";
-import ShieldCore from "./components/ShieldCore";
-import BenefitsOfScan from "./components/BenefitsOfScan";
-import ProductHero from "./components/ProductHero";
-import ScanResult from "./components/ScanResult";
+
+import { Route, Routes } from "react-router-dom";
+import HomeComp from "./components/HomeComp";
+import ScanComp from "./components/ScanComp";
+import ScanResultComp from "./components/ScanResultComp";
+
 function App() {
   const [selectedMenuItem, setSelectedMenuItem] = useState(1);
   const [showScanResult, setShowScanResult] = useState(false);
@@ -36,53 +22,11 @@ function App() {
     setShowScanResult(false);
   }, [selectedMenuItem]);
   return (
-    <section className="bg-black mt-[00px]">
-      <div className="App">
-        <Navbar onItemClick={handleMenuItemClick} />
-        <div>
-          {selectedMenuItem === 2 ? (
-            <>
-              <AboutUsHero />
-              <WhySecureDapp />
-              <FounderSection />
-            </>
-          ) : selectedMenuItem === 0 ? (
-            <>
-              <FlatContractForm onScanButtonClick={handleAnalyzeButtonClick} />
-              {showScanResult ? (
-                <ScanResult />
-              ) : (
-                <>
-                  {" "}
-                  <Scanner />
-                  <ShieldCore />
-                </>
-              )}
-
-              <BenefitsOfScan />
-            </>
-          ) : selectedMenuItem === 3 ? (
-            <>
-              <ProductHero />
-            </>
-          ) : (
-            <>
-              <Launch />
-              {/* <Request /> */}
-              <Clients />
-              <Benefits />
-              <Products />
-              <Stats />
-              <Core />
-              <Audit />
-              <FAQ />
-            </>
-          )}
-          <Transmission />
-          <Footer />
-        </div>
-      </div>
-    </section>
+    <Routes>
+      <Route exact path="/" element={<HomeComp />} />
+      <Route exact path="/scan" element={<ScanComp />} />
+      <Route exact path="/scanResult" element={<ScanResultComp />} />
+    </Routes>
   );
 }
 

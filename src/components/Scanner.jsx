@@ -6,9 +6,9 @@ import SectionHeader from "./SectionHeader";
 import DescriptionFor from "./DescriptionFor";
 export const Scanner = () => {
   return (
-    <div className="md:pt-[60px] pt-[60px] pb-0  bg-gradient-to-tr from-neutral-900 via-stone-800 to-green-700 w-full h-fit ">
-      <div className="flex lg:flex-row md:flex-row w-full md:pt-[30px] md:px-[80px] px-[30px] py-0 pb-[80px] flex-col-reverse h-[600px]">
-        <div className="px-3 pt-7 md:pb-0 pb-[50px] flex-shrink lg:w-11/12 h-fit">
+    <div className="md:pt-[60px] pt-[400px] pb-0  scan_schield w-full -mb-[40px] ">
+      <div className="flex lg:flex-row md:flex-row w-full md:pt-[20px] md:px-[80px] px-[30px] py-0 pb-[80px] flex-col-reverse h-[600px]">
+        <div className="px-3 pt-0 md:pb-0 pb-[50px] flex-shrink lg:w-11/12 h-fit">
           <div className="md:w-3/4">
             <SectionHeader content="Smart Contract Scanner - Solidity Shield" />
           </div>
@@ -23,10 +23,10 @@ export const Scanner = () => {
             }
           />
         </div>
-        <div className="md:mb-[100px] lg:-mt-[80px] mt-[0px] lg:w-10/12 h-10/12">
+        <div className="md:mb-[100px] lg:-mt-[80px] mt-[0px] lg:w-10/12 lg:h-10/12 h-5/6 w-auto lg:pt-0 pt-[100px]">
           <img
             src={hero}
-            className="md:w-[496px] md:h-[633px] w-auto h-full"
+            className="md:w-[496px] md:h-[633px] h-5/6 w-auto lg:mx-0 mx-auto "
             alt="hero"
           />
         </div>
