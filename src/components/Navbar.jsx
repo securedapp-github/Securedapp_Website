@@ -34,7 +34,7 @@ function Navbar({ onItemClick }) {
           className="flex items-center justify-between p-6 lg:px-8 border-b-2 border-gray-500"
           aria-label="Global"
         >
-          <div className="flex lg:flex-1 lg:ml-[70px]">
+          <div className="flex lg:flex-1 lg:ml-[30px]">
             <a href="/" className="-m-1.5 p-1.5">
               <div className="flex ml-3">
                 <img

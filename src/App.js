@@ -7,6 +7,7 @@ import HomeComp from "./components/HomeComp";
 import ScanComp from "./components/ScanComp";
 import ScanResultComp from "./components/ScanResultComp";
 import AboutComp from "./components/AboutComp";
+import ContactComp from "./components/ContactComp";
 
 function App() {
   const [selectedMenuItem, setSelectedMenuItem] = useState(1);
@@ -28,6 +29,7 @@ function App() {
       <Route exact path="/scan" element={<ScanComp />} />
       <Route exact path="/scanResult" element={<ScanResultComp />} />
       <Route exact path="/about-us" element={<AboutComp />} />
+      <Route exact path="/contact-us" element={<ContactComp />} />
     </Routes>
   );
 }

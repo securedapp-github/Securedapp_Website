@@ -48,7 +48,7 @@ function NavbarWithBread({ onItemClick }) {
           <div className="flex lg:hidden">
             <button
               type="button"
-              className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
+              className="-mt-2.5 -ml-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
               onClick={() => setMobileMenuOpen(true)}
             >
               <span className="sr-only">Open main menu</span>
@@ -101,7 +101,7 @@ function NavbarWithBread({ onItemClick }) {
               </a>
               <button
                 type="button"
-                className="-m-2.5 rounded-md p-2.5 text-gray-100"
+                className="-my-2.5 -ml-2.5 rounded-md p-2.5 text-gray-100"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 <span className="sr-only">Close menu</span>

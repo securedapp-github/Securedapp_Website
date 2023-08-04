@@ -5,7 +5,7 @@
 .hero {
   /* Set the background image URL here */
 
-  background-image: url("./newhome1.png");
+  background-image: url("./newhomebg.png");
 
   /* Full height and width of the viewport */
   width: auto;
@@ -308,10 +308,46 @@
   /* Optionally, you can set the background attachment to fixed for a fixed background */
   /* background-attachment: fixed; */
 }
+.footerInabout {
+  /* Set the background image URL here */
+
+  background-image: url("./images/footerinabout.png");
+
+  /* Full height and width of the viewport */
+  width: auto;
+  height: max-content;
+
+  /* Background image should cover the entire element */
+  background-size: cover;
+
+  /* Center the background image */
+  background-position: initial;
+
+  /* Optionally, you can set the background attachment to fixed for a fixed background */
+  /* background-attachment: fixed; */
+}
 .newnav {
   /* Set the background image URL here */
 
   background-image: url("./newnav.png");
+
+  /* Full height and width of the viewport */
+  width: auto;
+  height: max-content;
+
+  /* Background image should cover the entire element */
+  background-size: cover;
+
+  /* Center the background image */
+  background-position: initial;
+
+  /* Optionally, you can set the background attachment to fixed for a fixed background */
+  /* background-attachment: fixed; */
+}
+.contacthero {
+  /* Set the background image URL here */
+
+  background-image: url("./images/contacthero.png");
 
   /* Full height and width of the viewport */
   width: auto;
