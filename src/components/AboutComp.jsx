@@ -1,10 +1,7 @@
 import React, { useState } from "react";
-import Navbar from "./components/Navbar";
-import AboutUsHero from "./components/AboutUsHero";
-import WhySecureDapp from "./components/WhySecureDapp";
-import FounderSection from "./components/MeettheTeam";
-import Transmission from "./components/Transmission";
-import Footer from "./components/Footer";
+
+import NavbarWithBread from "./NavWithBread";
+import AboutUsHero from "./AboutUsHero";
 
 const AboutComp = () => {
   const [selectedMenuItem, setSelectedMenuItem] = useState(1);
@@ -14,12 +11,8 @@ const AboutComp = () => {
   };
   return (
     <>
-      <Navbar onItemClick={handleMenuItemClick} />
+      <NavbarWithBread onItemClick={handleMenuItemClick} />
       <AboutUsHero />
-      <WhySecureDapp />
-      <FounderSection />
-      <Transmission />
-      <Footer />
     </>
   );
 };
