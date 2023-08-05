@@ -416,6 +416,42 @@
   /* Optionally, you can set the background attachment to fixed for a fixed background */
   /* background-attachment: fixed; */
 }
+.auditButton {
+  /* Set the background image URL here */
+
+  background-image: url("./images/buttonInAudit.png");
+
+  /* Full height and width of the viewport */
+  width: 309px;
+  height: 56px;
+
+  /* Background image should cover the entire element */
+  background-size: cover;
+
+  /* Center the background image */
+  background-position: initial;
+
+  /* Optionally, you can set the background attachment to fixed for a fixed background */
+  /* background-attachment: fixed; */
+}
+.auditButton1 {
+  /* Set the background image URL here */
+
+  background-image: url("./images/buttonInAudit.png");
+
+  /* Full height and width of the viewport */
+  width: 320px;
+  height: 56px;
+
+  /* Background image should cover the entire element */
+  background-size: cover;
+
+  /* Center the background image */
+  background-position: initial;
+
+  /* Optionally, you can set the background attachment to fixed for a fixed background */
+  /* background-attachment: fixed; */
+}
 .smartdevwork {
   /* Set the background image URL here */
 

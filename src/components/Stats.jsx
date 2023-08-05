@@ -7,7 +7,7 @@ import StatsSubheading from "./StasSubHeading";
 const Stats = () => {
   return (
     <section className="flex justify-around statsbg h-[160px]  py-5">
-      <div className="stats shadow w-full bg-transparent border-none px-[100px] ">
+      <div className="stats shadow w-full bg-transparent border-none lg:px-[100px] flex  ">
         <div className="stat">
           {/* <div className="stat-figure text-secondary">
             <svg

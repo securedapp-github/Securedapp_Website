@@ -4,7 +4,7 @@ import hero from "../images/auditheropic.png";
 const DappSecurityHero = () => {
   return (
     <div className="md:pt-[200px] pt-[0px] audithero">
-      <div className="flex gap-[15px]">
+      <div className="flex gap-[15px] ">
         <div className="lg:pl-[80px]">
           <SectionHeader content={"Smart Contract Audit"} />
           <div className="lg:w-[737px] lg:mt-[40px]">
@@ -25,8 +25,107 @@ const DappSecurityHero = () => {
             </p>
           </div>
 
-          <div className="rounded-full">
-            <div className="gradient-border rounded-full">dfdfd</div>
+          <div className="flex flex-wrap pt-[20px] lg:w-[737px] ">
+            <div className="auditButton flex justify-center items-center mr-[30px] my-[10px]">
+              <div className="flex justify-evenly items-center w-full">
+                <h1
+                  className="font-sans text-[32px] font-medium leading-[110%]"
+                  style={{
+                    background:
+                      "linear-gradient(90deg, #12D576 0%, #2D5C8F 100%)",
+                    backgroundClip: "text",
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                  }}
+                >
+                  01
+                </h1>
+                <h1 className="text-white font-sans text-[20px] font-normal leading-[110%]">
+                  {" "}
+                  Collect Documentation
+                </h1>
+              </div>
+            </div>
+            <div className="auditButton flex justify-center items-center my-[10px]">
+              <div className="flex justify-evenly items-center w-full">
+                <h1
+                  className="font-sans text-[32px] font-medium leading-[110%]"
+                  style={{
+                    background:
+                      "linear-gradient(90deg, #12D576 0%, #2D5C8F 100%)",
+                    backgroundClip: "text",
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                  }}
+                >
+                  02
+                </h1>
+                <h1 className="text-white font-sans text-[20px] font-normal leading-[110%]">
+                  {" "}
+                  Automated Testing
+                </h1>
+              </div>
+            </div>
+            <div className="auditButton flex justify-center items-center mr-[30px] my-[10px]">
+              <div className="flex justify-evenly items-center w-full">
+                <h1
+                  className="font-sans text-[32px] font-medium leading-[110%]"
+                  style={{
+                    background:
+                      "linear-gradient(90deg, #12D576 0%, #2D5C8F 100%)",
+                    backgroundClip: "text",
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                  }}
+                >
+                  03
+                </h1>
+                <h1 className="text-white font-sans text-[20px] font-normal leading-[110%]">
+                  {" "}
+                  Manual Review
+                </h1>
+              </div>
+            </div>
+            <div className="auditButton flex justify-evenly items-center my-[10px] ">
+              <div className="flex justify-evenly items-center w-full">
+                <h1
+                  className="font-sans text-[32px] px-4 font-medium leading-[110%]"
+                  style={{
+                    background:
+                      "linear-gradient(90deg, #12D576 0%, #2D5C8F 100%)",
+                    backgroundClip: "text",
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                  }}
+                >
+                  04
+                </h1>
+                <h1 className="text-white font-sans text-[20px] font-normal leading-[110%]">
+                  {" "}
+                  Classification of Contract Errors
+                </h1>
+              </div>
+            </div>
+            <div className="auditButton flex justify-center items-center mr-[30px] my-[10px]">
+              <div className="flex justify-evenly items-center w-full">
+                <h1
+                  className="font-sans text-[32px] font-medium leading-[110%]"
+                  style={{
+                    background:
+                      "linear-gradient(90deg, #12D576 0%, #2D5C8F 100%)",
+                    backgroundClip: "text",
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                  }}
+                >
+                  05
+                </h1>
+                <h1 className="text-white font-sans text-[20px] font-normal leading-[110%]">
+                  {" "}
+                  Initial Report
+                </h1>
+              </div>
+            </div>
           </div>
         </div>
 
