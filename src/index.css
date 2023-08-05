@@ -525,6 +525,44 @@
   /* Optionally, you can set the background attachment to fixed for a fixed background */
   /* background-attachment: fixed; */
 }
+.features {
+  /* Set the background image URL here */
+
+  background-image: url("./images/features.png");
+
+  /* Full height and width of the viewport */
+  width: auto;
+  height: 490px;
+
+  /* Background image should cover the entire element */
+  background-size: contain;
+
+  /* Center the background image */
+  background-position: initial;
+  background-repeat: no-repeat;
+
+  /* Optionally, you can set the background attachment to fixed for a fixed background */
+  /* background-attachment: fixed; */
+}
+.working {
+  /* Set the background image URL here */
+
+  background-image: url("./images/working.png");
+
+  /* Full height and width of the viewport */
+  width: 100%;
+  height: 800px;
+
+  /* Background image should cover the entire element */
+  background-size: contain;
+  background-repeat: no-repeat;
+
+  /* Center the background image */
+  background-position: initial;
+
+  /* Optionally, you can set the background attachment to fixed for a fixed background */
+  /* background-attachment: fixed; */
+}
 
 .bg-custom-gradient {
   background-image: linear-gradient(99.68deg, #12d576, #2d5c8f);
