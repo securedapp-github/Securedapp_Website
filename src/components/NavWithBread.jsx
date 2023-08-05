@@ -19,7 +19,6 @@ function NavbarWithBread({ onItemClick }) {
     setShowModal(false);
   };
 
-  console.log("showModal:", showModal); // Add this line to check the state
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const handleItemClick = (index) => {
@@ -76,7 +75,6 @@ function NavbarWithBread({ onItemClick }) {
                 type="button"
                 onClick={() => {
                   setShowModal(true);
-                  alert(showModal);
                 }}
                 className=" top-[37px] left-[1250px] flex justify-center items-center rounded-full bg-black shadow-[0px_0px_84px_#12d576] box-border w-[175px] h-10 border-[2px] border-solid border-white"
               >
@@ -133,7 +131,6 @@ function NavbarWithBread({ onItemClick }) {
                     <button
                       onClick={() => {
                         setShowModal(true);
-                        alert(showModal);
                       }}
                       className="border  rounded-xl	 border-white p-3 "
                     >
