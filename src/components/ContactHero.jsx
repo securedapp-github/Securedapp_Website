@@ -20,7 +20,7 @@ const ContactHero = () => {
           </a>
         </div>
       </div>
-      <div className=" lg:pt-[110px] pt-[10px] py-[60px]  md:px-[100px]  md:py-[50px] lg:pb-[60px] py-[50px]  w-full mb-[0px] flex lg:flex-row flex-col gap-[60px]">
+      <div className=" lg:pt-[110px] pt-[10px] py-[60px]  md:px-[80px]  md:py-[50px] lg:pb-[60px] py-[50px]  w-full mb-[0px] flex lg:flex-row flex-col gap-[60px]">
         <div className="lg:w-7/12 lg:px-[0px] md:px-[0px] px-[50px] md:pt-0 pt-[50px] ">
           <h1
             className="font-sans lg:text-[64px] text-[40px] text-ellipsis font-bold leading-[110%] bg-custom-gradient bg-clip-text text-transparent "

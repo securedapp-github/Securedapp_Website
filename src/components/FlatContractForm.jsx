@@ -32,11 +32,12 @@ const FlatContractForm = ({ onScanButtonClick }) => {
           />
         </div>
         <div className="md:w-1/6">
-          <a href="scanResult">
-            <button className="md:w-4/6 bg-[#12D576] rounded-[20px] p-3 uppercase">
-              analyse
-            </button>
-          </a>
+          <button
+            className="md:w-4/6 bg-[#12D576] rounded-[20px] p-3 uppercase"
+            onClick={OnclickHandler}
+          >
+            analyse
+          </button>
         </div>
       </div>
     </div>

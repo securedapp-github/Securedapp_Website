@@ -6,6 +6,8 @@ import BenefitsOfScan from "./BenefitsOfScan";
 import Navbar from "./Navbar";
 import Transmission from "./Transmission";
 import FooterInScan from "./FooterInScan";
+import ScanResult from "./ScanResult";
+
 const ScanComp = () => {
   const [showScanResult, setShowScanResult] = useState(false);
 
@@ -18,9 +20,16 @@ const ScanComp = () => {
         <Navbar />
         <FlatContractForm onScanButtonClick={handleAnalyzeButtonClick} />
       </div>
-
-      <Scanner />
-      <ShieldCore />
+      {showScanResult ? (
+        <>
+          <ScanResult />
+        </>
+      ) : (
+        <>
+          <Scanner />
+          <ShieldCore />
+        </>
+      )}
 
       <BenefitsOfScan />
       <Transmission />

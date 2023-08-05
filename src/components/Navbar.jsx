@@ -6,8 +6,8 @@ import Logo from "../images/logoblacktextsdlogowhite-1@2x.png";
 import AuditModal from "./AuditModal";
 const navigation = [
   { name: "Solidity Shield Scan", href: "/scan" },
-  { name: "Our Services", href: "#" },
-  { name: "About Us", href: "#", special: true },
+  { name: "SecurePAD", href: "#" },
+  { name: "Our Products", href: "#", special: true },
   // { name: "Contact Us", href: "#" },
   { name: "Blog", href: "#" },
 ];

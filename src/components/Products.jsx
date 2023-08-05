@@ -69,7 +69,7 @@ const Card = ({ heading, description, link }) => {
 
 const Products = () => {
   return (
-    <div className="lg:py-[80px] lg:px-[125px] md:p-[70px] p-[50px] product ">
+    <div className="lg:py-[80px] lg:px-[80px] md:p-[70px] p-[50px] product ">
       <SectionHeader content={"SecureDApp’s Products and Services"} />
       <div className="lg:p-[30px] lg:pl-0 md:pt-[30px] pt-[30px] px-[5px]">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

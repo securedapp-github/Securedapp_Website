@@ -9,6 +9,7 @@ import ScanResultComp from "./components/ScanResultComp";
 import AboutComp from "./components/AboutComp";
 import ContactComp from "./components/ContactComp";
 import SmartContractdev from "./components/SmartContractdev";
+import DappSecurityAudit from "./components/DappSecurityAudit";
 
 function App() {
   const [selectedMenuItem, setSelectedMenuItem] = useState(1);
@@ -32,6 +33,7 @@ function App() {
       <Route exact path="/about-us" element={<AboutComp />} />
       <Route exact path="/contact-us" element={<ContactComp />} />
       <Route exact path="/smart-contract-dev" element={<SmartContractdev />} />
+      <Route exact path="/dapp-security" element={<DappSecurityAudit />} />
     </Routes>
   );
 }

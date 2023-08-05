@@ -380,6 +380,42 @@
   /* Optionally, you can set the background attachment to fixed for a fixed background */
   /* background-attachment: fixed; */
 }
+.audithero {
+  /* Set the background image URL here */
+
+  background-image: url("./images/audithero.png");
+
+  /* Full height and width of the viewport */
+  width: auto;
+  height: max-content;
+
+  /* Background image should cover the entire element */
+  background-size: cover;
+
+  /* Center the background image */
+  background-position: initial;
+
+  /* Optionally, you can set the background attachment to fixed for a fixed background */
+  /* background-attachment: fixed; */
+}
+.auditBenefit {
+  /* Set the background image URL here */
+
+  background-image: url("./images/auditbenefit.png");
+
+  /* Full height and width of the viewport */
+  width: auto;
+  height: max-content;
+
+  /* Background image should cover the entire element */
+  background-size: cover;
+
+  /* Center the background image */
+  background-position: initial;
+
+  /* Optionally, you can set the background attachment to fixed for a fixed background */
+  /* background-attachment: fixed; */
+}
 .smartdevwork {
   /* Set the background image URL here */
 
@@ -388,6 +424,24 @@
   /* Full height and width of the viewport */
   width: auto;
   height: 890px;
+
+  /* Background image should cover the entire element */
+  background-size: cover;
+
+  /* Center the background image */
+  background-position: initial;
+
+  /* Optionally, you can set the background attachment to fixed for a fixed background */
+  /* background-attachment: fixed; */
+}
+.statsbg {
+  /* Set the background image URL here */
+
+  background-image: url("./images/statsbg.png");
+
+  /* Full height and width of the viewport */
+  width: auto;
+  height: 160px;
 
   /* Background image should cover the entire element */
   background-size: cover;
@@ -421,4 +475,13 @@
 .bg-custom-gradient {
   background-image: linear-gradient(99.68deg, #12d576, #2d5c8f);
   /* Other styles for the gradient, if necessary */
+}
+
+.gradient-border {
+  /* border-radius: 41px; */
+  border-width: 5px;
+  border-style: solid;
+  border-image: linear-gradient(to bottom right, #2d5c8f, #12d576);
+  border-image-slice: 1;
+  border-radius: 40px;
 }

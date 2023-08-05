@@ -3,6 +3,7 @@ import NavbarWithBread from "./NavWithBread";
 import ContactHero from "./ContactHero";
 import Transmission from "./Transmission";
 import Footer from "./Footer";
+import FooterInAbout from "./FooterInAbout";
 
 const ContactComp = () => {
   return (
@@ -10,7 +11,7 @@ const ContactComp = () => {
       <NavbarWithBread />
       <ContactHero />
       <Transmission />
-      <Footer />
+      <FooterInAbout />
     </>
   );
 };

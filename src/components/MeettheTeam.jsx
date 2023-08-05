@@ -6,7 +6,7 @@ import himanshu from "../images/himanshu.png";
 import abishek from "../images/abishek.png";
 
 const TeamCard = ({ image, name, designation, description }) => (
-  <div className="w-full md:w-1/2 lg:w-[300px] lg:ml-[40px] mx-[20px] pb-[20px]">
+  <div className="w-full md:w-1/2 lg:w-[300px] lg:ml-[25px] mx-[20px] pb-[20px]">
     <div className="bg-transparent border border-[#3D3D3D] h-[610px] p-0 shadow-md">
       <div className="relative h-[300px] mb-4 bg-[#D9D9D9]">
         <img
@@ -60,14 +60,14 @@ const MeettheTeam = () => {
     // Add more team members here
   ];
   return (
-    <section className="w-full meetteam -mt-[60px] pt-[60px]">
-      <div className="lg:mx-[80px] lg:mt-[60px] w-full ">
+    <section className="w-full meetteam -mt-[60px] pt-[60px] lg:pb-[50px]">
+      <div className="lg:mx-[80px] lg:mt-[60px] ">
         <div className="flex justify-center items-center py-[30px]">
           <h1 className=" md:text-4xl text-2xl text-left whitespace-break-spaces w-fit font-sans font-bold leading-[110%]  bg-custom-gradient bg-clip-text text-transparent pb-[10px]">
             Meet the Team
           </h1>
         </div>
-        <div className="flex flex-wrap lg:-mx-4">
+        <div className="flex flex-wrap lg:-mx-7 lg:w-[1450px] ">
           {teamMembers.map((member, index) => (
             <TeamCard key={index} {...member} />
           ))}

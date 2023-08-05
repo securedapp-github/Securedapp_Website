@@ -6,8 +6,8 @@ import StatsSubheading from "./StasSubHeading";
 
 const Stats = () => {
   return (
-    <section className="flex justify-around bg-gradient-to-br from-green-950 to-black   py-5">
-      <div className="stats shadow w-3/4 bg-transparent border-none ">
+    <section className="flex justify-around statsbg h-[160px]  py-5">
+      <div className="stats shadow w-full bg-transparent border-none px-[100px] ">
         <div className="stat">
           {/* <div className="stat-figure text-secondary">
             <svg

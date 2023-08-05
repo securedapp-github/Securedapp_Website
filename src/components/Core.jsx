@@ -44,7 +44,7 @@ const Card = ({ image, heading, content }) => {
 
 const Core = () => {
   return (
-    <div className="lg:py-[80px] lg:px-[125px] md:p-[70px] p-[50px] core  ">
+    <div className="lg:py-[80px] lg:px-[80px] md:p-[70px] p-[50px] core  ">
       <SectionHeader content={"SecureDApp’s Core "} />
 
       <div className="pt-[30px]">
