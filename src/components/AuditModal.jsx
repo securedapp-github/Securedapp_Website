@@ -1,29 +1,60 @@
 import React, { useState } from "react";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const AuditModal = ({ onClose }) => {
-  // const [name, setName] = useState("");
-  // const [nickname, setNickname] = useState("");
-  // const [service, setService] = useState("");
-  // const [email, setEmail] = useState("");
-  // const [description, setDescription] = useState("");
-  // const [agreementChecked, setAgreementChecked] = useState(false);
-  // const [reportsChecked, setReportsChecked] = useState(false);
 
   const [name, setName] = useState("");
-  const [nickname, setNickname] = useState("");
   const [service, setService] = useState("");
   const [email, setEmail] = useState("");
+  const [description, setDescription] = useState("");
 
-  // Define the list of available services
+
   const services = [
     "Smart Contract Audit",
-    "Blockchain Security",
-    "Tokenomics Consultation",
-    "Other Service 1",
-    "Other Service 2",
+    "Smart Contract Development",
+    "DAPP Development",
+    "Tokenomics Consultation"
   ];
 
+  const sendMail = async () => {
+
+    if(name == "" ||  email == "" || description == ""){
+      toast("Invalid Input");
+      return;
+    }
+
+    fetch('https://139-59-5-56.nip.io:3443/contactMail', {
+        method: 'POST',
+        body: JSON.stringify({
+            name: name,
+            mail: email,
+            msg: service+"---"+description
+        }),
+        headers: {
+            'Content-type': 'application/json',
+        },
+    })
+        .then((res) => { })
+        .then((data) => {
+            toast.success('Mail Send Successfully');
+            onClose();
+        })
+        .catch((err) => {
+            console.log(err.message);
+            toast("Error in sending mail");
+        });
+
+};
+
   return (
+    <>
+<ToastContainer
+        position="top-center"
+        autoClose={2000}
+        theme="dark"
+        pauseOnHover
+      />
     <div className="fixed top-0 left-0 right-0 bottom-0 flex justify-center items-center bg-gray-900 bg-opacity-80 z-[100001]">
       <div className="w-[600px] p-6 rounded-lg bg-white shadow-lg">
         <button
@@ -44,6 +75,8 @@ const AuditModal = ({ onClose }) => {
               type="text"
               name="floating_first_name"
               id="floating_first_name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
               className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
               placeholder=" "
               required
@@ -62,7 +95,6 @@ const AuditModal = ({ onClose }) => {
               id="floating_last_name"
               className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
               placeholder=" "
-              required
             />
             <label
               for="floating_last_name"
@@ -104,6 +136,8 @@ const AuditModal = ({ onClose }) => {
               type="email"
               name="floating_company"
               id="floating_company"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
               placeholder=" "
               required
@@ -120,6 +154,8 @@ const AuditModal = ({ onClose }) => {
           <textarea
             id="message"
             rows="4"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
             className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder="Project details (descriptions, links to documentation, smart contract source code, etc.)"
           ></textarea>
@@ -161,7 +197,8 @@ const AuditModal = ({ onClose }) => {
         </div>
         <div className="flex justify-center items-center py-4">
           <button
-            type="submit"
+            type="button"
+            onClick={() => {sendMail();}}
             className="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-9 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
           >
             Submit
@@ -169,6 +206,7 @@ const AuditModal = ({ onClose }) => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

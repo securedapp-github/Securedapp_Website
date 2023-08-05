@@ -1,10 +1,57 @@
-import React from "react";
+import React, { useState } from "react";
 import SectionHeader from "./SectionHeader";
 import Description from "./Description";
 import DescriptionFor from "./DescriptionFor";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const ContactHero = () => {
+
+  const [name, setName] = useState("");
+  const [number, setNumber] = useState("");
+  const [email, setEmail] = useState("");
+  const [description, setDescription] = useState("");
+
+  const sendMail = async () => {
+
+    if(name == "" ||  email == "" || description == ""){
+      toast("Invalid Input");
+      return;
+    }
+
+    fetch('https://139-59-5-56.nip.io:3443/contactMail', {
+        method: 'POST',
+        body: JSON.stringify({
+            name: name,
+            mail: email,
+            msg: number+"---"+description
+        }),
+        headers: {
+            'Content-type': 'application/json',
+        },
+    })
+        .then((res) => { })
+        .then((data) => {
+            toast.success('Mail Send Successfully');
+            
+        })
+        .catch((err) => {
+            console.log(err.message);
+            toast("Error in sending mail");
+        });
+
+};
+
+
+
   return (
+      <>
+  <ToastContainer
+          position="top-center"
+          autoClose={2000}
+          theme="dark"
+          pauseOnHover
+        />
     <div className="contacthero md:pt-[80px] pt-[130px]">
       <div className="md:pt-[50px] lg:mx-[80px] border-b-2 border-gray-500">
         <div className="flex gap-[40px] py-[15px] lg:px-0 px-[30px]">
@@ -64,6 +111,8 @@ const ContactHero = () => {
             <input
               type="email"
               placeholder="Your email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               style={{ border: "1px solid rgba(255, 255, 255, 0.20)" }}
               className="bg-transparent p-4 border rounded-[20px] placeholder:text-[16px] placeholder:font-sans placeholder:text-[#FFF] placeholder:text-opacity-20 w-11/12 "
             />
@@ -72,6 +121,8 @@ const ContactHero = () => {
             <input
               type="text"
               placeholder="Company name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
               style={{ border: "1px solid rgba(255, 255, 255, 0.20)" }}
               className="bg-transparent p-4 border rounded-[20px] placeholder:text-[16px] placeholder:font-sans placeholder:text-[#FFF] placeholder:text-opacity-20 w-11/12 "
             />
@@ -80,27 +131,27 @@ const ContactHero = () => {
             <input
               type="text"
               placeholder="Contact number"
+              value={number}
+              onChange={(e) => setNumber(e.target.value)}
               style={{ border: "1px solid rgba(255, 255, 255, 0.20)" }}
               className="bg-transparent p-4 border rounded-[20px] placeholder:text-[16px] placeholder:font-sans placeholder:text-[#FFF] placeholder:text-opacity-20 w-11/12 "
             />
           </div>
           <div className="pb-[25px]">
-            {/* <input
-            type="text"
-            placeholder="Your name"
-            style={{ border: "1px solid rgba(255, 255, 255, 0.20)" }}
-            className="bg-transparent p-4 border rounded-[20px] placeholder:text-[16px] placeholder:font-sans placeholder:text-[#FFF] placeholder:text-opacity-20 w-11/12 "
-          /> */}
+      
 
             <textarea
               placeholder="Requirement (optional)"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
               className="bg-transparent p-4 border rounded-[20px] placeholder:text-[16px] placeholder:font-sans placeholder:text-[#FFF] placeholder:text-opacity-20 w-11/12 "
               cols="30"
               rows="10"
             ></textarea>
           </div>
           <button
-            type="submit"
+            type="button"
+            onClick={() => {sendMail();}}
             className=" w-11/12 rounded-[55px] bg-[#12D576] px-7 py-3 font-sans text-[21px] font-normal leading-[100%] "
           >
             SUBMIT
@@ -108,6 +159,7 @@ const ContactHero = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 
