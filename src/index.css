@@ -567,6 +567,42 @@
   /* Optionally, you can set the background attachment to fixed for a fixed background */
   /* background-attachment: fixed; */
 }
+
+/* For small screens (mobile) */
+@media (max-width: 640px) {
+  .DappExp {
+    /* Set the background image URL here */
+    background-image: url("./images/DAppExp.png");
+
+    /* Adjust the height and other properties as needed */
+    height: 280px;
+    width: 100%;
+    background-size: contain;
+    background-position: initial;
+  }
+}
+
+/* For medium to large screens */
+@media (min-width: 641px) {
+  .DappExp {
+    /* Set the background image URL here */
+    background-image: url("./images/DAppExp.png");
+
+    /* Full height and width of the viewport */
+    width: auto;
+    height: 900px;
+
+    /* Background image should cover the entire element */
+    background-size: contain;
+
+    /* Center the background image */
+    background-position: initial;
+
+    /* Optionally, you can set the background attachment to fixed for a fixed background */
+    /* background-attachment: fixed; */
+  }
+}
+
 .auditButton {
   /* Set the background image URL here */
 
@@ -621,6 +657,48 @@
   /* Optionally, you can set the background attachment to fixed for a fixed background */
   /* background-attachment: fixed; */
 }
+
+/* For small screens (mobile) */
+@media (max-width: 640px) {
+  .smartdevwork {
+    /* Set the background image URL here */
+    background-image: url("./images/newbgforsmdec.png");
+
+    /* Adjust the height as needed */
+    height: 300px;
+
+    /* Background image should cover the entire element */
+    background-size: cover;
+
+    /* Center the background image */
+    background-position: center;
+
+    /* Optionally, you can set the background attachment to fixed for a fixed background */
+    /* background-attachment: fixed; */
+  }
+}
+
+/* For medium to large screens */
+@media (min-width: 641px) {
+  .smartdevwork {
+    /* Set the background image URL here */
+    background-image: url("./images/newbgforsmdec.png");
+
+    /* Full height and width of the viewport */
+    width: auto;
+    height: 890px;
+
+    /* Background image should cover the entire element */
+    background-size: cover;
+
+    /* Center the background image */
+    background-position: initial;
+
+    /* Optionally, you can set the background attachment to fixed for a fixed background */
+    /* background-attachment: fixed; */
+  }
+}
+
 .statsbg {
   /* Set the background image URL here */
 
@@ -642,7 +720,7 @@
 .hero1 {
   /* Set the background image URL here */
 
-  background-image: url("./newhome2.png");
+  background-image: url("./newhome1.png");
 
   /* Full height and width of the viewport */
   width: auto;
@@ -653,7 +731,6 @@
 
   /* Center the background image */
   background-position: initial;
-  z-index: 123123121231231;
 
   /* Optionally, you can set the background attachment to fixed for a fixed background */
   /* background-attachment: fixed; */
@@ -677,6 +754,44 @@
   /* Optionally, you can set the background attachment to fixed for a fixed background */
   /* background-attachment: fixed; */
 }
+
+/* For small screens (mobile) */
+@media (max-width: 640px) {
+  .features {
+    /* Set the background image URL here */
+    background-image: url("./images/features.png");
+
+    /* Adjust the height and other properties as needed */
+    height: 200px;
+    background-size: contain;
+    background-position: inherit;
+    background-repeat: no-repeat;
+    margin-bottom: -70px;
+  }
+}
+
+/* For medium to large screens */
+@media (min-width: 641px) {
+  .features {
+    /* Set the background image URL here */
+    background-image: url("./images/features.png");
+
+    /* Full height and width of the viewport */
+    width: auto;
+    height: 490px;
+
+    /* Background image should cover the entire element */
+    background-size: contain;
+
+    /* Center the background image */
+    background-position: initial;
+    background-repeat: no-repeat;
+
+    /* Optionally, you can set the background attachment to fixed for a fixed background */
+    /* background-attachment: fixed; */
+  }
+}
+
 .working {
   /* Set the background image URL here */
 
@@ -688,6 +803,9 @@
 
   /* Background image should cover the entire element */
   background-size: contain;
+
+  /* Center the background image */
+  background-position: initial;
   background-repeat: no-repeat;
 
   /* Center the background image */
@@ -697,6 +815,18 @@
   /* background-attachment: fixed; */
 }
 
+@media (max-width: 640px) {
+  .working {
+    /* Set the background image URL here */
+    background-image: url("./images/working.png");
+
+    /* Adjust the height and other properties as needed */
+    height: 220px;
+    background-size: contain;
+    background-position: inherit;
+    background-repeat: no-repeat;
+  }
+}
 .bg-custom-gradient {
   background-image: linear-gradient(99.68deg, #12d576, #2d5c8f);
   /* Other styles for the gradient, if necessary */

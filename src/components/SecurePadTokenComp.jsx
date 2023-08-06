@@ -16,7 +16,7 @@ const SecurePadTokenComp = () => {
       <SecureDAppToken />
       <div className="features"></div>
       <div className="bg-[#12D576]">
-        <p className="text-black font-sans text-[16px] font-normal leading-[160%] -mt-[30px] px-[80px] py-[20px]">
+        <p className="text-black font-sans text-[16px] font-normal leading-[160%] -mt-[30px] lg:px-[80px] px-[20px] py-[20px]">
           Overall, SecurePAD is a powerful platform that can help projects to
           raise funds, trade tokens, and manage their token lifecycle. The
           platform's zero fees, security-focused approach, and no-code platform

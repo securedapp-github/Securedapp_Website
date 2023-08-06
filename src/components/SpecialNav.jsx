@@ -28,7 +28,7 @@ function SpecialNav({ onItemClick }) {
     console.log(index);
   };
   return (
-    <div className="z-[23432423423] ">
+    <div className="z-[12] ">
       <header className="absolute inset-x-0 top-0 z-50">
         <nav
           className="flex items-center justify-between p-6 lg:px-8 "

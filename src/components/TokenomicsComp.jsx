@@ -59,16 +59,16 @@ const TokenomicsComp = () => {
       </div>
 
       <div className="tokenthird"></div>
-      <div className="bg-[#12D576]">
+      <div className="bg-[#12D576] lg:-mt-0 -mt-[20px]">
         <div className="text-black">
-          <div className="lg:pl-[80px] lg:pt-[30px] lg:pb-[10px]">
+          <div className="lg:px-[80px] px-[20px] lg:pt-[30px] pt-5 lg:pb-[10px]">
             <h1 className=" font-sans text-opacity-80 text-[20px] font-bold leading-[100%]">
               Our tokenomics design services include:
             </h1>
           </div>
 
-          <div className="flex justify-evenly lg:pb-[50px] lg:pt-[20px] lg:px-[40px]  ">
-            <div className="w-[380px] ">
+          <div className="flex lg:flex-row flex-col justify-evenly lg:pb-[50px] lg:pt-[20px] py-[20px] lg:px-[40px] px-[20px]   ">
+            <div className="w-[380px] lg:pb-0 pb-7 ">
               <h1 className=" text-justify text-[16px] font-bold leading-[160%]">
                 Defining your token's utility:{" "}
               </h1>
@@ -78,9 +78,9 @@ const TokenomicsComp = () => {
               </h1>
             </div>
 
-            <div className="w-[2px] h-[80px] mr-[30px] bg-[#fff] bg-opacity-20 "></div>
+            <div className="w-[2px] h-[80px] mr-[30px] bg-[#fff] bg-opacity-20 lg:block hidden "></div>
 
-            <div className="w-[380px]">
+            <div className="w-[380px] lg:pb-0 pb-7">
               <h1 className=" text-justify text-[16px] font-bold leading-[160%]">
                 Determining your token's supply and distribution:
               </h1>
@@ -89,9 +89,9 @@ const TokenomicsComp = () => {
                 they will be distributed.
               </h1>
             </div>
-            <div className="w-[2px] h-[80px] mr-[30px] bg-[#fff] bg-opacity-20 "></div>
+            <div className="w-[2px] h-[80px] mr-[30px] bg-[#fff] bg-opacity-20  lg:block hidden"></div>
 
-            <div className="w-[380px]">
+            <div className="w-[380px] lg:pb-0 pb-7">
               <h1 className=" text-justify text-[16px] font-bold leading-[160%]">
                 Setting your token's price:
               </h1>
@@ -104,15 +104,15 @@ const TokenomicsComp = () => {
         </div>
       </div>
       <div className="TokenSecond">
-        <div className="lg:pl-[80px] lg:pt-[30px] lg:pb-[10px]">
+        <div className="lg:px-[80px] px-5  lg:pt-[30px] pt-5 lg:pb-[10px]">
           <h1 className="text-white font-sans text-opacity-80 text-[20px] font-normal leading-[100%]">
             Our tokenomics design services include:
           </h1>
         </div>
 
-        <div className="flex justify-evenly lg:pb-[50px] lg:pt-[20px] lg:px-[40px]  ">
-          <div className="w-[380px] ">
-            <h1 className="text-[#12D576] text-justify text-[16px] font-bold leading-[160%]">
+        <div className="flex lg:flex-row  flex-col justify-evenly lg:pb-[50px] lg:pt-[20px] pt-5 lg:px-[40px] px-5  ">
+          <div className="w-[380px] lg:pb-0 pb-7 ">
+            <h1 className="text-[#12D576] text-justify text-[16px] font-bold leading-[160%] ">
               Defining your token's utility:{" "}
             </h1>
             <h1 className="text-white text-opacity-80 font-[16px] font-normal leading-[160%]">
@@ -121,9 +121,9 @@ const TokenomicsComp = () => {
             </h1>
           </div>
 
-          <div className="w-[2px] h-[80px] mr-[30px] bg-[#D9D9D9] bg-opacity-20 "></div>
+          <div className="w-[2px] h-[80px] mr-[30px] bg-[#D9D9D9] bg-opacity-20 lg:block hidden "></div>
 
-          <div className="w-[380px]">
+          <div className="w-[380px] lg:pb-0 pb-7">
             <h1 className="text-[#12D576] text-justify text-[16px] font-bold leading-[160%]">
               Determining your token's supply and distribution:
             </h1>
@@ -132,9 +132,9 @@ const TokenomicsComp = () => {
               they will be distributed.
             </h1>
           </div>
-          <div className="w-[2px] h-[80px] mr-[30px] bg-[#D9D9D933] bg-opacity-20 "></div>
+          <div className="w-[2px] h-[80px] mr-[30px] bg-[#D9D9D933] bg-opacity-20 lg:block hidden "></div>
 
-          <div className="w-[380px]">
+          <div className="w-[380px] lg:pb-0 pb-7">
             <h1 className="text-[#12D576] text-justify text-[16px] font-bold leading-[160%]">
               Setting your token's price:
             </h1>
@@ -146,15 +146,15 @@ const TokenomicsComp = () => {
         </div>
       </div>
       <div className="TokenLast">
-        <div className="lg:pl-[80px] lg:py-[50px]">
+        <div className="lg:px-[80px]  px-[20px] lg:py-[50px] py-7">
           <h1 className="text-white text-opacity-80 text-[20px] font-bold leading-[100%]">
             Our tokenomics design, development, and audit services can help you
             to:
           </h1>
         </div>
 
-        <div className="flex justify-evenly lg:pb-[50px]  lg:px-[40px] ">
-          <div className="w-[380px] ">
+        <div className="flex lg:flex-row flex-col justify-evenly lg:pb-[50px]  lg:px-[40px] px-5 ">
+          <div className="w-[380px] lg:pb-0 pb-7 ">
             <h1 className="text-[#12D576] text-justify text-[16px] font-bold leading-[160%]">
               Create a successful token-based project:{" "}
             </h1>
@@ -165,9 +165,9 @@ const TokenomicsComp = () => {
             </h1>
           </div>
 
-          <div className="w-[2px] h-[130px] mr-[30px] bg-[#D9D9D9] bg-opacity-20 "></div>
+          <div className="w-[2px] h-[130px] mr-[30px] bg-[#D9D9D9] bg-opacity-20 lg:block hidden "></div>
 
-          <div className="w-[380px]">
+          <div className="w-[380px]  lg:pb-0 pb-7">
             <h1 className="text-[#12D576] text-justify text-[16px] font-bold leading-[160%]">
               Attract investors and users:{" "}
             </h1>
@@ -177,9 +177,9 @@ const TokenomicsComp = () => {
               grow your project.{" "}
             </h1>
           </div>
-          <div className="w-[2px] h-[130px] mr-[30px] bg-[#D9D9D933] bg-opacity-20 "></div>
+          <div className="w-[2px] h-[130px] mr-[30px] bg-[#D9D9D933] bg-opacity-20 lg:block hidden"></div>
 
-          <div className="w-[380px]">
+          <div className="w-[380px] lg:pb-0 pb-7">
             <h1 className="text-[#12D576] text-justify text-[16px] font-bold leading-[160%]">
               Track the performance of your token:{" "}
             </h1>
@@ -195,7 +195,7 @@ const TokenomicsComp = () => {
           <div className="w-[88%] h-[2px] bg-[#D9D9D9] bg-opacity-20 py-[0px] lg:px-[80px]"></div>
         </div>
 
-        <div className="lg:py-[30px] lg:px-[80px]">
+        <div className="lg:py-[30px] py-6 lg:px-[80px] px-5">
           <p className="text-white text-opacity-80 text-[16px] font-normal leading-[120%]">
             If you are considering launching a token-based project, it is
             important to have your tokenomics designed, developed, and audited

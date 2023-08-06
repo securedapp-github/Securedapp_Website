@@ -3,11 +3,11 @@ import SectionHeader from "./SectionHeader";
 import hero from "../images/auditheropic.png";
 const DappDevHero = () => {
   return (
-    <div className="md:pt-[200px] pt-[0px] audithero">
+    <div className="md:pt-[200px] pt-[150px]  audithero">
       <div className="flex gap-[0px] ">
-        <div className="lg:pl-[80px]">
+        <div className="lg:px-[80px] px-[20px]">
           <SectionHeader content={"DApp Development"} />
-          <div className="lg:w-[800px] lg:my-[40px]">
+          <div className="lg:w-[800px] lg:my-[40px] my-[20px]">
             <p className="text-white text-opacity-80 font-sans font-normal leading-[160%]">
               SecureDApp is a blockchain security solution that offers a
               comprehensive range of services for developers building

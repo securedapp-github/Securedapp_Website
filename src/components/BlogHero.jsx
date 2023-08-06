@@ -2,9 +2,9 @@ import React from "react";
 
 const BlogCard = ({ topic, date, title, link }) => {
   return (
-    <a href={link}>
-      <div className="blogimg flex flex-col justify-between ">
-        <div className="w-[200px] h-[25px] bg-black bg-opacity-90 mt-[14px] ml-[14px] flex justify-center items-center rounded-[36px]">
+    <a href={link} className="lg:mx-0 mx-2">
+      <div className="blogimg flex flex-col justify-between lg:px-0 px-7 ">
+        <div className="w-[200px] h-[25px] bg-black bg-opacity-90 mt-[14px] lg:mx-[14px]   flex justify-center items-center rounded-[36px]">
           <span className="text-white font-sans text-[15px] font-normal leading-normal">
             {topic}
           </span>
@@ -90,15 +90,15 @@ const BlogHero = () => {
               Home
             </span>
           </a>
-          <a href="/about-us">
+          <a href="/blog">
             <span className="text-[#12D576] font-sans text-[16px] font-bold leading-normal">
-              About Us
+              Blog
             </span>
           </a>
         </div>
       </div>
 
-      <div className="lg:pt-[50px] lg:mx-[80px] flex lg:pb-[0px] ">
+      <div className="lg:pt-[50px] lg:mx-[80px] flex lg:flex-row flex-col-reverse lg:pb-[0px] ">
         <div className="flex w-8/12 flex-wrap gap-[40px]">
           {blogs.map((blog) => (
             <BlogCard
@@ -111,7 +111,7 @@ const BlogHero = () => {
           ))}
         </div>
 
-        <div className="flex flex-col gap-[20px]">
+        <div className="flex flex-col gap-[20px] lg:py-0 py-7 px-6">
           <button className="w-[340px] h-[64px] rounded-[20px] border border-white  border-opacity-20">
             {" "}
             <span className="text-white font-sans text-[24px] font-normal leading-[170%]">

@@ -3,11 +3,11 @@ import SectionHeader from "./SectionHeader";
 import hero from "../images/securepadicon.png";
 const SecureDAppToken = () => {
   return (
-    <div className="md:pt-[200px] pt-[0px] audithero">
-      <div className="flex gap-[0px] ">
-        <div className="lg:pl-[80px]">
+    <div className="md:pt-[200px] pt-[150px] pt-[0px] audithero">
+      <div className="flex lg:flex-row flex-col-reverse gap-[0px] ">
+        <div className="lg:px-[80px] px-[20px] lg:pb-0 pb-5">
           <SectionHeader content={"SecurePAD's Token Launchpad"} />
-          <div className="lg:w-[800px] lg:my-[40px]">
+          <div className="lg:w-[800px] lg:my-[40px] my-5">
             <p className="text-white text-opacity-80 font-sans font-normal leading-[160%]">
               SecurePAD is the world's first zero-fee, security-prominent,
               no-code, and cross-chain platform for anyone to create, trade, and
