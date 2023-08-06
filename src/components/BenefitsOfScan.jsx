@@ -1,10 +1,56 @@
-import React from "react";
+import React, { useState } from "react";
 import SectionHeader from "./SectionHeader";
 import Description from "./Description";
 import DescriptionFor from "./DescriptionFor";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const BenefitsOfScan = () => {
+
+  const [name, setName] = useState("");
+  const [number, setNumber] = useState("");
+  const [email, setEmail] = useState("");
+  const [description, setDescription] = useState("");
+
+  const sendMail = async () => {
+
+    if(name == "" ||  email == "" || description == ""){
+      toast("Invalid Input");
+      return;
+    }
+
+    fetch('https://139-59-5-56.nip.io:3443/contactMail', {
+        method: 'POST',
+        body: JSON.stringify({
+            name: name,
+            mail: email,
+            msg: number+"---"+description
+        }),
+        headers: {
+            'Content-type': 'application/json',
+        },
+    })
+        .then((res) => { })
+        .then((data) => {
+            toast.success('Mail Send Successfully');
+        })
+        .catch((err) => {
+            console.log(err.message);
+            toast("Error in sending mail");
+        });
+
+};
+
+
+
   return (
+      <>
+  <ToastContainer
+          position="top-center"
+          autoClose={2000}
+          theme="dark"
+          pauseOnHover
+        />
     <div className="md:px-[80px]  md:py-[50px] lg:pb-[60px] py-[50px] schield_benefit w-full mb-[0px] flex lg:flex-row flex-col gap-[60px]">
       <div className="lg:w-7/12 lg:px-[0px] md:px-[0px] px-[50px] md:pt-0 pt-[50px] ">
         <SectionHeader content={"Solidity Shields Benefits"} />
@@ -38,6 +84,8 @@ const BenefitsOfScan = () => {
           <input
             type="email"
             placeholder="Your email"
+            value={email}
+              onChange={(e) => setEmail(e.target.value)}
             style={{ border: "1px solid rgba(255, 255, 255, 0.20)" }}
             className="bg-transparent p-4 border rounded-[20px] placeholder:text-[16px] placeholder:font-sans placeholder:text-[#FFF] placeholder:text-opacity-20 w-11/12 "
           />
@@ -46,6 +94,8 @@ const BenefitsOfScan = () => {
           <input
             type="text"
             placeholder="Company name"
+            value={name}
+              onChange={(e) => setName(e.target.value)}
             style={{ border: "1px solid rgba(255, 255, 255, 0.20)" }}
             className="bg-transparent p-4 border rounded-[20px] placeholder:text-[16px] placeholder:font-sans placeholder:text-[#FFF] placeholder:text-opacity-20 w-11/12 "
           />
@@ -54,33 +104,33 @@ const BenefitsOfScan = () => {
           <input
             type="text"
             placeholder="Contact number"
+            value={number}
+            onChange={(e) => setNumber(e.target.value)}
             style={{ border: "1px solid rgba(255, 255, 255, 0.20)" }}
             className="bg-transparent p-4 border rounded-[20px] placeholder:text-[16px] placeholder:font-sans placeholder:text-[#FFF] placeholder:text-opacity-20 w-11/12 "
           />
         </div>
         <div className="pb-[25px]">
-          {/* <input
-            type="text"
-            placeholder="Your name"
-            style={{ border: "1px solid rgba(255, 255, 255, 0.20)" }}
-            className="bg-transparent p-4 border rounded-[20px] placeholder:text-[16px] placeholder:font-sans placeholder:text-[#FFF] placeholder:text-opacity-20 w-11/12 "
-          /> */}
 
           <textarea
             placeholder="Requirement (optional)"
+            value={description}
+              onChange={(e) => setDescription(e.target.value)}
             className="bg-transparent p-4 border rounded-[20px] placeholder:text-[16px] placeholder:font-sans placeholder:text-[#FFF] placeholder:text-opacity-20 w-11/12 "
             cols="30"
             rows="10"
           ></textarea>
         </div>
         <button
-          type="submit"
+          type="button"
+          onClick={() => {sendMail();}}
           className=" w-11/12 rounded-[55px] bg-[#12D576] px-7 py-3 font-sans text-[21px] font-normal leading-[100%] "
         >
           SUBMIT
         </button>
       </div>
     </div>
+    </>
   );
 };
 
