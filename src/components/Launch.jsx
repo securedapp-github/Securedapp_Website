@@ -72,7 +72,7 @@ const Launch = () => {
       </div>
       <div className=" flex lg:flex-row flex-col  lg:h-[140px] lg:pt-[0px] pt-[50px] lg:py-[10px]  req">
         <div className="md:mx-[80px] mx-[25px] md:my-[30px]  mb-[0px] pl-[0px]">
-          <div className="text-white md:text-[36px] text-[25px] md:mb-[0px] mb-[10px]  font-semibold font-sans leading-[110%] ">
+          <div className="text-white md:text-[32px] text-[25px] md:mb-[0px] mb-[10px]  font-semibold font-sans leading-[110%] ">
             Securing Your{" "}
             <span className="text-[#12D576] text-opacity-80">Web3 Journey</span>
             , So You Focus on Building
