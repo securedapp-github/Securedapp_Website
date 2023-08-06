@@ -6,10 +6,10 @@ import Logo from "../images/logoblacktextsdlogowhite-1@2x.png";
 import AuditModal from "./AuditModal";
 const navigation = [
   { name: "Solidity Shield Scan", href: "/scan" },
-  { name: "Our Services", href: "#" },
-  { name: "About Us", href: "#", special: true },
+  { name: "SecurePAD", href: "/SecurePAD" },
+  { name: "Our Products", href: "/about-us", special: true },
   // { name: "Contact Us", href: "#" },
-  { name: "Blog", href: "#" },
+  { name: "Blog", href: "/blog" },
 ];
 
 function SpecialNav({ onItemClick }) {
@@ -76,7 +76,6 @@ function SpecialNav({ onItemClick }) {
                 type="button"
                 onClick={() => {
                   setShowModal(true);
-                
                 }}
                 className=" top-[37px] left-[1250px] flex justify-center items-center rounded-full bg-black shadow-[0px_0px_84px_#12d576] box-border w-[175px] h-10 border-[2px] border-solid border-white"
               >
@@ -133,7 +132,6 @@ function SpecialNav({ onItemClick }) {
                     <button
                       onClick={() => {
                         setShowModal(true);
-                       
                       }}
                       className="border  rounded-xl	 border-white p-3 "
                     >

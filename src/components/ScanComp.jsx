@@ -8,19 +8,17 @@ import Transmission from "./Transmission";
 import FooterInScan from "./FooterInScan";
 
 const ScanComp = () => {
-
   return (
     <>
       <div className="navandflat">
         <Navbar />
-        <FlatContractForm/>
+        <FlatContractForm />
       </div>
-     
-        <>
+
+      {/* <>
           <Scanner />
           <ShieldCore />
-        </>
-      
+        </> */}
 
       <BenefitsOfScan />
       <Transmission />

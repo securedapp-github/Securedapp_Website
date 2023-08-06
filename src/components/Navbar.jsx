@@ -6,10 +6,10 @@ import Logo from "../images/logoblacktextsdlogowhite-1@2x.png";
 import AuditModal from "./AuditModal";
 const navigation = [
   { name: "Solidity Shield Scan", href: "/scan" },
-  { name: "SecurePAD", href: "#" },
-  { name: "Our Products", href: "#", special: true },
+  { name: "SecurePAD", href: "/SecurePAD" },
+  { name: "Our Products", href: "/about-us", special: true },
   // { name: "Contact Us", href: "#" },
-  { name: "Blog", href: "#" },
+  { name: "Blog", href: "/blog" },
 ];
 
 function Navbar({ onItemClick }) {

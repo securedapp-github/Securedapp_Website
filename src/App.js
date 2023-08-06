@@ -11,6 +11,9 @@ import ContactComp from "./components/ContactComp";
 import SmartContractdev from "./components/SmartContractdev";
 import DappSecurityAudit from "./components/DappSecurityAudit";
 import DappDevComp from "./components/DappDevComp";
+import SecurePadTokenComp from "./components/SecurePadTokenComp";
+import BlogComp from "./components/BlogComp";
+import TokenomicsComp from "./components/TokenomicsComp";
 
 function App() {
   const [selectedMenuItem, setSelectedMenuItem] = useState(1);
@@ -36,6 +39,9 @@ function App() {
       <Route exact path="/smart-contract-dev" element={<SmartContractdev />} />
       <Route exact path="/dapp-security" element={<DappSecurityAudit />} />
       <Route exact path="/dapp-dev" element={<DappDevComp />} />
+      <Route exact path="/SecurePAD" element={<SecurePadTokenComp />} />
+      <Route exact path="/tokenomics" element={<TokenomicsComp />} />
+      <Route exact path="/blog" element={<BlogComp />} />
     </Routes>
   );
 }
