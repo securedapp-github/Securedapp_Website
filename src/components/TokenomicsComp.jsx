@@ -15,15 +15,15 @@ const TokenomicsComp = () => {
     <>
       <Navbar onItemClick={handleMenuItemClick} />
       <TokenFirstSec />
-      <div className="TokenSecond">
-        <div className="lg:pl-[80px] lg:pt-[30px] lg:pb-[10px]">
+      <div className="TokenSecond lg:px-0 px-[20px] ">
+        <div className="  lg:pl-[80px]  lg:pt-[30px] pt-[40px] lg:pb-[10px]">
           <h1 className="text-white font-sans text-opacity-80 text-[20px] font-normal leading-[100%]">
             Our tokenomics design services include:
           </h1>
         </div>
 
-        <div className="flex justify-evenly lg:pb-[50px] lg:pt-[20px] lg:px-[40px]  ">
-          <div className="w-[380px] ">
+        <div className="flex lg:flex-row flex-col justify-evenly lg:pb-[50px] lg:pt-[20px] pt-[40px] lg:px-[40px] pr-[30px] ">
+          <div className="w-[380px] lg:pb-0 pb-[30px] ">
             <h1 className="text-[#12D576] text-justify text-[16px] font-bold leading-[160%]">
               Defining your token's utility:{" "}
             </h1>
@@ -33,9 +33,9 @@ const TokenomicsComp = () => {
             </h1>
           </div>
 
-          <div className="w-[2px] h-[80px] mr-[30px] bg-[#D9D9D9] bg-opacity-20 "></div>
+          <div className="w-[2px] h-[80px] mr-[30px] hidden lg:block bg-[#D9D9D9] bg-opacity-20 "></div>
 
-          <div className="w-[380px]">
+          <div className="w-[380px] lg:pb-0 pb-[30px]">
             <h1 className="text-[#12D576] text-justify text-[16px] font-bold leading-[160%]">
               Determining your token's supply and distribution:
             </h1>
@@ -44,9 +44,9 @@ const TokenomicsComp = () => {
               they will be distributed.
             </h1>
           </div>
-          <div className="w-[2px] h-[80px] mr-[30px] bg-[#D9D9D933] bg-opacity-20 "></div>
+          <div className="w-[2px] h-[80px] mr-[30px] hidden lg:block bg-[#D9D9D933] bg-opacity-20 "></div>
 
-          <div className="w-[380px]">
+          <div className="w-[380px] lg:pb-0 pb-[30px]">
             <h1 className="text-[#12D576] text-justify text-[16px] font-bold leading-[160%]">
               Setting your token's price:
             </h1>
