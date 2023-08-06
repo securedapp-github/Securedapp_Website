@@ -138,7 +138,7 @@ const AuditModal = ({ onClose }) => {
             I agree with the{" "}
             <a
               href="/"
-              className="text-blue-600 dark:text-blue-500 hover:underline"
+              className="text-blue-600 dark:text-blue-500 hover:underline pr-1"
             >
               Privacy Policy
             </a>

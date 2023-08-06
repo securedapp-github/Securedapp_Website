@@ -416,6 +416,96 @@
   /* Optionally, you can set the background attachment to fixed for a fixed background */
   /* background-attachment: fixed; */
 }
+.TokenSecond {
+  /* Set the background image URL here */
+
+  background-image: url("./images/TokensecondSec.png");
+
+  /* Full height and width of the viewport */
+  width: auto;
+  height: max-content;
+
+  /* Background image should cover the entire element */
+  background-size: cover;
+
+  /* Center the background image */
+  background-position: initial;
+
+  /* Optionally, you can set the background attachment to fixed for a fixed background */
+  /* background-attachment: fixed; */
+}
+.TokenLast {
+  /* Set the background image URL here */
+
+  background-image: url("./images/tokenlastsec.png");
+
+  /* Full height and width of the viewport */
+  width: auto;
+  height: max-content;
+
+  /* Background image should cover the entire element */
+  background-size: cover;
+
+  /* Center the background image */
+  background-position: initial;
+
+  /* Optionally, you can set the background attachment to fixed for a fixed background */
+  /* background-attachment: fixed; */
+}
+.bloghero {
+  /* Set the background image URL here */
+
+  background-image: url("./images/bloghero.png");
+
+  /* Full height and width of the viewport */
+  width: auto;
+  height: max-content;
+
+  /* Background image should cover the entire element */
+  background-size: cover;
+
+  /* Center the background image */
+  background-position: initial;
+
+  /* Optionally, you can set the background attachment to fixed for a fixed background */
+  /* background-attachment: fixed; */
+}
+.blogimg {
+  /* Set the background image URL here */
+
+  background-image: url("./images/blogimg.png");
+
+  /* Full height and width of the viewport */
+  width: 400px;
+  height: 250px;
+
+  /* Background image should cover the entire element */
+  background-size: cover;
+
+  /* Center the background image */
+  background-position: initial;
+
+  /* Optionally, you can set the background attachment to fixed for a fixed background */
+  /* background-attachment: fixed; */
+}
+.tokenthird {
+  /* Set the background image URL here */
+
+  background-image: url("./images/tokenthirdpic.png");
+
+  /* Full height and width of the viewport */
+  width: auto;
+  height: 600px;
+
+  /* Background image should cover the entire element */
+  background-size: contain;
+
+  /* Center the background image */
+  background-position: initial;
+
+  /* Optionally, you can set the background attachment to fixed for a fixed background */
+  /* background-attachment: fixed; */
+}
 .DappExp {
   /* Set the background image URL here */
 

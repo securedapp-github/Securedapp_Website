@@ -8,37 +8,37 @@ const ProductCard = {
       heading: "Smart Contract Development",
       description:
         "Weprioritize security, ensuring that your decentralized applications are built with the highest level of protection.",
-      link: "#", //read more link
+      link: "/smart-contract-dev", //read more link
     },
     {
       heading: "DApp Security Audit",
       description:
         "An automated, thorough and efficient audits of your smart contracts. Eliminate risks of hacks, exploits and front-running attacks from your decentralized apps with a top-tier audit methodology",
-      link: "#", //read more link
+      link: "/dapp-security", //read more link
     },
     {
       heading: "DApp Development",
       description:
         "SecureDApp is a blockchain security solution that offers a comprehensive range of services for developers building decentralised applications (DApps).",
-      link: "#", //read more link
+      link: "/dapp-dev", //read more link
     },
     {
       heading: "Solidity Shield Scanner",
       description:
         "Solidity Shield Scanner is an AI-powered vulnerability detection application that uses static analysis and dynamic analysis to identify potential security vulnerabilities in Solidity smart contracts.",
-      link: "#", //read more link
+      link: "/scan", //read more link
     },
     {
       heading: "SecurePAD's Token Launchpad",
       description:
         "SecurePAD is the world's first zero-fee, security-prominent, no-code, and cross-chain platform for anyone to create, trade, and manage the end-to-end lifecycle of a token.",
-      link: "#", //read more link
+      link: "/SecurePAD", //read more link
     },
     {
       heading: "Tokenomics Design,  Development & Audit",
       description:
         "SecureDApp provides tokenomics design, development, and audit services to help businesses create and launch successful token-based projects.",
-      link: "#", //read more link
+      link: "/tokenomics", //read more link
     },
   ],
 };
