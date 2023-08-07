@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import HomeComp from "./components/HomeComp";
 import ScanComp from "./components/ScanComp";
-import ScanResultComp from "./components/ScanResultComp";
 import AboutComp from "./components/AboutComp";
 import ContactComp from "./components/ContactComp";
 import SmartContractdev from "./components/SmartContractdev";
@@ -33,7 +32,6 @@ function App() {
     <Routes>
       <Route exact path="/" element={<HomeComp />} />
       <Route exact path="/scan" element={<ScanComp />} />
-      <Route exact path="/scanResult" element={<ScanResultComp />} />
       <Route exact path="/about-us" element={<AboutComp />} />
       <Route exact path="/contact-us" element={<ContactComp />} />
       <Route exact path="/smart-contract-dev" element={<SmartContractdev />} />

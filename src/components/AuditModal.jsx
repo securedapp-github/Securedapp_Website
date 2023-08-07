@@ -77,7 +77,7 @@ const AuditModal = ({ onClose }) => {
               id="floating_first_name"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
               placeholder=" "
               required
             />
@@ -93,7 +93,7 @@ const AuditModal = ({ onClose }) => {
               type="text"
               name="floating_last_name"
               id="floating_last_name"
-              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
               placeholder=" "
             />
             <label
@@ -117,7 +117,7 @@ const AuditModal = ({ onClose }) => {
               name="service"
               value={service}
               onChange={(e) => setService(e.target.value)}
-              className="block w-full mt-1 text-sm dark:text-white dark:bg-gray-700 border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 dark:focus:ring-blue-800 dark:focus:border-blue-700"
+              className="block w-full mt-1 text-sm  dark:bg-gray-700 border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 dark:focus:ring-blue-800 dark:focus:border-blue-700"
               required
             >
               <option value="" disabled>
@@ -138,7 +138,7 @@ const AuditModal = ({ onClose }) => {
               id="floating_company"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
               placeholder=" "
               required
             />

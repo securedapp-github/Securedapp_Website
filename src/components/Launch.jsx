@@ -22,42 +22,23 @@ const Launch = () => {
             " radial-gradient(10% 40% 50.00% at 10% 40% 50.00%, rgba(18, 213, 118, 0.31) 0%, rgba(0, 0, 0, 0.00) 100%) ",
         }}
       >
-        {/* <div className="absolute top-[-2010px] left-[-12px] rounded-[50%] [background:radial-gradient(50%_50%_at_50%_50%,_rgba(18,_213,_118,_0.7),_rgba(0,_0,_0,_0))] w-[2707px] h-[2707px]" /> */}
 
         <div className="flex lg:flex-row md:flex-row lg:justify-start  md:pt-[100px] md:px-[0px] p-[20px] mb-[0px] w-full  flex-col-reverse">
-          {/* <div className="px-5 pt-0 flex-shrink h-fit lg:w-2/4 mt-[120px] lg:pl-[0px] lg:pb-0 pb-[30px]">
-            <Heading content="Comprehensive Web3 Security    " />
-            {/* <Heading content="Potential with SecurePAD  " /> */}
-          {/* <div className="mt-[10px] w-13/14">
-              <div className="text-white pt-1 text-[24px] font-normal font-sans leading-[135%] text-opacity-80">
-                Smart Contracts Audit Solution for DApps
-              </div>
-            </div> */}
-          {/* <h3 className="text-green-500 font-roboto md:text-[22px] text-xl  font-semibold leading-[110%] mt-[30px]">
-              Embark on the Future of Fundraising with us.
-            </h3> */}
-
-          {/* <button className="mt-[30px] rounded-full py-2 px-7 border border-[2px] border-white text-white text-center font-sans md:text-[22px] text-xl font-normal leading-normal">
-              Get it Audited Today
-            </button>
-          </div> */}
-          {/* <div className="md:mb-[100px] lg:-ml-[0px] mr-[40px] mt-[40px] lg:pt-0 pt-[30px]  ml-[30px]  -mt-[10px] ">
-            <img
-              src={hero}
-              className="lg:w-[492px] lg:h-[445px] w-full h-auto max-w-full object-cover"
-              alt="hero"
-            />
-          </div>  */}
-
+      
           <div className=" flex flex-col justify-start lg:mx-[80px]">
             <Heading content="Comprehensive Web3 Security    " />
             <div className="text-white py-5 text-[24px] font-normal font-sans leading-[135%] text-opacity-80">
               Smart Contracts Audit Solution for DApps
             </div>
-            <button className="mt-[30px] rounded-full py-2 px-7 border border-[2px] border-white text-white text-center font-sans md:text-[22px] text-xl font-normal leading-normal">
+            <button
+              onClick={() => {
+                setShowModal(true);
+              }}
+              className="mt-[30px] rounded-full py-2 px-7 border border-[2px] border-white text-white text-center font-sans md:text-[22px] text-xl font-normal leading-normal">
               Get it Audited Today
             </button>
           </div>
+
         </div>
         <div className="lg:ml-[600px] lg:mt-[100px]">
           <img

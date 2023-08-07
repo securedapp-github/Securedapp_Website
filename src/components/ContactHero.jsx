@@ -105,7 +105,7 @@ const ContactHero = () => {
         </div>
         <div className="lg:w-5/12 lg:px-[0px] md:px-[0px] px-[50px] ">
           <h1 className="text-white text-[36px] font-normal font-sans leading-[110%] pb-[20px]">
-            Lead Form
+          Contact Us
           </h1>
           <div className="pb-[25px]">
             <input

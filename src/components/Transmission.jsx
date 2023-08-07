@@ -13,13 +13,19 @@ const Transmission = () => {
         Receive Transmissions
       </div>
       <div className="py-8">
-        <button className="email-button rounded-3xl bg-gray-500 text-white  flex items-center justify-between md:w-[620px] md:h-[92px] w-[300px]  py-7 px-9 ">
-          <span className="email-text font-light font-sans text-2xl leading-[110%]">
-            Your email
-          </span>
-          <span className="arrow font-light font-sans text-2xl leading-[110%]">
-            &gt;
-          </span>
+        <button className="email-button rounded-3xl bg-gray-500 text-white  flex items-center justify-between md:w-[620px] md:h-[92px] w-[300px]   ">
+          <input
+            type="email"
+            className="bg-transparent py-7 px-9 border-none outline-none w-full h-full placeholder:email-text  placeholder:font-light  placeholder:font-sans  placeholder:text-2xl  placeholder:leading-[110%]"
+            placeholder="Your email"
+            id=""
+          />
+
+          <button className="mr-[50px] px-5 py-3 border rounded-full">
+            <span className="arrow font-light font-sans text-2xl leading-[110%] ">
+              &gt;
+            </span>
+          </button>
         </button>
       </div>
     </div>
