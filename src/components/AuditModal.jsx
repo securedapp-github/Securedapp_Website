@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Loader from '../utils/loader';
+import Loader from 'utils/loader';
 
 const AuditModal = ({ onClose }) => {
 

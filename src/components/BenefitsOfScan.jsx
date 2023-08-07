@@ -4,7 +4,7 @@ import Description from "./Description";
 import DescriptionFor from "./DescriptionFor";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Loader from '../utils/loader';
+import Loader from 'utils/loader';
 
 const BenefitsOfScan = () => {
 

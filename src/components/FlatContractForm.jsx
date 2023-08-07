@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import SectionHeader from "./SectionHeader";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Loader from '../utils/loader';
+import Loader from 'utils/loader';
 
 const FlatContractForm = () => {
   const [showanalyse, setshowanalyse] = useState(false);
@@ -41,6 +41,8 @@ const FlatContractForm = () => {
     }
 
     setLoading(true);
+    // await new Promise(resolve => setTimeout(resolve, 5000));
+    // return;
     let otp = Math.floor(Math.random() * 9000) + 1000;
     setotp(otp);
     // fetch('http://127.0.0.1:8000/sendOtp2', {
