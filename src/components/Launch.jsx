@@ -16,36 +16,36 @@ const Launch = () => {
   return (
     <>
       <div
-        className=" md:pt-[30px] pt-[60px] lg:h-[570px] hero lg:pb-0      "
+        className=" md:pt-[30px] pt-[130px] lg:h-[570px] hero lg:pb-0      "
         style={{
           background:
             " radial-gradient(10% 40% 50.00% at 10% 40% 50.00%, rgba(18, 213, 118, 0.31) 0%, rgba(0, 0, 0, 0.00) 100%) ",
         }}
       >
-
-        <div className="flex lg:flex-row md:flex-row lg:justify-start  md:pt-[100px] md:px-[0px] p-[20px] mb-[0px] w-full  flex-col-reverse">
-      
-          <div className=" flex flex-col justify-start lg:mx-[80px]">
-            <Heading content="Comprehensive Web3 Security    " />
-            <div className="text-white py-5 text-[24px] font-normal font-sans leading-[135%] text-opacity-80">
-              Smart Contracts Audit Solution for DApps
+        <div className=" flex lg:flex-row flex-col-reverse">
+          <div className="flex lg:flex-row md:flex-row lg:justify-start  md:pt-[100px] md:px-[0px] p-[20px] mb-[0px] w-full  flex-col-reverse">
+            <div className=" flex flex-col justify-start lg:mx-[80px] mx-[10px]">
+              <Heading content="Comprehensive Web3 Security    " />
+              <div className="text-white py-5 text-[24px] font-normal font-sans leading-[135%] text-opacity-80">
+                Smart Contracts Audit Solution for DApps
+              </div>
+              <button
+                onClick={() => {
+                  setShowModal(true);
+                }}
+                className="px:mt-[30px] rounded-full py-2 px-7 border border-[2px] border-white text-white text-center font-sans md:text-[22px] text-xl font-normal leading-normal"
+              >
+                Get it Audited Today
+              </button>
             </div>
-            <button
-              onClick={() => {
-                setShowModal(true);
-              }}
-              className="mt-[30px] rounded-full py-2 px-7 border border-[2px] border-white text-white text-center font-sans md:text-[22px] text-xl font-normal leading-normal">
-              Get it Audited Today
-            </button>
           </div>
-
-        </div>
-        <div className="lg:ml-[600px] lg:mt-[100px]">
-          <img
-            src={hero}
-            className="lg:w-[492px] lg:h-[445px] w-full h-auto "
-            alt="hero"
-          />
+          <div className="lg:mx-[600px] mx-[10px] lg:mt-[100px] mt-[30px]">
+            <img
+              src={hero}
+              className="lg:w-[492px] lg:h-[445px] w-full h-auto "
+              alt="hero"
+            />
+          </div>
         </div>
         {/* <div className=" h-[7.04%] w-[85.43%] top-[2.65%] right-[7.14%] bottom-[90.31%] left-[7.43%] text-5xl">
         <img
