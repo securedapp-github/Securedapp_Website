@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Loader from '../utils/loader';
 
 const AuditModal = ({ onClose }) => {
 
@@ -8,7 +9,7 @@ const AuditModal = ({ onClose }) => {
   const [service, setService] = useState("");
   const [email, setEmail] = useState("");
   const [description, setDescription] = useState("");
-
+  const [loading, setLoading] = useState(false);
 
   const services = [
     "Smart Contract Audit",
@@ -18,11 +19,12 @@ const AuditModal = ({ onClose }) => {
   ];
 
   const sendMail = async () => {
-
+   
     if(name == "" ||  email == "" || description == ""){
       toast("Invalid Input");
       return;
     }
+    setLoading(true);
 
     fetch('https://139-59-5-56.nip.io:3443/contactMail', {
         method: 'POST',
@@ -38,24 +40,34 @@ const AuditModal = ({ onClose }) => {
         .then((res) => { })
         .then((data) => {
             toast.success('Mail Send Successfully');
+            setLoading(false);
             onClose();
+           
         })
         .catch((err) => {
             console.log(err.message);
+            setLoading(false);
             toast("Error in sending mail");
         });
+        setLoading(false);
+};
 
+const blurryDivStyle = {
+  filter: loading ? 'blur(5px)' : 'blur(0px)'
 };
 
   return (
     <>
+          {loading && (<Loader />)}
+
 <ToastContainer
         position="top-center"
         autoClose={2000}
         theme="dark"
         pauseOnHover
       />
-    <div className="fixed top-0 left-0 right-0 bottom-0 flex justify-center items-center bg-gray-900 bg-opacity-80 z-[100001]">
+
+    <div style={{ ...blurryDivStyle }} className="fixed top-0 left-0 right-0 bottom-0 flex justify-center items-center bg-gray-900 bg-opacity-80 z-[100001]">
       <div className="w-[600px] p-6 rounded-lg bg-white shadow-lg">
         <button
           onClick={onClose}

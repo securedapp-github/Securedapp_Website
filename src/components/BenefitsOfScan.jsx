@@ -4,6 +4,7 @@ import Description from "./Description";
 import DescriptionFor from "./DescriptionFor";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Loader from '../utils/loader';
 
 const BenefitsOfScan = () => {
 
@@ -11,6 +12,7 @@ const BenefitsOfScan = () => {
   const [number, setNumber] = useState("");
   const [email, setEmail] = useState("");
   const [description, setDescription] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const sendMail = async () => {
 
@@ -18,7 +20,7 @@ const BenefitsOfScan = () => {
       toast("Invalid Input");
       return;
     }
-
+    setLoading(true);
     fetch('https://139-59-5-56.nip.io:3443/contactMail', {
       method: 'POST',
       body: JSON.stringify({
@@ -33,25 +35,31 @@ const BenefitsOfScan = () => {
       .then((res) => { })
       .then((data) => {
         toast.success('Mail Send Successfully');
+        setLoading(false);
       })
       .catch((err) => {
         console.log(err.message);
+        setLoading(false);
         toast("Error in sending mail");
       });
+    setLoading(false);
 
   };
 
-
+  const blurryDivStyle = {
+    filter: loading ? 'blur(5px)' : 'blur(0px)'
+  };
 
   return (
     <>
+      {loading && (<Loader />)}
       <ToastContainer
         position="top-center"
         autoClose={2000}
         theme="dark"
         pauseOnHover
       />
-      <div className="md:px-[80px] md:pt-[80px]  md:py-[50px] lg:pb-[60px] py-[50px] schield_benefit w-full mb-[0px] flex lg:flex-row flex-col gap-[60px]">      <div className="lg:w-7/12 lg:px-[0px] md:px-[0px] px-[50px] md:pt-0 pt-[50px] ">
+      <div style={{ ...blurryDivStyle }} className="md:px-[80px] md:pt-[80px]  md:py-[50px] lg:pb-[60px] py-[50px] schield_benefit w-full mb-[0px] flex lg:flex-row flex-col gap-[60px]">      <div className="lg:w-7/12 lg:px-[0px] md:px-[0px] px-[50px] md:pt-0 pt-[50px] ">
         <SectionHeader content={"Solidity Shields Benefits"} />
         <Description content={"Security:"} />
         <DescriptionFor
@@ -123,7 +131,7 @@ const BenefitsOfScan = () => {
           <button
             type="button"
             onClick={() => { sendMail(); }}
-            className=" w-11/12 rounded-[55px] bg-[#12D576] px-7 py-3 font-sans text-[21px] font-normal leading-[100%] "
+            className=" w-11/12 rounded-[55px] bg-[#12D576] px-7 py-3 font-sans text-[21px] font-normal leading-[100%]  text-[#000000]"
           >
             SUBMIT
           </button>

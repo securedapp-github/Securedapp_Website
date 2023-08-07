@@ -1,15 +1,14 @@
 import React, { useState } from "react";
-import Heading from "./Heading";
-import Subheading from "./Subheading";
 import SectionHeader from "./SectionHeader";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-// import ScanResult from "./ScanResult";
+import Loader from '../utils/loader';
 
 const FlatContractForm = () => {
   const [showanalyse, setshowanalyse] = useState(false);
   const [otp, setotp] = useState(0);
   const [enterotp, setenterotp] = useState(0);
+  const [loading, setLoading] = useState(false);
 
   const [showScanResult, setShowScanResult] = useState(false);
   const [email, setEmail] = useState('');
@@ -41,7 +40,7 @@ const FlatContractForm = () => {
       return;
     }
 
-    // setLoading(true);
+    setLoading(true);
     let otp = Math.floor(Math.random() * 9000) + 1000;
     setotp(otp);
     // fetch('http://127.0.0.1:8000/sendOtp2', {
@@ -59,15 +58,15 @@ const FlatContractForm = () => {
       .then((data) => {
         toast.success('OTP Send Successfully, Check Mail');
         setshowanalyse(true);
-        // setLoading(false);
+        setLoading(false);
         // setTimeout(function () { window.location.reload(true); }, 5000);
       })
       .catch((err) => {
         console.log(err.message);
-        // setLoading(false);
+        setLoading(false);
         toast("Error in sending OTP");
       });
-
+      setLoading(false);
   }
 
   const handleSubmit = (e) => {
@@ -83,6 +82,7 @@ const FlatContractForm = () => {
       return;
     }
 
+    setLoading(true);
     const formData = new FormData();
     formData.append('mail', email);
     formData.append('files', file);
@@ -106,9 +106,11 @@ const FlatContractForm = () => {
         setotp('');
         setenterotp('');
         setshowanalyse(false);
+        
       })
       .catch((error) => {
         console.error('Error:', error);
+        setLoading(false);
       });
   };
 
@@ -123,6 +125,7 @@ const FlatContractForm = () => {
     setlow(data.findings[finding_names[2]]);
     setinfo(data.findings[finding_names[3]]);
     setgas(data.findings[finding_names[4]]);
+   
 
     setscore(score.toFixed(1) + "/5");
     sethash(data.id);
@@ -131,12 +134,16 @@ const FlatContractForm = () => {
     setassembly(data.assembly_lines);
     seterc(data.ercs.join("  |  "));
     settotal(data.detectors);
-
+    setLoading(false);
   }
 
-  const GradientBar = ({ label, value, width }) => (
+  const blurryDivStyle = {
+    filter: loading ? 'blur(5px)' : 'blur(0px)'
+  };
+
+  const GradientBar = ({ label, value, width }) => (    
     <div
-    className="w-[100%] dark:bg-neutral-600 rounded-full mb-[50px] "
+    className="w-[100%] dark:bg-neutral-600 rounded-full mb-[35px] "
       style={{
         boxShadow: "6px 4px 5px 0px rgba(0, 0, 0, 0.06) inset",
         background: "rgba(0, 0, 0, 0.20)",
@@ -145,8 +152,8 @@ const FlatContractForm = () => {
       <div
         style={{
           background: "linear-gradient(90deg, #12D576 0%, #2D5C8F 100%)",
-          width: `${width}%`,
-          height: "50px",
+          width: width > 100 ? "100%" : `${width}%`,
+          height: "40px",
         }}
         className="bg-primary text-left flex justify-start  items-center align-middle rounded-full font-sans text-[20px] font-normal leading-[110%] text-black text-primary-100"
       >
@@ -197,9 +204,12 @@ const FlatContractForm = () => {
         value: total,
       },
     ];
+    
+ 
 
     return (
-      <div className="res">
+
+      <div style={{ ...blurryDivStyle }}   className="res">
         <div className="flex justify-center items-center py-[60px] pb-[30px]">
           <SectionHeader content="Results" />
         </div>
@@ -238,18 +248,20 @@ const FlatContractForm = () => {
                 :
               </span>
               <span className="lg:w-1/2 w-[200px] text-white font-sans lg:text-[18px] text-[14px] font-normal leading-[230%] text-left lg:pl-[60px] pl-[20px] underline">
-                <a href="/"> Request Manual Audit For Detailed Report</a>
+                <a href="/contact-us"> Request Manual Audit For Detailed Report</a>
               </span>
             </p>
           </div>
         </div>
       </div>
+
     );
   };
 
   return (
 
     <>
+      {loading && (<Loader />)}
       <ToastContainer
         position="top-center"
         autoClose={2000}
@@ -258,7 +270,7 @@ const FlatContractForm = () => {
       />
 
 
-      <div className="lg:pt-[110px] pt-[110px] py-[60px]    ">
+      <div style={{ ...blurryDivStyle }}  className="lg:pt-[110px] pt-[110px] py-[60px]    ">
         <div className="flex justify-center items-center mt-[50px]">
         <SectionHeader content={"Select a Flatten Contract : Enter Email : Verify OTP : SCAN"} />
         </div>
@@ -287,7 +299,7 @@ const FlatContractForm = () => {
               <div className="md:w-1/6">
                 <button type="button"
                   onClick={() => { sendOTP() }}
-                  className="md:w-4/6 bg-[#12D576] rounded-[20px] p-3 uppercase"
+                  className="md:w-4/6 bg-[#12D576] rounded-[20px] p-3 uppercase text-[#000000]"
                 >
                   Send OTP
                 </button>
@@ -299,13 +311,13 @@ const FlatContractForm = () => {
                 <input
                   type="number"
                   placeholder="Enter 4 Digit OTP"
-                  className="md:w-5/6 w-full bg-transparent rounded-[20px] border placeholder:text-white placeholder:text-[16px] placeholder:font-sans p-3 placeholder:px-2"
+                  className="md:w-5/6 w-full bg-transparent rounded-[20px] border placeholder:text-white placeholder:text-[16px] placeholder:font-sans p-3 placeholder:px-2 "
                   onChange={(e) => {setenterotp(e.target.value)}}
                 />
               </div>
               <div className="md:w-1/6">
                 <button type="submit"
-                  className="md:w-4/6 bg-[#12D576] rounded-[20px] p-3 uppercase"
+                  className="md:w-4/6 bg-[#12D576] rounded-[20px] p-3 uppercase text-[#000000]"
                 >
                   Analyse
                 </button>

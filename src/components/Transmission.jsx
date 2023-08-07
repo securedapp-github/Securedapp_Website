@@ -1,7 +1,45 @@
-import React from "react";
+import React, { useState } from "react";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Transmission = () => {
+  const [email, setEmail] = useState("");
+
+  const sendMail = async () => {
+
+    if (email == "") {
+      toast("Invalid Mail");
+      return;
+    }
+    fetch('https://139-59-5-56.nip.io:3443/contactMail', {
+      method: 'POST',
+      body: JSON.stringify({
+        name: "Transmission Mail",
+        mail: email,
+        msg: "Mail for transmission"
+      }),
+      headers: {
+        'Content-type': 'application/json',
+      },
+    })
+      .then((res) => { })
+      .then((data) => {
+        toast.success('Mail Send Successfully');
+      })
+      .catch((err) => {
+        console.log(err.message);
+        toast("Error in sending mail");
+      });
+  };
+
   return (
+    <>
+    <ToastContainer
+    position="top-center"
+    autoClose={2000}
+    theme="dark"
+    pauseOnHover
+  />
     <div
       style={{
         background:
@@ -16,12 +54,15 @@ const Transmission = () => {
         <button className="email-button rounded-3xl bg-gray-500 text-white  flex items-center justify-between md:w-[620px] md:h-[92px] w-[300px]   ">
           <input
             type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             className="bg-transparent py-7 px-9 border-none outline-none w-full h-full placeholder:email-text  placeholder:font-light  placeholder:font-sans  placeholder:text-2xl  placeholder:leading-[110%]"
             placeholder="Your email"
             id=""
           />
 
-          <button className="mr-[50px] px-5 py-3 border rounded-full">
+          <button  type="button"
+              onClick={() => { sendMail(); }} className="mr-[50px] px-5 py-3 border rounded-full">
             <span className="arrow font-light font-sans text-2xl leading-[110%] ">
               &gt;
             </span>
@@ -29,6 +70,7 @@ const Transmission = () => {
         </button>
       </div>
     </div>
+    </>
   );
 };
 

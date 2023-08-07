@@ -1,9 +1,6 @@
 import React from "react";
 import SectionHeader from "./SectionHeader";
 import clientLogo from "../clientlogos.png";
-// const IconImages = {
-//     "url1": ""
-// }
 
 const Clients = () => {
   return (
