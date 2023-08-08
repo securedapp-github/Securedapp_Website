@@ -171,7 +171,8 @@ const Footer = () => {
 
             <div className="flex flex-col items-start mt-4 space-y-4">
               <a
-                href="/"
+                href="https://linktr.ee/securedapp"
+                target="_blank"
                 className="text-[#5F5F5F] transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600"
               >
                 Community
@@ -236,6 +237,13 @@ const Footer = () => {
                 className="text-[#5F5F5F] transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600"
               >
                 Blog
+              </a>
+              <a
+                href="https://github.com/securedapp-github"
+                target="_blank"
+                className="text-[#fff] font-normal leading-[170%]  transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600"
+              >
+                GitHub
               </a>
             </div>
           </div>
