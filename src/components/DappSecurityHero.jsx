@@ -1,6 +1,8 @@
 import React from "react";
 import SectionHeader from "./SectionHeader";
 import hero from "../images/auditheropic.png";
+import Request from "./Request";
+
 const DappSecurityHero = () => {
   return (
     <div className="md:pt-[200px] pt-[150px] md:px-0 px-[20px] audithero">
@@ -133,6 +135,7 @@ const DappSecurityHero = () => {
           <img src={hero} className="lg:w-auto h-auto w-2/3 " alt="hero" />
         </div>
       </div>
+      <Request/>
     </div>
   );
 };

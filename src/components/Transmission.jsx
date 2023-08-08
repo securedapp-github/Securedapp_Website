@@ -5,7 +5,8 @@ import 'react-toastify/dist/ReactToastify.css';
 const Transmission = () => {
   const [email, setEmail] = useState("");
 
-  const sendMail = async () => {
+  const sendMail = async (e) => {
+    e.preventDefault();
 
     if (email == "") {
       toast("Invalid Mail");
@@ -50,8 +51,9 @@ const Transmission = () => {
       <div className=" md:text-[48px] md:leading-[110%] text-3xl text-center whitespace-break-spaces w-fit font-sans font-bold leading-[110%] text-black">
         Receive Transmissions
       </div>
+      <form onSubmit={sendMail}>
       <div className="py-8">
-        <button className="email-button rounded-3xl bg-gray-500 text-white  flex items-center justify-between md:w-[620px] md:h-[92px] w-[300px]   ">
+        <button type="button" className="email-button rounded-3xl bg-gray-500 text-white  flex items-center justify-between md:w-[620px] md:h-[92px] w-[300px]   ">
           <input
             type="email"
             value={email}
@@ -61,14 +63,14 @@ const Transmission = () => {
             id=""
           />
 
-          <button  type="button"
-              onClick={() => { sendMail(); }} className="mr-[50px] px-5 py-3 border rounded-full">
+          <button type="submit" className="mr-[50px] px-5 py-3 border rounded-full">
             <span className="arrow font-light font-sans text-2xl leading-[110%] ">
               &gt;
             </span>
           </button>
         </button>
       </div>
+      </form>
     </div>
     </>
   );

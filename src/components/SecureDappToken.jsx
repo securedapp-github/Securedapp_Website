@@ -2,6 +2,32 @@ import React from "react";
 import SectionHeader from "./SectionHeader";
 import hero from "../images/securepadicon.png";
 const SecureDAppToken = () => {
+
+
+  const SecurePad_Link = () => {
+    return (
+      <div
+        className=" flex lg:flex-row flex-col  lg:h-[140px] lg:pt-[0px] pt-[40px]  "
+        style={{ background: "rgba(217, 217, 217, 0.04)" }}
+      >
+        <div className="md:mx-[100px] mx-[25px] md:my-[30px]  mb-[0px] pl-[20px]">
+          <div className="text-white md:text-[22px] text-[25px] md:mb-[0px] mb-[10px]  font-semibold font-sans leading-[110%] ">
+          Introducing{" "}
+            <span className="text-[#12D576] text-opacity-80">SecurePAD</span>,
+            The pioneering zero-fee, security-centric, no-code, cross-chain platform empowering users to create, trade, and oversee the entire token lifecycle.
+          </div>
+        </div>
+        <div className="flex justify-center items-center md:mb-[20px] mb-[50px] md:ml-0 ml-[40px] pr-[30px] ">
+          <button onClick={() => {alert("Coming Soon");}}
+            className=" lg:mt-[50px] md:mb-[10px] md:mt-[5px] mt-[25px] h-[60px] w-[341px] py-2 px-8  border border-transparent text-black  rounded-full [background:linear-gradient(90deg,_#12d576,_#2d5c8f)] shadow-[0px_0px_80px_rgba(18,_213,_118,_0.25)]  text-center font-sans md:text-xl text-xl font-normal leading-normal"
+          >
+            Launch SecurePad
+          </button>
+        </div>
+      </div>
+    );
+  };
+
   return (
     <div className="md:pt-[200px] pt-[150px] pt-[0px] audithero">
       <div className="flex lg:flex-row flex-col-reverse gap-[0px] ">
@@ -30,6 +56,7 @@ const SecureDAppToken = () => {
           <img src={hero} alt="hero" />
         </div>
       </div>
+      <SecurePad_Link/>
     </div>
   );
 };

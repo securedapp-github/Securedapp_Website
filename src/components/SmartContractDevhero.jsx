@@ -1,6 +1,8 @@
 import React from "react";
 import hero from "../images/smartdevhero.png";
 import SectionHeader from "./SectionHeader";
+import Request from "./Request";
+
 const SmartContractDevhero = () => {
   return (
     <div className="md:pt-[150px] pt-[0px] smartdevbg ">
@@ -40,7 +42,9 @@ const SmartContractDevhero = () => {
           </li>
         </div>
       </div>
+      <Request/>
     </div>
+   
   );
 };
 

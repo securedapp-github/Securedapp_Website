@@ -3,6 +3,7 @@ import Subheading from "./Subheading";
 import SectionHeader from "./SectionHeader";
 import AboutHeading from "./AboutHeading";
 import AboutContent from "./AboutContent";
+import Request from "./Request";
 
 const Card = ({ number, heading, subheading }) => (
   <div className="w-full md:w-1/2 lg:w-1/4 p-0 ">
@@ -68,13 +69,6 @@ const AboutUsHero = () => {
       <div className="lg:w-[730px] lg:mx-[80px] lg:mt-[75px] mt-[40px] mx-[20px]">
         <h1
           className="font-sans lg:text-[64px] text-[40px] text-ellipsis font-bold leading-[110%] bg-custom-gradient bg-clip-text text-transparent "
-          // style={{
-          //   background: "linear-gradient(90deg, #12D576 0%, #2D5C8F 100%)",
-          //   backgroundImage:
-          //     "-webkit-linear-gradient(90deg, #12D576 0%, #2D5C8F 100%)",
-          //   WebkitBackgroundClip: "text",
-          //   WebkitTextFillColor: "transparent",
-          // }}
         >
           SecureDApp: Securing the Future of DeFi
         </h1>
@@ -85,6 +79,8 @@ const AboutUsHero = () => {
         <AboutContent content=" SecureDApp's team of security experts has extensive experience in the DeFi industry. The company has audited smart contracts for some of the largest DeFi projects in the world. SecureDApp is also a member of the DeFi Security Alliance, a leading organisation in the field of DeFi security." />
         <AboutContent content=" SecureDApp is committed to making DeFi more secure and accessible to everyone. The company's services help projects, investors, and users protect their digital assets and ensure that they can use DeFi technology with confidence." />
       </div>
+
+      <Request/>
 
       <div className="lg:mx-[80px] lg:mt-[60px] mx-[20px] mt-[40px]">
         <h1 className=" md:text-4xl text-2xl text-left whitespace-break-spaces w-fit font-sans font-bold leading-[110%]  bg-custom-gradient bg-clip-text text-transparent pb-[10px]">

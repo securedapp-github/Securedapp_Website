@@ -1,7 +1,10 @@
 import React from "react";
 import hero from "../images/dappdevbenefithero.png";
+import Request from "./Request";
+
 const DappDevBenefit = () => {
   return (
+    <>
     <div className="auditBenefit lg:pb-[50px] flex lg:flex-row flex-col-reverse">
       <div>
         <div className="lg:px-[80px] px-[20px]  lg:pt-[80px] lg:pb-[40px]">
@@ -69,6 +72,8 @@ const DappDevBenefit = () => {
         <img src={hero} alt="hero" />
       </div>
     </div>
+    <Request/>
+    </>
   );
 };
 

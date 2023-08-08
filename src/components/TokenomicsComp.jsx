@@ -5,6 +5,8 @@ import FooterInScan from "./FooterInScan";
 import Navbar from "./Navbar";
 import SecureDAppToken from "./SecureDappToken";
 import TokenFirstSec from "./TokenFirstSec";
+import Request from "./Request";
+
 const TokenomicsComp = () => {
   const [selectedMenuItem, setSelectedMenuItem] = useState(1);
 
@@ -15,7 +17,7 @@ const TokenomicsComp = () => {
     <>
       <Navbar onItemClick={handleMenuItemClick} />
       <TokenFirstSec />
-      <div className="TokenSecond lg:px-0 px-[20px] ">
+      {/* <div className="TokenSecond lg:px-0 px-[20px] ">
         <div className="  lg:pl-[80px]  lg:pt-[30px] pt-[40px] lg:pb-[10px]">
           <h1 className="text-white font-sans text-opacity-80 text-[20px] font-normal leading-[100%]">
             Our tokenomics design services include:
@@ -56,10 +58,10 @@ const TokenomicsComp = () => {
             </h1>
           </div>
         </div>
-      </div>
+      </div> */}
 
       <div className="tokenthird"></div>
-      <div className="bg-[#12D576] lg:-mt-0 -mt-[20px]">
+      {/* <div className="bg-[#12D576] lg:-mt-0 -mt-[20px]">
         <div className="text-black">
           <div className="lg:px-[80px] px-[20px] lg:pt-[30px] pt-5 lg:pb-[10px]">
             <h1 className=" font-sans text-opacity-80 text-[20px] font-bold leading-[100%]">
@@ -102,7 +104,8 @@ const TokenomicsComp = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
+      <Request/>
       <div className="TokenSecond">
         <div className="lg:px-[80px] px-5  lg:pt-[30px] pt-5 lg:pb-[10px]">
           <h1 className="text-white font-sans text-opacity-80 text-[20px] font-normal leading-[100%]">
