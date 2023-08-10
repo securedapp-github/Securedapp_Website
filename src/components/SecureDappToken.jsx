@@ -1,8 +1,10 @@
 import React from "react";
 import SectionHeader from "./SectionHeader";
 import hero from "../images/securepadicon.png";
-const SecureDAppToken = () => {
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
+const SecureDAppToken = () => {
 
   const SecurePad_Link = () => {
     return (
@@ -18,7 +20,7 @@ const SecureDAppToken = () => {
           </div>
         </div>
         <div className="flex justify-center items-center md:mb-[20px] mb-[50px] md:ml-0 ml-[40px] pr-[30px] ">
-          <button onClick={() => {alert("Coming Soon");}}
+          <button onClick={() => { toast("Coming Soon");}}
             className=" lg:mt-[50px] md:mb-[10px] md:mt-[5px] mt-[25px] h-[60px] w-[341px] py-2 px-8  border border-transparent text-black  rounded-full [background:linear-gradient(90deg,_#12d576,_#2d5c8f)] shadow-[0px_0px_80px_rgba(18,_213,_118,_0.25)]  text-center font-sans md:text-xl text-xl font-normal leading-normal"
           >
             Launch SecurePad
@@ -30,6 +32,12 @@ const SecureDAppToken = () => {
 
   return (
     <div className="md:pt-[200px] pt-[150px] pt-[0px] audithero">
+        <ToastContainer
+        position="top-center"
+        autoClose={2000}
+        theme="dark"
+        pauseOnHover
+      />
       <div className="flex lg:flex-row flex-col-reverse gap-[0px] ">
         <div className="lg:px-[80px] px-[20px] lg:pb-0 pb-5">
           <SectionHeader content={"SecurePAD's Token Launchpad"} />
