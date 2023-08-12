@@ -6,6 +6,7 @@ import MeettheTeam from "./MeettheTeam";
 import Footer from "./Footer";
 import FooterInAbout from "./FooterInAbout";
 import TransmissionInAbout from "./TransmissonInAbout";
+import Transmission from "./Transmission";
 
 const AboutComp = () => {
   const [selectedMenuItem, setSelectedMenuItem] = useState(1);
@@ -18,7 +19,7 @@ const AboutComp = () => {
       <NavbarWithBread onItemClick={handleMenuItemClick} />
       <AboutUsHero />
       <MeettheTeam />
-      <TransmissionInAbout />
+      <Transmission />
       <FooterInAbout />
     </>
   );
