@@ -4,7 +4,7 @@ import clientLogo from "../clientlogos.png";
 
 const Clients = () => {
   return (
-    <div className="client  md:p-[80px] p-[50px] md:px-[80px] flex lg:flex-row md:flex-col flex-col ">
+    <div className="client  md:p-[100px] md:pt-[200px] lg:p-[80px] p-[50px] md:px-[80px] flex lg:flex-row md:flex-col flex-col ">
       <div className="lg:w-4/12 mr-[50px]">
         <SectionHeader content={"Client"} />
         <div className="text-white pt-1 md:text-[20px] text-[18px] mt-[20px] font-normal font-sans leading-[135%] text-opacity-60 ">

@@ -9,7 +9,8 @@ const FAQ = () => {
   const faqData = [
     {
       question: "What makes SecurePAD different from other token launchpads?",
-      answer: "Zero Fee LaunchPad with no upfront cost on launching your token and ICO",
+      answer:
+        "Zero Fee LaunchPad with no upfront cost on launching your token and ICO",
     },
     {
       question: "How do I get involved with SecurePAD?",
@@ -17,11 +18,13 @@ const FAQ = () => {
     },
     {
       question: "What is the future of SecurePAD?",
-      answer: "We are coming up with our NFT launchpad and DAO launchpad for web3 users",
+      answer:
+        "We are coming up with our NFT launchpad and DAO launchpad for web3 users",
     },
     {
       question: "What are the risks associated with using SecurePAD?",
-      answer: "SecurePad is battle tested against all exisitng vulnerabilities, Users has to keep their sensitive info like private keys safe and avoid using any vulnerable wallet application on site",
+      answer:
+        "SecurePad is battle tested against all exisitng vulnerabilities, Users has to keep their sensitive info like private keys safe and avoid using any vulnerable wallet application on site",
     },
     {
       question: "What is SecurePAD?",
@@ -30,7 +33,7 @@ const FAQ = () => {
     {
       question: "How do I participate in an IDO on SecurePAD?",
       answer: "Subscribe our newsletter on website",
-    }
+    },
   ];
 
   const secData = [
@@ -41,37 +44,44 @@ const FAQ = () => {
     },
     {
       question: "Why is smart contract audit important?",
-      answer: "Smart contract audit is important to ensure the security, reliability, and proper functionality of the code governing blockchain-based transactions and agreements.",
+      answer:
+        "Smart contract audit is important to ensure the security, reliability, and proper functionality of the code governing blockchain-based transactions and agreements.",
     },
     {
       question: "How does securedapp conduct smart contract audits?",
-      answer: "By thoroughly reviewing the code for vulnerabilities, logic errors, and compliance with best practices to ensure security and reliability.",
+      answer:
+        "By thoroughly reviewing the code for vulnerabilities, logic errors, and compliance with best practices to ensure security and reliability.",
     },
     {
       question: "How does securedapp approach smart contract security?",
-      answer: "By analyzing code for vulnerabilities, conducting penetration testing, and verifying compliance with industry standards to mitigate risks.",
+      answer:
+        "By analyzing code for vulnerabilities, conducting penetration testing, and verifying compliance with industry standards to mitigate risks.",
     },
     {
       question:
         "Can you give an example of a problem you have identified in a smart contract?",
-      answer: "In a smart contract, we uncovered a critical vulnerability that allowed unauthorized access to funds due to improper input validation.",
+      answer:
+        "In a smart contract, we uncovered a critical vulnerability that allowed unauthorized access to funds due to improper input validation.",
     },
     {
       question: "How long does a smart contract audit take?",
-      answer: "The duration of a smart contract audit typically ranges from one to four weeks, depending on contract complexity and audit depth.",
+      answer:
+        "The duration of a smart contract audit typically ranges from one to four weeks, depending on contract complexity and audit depth.",
     },
     {
       question: "Does Securedapp provide smart contract remediation services?",
-      answer: "Yes, to address and resolve identified vulnerabilities and issues",
+      answer:
+        "Yes, to address and resolve identified vulnerabilities and issues",
     },
     {
       question: "Does Securedapp support multiple blockchain platforms?",
-      answer: "Yes, SecureDApp support multiple blockchain platforms, tailoring their expertise to various technologies such as Ethereum, Binance Smart Chain, and others.",
+      answer:
+        "Yes, SecureDApp support multiple blockchain platforms, tailoring their expertise to various technologies such as Ethereum, Binance Smart Chain, and others.",
     },
     {
       question: "How can I contact Securedapp for a smart contract audit?",
       answer: "Contact at hello@securedapp.in ",
-    }
+    },
   ];
 
   const handleQuestionClick = (index) => {
@@ -104,7 +114,7 @@ const FAQ = () => {
               selectedCategory === "token"
                 ? "bg-[#12D576] text-black"
                 : "bg-transparent text-white"
-            } py-4 rounded-xl font-sans text-xl font-bold leading-[110%]`}
+            } py-4 rounded-xl font-sans border border-white text-xl font-bold leading-[110%]`}
             onClick={handleTokenClick}
           >
             Token

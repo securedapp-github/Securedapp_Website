@@ -13,14 +13,14 @@ const Launch = () => {
   return (
     <>
       <div
-        className=" md:pt-[30px] pt-[60px] lg:h-[570px] hero lg:pb-0      "
+        className=" md:pt-[30px] pt-[80px] md:h-[570px] hero lg:pb-0      "
         style={{
           background:
             " radial-gradient(10% 40% 50.00% at 10% 40% 50.00%, rgba(18, 213, 118, 0.31) 0%, rgba(0, 0, 0, 0.00) 100%) ",
         }}
       >
-        <div className="flex lg:flex-row md:flex-row lg:justify-start  md:pt-[100px] md:px-[0px] p-[20px] mb-[0px] w-full  flex-col-reverse">
-          <div className=" flex flex-col justify-start lg:ml-[80px] lg:mt-[100px] mt-[50px]">
+        <div className="flex lg:flex-row  lg:justify-start  md:pt-[100px] md:px-[0px] p-[20px] mb-[0px] w-full  flex-col-reverse">
+          <div className=" flex flex-col justify-start lg:mx-[80px] md:mx-[80px] md:mt-[80px] lg:mt-[100px] mt-[50px]">
             <Heading content="Comprehensive Web3 Security    " />
             <div className="text-white py-5 text-[24px] font-normal font-sans leading-[135%] text-opacity-80">
               Smart Contracts Audit Solution for DApps
@@ -34,16 +34,16 @@ const Launch = () => {
               Get it Audited Today
             </button>
           </div>
-          <div className="lg:ml-[300px] lg:mt-[8px] mt-[60px]">
+          <div className="lg:ml-[300px] md:ml-[130px] lg:mt-[8px] md:mt-[2px] mt-[30px]">
             <img
               src={hero}
-              className="lg:w-[492px] lg:h-[445px] w-full h-auto "
+              className="md:w-[492px]  md:h-[445px] w-full h-auto "
               alt="hero"
             />
           </div>
         </div>
       </div>
-      <div className=" flex lg:flex-row flex-col  lg:h-[140px] lg:pt-[0px] pt-[50px] lg:py-[10px]  req">
+      <div className=" flex lg:flex-row flex-col  lg:h-[140px] md:h-[140px] lg:pt-[0px] md:pt-[350px] pt-[50px] lg:py-[10px]  req">
         <div className="md:mx-[80px] mx-[25px] md:my-[30px]  mb-[0px] pl-[0px]">
           <div className="text-white md:text-[32px] text-[25px] md:mb-[0px] mb-[10px]  font-semibold font-sans leading-[110%] ">
             Securing Your{" "}
