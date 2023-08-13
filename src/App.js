@@ -31,14 +31,14 @@ function App() {
   return (
     <Routes>
       <Route exact path="/" element={<HomeComp />} />
-      <Route exact path="/scan" element={<ScanComp />} />
+      <Route exact path="/smart-contract-scanner-solidity-shield" element={<ScanComp />} />
       <Route exact path="/about-us" element={<AboutComp />} />
       <Route exact path="/contact-us" element={<ContactComp />} />
-      <Route exact path="/smart-contract-dev" element={<SmartContractdev />} />
-      <Route exact path="/dapp-security" element={<DappSecurityAudit />} />
-      <Route exact path="/dapp-dev" element={<DappDevComp />} />
-      <Route exact path="/SecurePAD" element={<SecurePadTokenComp />} />
-      <Route exact path="/tokenomics" element={<TokenomicsComp />} />
+      <Route exact path="/smart-contract-development" element={<SmartContractdev />} />
+      <Route exact path="/dapp-security-audit" element={<DappSecurityAudit />} />
+      <Route exact path="/dapp-development" element={<DappDevComp />} />
+      <Route exact path="/token-launchpad-Securepad" element={<SecurePadTokenComp />} />
+      <Route exact path="/tokenomics-design" element={<TokenomicsComp />} />
       <Route exact path="/blog" element={<BlogComp />} />
     </Routes>
   );

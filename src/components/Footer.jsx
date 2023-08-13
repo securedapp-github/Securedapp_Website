@@ -1,5 +1,5 @@
 import React from "react";
-import { FaFacebook, FaTwitter, FaInstagram, FaTelegram } from "react-icons/fa";
+import { FaDiscord, FaFacebook, FaTwitter, FaLinkedin, FaTelegram } from "react-icons/fa";
 import logo from "../images/logo.png";
 const Footer = () => {
   const style = {
@@ -57,7 +57,7 @@ const Footer = () => {
 
             <div className="flex flex-col items-start mt-4 space-y-4">
               <a
-                href="/scan"
+                href="/smart-contract-scanner-solidity-shield"
                 className="text-[#5F5F5F] transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600"
               >
                 Solidity Shield
@@ -288,7 +288,7 @@ const Footer = () => {
               target="_blank"
               className="text-gray-300 hover:text-blue-600 transition-colors duration-200"
             >
-              <FaFacebook className="w-[30px] h-[30px]" />
+              <FaDiscord className="w-[30px] h-[30px]" />
             </a>
             <a
               href="https://twitter.com/secure_dapp"
@@ -302,7 +302,7 @@ const Footer = () => {
               target="_blank"
               className="text-gray-300 hover:text-blue-600 transition-colors duration-200"
             >
-              <FaInstagram className="w-[30px] h-[30px]" />
+              <FaLinkedin className="w-[30px] h-[30px]" />
             </a>
             <a
               href="https://telegram.me/securedappcommunity"

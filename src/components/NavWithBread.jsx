@@ -5,11 +5,11 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import Logo from "../images/logoblacktextsdlogowhite-1@2x.png";
 import AuditModal from "./AuditModal";
 const navigation = [
-  { name: "Solidity Shield Scan", href: "/scan" },
-  { name: "SecurePAD", href: "/securePAD" },
-  { name: "Our Products", href: "/about-us", special: true },
+  { name: "Solidity Shield Scan", href: "/smart-contract-scanner-solidity-shield" },
+  { name: "SecurePAD", href: "/token-launchpad-Securepad" },
+  { name: "About Us", href: "/about-us", special: true },
   // { name: "Contact Us", href: "#" },
-  { name: "Blog", href: "/blog" },
+  // { name: "Blog", href: "/blog" },
 ];
 
 function NavbarWithBread({ onItemClick }) {
