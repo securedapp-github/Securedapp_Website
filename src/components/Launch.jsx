@@ -43,7 +43,7 @@ const Launch = () => {
           </div>
         </div>
       </div>
-      <div className=" flex lg:flex-row flex-col  lg:h-[140px] md:h-[140px] lg:pt-[0px] md:pt-[350px] pt-[50px] lg:py-[10px]  req">
+      <div className=" flex lg:flex-row flex-col  lg:h-[140px]  md:h-[140px] lg:pt-[0px] md:pt-[350px] pt-[50px] lg:py-[10px] lg:pb-0  req">
         <div className="md:mx-[80px] mx-[25px] md:my-[30px]  mb-[0px] pl-[0px]">
           <div className="text-white md:text-[32px] text-[25px] md:mb-[0px] mb-[10px]  font-semibold font-sans leading-[110%] ">
             Securing Your{" "}

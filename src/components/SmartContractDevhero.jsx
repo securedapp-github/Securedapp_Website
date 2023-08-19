@@ -5,7 +5,7 @@ import Request from "./Request";
 
 const SmartContractDevhero = () => {
   return (
-    <div className="md:pt-[150px] pt-[0px] smartdevbg ">
+    <div className="lg:pt-[150px] pt-[0px] smartdevbg ">
       <div className="flex md:flex-row flex-col-reverse lg:pt-0 pt-[00px]">
         <div className="lg:pt-[20px] pt-[00px] pl-[90px] pr-[30px] lg:-mt-[400px] -mt-[500px]">
           <img src={hero} alt="hero" className="pt-[500px]" />
@@ -42,9 +42,8 @@ const SmartContractDevhero = () => {
           </li>
         </div>
       </div>
-      <Request/>
+      <Request />
     </div>
-   
   );
 };
 
