@@ -5,12 +5,12 @@ import Request from "./Request";
 
 const SmartContractDevhero = () => {
   return (
-    <div className="lg:pt-[150px] pt-[0px] smartdevbg ">
-      <div className="flex md:flex-row flex-col-reverse lg:pt-0 pt-[00px]">
+    <div className="lg:pt-[150px] md:pt-[150px] pt-[0px] smartdevbg ">
+      <div className="flex lg:flex-row flex-col-reverse lg:pt-0 pt-[00px]">
         <div className="lg:pt-[20px] pt-[00px] pl-[90px] pr-[30px] lg:-mt-[400px] -mt-[500px]">
           <img src={hero} alt="hero" className="pt-[500px]" />
         </div>
-        <div className="lg:pt-[85px] pt-[150px] lg:w-[700px] pl-[30px]">
+        <div className="lg:pt-[85px] md:pt-[20px] pt-[150px] lg:w-[700px] pl-[30px]">
           <SectionHeader content={"Smart Contact Development"} />
           <p className="text-white text-opacity-80 text-[16px] font-normal leading-[160%] pt-6">
             SecureDApp is a company that specialises in smart contract

@@ -5,7 +5,7 @@
 .hero {
   /* Set the background image URL here */
 
-  background-image: url("./newhomebg.png");
+  background-image: url("https://res.cloudinary.com/dsjgdufgl/image/upload/v1692512361/newhomebg_tj6046.png");
 
   /* Full height and width of the viewport */
   width: auto;
@@ -23,7 +23,7 @@
 .client {
   /* Set the background image URL here */
 
-  background-image: url("./client.png");
+  background-image: url("https://res.cloudinary.com/dsjgdufgl/image/upload/v1692512382/client_kv1s41.png");
 
   /* Full height and width of the viewport */
   width: auto;
@@ -41,7 +41,7 @@
 .benefit {
   /* Set the background image URL here */
 
-  background-image: url("./benefits.png");
+  background-image: url("https://res.cloudinary.com/dsjgdufgl/image/upload/v1692512382/benefits_riqzuc.png");
 
   /* Full height and width of the viewport */
   width: auto;
@@ -59,7 +59,7 @@
 .product {
   /* Set the background image URL here */
 
-  background-image: url("./producrs.png");
+  background-image: url("https://res.cloudinary.com/dsjgdufgl/image/upload/v1692512488/producrs_so8qiv.png");
 
   /* Full height and width of the viewport */
   width: auto;
@@ -77,7 +77,7 @@
 .audit {
   /* Set the background image URL here */
 
-  background-image: url("./audit.png");
+  background-image: url("https://res.cloudinary.com/dsjgdufgl/image/upload/v1692512382/audit_iwjy9k.png");
 
   /* Full height and width of the viewport */
   width: auto;
@@ -95,7 +95,7 @@
 .core {
   /* Set the background image URL here */
 
-  background-image: url("./realcore.png");
+  background-image: url("https://res.cloudinary.com/dsjgdufgl/image/upload/v1692512485/realcore_p8vvjw.png");
 
   /* Full height and width of the viewport */
   width: auto;
@@ -113,7 +113,7 @@
 .faq {
   /* Set the background image URL here */
 
-  background-image: url("./faq.png");
+  background-image: url("https://res.cloudinary.com/dsjgdufgl/image/upload/v1692512487/faq_htldoz.png");
 
   /* Full height and width of the viewport */
   width: auto;
@@ -131,7 +131,7 @@
 .foot {
   /* Set the background image URL here */
 
-  background-image: url("./footer.png");
+  background-image: url("https://res.cloudinary.com/dsjgdufgl/image/upload/v1692512512/footer_qklqa4.png");
 
   /* Full height and width of the viewport */
   width: auto;
@@ -149,7 +149,7 @@
 .navandflat {
   /* Set the background image URL here */
 
-  background-image: url("./navandflat.png");
+  background-image: url("https://res.cloudinary.com/dsjgdufgl/image/upload/v1692512511/navandflat_cbsfxn.png");
 
   /* Full height and width of the viewport */
   width: auto;
@@ -167,7 +167,7 @@
 .scan_schield {
   /* Set the background image URL here */
 
-  background-image: url("./contract_scanner.png");
+  background-image: url("https://res.cloudinary.com/dsjgdufgl/image/upload/v1692512512/contract_scanner_sqm5vm.png");
 
   /* Full height and width of the viewport */
   width: auto;
@@ -185,7 +185,7 @@
 .schield_core {
   /* Set the background image URL here */
 
-  background-image: url("./schield_core.png");
+  background-image: url("https://res.cloudinary.com/dsjgdufgl/image/upload/v1692512617/schield_core_sv2xyc.png");
 
   /* Full height and width of the viewport */
   width: auto;
@@ -203,7 +203,7 @@
 .schield_benefit {
   /* Set the background image URL here */
 
-  background-image: url("./schield_benefit.png");
+  background-image: url("https://res.cloudinary.com/dsjgdufgl/image/upload/v1692512619/schield_benefit_gdbn90.png");
 
   /* Full height and width of the viewport */
   width: auto;
@@ -221,7 +221,7 @@
 .schield_foot {
   /* Set the background image URL here */
 
-  background-image: url("./schield_ffot.png");
+  background-image: url("https://res.cloudinary.com/dsjgdufgl/image/upload/v1692512307/schield_ffot_f2yt40.png");
 
   /* Full height and width of the viewport */
   width: auto;
@@ -239,7 +239,7 @@
 .res {
   /* Set the background image URL here */
 
-  background-image: url("./res.png");
+  background-image: url("https://res.cloudinary.com/dsjgdufgl/image/upload/v1692512620/res_vihoqc.png");
 
   /* Full height and width of the viewport */
   width: auto;
@@ -257,7 +257,7 @@
 .req {
   /* Set the background image URL here */
 
-  background-image: url("./request.png");
+  background-image: url("https://res.cloudinary.com/dsjgdufgl/image/upload/v1692512119/request_njw6yk.png");
 
   /* Full height and width of the viewport */
   width: auto;
@@ -275,7 +275,7 @@
 .abouthero {
   /* Set the background image URL here */
 
-  background-image: url("./aboutnavandhero.png");
+  background-image: url("../src/aboutnavandhero_vaa6ok.jpg");
 
   /* Full height and width of the viewport */
   width: auto;
@@ -293,7 +293,7 @@
 .meetteam {
   /* Set the background image URL here */
 
-  background-image: url("./meettheteam.png");
+  background-image: url("https://res.cloudinary.com/dsjgdufgl/image/upload/v1692469345/meettheteam_annwsd.png");
 
   /* Full height and width of the viewport */
   width: auto;
@@ -329,7 +329,7 @@
 .newnav {
   /* Set the background image URL here */
 
-  background-image: url("./newnav.png");
+  background-image: url("https://res.cloudinary.com/dsjgdufgl/image/upload/v1692512782/newnav_hyjr2n.png");
 
   /* Full height and width of the viewport */
   width: auto;
@@ -347,7 +347,7 @@
 .contacthero {
   /* Set the background image URL here */
 
-  background-image: url("./images/contacthero.png");
+  background-image: url("https://res.cloudinary.com/dsjgdufgl/image/upload/v1692512801/contacthero_zkirwx.png");
 
   /* Full height and width of the viewport */
   width: auto;
@@ -365,7 +365,7 @@
 .smartdevbg {
   /* Set the background image URL here */
 
-  background-image: url("./images/smartdevbg.png");
+  background-image: url("https://res.cloudinary.com/dsjgdufgl/image/upload/v1692512878/smartdevbg_pcxetj.png");
 
   /* Full height and width of the viewport */
   width: auto;
@@ -383,7 +383,7 @@
 .audithero {
   /* Set the background image URL here */
 
-  background-image: url("./images/audithero.png");
+  background-image: url("https://res.cloudinary.com/dsjgdufgl/image/upload/v1692507780/audithero_nwjykx.png");
 
   /* Full height and width of the viewport */
   width: auto;
@@ -401,7 +401,7 @@
 .auditBenefit {
   /* Set the background image URL here */
 
-  background-image: url("./images/auditbenefit.png");
+  background-image: url("https://res.cloudinary.com/dsjgdufgl/image/upload/v1692512896/auditbenefit_lspglq.png");
 
   /* Full height and width of the viewport */
   width: auto;
@@ -419,7 +419,7 @@
 .TokenSecond {
   /* Set the background image URL here */
 
-  background-image: url("./images/TokensecondSec.png");
+  background-image: url("https://res.cloudinary.com/dsjgdufgl/image/upload/v1692512200/TokensecondSec_u7ridc.png");
 
   /* Full height and width of the viewport */
   width: auto;
@@ -437,7 +437,7 @@
 .TokenLast {
   /* Set the background image URL here */
 
-  background-image: url("./images/tokenlastsec.png");
+  background-image: url("https://res.cloudinary.com/dsjgdufgl/image/upload/v1692512199/tokenlastsec_e30x3d.png");
 
   /* Full height and width of the viewport */
   width: auto;
@@ -455,7 +455,7 @@
 .bloghero {
   /* Set the background image URL here */
 
-  background-image: url("./images/bloghero.png");
+  background-image: url("https://res.cloudinary.com/dsjgdufgl/image/upload/v1692512916/bloghero_fpkpef.png");
 
   /* Full height and width of the viewport */
   width: auto;
@@ -646,7 +646,7 @@
 
   /* Full height and width of the viewport */
   width: auto;
-  height: 890px;
+  height: max-content;
 
   /* Background image should cover the entire element */
   background-size: cover;
@@ -664,14 +664,15 @@
     /* Set the background image URL here */
     background-image: url("./images/newbgforsmdec.png");
 
-    /* Adjust the height as needed */
-    height: 300px;
+    /* Full height and width of the viewport */
+    width: auto;
+    height: max-content;
 
     /* Background image should cover the entire element */
     background-size: cover;
 
     /* Center the background image */
-    background-position: center;
+    background-position: initial;
 
     /* Optionally, you can set the background attachment to fixed for a fixed background */
     /* background-attachment: fixed; */
@@ -685,8 +686,9 @@
     background-image: url("./images/newbgforsmdec.png");
 
     /* Full height and width of the viewport */
+    /* Full height and width of the viewport */
     width: auto;
-    height: 890px;
+    height: max-content;
 
     /* Background image should cover the entire element */
     background-size: cover;
@@ -720,7 +722,7 @@
 .hero1 {
   /* Set the background image URL here */
 
-  background-image: url("./newhome1.png");
+  background-image: url("https://res.cloudinary.com/dsjgdufgl/image/upload/v1692513160/newhome1_hzsuvm.png");
 
   /* Full height and width of the viewport */
   width: auto;
@@ -738,58 +740,19 @@
 .features {
   /* Set the background image URL here */
 
-  background-image: url("./images/features.png");
+  background-image: url("https://res.cloudinary.com/dsjgdufgl/image/upload/v1692512020/tokenbg_twjzf3.png");
 
   /* Full height and width of the viewport */
   width: auto;
-  height: 490px;
+  height: max-content;
 
   /* Background image should cover the entire element */
-  background-size: contain;
+  background-size: cover;
 
   /* Center the background image */
   background-position: initial;
-  background-repeat: no-repeat;
-
   /* Optionally, you can set the background attachment to fixed for a fixed background */
   /* background-attachment: fixed; */
-}
-
-/* For small screens (mobile) */
-@media (max-width: 640px) {
-  .features {
-    /* Set the background image URL here */
-    background-image: url("./images/features.png");
-
-    /* Adjust the height and other properties as needed */
-    height: 200px;
-    background-size: contain;
-    background-position: inherit;
-    background-repeat: no-repeat;
-    margin-bottom: -70px;
-  }
-}
-
-/* For medium to large screens */
-@media (min-width: 641px) {
-  .features {
-    /* Set the background image URL here */
-    background-image: url("./images/features.png");
-
-    /* Full height and width of the viewport */
-    width: auto;
-    height: 490px;
-
-    /* Background image should cover the entire element */
-    background-size: contain;
-
-    /* Center the background image */
-    background-position: initial;
-    background-repeat: no-repeat;
-
-    /* Optionally, you can set the background attachment to fixed for a fixed background */
-    /* background-attachment: fixed; */
-  }
 }
 
 .working {

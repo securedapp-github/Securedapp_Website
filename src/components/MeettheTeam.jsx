@@ -6,13 +6,13 @@ import himanshu from "../images/himanshu.png";
 import abishek from "../images/abishek.png";
 
 const TeamCard = ({ image, name, designation, description }) => (
-  <div className="w-full md:w-1/2 lg:w-[300px] lg:ml-[25px] mx-[20px] pb-[20px]">
-    <div className="bg-transparent border border-[#3D3D3D] h-[610px] p-0 shadow-md">
+  <div className="w-[calc(25% - 20px)] w-[calc(33.33% - 20px)] lg:w-[300px] lg:ml-[25px] mx-[20px] pb-[20px]">
+    <div className="bg-transparent border border-[#3D3D3D] lg:h-[610px] md:h-[620px] h-[620px] lg:w-auto md:w-[300px] w-[300px] overflow-x-visible  p-0 shadow-md">
       <div className="relative h-[300px] mb-4 bg-[#D9D9D9]">
         <img
           src={image}
           alt={name}
-          className="object-cover w-full h-full rounded-t"
+          className="object-cover w-full h-full  rounded-t"
         />
       </div>
       <div className="text-2xl font-bold leading-normal text-white font-sans pt-1 pl-[21px]">
@@ -60,14 +60,14 @@ const MeettheTeam = () => {
     // Add more team members here
   ];
   return (
-    <section className="w-full meetteam -mt-[60px] pt-[60px] lg:pb-[50px]">
-      <div className="lg:mx-[80px] lg:mt-[60px] ">
+    <section className="w-full meetteam -mt-[60px] pt-[60px] lg:pb-[50px] lg:z-10 md:z-[121231231232]">
+      <div className="lg:mx-[80px]  lg:mt-[60px] ">
         <div className="flex justify-center items-center py-[30px]">
           <h1 className=" md:text-4xl text-2xl text-left whitespace-break-spaces w-fit font-sans font-bold leading-[110%]  bg-custom-gradient bg-clip-text text-transparent pb-[10px]">
             Meet the Team
           </h1>
         </div>
-        <div className="flex flex-wrap lg:-mx-7 md:justify-center lg:justify-start lg:w-[1450px] ">
+        <div className="flex overflow-x-auto lg:-mx-7  lg:justify-start lg:w-[1450px]  ">
           {teamMembers.map((member, index) => (
             <TeamCard key={index} {...member} />
           ))}

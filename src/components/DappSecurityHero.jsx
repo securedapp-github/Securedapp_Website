@@ -5,9 +5,9 @@ import Request from "./Request";
 
 const DappSecurityHero = () => {
   return (
-    <div className="md:pt-[200px] pt-[150px] md:px-0 px-[20px] audithero">
-      <div className="flex md:flex-row flex-col-reverse gap-[15px] ">
-        <div className="lg:pl-[80px]">
+    <div className="md:pt-[200px] pt-[150px]   lg:px-[20px]    audithero">
+      <div className="flex lg:flex-row flex-col-reverse gap-[15px]  ">
+        <div className="lg:pl-[80px] lg:px-0  md:px-[40px] px-[15px]">
           <SectionHeader content={"Smart Contract Audit"} />
           <div className="lg:w-[737px] lg:mt-[40px] mt-[20px]">
             <p className="text-white text-opacity-80 font-sans font-normal leading-[160%]">
@@ -27,7 +27,7 @@ const DappSecurityHero = () => {
             </p>
           </div>
 
-          <div className="flex flex-wrap pt-[20px] lg:w-[737px] ">
+          <div className="flex flex-wrap pt-[20px] lg:w-[737px] lg:pb-0 md:pb-[20px] ">
             <div className="auditButton flex justify-center items-center mr-[30px] my-[10px]">
               <div className="flex justify-center gap-[20px] items-center w-full">
                 <h1
@@ -132,10 +132,14 @@ const DappSecurityHero = () => {
         </div>
 
         <div className="lg:pl-[50px] flex lg:justify-start justify-center items-center">
-          <img src={hero} className="lg:w-auto h-auto w-2/3 " alt="hero" />
+          <img
+            src={hero}
+            className="lg:w-auto lg:h-auto md:w-2/2 md:h-auto w-2/3 h-auto "
+            alt="hero"
+          />
         </div>
       </div>
-      <Request/>
+      <Request />
     </div>
   );
 };
