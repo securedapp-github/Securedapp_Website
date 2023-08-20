@@ -61,14 +61,14 @@ const Transmission = () => {
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="bg-transparent py-7 px-9 border-none outline-none w-full h-full placeholder:email-text  placeholder:font-light  placeholder:font-sans  placeholder:text-2xl  placeholder:leading-[110%]"
+                className="bg-transparent py-7 px-9 border-none outline-none w-full h-full placeholder:email-text  placeholder:font-light  placeholder:font-sans  placeholder:text-2xl text-2xl  placeholder:leading-[110%]"
                 placeholder="Your email"
                 id=""
               />
 
               <button
                 type="submit"
-                className="mr-[50px] px-5 py-3 border rounded-full"
+                className="mr-[50px] px-5 py-3 border rounded-full hover:bg-blue-200"
               >
                 <span className="arrow font-light font-sans text-2xl leading-[110%] ">
                   &gt;

@@ -488,6 +488,28 @@
   /* Optionally, you can set the background attachment to fixed for a fixed background */
   /* background-attachment: fixed; */
 }
+
+@media (max-width: 640px) {
+  .blogimg {
+    /* Set the background image URL here */
+
+    background-image: url("./images/blogimg.png");
+
+    /* Full height and width of the viewport */
+    width: 100%;
+    height: 250px;
+
+    /* Background image should cover the entire element */
+    background-size: cover;
+
+    /* Center the background image */
+    background-position: initial;
+
+    /* Optionally, you can set the background attachment to fixed for a fixed background */
+    /* background-attachment: fixed; */
+  }
+}
+
 .tokenthird {
   /* Set the background image URL here */
 

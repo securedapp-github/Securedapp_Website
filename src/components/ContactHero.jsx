@@ -2,12 +2,11 @@ import React, { useState } from "react";
 import SectionHeader from "./SectionHeader";
 import Description from "./Description";
 import DescriptionFor from "./DescriptionFor";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import Loader from 'utils/loader';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Loader from "utils/loader";
 
 const ContactHero = () => {
-
   const [name, setName] = useState("");
   const [number, setNumber] = useState("");
   const [email, setEmail] = useState("");
@@ -15,26 +14,25 @@ const ContactHero = () => {
   const [loading, setLoading] = useState(false);
 
   const sendMail = async () => {
-
     if (name == "" || email == "" || description == "") {
       toast("Invalid Input");
       return;
     }
     setLoading(true);
-    fetch('https://139-59-5-56.nip.io:3443/contactMail', {
-      method: 'POST',
+    fetch("https://139-59-5-56.nip.io:3443/contactMail", {
+      method: "POST",
       body: JSON.stringify({
         name: name,
         mail: email,
-        msg: number + "---" + description
+        msg: number + "---" + description,
       }),
       headers: {
-        'Content-type': 'application/json',
+        "Content-type": "application/json",
       },
     })
-      .then((res) => { })
+      .then((res) => {})
       .then((data) => {
-        toast.success('Mail Send Successfully');
+        toast.success("Mail Send Successfully");
         setLoading(false);
       })
       .catch((err) => {
@@ -46,20 +44,22 @@ const ContactHero = () => {
   };
 
   const blurryDivStyle = {
-    filter: loading ? 'blur(5px)' : 'blur(0px)'
+    filter: loading ? "blur(5px)" : "blur(0px)",
   };
-
 
   return (
     <>
-      {loading && (<Loader />)}
+      {loading && <Loader />}
       <ToastContainer
         position="top-center"
         autoClose={2000}
         theme="dark"
         pauseOnHover
       />
-      <div style={{ ...blurryDivStyle }} className="contacthero md:pt-[80px] pt-[130px]">
+      <div
+        style={{ ...blurryDivStyle }}
+        className="contacthero md:pt-[80px] pt-[130px]"
+      >
         <div className="md:pt-[50px] lg:mx-[80px] border-b-2 border-gray-500">
           <div className="flex gap-[40px] py-[15px] lg:px-0 px-[30px]">
             <a href="/">
@@ -76,9 +76,7 @@ const ContactHero = () => {
         </div>
         <div className=" lg:pt-[110px] pt-[10px] py-[60px]  md:px-[80px]  md:py-[50px] lg:pb-[60px] py-[50px]  w-full mb-[0px] flex lg:flex-row flex-col gap-[60px]">
           <div className="lg:w-7/12 lg:px-[0px] md:px-[0px] px-[50px] md:pt-0 pt-[50px] ">
-            <h1
-              className="font-sans lg:text-[64px] text-[40px] text-ellipsis font-bold leading-[110%] bg-custom-gradient bg-clip-text text-transparent "
-            >
+            <h1 className="font-sans lg:text-[64px] text-[40px] text-ellipsis font-bold leading-[110%] bg-custom-gradient bg-clip-text text-transparent ">
               Inquiries{" "}
             </h1>
             <Description content={"Security:"} />
@@ -103,18 +101,21 @@ const ContactHero = () => {
               }
             />
           </div>
-          <div className="lg:w-5/12 lg:px-[0px] md:px-[0px] px-[50px] ">
+          <div className="lg:w-5/12 lg:px-[0px] md:px-[0px] px-[50px] T ">
             <h1 className="text-white text-[36px] font-normal font-sans leading-[110%] pb-[20px]">
               Contact Us
             </h1>
-            <div className="pb-[25px]">
+            <div className="pb-[25px] text-white">
               <input
                 type="email"
                 placeholder="Your email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                style={{ border: "1px solid rgba(255, 255, 255, 0.20)" }}
-                className="bg-transparent p-4 border rounded-[20px] placeholder:text-[16px] placeholder:font-sans placeholder:text-[#FFF] placeholder:text-opacity-20 w-11/12 "
+                style={{
+                  border: "1px solid rgba(255, 255, 255,0.20)",
+                  color: "white",
+                }}
+                className="bg-transparent p-4 border rounded-[20px] text-white placeholder:text-[16px] placeholder:text-[#FFF] placeholder:text-opacity-20 placeholder:font-sans w-11/12"
               />
             </div>
             <div className="pb-[25px]">
@@ -124,7 +125,7 @@ const ContactHero = () => {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 style={{ border: "1px solid rgba(255, 255, 255, 0.20)" }}
-                className="bg-transparent p-4 border rounded-[20px] placeholder:text-[16px] placeholder:font-sans placeholder:text-[#FFF] placeholder:text-opacity-20 w-11/12 "
+                className="bg-transparent p-4 border rounded-[20px] text-white placeholder:text-[16px] placeholder:text-[#FFF] placeholder:text-opacity-20 placeholder:font-sans w-11/12"
               />
             </div>
             <div className="pb-[25px]">
@@ -134,24 +135,24 @@ const ContactHero = () => {
                 value={number}
                 onChange={(e) => setNumber(e.target.value)}
                 style={{ border: "1px solid rgba(255, 255, 255, 0.20)" }}
-                className="bg-transparent p-4 border rounded-[20px] placeholder:text-[16px] placeholder:font-sans placeholder:text-[#FFF] placeholder:text-opacity-20 w-11/12 "
+                className="bg-transparent p-4 border rounded-[20px] placeholder:text-[16px] placeholder:font-sans text-white placeholder:text-[#FFF] placeholder:text-opacity-20 w-11/12 "
               />
             </div>
             <div className="pb-[25px]">
-
-
               <textarea
                 placeholder="Requirement (optional)"
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
-                className="bg-transparent p-4 border rounded-[20px] placeholder:text-[16px] placeholder:font-sans placeholder:text-[#FFF] placeholder:text-opacity-20 w-11/12 "
+                className="bg-transparent p-4 border rounded-[20px] placeholder:text-[16px] placeholder:font-sans text-white placeholder:text-[#FFF] placeholder:text-opacity-20 w-11/12 "
                 cols="30"
                 rows="10"
               ></textarea>
             </div>
             <button
               type="button"
-              onClick={() => { sendMail(); }}
+              onClick={() => {
+                sendMail();
+              }}
               className=" w-11/12 rounded-[55px] bg-[#12D576] px-7 py-3 font-sans text-[21px] font-normal leading-[100%] text-[#000000]"
             >
               SUBMIT

@@ -1,5 +1,11 @@
 import React from "react";
-import { FaDiscord, FaFacebook, FaTwitter, FaLinkedin, FaTelegram } from "react-icons/fa";
+import {
+  FaDiscord,
+  FaFacebook,
+  FaTwitter,
+  FaLinkedin,
+  FaTelegram,
+} from "react-icons/fa";
 import logo from "../images/logo.png";
 const Footer = () => {
   const style = {
@@ -35,7 +41,7 @@ const Footer = () => {
                 Request a quote
               </a>
               <a
-                href="/"
+                href="#"
                 className="text-[#5F5F5F] transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600"
               >
                 Referral
@@ -63,7 +69,7 @@ const Footer = () => {
                 Solidity Shield
               </a>
               <a
-                href="/"
+                href="#"
                 className="text-[#5F5F5F] transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600"
               >
                 Audit Process
@@ -113,8 +119,8 @@ const Footer = () => {
                 Search
               </a>
               <a
-               href="https://securedapp.gitbook.io/securedapp-launchpad"
-               target="_blank"
+                href="https://securedapp.gitbook.io/securedapp-launchpad"
+                target="_blank"
                 className="text-[#5F5F5F] transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600"
               >
                 Rewards

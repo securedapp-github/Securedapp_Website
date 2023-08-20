@@ -2,8 +2,8 @@ import React from "react";
 
 const BlogCard = ({ topic, date, title, link }) => {
   return (
-    <a href={link} className="lg:mx-0 mx-2">
-      <div className="blogimg flex flex-col justify-between lg:px-0 px-7 ">
+    <a href={link} className="lg:mx-0 mx-3 md:mx-auto">
+      <div className="blogimg flex flex-col justify-between lg:px-0 px-7 rounded-3xl ">
         <div className="w-[200px] h-[25px] bg-black bg-opacity-90 mt-[14px] lg:mx-[14px]   flex justify-center items-center rounded-[36px]">
           <span className="text-white font-sans text-[15px] font-normal leading-normal">
             {topic}
@@ -48,7 +48,8 @@ const BlogHero = () => {
       id: 3,
       topic: "NFT, TOKEN, TOKEN SALES",
       date: "June 8, 2023",
-      title: "How To Design Tokenomics For Your Cryptocurrency: The Basics Of Creating Your Token",
+      title:
+        "How To Design Tokenomics For Your Cryptocurrency: The Basics Of Creating Your Token",
       link: "#",
     },
     {
@@ -98,8 +99,8 @@ const BlogHero = () => {
         </div>
       </div>
 
-      <div className="lg:pt-[50px] lg:mx-[80px] flex lg:flex-row flex-col-reverse lg:pb-[0px] ">
-        <div className="flex w-8/12 flex-wrap gap-[40px]">
+      <div className="lg:pt-[50px] lg:mx-[80px]  flex lg:flex-row flex-col-reverse lg:pb-[0px] ">
+        <div className="flex lg:w-8/12 md:w-full flex-wrap md:flex-row gap-[40px] ">
           {blogs.map((blog) => (
             <BlogCard
               key={blog.id}
@@ -111,20 +112,20 @@ const BlogHero = () => {
           ))}
         </div>
 
-        <div className="flex flex-col gap-[20px] lg:py-0 py-7 px-6">
-          <button className="w-[340px] h-[64px] rounded-[20px] border border-white  border-opacity-20">
+        <div className="flex flex-col gap-[20px] lg:py-0 py-7 px-6 lg:w-auto md:w-full">
+          <button className="w-[340px] h-[64px] rounded-[20px] border border-white mx-auto  border-opacity-20">
             {" "}
             <span className="text-white font-sans text-[24px] font-normal leading-[170%]">
               Team
             </span>
           </button>
-          <button className="w-[340px] h-[64px] rounded-[20px] border border-white  border-opacity-20">
+          <button className="w-[340px] h-[64px] rounded-[20px] border border-white  mx-auto border-opacity-20">
             {" "}
             <span className="text-white font-sans text-[24px] font-normal leading-[170%]">
               Smart Contract
             </span>
           </button>{" "}
-          <button className="w-[340px] h-[64px] rounded-[20px] border border-white  border-opacity-20">
+          <button className="w-[340px] h-[64px] rounded-[20px] border border-white mx-auto  border-opacity-20">
             {" "}
             <span className="text-white font-sans text-[24px] font-normal leading-[170%]">
               Market Research

@@ -29,7 +29,7 @@ const Launch = () => {
               onClick={() => {
                 setShowModal(true);
               }}
-              className="lg:mt-[30px] rounded-full py-2 px-7 border border-[2px] border-white text-white text-center font-sans md:text-[22px] text-xl font-normal leading-normal"
+              className="lg:mt-[30px] rounded-full py-2 px-7 border border-[2px] hover:[background:linear-gradient(90deg,_#12d576,_#2d5c8f)] border-white text-white text-center font-sans md:text-[22px] text-xl font-normal leading-normal"
             >
               Get it Audited Today
             </button>
@@ -60,7 +60,7 @@ const Launch = () => {
             onClick={() => {
               setShowModal(true);
             }}
-            className=" z-[100001] lg:mt-[50px] md:mb-[10px] md:mt-[5px] mt-[25px] h-[60px] w-[341px] py-2 px-8  border border-transparent text-black  rounded-full [background:linear-gradient(90deg,_#12d576,_#2d5c8f)] shadow-[0px_0px_80px_rgba(18,_213,_118,_0.25)]  text-center font-sans md:text-2xl text-xl font-normal leading-normal"
+            className=" z-[100001] lg:mt-[50px] md:mb-[10px] md:mt-[5px] mt-[25px] h-[60px] w-[341px] py-2 px-8  border border-transparent text-black  rounded-full [background:linear-gradient(90deg,_#12d576,_#2d5c8f)] hover:[background:linear-gradient(90deg,_#2d5c8f,_#12d576)] shadow-[0px_0px_80px_rgba(18,_213,_118,_0.25)]  text-center font-sans md:text-2xl text-xl font-normal leading-normal"
           >
             Request Your Audit Today
           </button>
