@@ -61,13 +61,13 @@ const MeettheTeam = () => {
   ];
   return (
     <section className="w-full meetteam -mt-[60px] pt-[60px] lg:pb-[50px] lg:z-10 md:z-[121231231232]">
-      <div className="lg:mx-[80px]  lg:mt-[60px] ">
-        <div className="flex justify-center items-center py-[30px]">
+      <div className="  lg:mt-[60px] w-[100%] ">
+        <div className="flex justify-center lg:pl-[80px] items-center py-[30px] w-full">
           <h1 className=" md:text-4xl text-2xl text-left whitespace-break-spaces w-fit font-sans font-bold leading-[110%]  bg-custom-gradient bg-clip-text text-transparent pb-[10px]">
             Meet the Team
           </h1>
         </div>
-        <div className="flex overflow-x-auto lg:-mx-7  lg:justify-start lg:w-[1450px]  ">
+        <div className="flex overflow-x-auto lg:pl-[60px] lg:justify-start lg:w-[1350px]  ">
           {teamMembers.map((member, index) => (
             <TeamCard key={index} {...member} />
           ))}

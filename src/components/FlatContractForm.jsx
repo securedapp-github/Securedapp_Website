@@ -170,7 +170,7 @@ const FlatContractForm = () => {
         }}
         className="bg-primary text-left flex justify-start  items-center align-middle rounded-full font-sans text-[20px] font-normal leading-[110%] text-black text-primary-100"
       >
-        <span className="lg:px-[50px] pl-[10px] lg:text-[20px] w-full whitespace-nowrap text-[14px]">
+        <span className="lg:px-[50px] pl-[10px] lg:text-[20px] w-full text-white whitespace-nowrap text-[14px]">
           {label}: {value}
         </span>
       </div>
