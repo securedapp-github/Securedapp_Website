@@ -5,7 +5,7 @@
 .hero {
   /* Set the background image URL here */
 
-  background-image: url("https://res.cloudinary.com/dsjgdufgl/image/upload/v1692512361/newhomebg_tj6046.png");
+  background-image: url("./images/newhomebg_tj6046.png");
 
   /* Full height and width of the viewport */
   width: auto;
@@ -23,7 +23,7 @@
 .client {
   /* Set the background image URL here */
 
-  background-image: url("https://res.cloudinary.com/dsjgdufgl/image/upload/v1692512382/client_kv1s41.png");
+  background-image: url("./images//client_kv1s41.png");
 
   /* Full height and width of the viewport */
   width: auto;
@@ -59,7 +59,7 @@
 .product {
   /* Set the background image URL here */
 
-  background-image: url("https://res.cloudinary.com/dsjgdufgl/image/upload/v1692512488/producrs_so8qiv.png");
+  background-image: url("./images/producrs_so8qiv.png");
 
   /* Full height and width of the viewport */
   width: auto;
@@ -77,7 +77,7 @@
 .audit {
   /* Set the background image URL here */
 
-  background-image: url("https://res.cloudinary.com/dsjgdufgl/image/upload/v1692512382/audit_iwjy9k.png");
+  background-image: url("./images/smartdevbg_pcxetj.png");
 
   /* Full height and width of the viewport */
   width: auto;
@@ -95,7 +95,7 @@
 .core {
   /* Set the background image URL here */
 
-  background-image: url("https://res.cloudinary.com/dsjgdufgl/image/upload/v1692512485/realcore_p8vvjw.png");
+  background-image: url("./images/realcore_p8vvjw.png");
 
   /* Full height and width of the viewport */
   width: auto;
@@ -113,7 +113,7 @@
 .faq {
   /* Set the background image URL here */
 
-  background-image: url("https://res.cloudinary.com/dsjgdufgl/image/upload/v1692512487/faq_htldoz.png");
+  background-image: url("./images/faq_htldoz.png");
 
   /* Full height and width of the viewport */
   width: auto;
@@ -131,7 +131,7 @@
 .foot {
   /* Set the background image URL here */
 
-  background-image: url("https://res.cloudinary.com/dsjgdufgl/image/upload/v1692512512/footer_qklqa4.png");
+  background-image: url("./images/footer_qklqa4.png");
 
   /* Full height and width of the viewport */
   width: auto;
@@ -149,7 +149,7 @@
 .navandflat {
   /* Set the background image URL here */
 
-  background-image: url("https://res.cloudinary.com/dsjgdufgl/image/upload/v1692512511/navandflat_cbsfxn.png");
+  background-image: url("./images/navandflat_cbsfxn.png");
 
   /* Full height and width of the viewport */
   width: auto;
@@ -167,7 +167,7 @@
 .scan_schield {
   /* Set the background image URL here */
 
-  background-image: url("https://res.cloudinary.com/dsjgdufgl/image/upload/v1692512512/contract_scanner_sqm5vm.png");
+  background-image: url("./images/contract_scanner_sqm5vm.png");
 
   /* Full height and width of the viewport */
   width: auto;
@@ -185,7 +185,7 @@
 .schield_core {
   /* Set the background image URL here */
 
-  background-image: url("https://res.cloudinary.com/dsjgdufgl/image/upload/v1692512617/schield_core_sv2xyc.png");
+  background-image: url("./images/schield_core_sv2xyc.png");
 
   /* Full height and width of the viewport */
   width: auto;
@@ -203,7 +203,7 @@
 .schield_benefit {
   /* Set the background image URL here */
 
-  background-image: url("https://res.cloudinary.com/dsjgdufgl/image/upload/v1692512619/schield_benefit_gdbn90.png");
+  background-image: url("./images/schield_benefit_gdbn90.png");
 
   /* Full height and width of the viewport */
   width: auto;
@@ -221,7 +221,7 @@
 .schield_foot {
   /* Set the background image URL here */
 
-  background-image: url("https://res.cloudinary.com/dsjgdufgl/image/upload/v1692512307/schield_ffot_f2yt40.png");
+  background-image: url("./images/schield_ffot_f2yt40.png");
 
   /* Full height and width of the viewport */
   width: auto;
@@ -239,7 +239,7 @@
 .res {
   /* Set the background image URL here */
 
-  background-image: url("https://res.cloudinary.com/dsjgdufgl/image/upload/v1692512620/res_vihoqc.png");
+  background-image: url("./images/res_vihoqc.png");
 
   /* Full height and width of the viewport */
   width: auto;
@@ -257,7 +257,7 @@
 .req {
   /* Set the background image URL here */
 
-  background-image: url("https://res.cloudinary.com/dsjgdufgl/image/upload/v1692512119/request_njw6yk.png");
+  background-image: url("./images/request_njw6yk.png");
 
   /* Full height and width of the viewport */
   width: auto;
@@ -293,7 +293,7 @@
 .meetteam {
   /* Set the background image URL here */
 
-  background-image: url("https://res.cloudinary.com/dsjgdufgl/image/upload/v1692469345/meettheteam_annwsd.png");
+  background-image: url("./images/meettheteam_annwsd.png");
 
   /* Full height and width of the viewport */
   width: auto;
@@ -329,7 +329,7 @@
 .newnav {
   /* Set the background image URL here */
 
-  background-image: url("https://res.cloudinary.com/dsjgdufgl/image/upload/v1692512782/newnav_hyjr2n.png");
+  background-image: url("./images/newnav_hyjr2n.png");
 
   /* Full height and width of the viewport */
   width: auto;
@@ -347,7 +347,7 @@
 .contacthero {
   /* Set the background image URL here */
 
-  background-image: url("https://res.cloudinary.com/dsjgdufgl/image/upload/v1692512801/contacthero_zkirwx.png");
+  background-image: url("./images/contacthero_zkirwx.png");
 
   /* Full height and width of the viewport */
   width: auto;
@@ -365,7 +365,7 @@
 .smartdevbg {
   /* Set the background image URL here */
 
-  background-image: url("https://res.cloudinary.com/dsjgdufgl/image/upload/v1692512878/smartdevbg_pcxetj.png");
+  background-image: url("./images/smartdevbg_pcxetj.png");
 
   /* Full height and width of the viewport */
   width: auto;
@@ -383,7 +383,7 @@
 .audithero {
   /* Set the background image URL here */
 
-  background-image: url("https://res.cloudinary.com/dsjgdufgl/image/upload/v1692507780/audithero_nwjykx.png");
+  background-image: url("./images/audithero_nwjykx.png");
 
   /* Full height and width of the viewport */
   width: auto;
@@ -401,7 +401,7 @@
 .auditBenefit {
   /* Set the background image URL here */
 
-  background-image: url("https://res.cloudinary.com/dsjgdufgl/image/upload/v1692512896/auditbenefit_lspglq.png");
+  background-image: url("./images/auditbenefit_lspglq.png");
 
   /* Full height and width of the viewport */
   width: auto;
@@ -419,7 +419,7 @@
 .TokenSecond {
   /* Set the background image URL here */
 
-  background-image: url("https://res.cloudinary.com/dsjgdufgl/image/upload/v1692512200/TokensecondSec_u7ridc.png");
+  background-image: url("./images/TokensecondSec_u7ridc.png");
 
   /* Full height and width of the viewport */
   width: auto;
@@ -437,7 +437,7 @@
 .TokenLast {
   /* Set the background image URL here */
 
-  background-image: url("https://res.cloudinary.com/dsjgdufgl/image/upload/v1692512199/tokenlastsec_e30x3d.png");
+  background-image: url("images/tokenlastsec_e30x3d.png");
 
   /* Full height and width of the viewport */
   width: auto;
@@ -455,7 +455,7 @@
 .bloghero {
   /* Set the background image URL here */
 
-  background-image: url("https://res.cloudinary.com/dsjgdufgl/image/upload/v1692512916/bloghero_fpkpef.png");
+  background-image: url("./images/bloghero_fpkpef.png");
 
   /* Full height and width of the viewport */
   width: auto;
@@ -744,7 +744,7 @@
 .hero1 {
   /* Set the background image URL here */
 
-  background-image: url("https://res.cloudinary.com/dsjgdufgl/image/upload/v1692513160/newhome1_hzsuvm.png");
+  background-image: url("./images/newhome1_hzsuvm.png");
 
   /* Full height and width of the viewport */
   width: auto;
@@ -762,7 +762,7 @@
 .features {
   /* Set the background image URL here */
 
-  background-image: url("https://res.cloudinary.com/dsjgdufgl/image/upload/v1692512020/tokenbg_twjzf3.png");
+  background-image: url("./images/tokenbg_twjzf3.png");
 
   /* Full height and width of the viewport */
   width: auto;
