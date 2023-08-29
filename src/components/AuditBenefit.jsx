@@ -3,14 +3,14 @@ import React from "react";
 const AuditBenefit = () => {
   return (
     <div className="auditBenefit">
-      <div className="lg:pl-[80px] lg:py-[80px] py-[40px] pl-[20px]">
+      <div className="lg:pl-[80px] lg:py-[80px] py-[40px] pl-[20px] lg:px-0 md:px-[40px]">
         <h1 className="text-white text-opacity-80 lg:text-[32px] text-xl font-normal leading-[100%]">
           The benefits of smart contract auditing by SecureDApp include:
         </h1>
       </div>
 
-      <div className="flex lg:flex-row flex-col lg:justify-evenly lg:pb-[50px] lg:px-0 px-[20px]  ">
-        <div className="w-[320px] ">
+      <div className="flex lg:flex-row flex-col lg:justify-evenly lg:pb-[50px] lg:px-0 md:px-[40px] px-[20px]  ">
+        <div className="lg:w-[320px] ">
           <h1 className="text-[#12D576] text-justify text-[16px] font-bold leading-[160%]">
             Increased security:{" "}
           </h1>
@@ -23,7 +23,7 @@ const AuditBenefit = () => {
 
         <div className="w-[2px] h-[130px] mr-[30px]  bg-[#D9D9D9] bg-opacity-20 lg:block hidden "></div>
 
-        <div className="w-[320px]">
+        <div className="lg:w-[320px]">
           <h1 className="text-[#12D576] text-justify text-[16px] font-bold leading-[160%]">
             Increased reliability:
           </h1>
@@ -34,7 +34,7 @@ const AuditBenefit = () => {
         </div>
         <div className="w-[2px] h-[130px] mr-[30px]  bg-[#D9D9D9] bg-opacity-20 lg:block hidden "></div>
 
-        <div className="w-[320px]">
+        <div className="lg:w-[320px]">
           <h1 className="text-[#12D576] text-justify text-[16px] font-bold leading-[160%]">
             Increased confidence:
           </h1>
@@ -50,7 +50,7 @@ const AuditBenefit = () => {
         <div className="w-[88%] h-[2px] bg-[#D9D9D9] bg-opacity-20 py-[0px] lg:px-[80px]"></div>
       </div>
 
-      <div className="lg:py-[50px] lg:px-[80px] px-[20px] py-[40px]">
+      <div className="lg:py-[50px] lg:px-[80px] px-[20px] py-[40px]  md:px-[40px]">
         <p className="text-white text-opacity-80 text-[20px] font-normal leading-[130%]">
           If you are developing or using smart contracts, it is important to
           have them audited by a qualified auditor. A smart contract audit can

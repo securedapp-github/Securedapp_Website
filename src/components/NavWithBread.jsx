@@ -5,7 +5,10 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import Logo from "../images/logoblacktextsdlogowhite-1@2x.png";
 import AuditModal from "./AuditModal";
 const navigation = [
-  { name: "Solidity Shield Scan", href: "/smart-contract-scanner-solidity-shield" },
+  {
+    name: "Solidity Shield Scan",
+    href: "/smart-contract-scanner-solidity-shield",
+  },
   { name: "SecurePAD", href: "/token-launchpad-Securepad" },
   { name: "About Us", href: "/about-us", special: true },
   // { name: "Contact Us", href: "#" },
@@ -51,7 +54,7 @@ function NavbarWithBread({ onItemClick }) {
               onClick={() => setMobileMenuOpen(true)}
             >
               <span className="sr-only">Open main menu</span>
-              <Bars3Icon className="h-6 w-6" aria-hidden="true" />
+              <Bars3Icon className="h-6 w-6 text-white" aria-hidden="true" />
             </button>
           </div>
           <div className="hidden lg:flex lg:gap-x-10 items-center  lg:flex-1  lg:justify-end lg:mr-1">

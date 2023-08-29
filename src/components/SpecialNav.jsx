@@ -5,7 +5,10 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import Logo from "../images/logoblacktextsdlogowhite-1@2x.png";
 import AuditModal from "./AuditModal";
 const navigation = [
-  { name: "Solidity Shield Scan", href: "/smart-contract-scanner-solidity-shield" },
+  {
+    name: "Solidity Shield Scan",
+    href: "/smart-contract-scanner-solidity-shield",
+  },
   { name: "SecurePAD", href: "/token-launchpad-Securepad" },
   { name: "About Us", href: "/about-us", special: true },
   // { name: "Contact Us", href: "#" },
@@ -31,7 +34,7 @@ function SpecialNav({ onItemClick }) {
     <div className="z-[12] ">
       <header className="absolute inset-x-0 top-0 z-50">
         <nav
-          className="flex items-center justify-between p-6 lg:px-8 "
+          className="flex items-center justify-between p-6 lg:px-8 border-b-2 border-gray-500 "
           aria-label="Global"
         >
           <div className="flex lg:flex-1 lg:ml-[30px]">
@@ -52,7 +55,7 @@ function SpecialNav({ onItemClick }) {
               onClick={() => setMobileMenuOpen(true)}
             >
               <span className="sr-only">Open main menu</span>
-              <Bars3Icon className="h-6 w-6" aria-hidden="true" />
+              <Bars3Icon className="h-6 w-6 text-white" aria-hidden="true" />
             </button>
           </div>
           <div className="hidden lg:flex lg:gap-x-10 items-center  lg:flex-1  lg:justify-end lg:mr-7">

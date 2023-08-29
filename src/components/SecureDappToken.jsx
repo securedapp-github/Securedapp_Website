@@ -1,11 +1,10 @@
 import React from "react";
 import SectionHeader from "./SectionHeader";
 import hero from "../images/securepadicon.png";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const SecureDAppToken = () => {
-
   const SecurePad_Link = () => {
     return (
       <div
@@ -14,14 +13,19 @@ const SecureDAppToken = () => {
       >
         <div className="md:mx-[100px] mx-[25px] md:my-[30px]  mb-[0px] pl-[20px]">
           <div className="text-white md:text-[22px] text-[25px] md:mb-[0px] mb-[10px]  font-semibold font-sans leading-[110%] ">
-          Introducing{" "}
+            Introducing{" "}
             <span className="text-[#12D576] text-opacity-80">SecurePAD</span>,
-            The pioneering zero-fee, security-centric, no-code, cross-chain platform empowering users to create, trade, and oversee the entire token lifecycle.
+            The pioneering zero-fee, security-centric, no-code, cross-chain
+            platform empowering users to create, trade, and oversee the entire
+            token lifecycle.
           </div>
         </div>
         <div className="flex justify-center items-center md:mb-[20px] mb-[50px] md:ml-0 ml-[40px] pr-[30px] ">
-          <button onClick={() => { toast("Coming Soon");}}
-            className=" lg:mt-[50px] md:mb-[10px] md:mt-[5px] mt-[25px] h-[60px] w-[341px] py-2 px-8  border border-transparent text-black  rounded-full [background:linear-gradient(90deg,_#12d576,_#2d5c8f)] shadow-[0px_0px_80px_rgba(18,_213,_118,_0.25)]  text-center font-sans md:text-xl text-xl font-normal leading-normal"
+          <button
+            onClick={() => {
+              toast("Coming Soon");
+            }}
+            className=" lg:mt-[50px] md:mb-[10px] md:mt-[5px] mt-[25px] h-[60px] w-[341px] py-2 px-8  border border-transparent text-black  rounded-full [background:linear-gradient(90deg,_#12d576,_#2d5c8f)] hover:[background:linear-gradient(90deg,_#2d5c8f,_#12d576)] shadow-[0px_0px_80px_rgba(18,_213,_118,_0.25)]  text-center font-sans md:text-xl text-xl font-normal leading-normal"
           >
             Launch SecurePad
           </button>
@@ -32,7 +36,7 @@ const SecureDAppToken = () => {
 
   return (
     <div className="md:pt-[200px] pt-[150px] pt-[0px] audithero">
-        <ToastContainer
+      <ToastContainer
         position="top-center"
         autoClose={2000}
         theme="dark"
@@ -64,7 +68,7 @@ const SecureDAppToken = () => {
           <img src={hero} alt="hero" />
         </div>
       </div>
-      <SecurePad_Link/>
+      <SecurePad_Link />
     </div>
   );
 };
