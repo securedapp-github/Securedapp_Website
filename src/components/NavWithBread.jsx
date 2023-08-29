@@ -12,7 +12,7 @@ const navigation = [
   { name: "SecurePAD", href: "/token-launchpad-Securepad" },
   { name: "About Us", href: "/about-us", special: true },
   // { name: "Contact Us", href: "#" },
-  // { name: "Blog", href: "/blog" },
+  { name: "Blog", href: "https://securedapp.in/blog/", special: true },
 ];
 
 function NavbarWithBread({ onItemClick }) {

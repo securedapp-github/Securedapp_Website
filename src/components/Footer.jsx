@@ -239,7 +239,7 @@ const Footer = () => {
                 Interchain security
               </a>
               <a
-                href="/blog"
+                href="https://securedapp.in/blog/"
                 className="text-[#5F5F5F] transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600"
               >
                 Blog
