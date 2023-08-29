@@ -13,8 +13,12 @@ import DappDevComp from "./components/DappDevComp";
 import SecurePadTokenComp from "./components/SecurePadTokenComp";
 import BlogComp from "./components/BlogComp";
 import TokenomicsComp from "./components/TokenomicsComp";
+import ReactGA from 'react-ga';
+const TRACKING_ID = "G-GXZX7PXY8D"; 
+ReactGA.initialize(TRACKING_ID);
 
 function App() {
+
   const [selectedMenuItem, setSelectedMenuItem] = useState(1);
   const [showScanResult, setShowScanResult] = useState(false);
 
@@ -28,6 +32,11 @@ function App() {
     console.log(selectedMenuItem);
     setShowScanResult(false);
   }, [selectedMenuItem]);
+
+  useEffect(() => {
+    ReactGA.pageview(window.location.pathname + window.location.search);
+  }, []);
+
   return (
     <Routes>
       <Route exact path="/" element={<HomeComp />} />
