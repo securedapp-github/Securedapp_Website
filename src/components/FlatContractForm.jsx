@@ -307,7 +307,7 @@ const FlatContractForm = () => {
                   <input
                     type="email"
                     placeholder="Email"
-                    className="md:w-5/6 w-full bg-transparent rounded-[20px] border placeholder:text-white placeholder:text-[16px] placeholder:font-sans p-3 placeholder:px-2"
+                    className="md:w-5/6 w-full bg-transparent rounded-[20px] border placeholder-text-white placeholder-[16px] placeholder-font-sans p-3 placeholder-px-2 text-white"
                     onChange={handleEmailChange}
                   />
                 </div>
