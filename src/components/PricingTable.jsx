@@ -19,7 +19,7 @@ const PricingTable = () => {
       ];
     
   return (
-    <section className="lg:pt-[180px] md:pt-[160px] pt-[150px] bg-transparent bloghero">
+    <section className="lg:pt-[180px] md:pt-[160px] pt-[150px]  contacthero bg-fixed">
     <div className='lg:px-[80px] md:px-[50px] px-[20px] '>
     <h1 className="text-white font-sans md:text-[64px] text-[50px] font-bold
     leading-[72px]">SecureDApp Smart Contract 

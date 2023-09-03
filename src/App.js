@@ -15,6 +15,7 @@ import BlogComp from "./components/BlogComp";
 import TokenomicsComp from "./components/TokenomicsComp";
 import PricingComp from "./components/PricingComp";
 import ReactGA from 'react-ga';
+import ProfilePricing from "components/ProfilePricing";
 const TRACKING_ID = "G-GXZX7PXY8D"; 
 ReactGA.initialize(TRACKING_ID);
 
@@ -51,7 +52,8 @@ function App() {
       <Route exact path="/tokenomics-design" element={<TokenomicsComp />} />
       <Route exact path="/blog" element={<BlogComp />} />
       <Route exact path="/pricing" element={<PricingComp />} />
-    </Routes>
+      <Route path="/profile_pricing/" element={<ProfilePricing />} />
+      </Routes>
   );
 }
 
