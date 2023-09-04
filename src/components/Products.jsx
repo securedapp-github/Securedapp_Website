@@ -2,6 +2,7 @@ import React from "react";
 import SectionHeader from "./SectionHeader";
 import "../App.css";
 import Subheading from "./Subheading";
+import { Fade } from "react-reveal";
 const ProductCard = {
   products: [
     {
@@ -69,6 +70,7 @@ const Card = ({ heading, description, link }) => {
 
 const Products = () => {
   return (
+    <Fade left>
     <div className="lg:py-[80px] lg:px-[80px] md:p-[70px] p-[50px] product ">
       <SectionHeader content={"SecureDApp’s Products and Services"} />
       <div className="lg:p-[30px] lg:pl-0 md:pt-[30px] pt-[30px] px-[5px]">
@@ -84,6 +86,7 @@ const Products = () => {
         </div>
       </div>
     </div>
+    </Fade>
   );
 };
 
