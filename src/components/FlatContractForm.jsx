@@ -42,6 +42,7 @@ const FlatContractForm = () => {
 
     setLoading(true);
     // await new Promise(resolve => setTimeout(resolve, 5000));
+    // setshowanalyse(true);
     // return;
     let otp = Math.floor(Math.random() * 9000) + 1000;
     setotp(otp);
@@ -331,7 +332,7 @@ const FlatContractForm = () => {
                   <input
                     type="number"
                     placeholder="Enter 4 Digit OTP"
-                    className="md:w-5/6 w-full bg-transparent rounded-[20px] border placeholder:text-white placeholder:text-[16px] placeholder:font-sans p-3 placeholder:px-2 "
+                    className="md:w-5/6 w-full bg-transparent rounded-[20px] border placeholder-text-white placeholder-[16px] placeholder-font-sans p-3 placeholder-px-2 text-white"
                     onChange={(e) => {
                       setenterotp(e.target.value);
                     }}
