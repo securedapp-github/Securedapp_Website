@@ -2,7 +2,8 @@ import React from "react";
 import SectionHeader from "./SectionHeader";
 import "../App.css";
 import Subheading from "./Subheading";
-import { Fade } from "react-reveal";
+import { Fade, Bounce } from "react-reveal";
+
 const ProductCard = {
   products: [
     {
@@ -46,6 +47,7 @@ const ProductCard = {
 
 const Card = ({ heading, description, link }) => {
   return (
+    <Fade left>
     <div
       className=" md:p-8 p-5  rounded-[20px]"
       style={{ background: "rgba(255, 255, 255, 0.05)" }}
@@ -57,6 +59,7 @@ const Card = ({ heading, description, link }) => {
           </h2>
           <Subheading content={description} />
         </div>
+       
         <a
           href={link}
           className="text-[#12D576] font-sans underline font-normal text-xl mt-4 inline-block"
@@ -65,14 +68,15 @@ const Card = ({ heading, description, link }) => {
         </a>
       </div>
     </div>
+    </Fade>
   );
 };
 
 const Products = () => {
   return (
-    <Fade right>
+    
     <div className="lg:py-[80px] lg:px-[80px] md:p-[70px] p-[50px] product ">
-      <SectionHeader content={"SecureDApp’s Products and Services"} />
+    <Fade top delay={200}> <SectionHeader content={"SecureDApp’s Products and Services"} /> </Fade>
       <div className="lg:p-[30px] lg:pl-0 md:pt-[30px] pt-[30px] px-[5px]">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {ProductCard.products.map((product, index) => (
@@ -86,7 +90,7 @@ const Products = () => {
         </div>
       </div>
     </div>
-    </Fade>
+    
   );
 };
 
