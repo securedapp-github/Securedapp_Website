@@ -6,7 +6,7 @@ import himanshu from "../images/himanshu.png";
 import abishek from "../images/abishek.png";
 
 const TeamCard = ({ image, name, designation, description }) => (
-  <div className="w-full md:w-1/2 lg:w-[300px] lg:ml-[25px] mx-[20px] pb-[20px]">
+  <div className="w-full md:w-1/2 lg:w-[300px] lg:ml-[25px] mx-[25px] pb-[20px]">
     <div className="bg-transparent border border-[#3D3D3D] h-[610px] p-0 shadow-md">
       <div className="relative h-[300px] mb-4 bg-[#D9D9D9]">
         <img
@@ -67,7 +67,7 @@ const MeettheTeam = () => {
             Meet the Team
           </h1>
         </div>
-        <div className="flex flex-wrap lg:-mx-7 lg:w-[1450px] ">
+        <div className="flex flex-wrap lg:-mx-7 md:justify-center lg:justify-start lg:w-[1450px] ">
           {teamMembers.map((member, index) => (
             <TeamCard key={index} {...member} />
           ))}
