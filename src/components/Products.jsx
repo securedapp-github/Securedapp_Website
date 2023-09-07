@@ -16,7 +16,7 @@ const ProductCard = {
       heading: "DApp Security Audit",
       description:
         "An automated, thorough and efficient audits of your smart contracts. Eliminate risks of hacks, exploits and front-running attacks from your decentralized apps with a top-tier audit methodology",
-      link: "/dapp-security-audit", //read more link
+      link: "/dapp-security-audit", 
     },
     {
       heading: "DApp Development",
