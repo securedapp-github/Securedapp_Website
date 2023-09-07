@@ -8,37 +8,37 @@ const ProductCard = {
       heading: "Smart Contract Development",
       description:
         "Weprioritize security, ensuring that your decentralized applications are built with the highest level of protection.",
-      link: "/smart-contract-dev", //read more link
+      link: "/smart-contract-development", //read more link
     },
     {
       heading: "DApp Security Audit",
       description:
         "An automated, thorough and efficient audits of your smart contracts. Eliminate risks of hacks, exploits and front-running attacks from your decentralized apps with a top-tier audit methodology",
-      link: "/dapp-security", //read more link
+      link: "/dapp-security-audit", //read more link
     },
     {
       heading: "DApp Development",
       description:
         "SecureDApp is a blockchain security solution that offers a comprehensive range of services for developers building decentralised applications (DApps).",
-      link: "/dapp-dev", //read more link
+      link: "/dapp-development", //read more link
     },
     {
       heading: "Solidity Shield Scanner",
       description:
         "Solidity Shield Scanner is an AI-powered vulnerability detection application that uses static analysis and dynamic analysis to identify potential security vulnerabilities in Solidity smart contracts.",
-      link: "/scan", //read more link
+      link: "/smart-contract-scanner-solidity-shield", //read more link
     },
     {
       heading: "SecurePAD's Token Launchpad",
       description:
         "SecurePAD is the world's first zero-fee, security-prominent, no-code, and cross-chain platform for anyone to create, trade, and manage the end-to-end lifecycle of a token.",
-      link: "/SecurePAD", //read more link
+      link: "/token-launchpad-Securepad", //read more link
     },
     {
       heading: "Tokenomics Design,  Development & Audit",
       description:
         "SecureDApp provides tokenomics design, development, and audit services to help businesses create and launch successful token-based projects.",
-      link: "/tokenomics", //read more link
+      link: "/tokenomics-design", //read more link
     },
   ],
 };
@@ -46,10 +46,9 @@ const ProductCard = {
 const Card = ({ heading, description, link }) => {
   return (
     <div
-      className=" md:p-8 p-5  rounded-[20px]"
-      style={{ background: "rgba(255, 255, 255, 0.05)" }}
+      className="md:p-8 p-5 rounded-[20px] bg-[rgba(255,255,255,0.05)] transition-all hover:scale-105 hover:bg-[rgba(255,255,255,0.1)] transform"
     >
-      <div className=" h-full flex flex-col justify-between rounded-lg overflow-hidden">
+      <div className="h-full flex flex-col justify-between rounded-lg overflow-hidden">
         <div>
           <h2 className="md:text-2xl text-xl text-white font-sans leading-[100%] font-bold mb-4">
             {heading}
@@ -66,6 +65,7 @@ const Card = ({ heading, description, link }) => {
     </div>
   );
 };
+
 
 const Products = () => {
   return (
