@@ -1,11 +1,11 @@
 import React from "react";
 import SectionHeader from "./SectionHeader";
 import Marquee from "react-fast-marquee"
-import logo1 from "../logo1.png"
-import logo2 from "../logo2.png"
-import logo3 from "../logo3.png"
-import logo4 from "../logo4.png"
-import logo5 from "../logo5.png"
+import client1 from "../client1.png"
+import client2 from "../client2.png"
+import client3 from "../client3.png"
+import client4 from "../client4.png"
+import client5 from "../client5.png"
 
 import clientLogo from "../clientlogos.png";
 
@@ -23,19 +23,19 @@ const Clients = () => {
      
       <Marquee>
   <div>
-    <img src={logo1} alt="logo1" className="w-50 h-16" />
+    <img src={client1} alt="client1" className="w-50 h-16" />
   </div>
   <div>
-    <img src={logo2} alt="logo2" className="w-50 h-16" />
+    <img src={client2} alt="client2" className="w-50 h-16" />
   </div>
   <div>
-    <img src={logo3} alt="logo3" className="w-50 h-16" />
+    <img src={client3} alt="client3" className="w-50 h-16" />
   </div>
   <div>
-    <img src={logo4} alt="logo4" className="w-50 h-16"/>
+    <img src={client4} alt="clien4" className="w-50 h-16"/>
   </div>
   <div>
-    <img src={logo5} alt="logo5" className="w-50 h-16" />
+    <img src={client5} alt="client5" className="w-50 h-16" />
   </div>
 </Marquee>
 
