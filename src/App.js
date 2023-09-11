@@ -13,9 +13,9 @@ import DappDevComp from "./components/DappDevComp";
 import SecurePadTokenComp from "./components/SecurePadTokenComp";
 import BlogComp from "./components/BlogComp";
 import TokenomicsComp from "./components/TokenomicsComp";
-import ReactGA from 'react-ga';
-const TRACKING_ID = "G-GXZX7PXY8D"; 
-ReactGA.initialize(TRACKING_ID);
+// import ReactGA from 'react-ga';
+// const TRACKING_ID = "G-GXZX7PXY8D"; 
+// ReactGA.initialize(TRACKING_ID);
 
 function App() {
 
@@ -33,9 +33,9 @@ function App() {
     setShowScanResult(false);
   }, [selectedMenuItem]);
 
-  useEffect(() => {
-    ReactGA.pageview(window.location.pathname + window.location.search);
-  }, []);
+  // useEffect(() => {
+  //   ReactGA.pageview(window.location.pathname + window.location.search);
+  // }, []);
 
   return (
     <Routes>

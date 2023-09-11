@@ -59,12 +59,7 @@ const FooterInScan = () => {
             </h3>
 
             <div className="flex flex-col items-start mt-4 space-y-4">
-              <a
-                href="/smart-contract-scanner-solidity-shield"
-                className="text-[#fff] font-normal leading-[170%]  transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600"
-              >
-                Solidity Shield
-              </a>
+             
               <a
                 href="/"
                 className="text-[#fff] font-normal leading-[170%]  transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600"
@@ -104,6 +99,13 @@ const FooterInScan = () => {
               >
                 Cancellation and Refunds
               </a>
+              <a
+                href="https://securedapp.gitbook.io/securedapp-launchpad/pricing-policy"
+                target="_blank"
+                className="text-[#5F5F5F] transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600"
+              >
+                Pricing Policy
+              </a>
             </div>
           </div>
 
@@ -118,6 +120,12 @@ const FooterInScan = () => {
                 className="text-[#fff] font-normal leading-[170%]  transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600"
               >
                 Search
+              </a>
+              <a
+                href="/smart-contract-scanner-solidity-shield"
+                className="text-[#fff] font-normal leading-[170%]  transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600"
+              >
+                Solidity Shield
               </a>
               <a
                 href="/"
