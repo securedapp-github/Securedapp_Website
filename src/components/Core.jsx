@@ -32,7 +32,10 @@ const Card = ({ image, heading, content }) => {
   return (
     <div className="p-4 md:px-[10px]">
       <div className="bg-transparent border-0">
-        <img src={image} alt="" className=" mb-4" />
+        {/* Add a container div with a hover effect */}
+        <div className="image-container hover:scale-105 transition-transform">
+          <img src={image} alt="" className="mb-4" />
+        </div>
         <h2 className="md:text-2xl text-xl text-white font-sans leading-[100%] font-bold mb-4">
           {heading}
         </h2>
@@ -41,6 +44,7 @@ const Card = ({ image, heading, content }) => {
     </div>
   );
 };
+
 
 const Core = () => {
   return (

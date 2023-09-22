@@ -4,8 +4,8 @@ const BlogCard = ({ topic, date, title, link }) => {
   return (
     <a href={link} className="lg:mx-0 mx-2">
       <div className="blogimg flex flex-col justify-between lg:px-0 px-7 ">
-        <div className="w-[200px] h-[25px] bg-black bg-opacity-90 mt-[14px] lg:mx-[14px]   flex justify-center items-center rounded-[36px]">
-          <span className="text-white font-sans text-[15px] font-normal leading-normal">
+        <div className="w-[200px] h-[25px] bg-blue-600 bg-opacity-90 mt-[14px] lg:mx-[14px]  flex justify-center items-center rounded-lg">
+          <span className="text-white font-sans text-[13px] font-normal leading-normal">
             {topic}
           </span>
         </div>
@@ -32,53 +32,75 @@ const BlogHero = () => {
   const blogs = [
     {
       id: 1,
-      topic: "NFT, TOKEN, TOKEN SALES",
+      topic: "SMART CONTRACTS, TOKEN",
       date: "June 30, 2023",
       title: "Blits Estates: The Future of Real Estate Investing",
-      link: "#",
+      link: "https://securedapp.in/blits-estates-the-future-of-real-estate-investing/",
     },
     {
       id: 2,
       topic: "NFT, TOKEN, TOKEN SALES",
       date: "June 16, 2023",
       title: "How Does Fractional Investment Work? And What Are Its Benefits?",
-      link: "#",
+      link: "https://securedapp.in/how-does-fractional-investment-work-and-what-are-its-benefits/",
     },
     {
       id: 3,
-      topic: "NFT, TOKEN, TOKEN SALES",
+      topic: "TOKEN, TOKEN SALES",
       date: "June 8, 2023",
       title: "How To Design Tokenomics For Your Cryptocurrency: The Basics Of Creating Your Token",
-      link: "#",
+      link: "https://securedapp.in/how-to-design-tokenomics-for-your-cryptocurrency-the-basics-of-creating-your-token/",
     },
     {
       id: 4,
-      topic: "NFT, TOKEN, TOKEN SALES",
+      topic: "TOKEN, WHITEPAPER",
       date: "May 31, 2023",
       title: "SAFT: Revolutionizing Token Sales with a Secure Investment Model",
-      link: "#",
+      link: "https://securedapp.in/saft-revolutionizing-token-sales-with-a-secure-investment-model/",
     },
     {
       id: 5,
-      topic: "NFT, TOKEN, TOKEN SALES",
+      topic: "TOKEN, TOKEN SALES",
       date: "May 21, 2023",
       title: "Token Launchpads: A Guide for Investors",
-      link: "#",
+      link: "https://securedapp.in/token-launchpads-a-guide-for-investors/",
     },
     {
       id: 6,
-      topic: "NFT, TOKEN, TOKEN SALES",
+      topic: "TOKEN, TOKEN SALES",
       date: "May 12, 2023",
       title: "Token Offerings 101: An Overview of ICOs, STOs, IDOs, and More",
-      link: "#",
+      link: "https://securedapp.in/token-offerings-101-an-overview-of-icos-stos-idos-and-more/",
     },
     {
       id: 7,
-      topic: "NFT, TOKEN, TOKEN SALES",
+      topic: "MARKET RESERCH",
       date: "May 3, 2023",
       title: "The Future of DApps: Trends to Watch in 2023 and Beyond",
-      link: "#",
+      link: "https://securedapp.in/the-future-of-dapps/",
     },
+    {
+      id: 8,
+      topic: "SMART CONTRACTS",
+      date: "April 26, 2023",
+      title: "Introduction to ZKEVM and its Applications",
+      link: "https://securedapp.in/introduction-to-zkevm-and-its-applications/",
+    },
+    {
+      id: 9,
+      topic: "SMART CONTRACTS",
+      date: "April 20, 2023",
+      title: "What is Tronscan smart contract and how does it work",
+      link: "https://securedapp.in/what-is-tronscan-smart-contract-and-how-does-it-work/",
+    },
+    {
+      id: 10,
+      topic: "SMART CONTRACT, WHITEPAPER",
+      date: "April 18, 2023",
+      title: "The Global Landscape of smart Contract Audits",
+      link: "https://securedapp.in/the-global-landscape-of-smart-contract-audits/",
+    },
+
     // Add more blog data objects
   ];
   return (
@@ -98,7 +120,8 @@ const BlogHero = () => {
         </div>
       </div>
 
-      <div className="lg:pt-[50px] lg:mx-[80px] flex lg:flex-row flex-col-reverse lg:pb-[0px] ">
+      <div className="lg:pt-[50px] lg:mx-[60px] flex lg:flex-row flex-col-reverse
+      m-0.5 lg:pb-[0px] ">
         <div className="flex w-8/12 flex-wrap gap-[40px]">
           {blogs.map((blog) => (
             <BlogCard
@@ -133,9 +156,7 @@ const BlogHero = () => {
         </div>
       </div>
       <div className="mx-[100px] py-[90px]">
-        <span className="text-white font-sans text-[24px] font-normal leading-[170%]">
-          older
-        </span>
+        
       </div>
     </div>
   );

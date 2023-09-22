@@ -46,10 +46,9 @@ const ProductCard = {
 const Card = ({ heading, description, link }) => {
   return (
     <div
-      className=" md:p-8 p-5  rounded-[20px]"
-      style={{ background: "rgba(255, 255, 255, 0.05)" }}
+      className="md:p-8 p-5 rounded-[20px] bg-[rgba(255,255,255,0.05)] transition-all hover:scale-105 hover:bg-[rgba(255,255,255,0.1)] transform"
     >
-      <div className=" h-full flex flex-col justify-between rounded-lg overflow-hidden">
+      <div className="h-full flex flex-col justify-between rounded-lg overflow-hidden">
         <div>
           <h2 className="md:text-2xl text-xl text-white font-sans leading-[100%] font-bold mb-4">
             {heading}
@@ -66,6 +65,7 @@ const Card = ({ heading, description, link }) => {
     </div>
   );
 };
+
 
 const Products = () => {
   return (

@@ -8,8 +8,9 @@ const navigation = [
   { name: "Solidity Shield Scan", href: "/smart-contract-scanner-solidity-shield" },
   { name: "SecurePAD", href: "/token-launchpad-Securepad" },
   { name: "About Us", href: "/about-us", special: true },
+  
   // { name: "Contact Us", href: "#" },
-  // { name: "Blog", href: "/blog" },
+  { name: "Blog", href: "/blog", special: true },
 ];
 
 function Navbar({ onItemClick }) {

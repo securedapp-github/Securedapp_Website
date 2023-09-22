@@ -32,6 +32,7 @@ const HomeComp = () => {
       <FAQ />
       <Transmission />
       <Footer />
+      
     </>
   );
 };
