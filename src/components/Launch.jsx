@@ -44,7 +44,7 @@ const Launch = () => {
             style={{
               height: "500px",
               // marginTop: "50px",
-              margin: "50px auto 0 auto",
+              margin: "0px auto 0 auto",
               width: "500px",
               position: "relative",
               left: "50%",
