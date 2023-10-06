@@ -6,10 +6,12 @@ import Loader from "utils/loader";
 import image1 from "../realestateperson.png";
 import jsPDF from 'jspdf';
 import autoTable from 'jspdf-autotable';
+import Modal from "react-modal";
+import QRCode from 'qrcode.react';
 
 const FlatContractForm = () => {
   const [showverify, setshowverify] = useState(false); // for otp verify screen options
-  // const [otp, setotp] = useState(0);
+  const [modalOpen, setModalOpen] = useState(false);
   const [enterotp, setenterotp] = useState(0);
   const [loading, setLoading] = useState(false);
   const [showFileUpload, setshowFileUpload] = useState(false);
@@ -47,6 +49,58 @@ const FlatContractForm = () => {
   const [erc, seterc] = useState("");
   const [total, settotal] = useState(0);
 
+  //Invoice States
+  const [planid, setplanid] = useState(0);
+  const [paymentid, setpaymentid] = useState(0);
+  const [paymentaddress, setpaymentaddress] = useState("");
+  const [paymentamount, setpaymentamount] = useState(0);
+
+
+  const customStyles = {
+    overlay: {
+      backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    },
+    content: {
+      width: '500px',
+      margin: 'auto',
+      border: '1px solid #ccc',
+      background: '#fff',
+      borderRadius: '4px',
+      boxShadow: '0 2px 10px rgba(0, 0, 0, 0.1)',
+      textAlign: 'center',
+    },
+    header: {
+      background: '#000000', // Set the background color for the header strip
+      color: '#fff', // Set the text color for the header strip
+      padding: '10px', // Add some padding to the header strip
+      borderTopLeftRadius: '4px',
+      borderTopRightRadius: '4px'
+    },
+    paymentDetails: {
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center', // Center-align the content horizontally
+    },
+    verifyButton: {
+      backgroundColor: '#4CAF50', // Background color for the "Verify" button
+      color: '#fff', // Text color for the "Verify" button
+      border: 'none',
+      padding: '10px 20px',
+      margin: '25px',
+      borderRadius: '4px',
+      cursor: 'pointer',
+    },
+    closeButton: {
+      backgroundColor: '#d9534f', // Background color for the "Close Modal" button
+      color: '#fff', // Text color for the "Close Modal" button
+      border: 'none',
+      padding: '10px 20px',
+      margin: '5px',
+      borderRadius: '4px',
+      cursor: 'pointer',
+    }
+  };
+
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
   };
@@ -58,7 +112,6 @@ const FlatContractForm = () => {
   const sendOTP = async () => {
 
     setLoading(true);
-
     setshowsendotp(false);
     setshowverify(true);
     setLoading(false);
@@ -407,7 +460,7 @@ const FlatContractForm = () => {
   }
 
   const HistorySection = () => {
-   
+
 
     return (
       <section className=' pt-[0px] lg:px-[80px] md:px-[50px] px-[20px] pb-[70px] '>
@@ -497,8 +550,8 @@ const FlatContractForm = () => {
                           downloadReport(row.id);
                         }}
                       >
-                          Download Report
-                        </a>
+                        Download Report
+                      </a>
                     </td>
                   </tr>
                 ))}
@@ -512,28 +565,76 @@ const FlatContractForm = () => {
   }
 
   const PurchasePlan = async (planid) => {
+
     setLoading(true);
 
-  let text = "Activate Plan";
-  if (window.confirm(text) == true) {
+    let cost = 0;
+    if (planid == 1) cost = 69;
+    if (planid == 2) cost = 199;
+    if (planid == 3) cost = 1000;
 
- 
-  
+    if (cost > 0) {
+      setplanid(planid);
+      fetch('https://api.nowpayments.io/v1/payment', {
+        method: "POST",
+        body: JSON.stringify({
+          "price_amount": cost,
+          "price_currency": "usd",
+          "pay_currency": "USDTMATIC",
+          "pay_amount": cost,
+          "order_description": "Purchase of Plan " + planid,
+          "is_fixed_rate": true,
+          "is_fee_paid_by_user": false
+        }),
+        headers: {
+          "x-api-key": "F2TDXCK-K0Q4N8J-JWSHQW1-P5AM1RH",
+          "Content-type": "application/json",
+        },
+      })
+        .then((res) => { console.log(res); return res.json(); })
+        .then((data) => {
+          console.log(2);
+          console.log(data);
+          setpaymentid(data.payment_id);
+          setpaymentaddress(data.pay_address);
+          setpaymentamount(data.pay_amount);
+          setModalOpen(true);
+          toast.success("Invoice Generated Successfully");
+          setLoading(false);
+        })
+        .catch((err) => {
+          console.log(err.message);
+          setLoading(false);
+          toast("Error in Invoice gGneration, Try again");
+        });
+    }
 
-    fetch('http://127.0.0.1:8000/updatePlan', {
+  }
+
+  const verifyInvoice = async () => {
+    setLoading(true);
+
+    fetch('http://127.0.0.1:8000/updatePayment', {
       // fetch("https://139-59-5-56.nip.io:3443/updatePlan", {
       method: "POST",
       body: JSON.stringify({
         mail: email,
+        paymentid: paymentid,
         planid: planid
       }),
       headers: {
         "Content-type": "application/json",
+        "x-api-key": "F2TDXCK-K0Q4N8J-JWSHQW1-P5AM1RH"
       },
     })
-      .then((res) => { })
+      .then((res) => { return res.json(); })
       .then((data) => {
-        toast.success("Plan Activated Successfully");
+        console.log(data);
+        if(data.success){
+          toast.success("Plan Activated Successfully");
+        }else{
+          toast("Plan Activation Failed");
+        }
         setLoading(false);
         setTimeout(function () { window.location.reload(true); }, 5000);
       })
@@ -542,11 +643,7 @@ const FlatContractForm = () => {
         setLoading(false);
         toast("Error in activating plan, Try again");
       });
-
-    }else{
-      setLoading(false);
-    }
-    
+  
   }
 
   const Plans = () => {
@@ -606,9 +703,9 @@ const FlatContractForm = () => {
                 <div className="w-1/5 lg:py-2 md:py-6 px-4 border text-center text-white font-sans md:text-[36px] text-[25px] font-bold leading-normal flex justify-center items-center "><h1> Plans </h1></div>
                 <div className="w-1/5 py-2 px-4 border text-center flex flex-col items-center "><h1 className='text-white font-sans md:text-[22px] text-[15px] font-bold leading-[27px] text-center '> Base Plan</h1>
                   <h1 className='text-white font-sans md:text-[36px] text-[25px] font-bold leading-[27px] text-center lg:py-[32px] md:py-[45px] py-[50px]'> Free</h1>
-                  <button 
-                                   onClick={() => setshowFileUpload(!showFileUpload)}
-                  className='bg-[#00C767] text-white flex md:px-[15px] py-[10px] justify-center rounded-[4px] text-center'> Choose This Plan
+                  <button
+                    onClick={() => setshowFileUpload(!showFileUpload)}
+                    className='bg-[#00C767] text-white flex md:px-[15px] py-[10px] justify-center rounded-[4px] text-center'> Choose This Plan
                   </button>
                 </div>
                 <div className="w-1/5 py-2 px-4 border text-center flex flex-col items-center "><h1 className='text-white font-sans md:text-[22px] text-[15px] font-bold leading-[27px] text-center '> Plus Plan</h1>
@@ -616,10 +713,10 @@ const FlatContractForm = () => {
                     <span className='text-white font-sans text-[13px] font-medium leading-[27px] text-center py-[2px] block '> $ 11.5 / Scan</span>
                   </h1>
 
-                  <button 
-                                    onClick={() => {PurchasePlan(1)}}
+                  <button
+                    onClick={() => { PurchasePlan(1) }}
 
-                  className='bg-[#00C767] text-white flex md:px-[15px]  py-[10px] justify-center rounded-[4px] text-center'> Choose This Plan
+                    className='bg-[#00C767] text-white flex md:px-[15px]  py-[10px] justify-center rounded-[4px] text-center'> Choose This Plan
                   </button>
                 </div>
 
@@ -629,10 +726,10 @@ const FlatContractForm = () => {
                     </span> </span></h1>
 
 
-                  <button 
-                                    onClick={() => {PurchasePlan(2)}}
+                  <button
+                    onClick={() => { PurchasePlan(2) }}
 
-                  className='bg-[#00C767] text-white flex md:px-[15px] py-[10px] justify-center rounded-[4px] text-center'> Choose This Plan
+                    className='bg-[#00C767] text-white flex md:px-[15px] py-[10px] justify-center rounded-[4px] text-center'> Choose This Plan
                   </button>
                 </div>
                 <div className="w-1/5 py-2 px-4 border text-center flex flex-col items-center "><h1 className='text-white font-sans md:text-[22px] text-[15px] font-bold leading-[27px] text-center '>Enterprise Plan</h1>
@@ -640,9 +737,9 @@ const FlatContractForm = () => {
                     <span className='text-white font-sans text-[13px] font-medium leading-[27px] text-center py-[2px] block'> Exclusive</span>
                   </h1>
 
-                  <button 
-                  onClick={() => {PurchasePlan(3)}}
-                  className='bg-[#00C767] text-white flex md:px-[15px] py-[10px] justify-center rounded-[4px] text-center'> Choose This Plan
+                  <button
+                    onClick={() => { PurchasePlan(3) }}
+                    className='bg-[#00C767] text-white flex md:px-[15px] py-[10px] justify-center rounded-[4px] text-center'> Choose This Plan
                   </button>
                 </div>          </div>
               {plans.map((plan, index) => (
@@ -818,75 +915,75 @@ const FlatContractForm = () => {
 
     // Vulnerabilities Found
 
-    if(reportData[1] != null) {
+    if (reportData[1] != null) {
 
-    pdf.addPage();
-    pdf.setFontSize(18);
-    pdf.setFont("times", "bold"); // Set font to bold
-    pdf.text('Vulnerabilities Found', 78, 35);
+      pdf.addPage();
+      pdf.setFontSize(18);
+      pdf.setFont("times", "bold"); // Set font to bold
+      pdf.text('Vulnerabilities Found', 78, 35);
 
-    let startY = 40;
-    [1, 2, 3, 4, 5].forEach((index) => {
-      if (reportData[index] && Object.keys(reportData[index]).length > 0) {
-        let headString = '';
-        switch (index) {
-          case 1:
-            headString = 'CRITICAL';
-            break;
-          case 2:
-            headString = 'MEDIUM';
-            break;
-          case 3:
-            headString = 'LOW';
-            break;
-          case 4:
-            headString = 'INFORMATIONAL';
-            break;
-          case 5:
-            headString = 'OPTIMIZATIONS';
-            break;
+      let startY = 40;
+      [1, 2, 3, 4, 5].forEach((index) => {
+        if (reportData[index] && Object.keys(reportData[index]).length > 0) {
+          let headString = '';
+          switch (index) {
+            case 1:
+              headString = 'CRITICAL';
+              break;
+            case 2:
+              headString = 'MEDIUM';
+              break;
+            case 3:
+              headString = 'LOW';
+              break;
+            case 4:
+              headString = 'INFORMATIONAL';
+              break;
+            case 5:
+              headString = 'OPTIMIZATIONS';
+              break;
+          }
+          // const vulnerabilitiesData = Object.entries(reportData[index]).map(([type, locations]) => [type, locations.join(', ')]);
+          const vulnerabilitiesData = Object.entries(reportData[index]).map(([type, locations]) => {
+            // Remove "contracts/" prefix from each location string if present
+            const cleanedLocations = locations.map(location => location.replace(/^contracts\//, ''));
+            return [type, cleanedLocations.join(', ')];
+          });
+
+          pdf.autoTable({
+            head: [[headString, 'Locations']],
+            body: vulnerabilitiesData,
+            startY: startY,
+            styles: { fillColor: [211, 211, 211] },
+            headStyles: { fillColor: [4, 170, 109] },
+          });
+          startY = pdf.previousAutoTable.finalY + 10;
         }
-        // const vulnerabilitiesData = Object.entries(reportData[index]).map(([type, locations]) => [type, locations.join(', ')]);
-        const vulnerabilitiesData = Object.entries(reportData[index]).map(([type, locations]) => {
-          // Remove "contracts/" prefix from each location string if present
-          const cleanedLocations = locations.map(location => location.replace(/^contracts\//, ''));
-          return [type, cleanedLocations.join(', ')];
-        });
+      });
 
-        pdf.autoTable({
-          head: [[headString, 'Locations']],
-          body: vulnerabilitiesData,
-          startY: startY,
-          styles: { fillColor: [211, 211, 211] },
-          headStyles: { fillColor: [4, 170, 109] },
-        });
-        startY = pdf.previousAutoTable.finalY + 10;
-      }
-    });
-
-    pdf.addImage(logo, 'JPEG', 10, 11, 10, 10);
-    pdf.setFontSize(13);
-    pdf.setFont("times", "bold");
-    pdf.text("SecureDApp", 21, 19);
-    pdf.text(date, 180, 15);
+      pdf.addImage(logo, 'JPEG', 10, 11, 10, 10);
+      pdf.setFontSize(13);
+      pdf.setFont("times", "bold");
+      pdf.text("SecureDApp", 21, 19);
+      pdf.text(date, 180, 15);
 
 
-    pdf.text(date, 180, 15);
-    pdf.setDrawColor(0, 128, 0);
-    pdf.line(10, linePositionY, 200, linePositionY);
-    pdf.setDrawColor(0, 128, 0);
-    pdf.line(10, 270, 200, 270);
-    pdf.setFontSize(10);
-    pdf.setFont("times", "bold");
-    pdf.setTextColor(100, 100, 100);
-    pdf.text(date, 180, 275);
-    pdf.text('SecureDapp', 10, 275);
-    pdf.setFont("times", "normal");
-    pdf.text('235, 2nd & 3rd Floor, 13th Cross Rd, Indira Nagar II Stage,', 10, 280, null, null, 'left');
-    pdf.text('Hoysala Nagar, Indiranagar, Bengaluru, Karnataka 560038', 10, 285, null, null, 'left');
-    pdf.text('hello@securedapp.in', 10, 290, null, null, 'left');
+      pdf.text(date, 180, 15);
+      pdf.setDrawColor(0, 128, 0);
+      pdf.line(10, linePositionY, 200, linePositionY);
+      pdf.setDrawColor(0, 128, 0);
+      pdf.line(10, 270, 200, 270);
+      pdf.setFontSize(10);
+      pdf.setFont("times", "bold");
+      pdf.setTextColor(100, 100, 100);
+      pdf.text(date, 180, 275);
+      pdf.text('SecureDapp', 10, 275);
+      pdf.setFont("times", "normal");
+      pdf.text('235, 2nd & 3rd Floor, 13th Cross Rd, Indira Nagar II Stage,', 10, 280, null, null, 'left');
+      pdf.text('Hoysala Nagar, Indiranagar, Bengaluru, Karnataka 560038', 10, 285, null, null, 'left');
+      pdf.text('hello@securedapp.in', 10, 290, null, null, 'left');
 
-  }
+    }
 
     // Disclaimer and Contact Us
     pdf.addPage();
@@ -1105,6 +1202,31 @@ const FlatContractForm = () => {
         {showPlans && (<>
           <HistorySection /> <Plans />
         </>)}
+
+        <Modal
+          isOpen={modalOpen}
+          onRequestClose={() => setModalOpen(false)}
+          style={customStyles}
+        >
+          <div style={customStyles.header}>
+            <h2>Secure Payment Gateway</h2>
+          </div>
+          <div style={customStyles.paymentDetails}>
+            <h3>Payment Details</h3>
+            <div style={{ marginTop: '10px' }} >
+              <QRCode value={paymentaddress} />
+            </div>
+            <p>Web3 Address: {paymentaddress}</p>
+            <p>Amount: {paymentamount} : "USDT"</p>
+            <p>Chain: Polygon Mainnet</p>
+          </div>
+          <div>
+            <button style={customStyles.verifyButton} onClick={() => verifyInvoice()}>Verify</button>
+            <button style={customStyles.verifyButton} onClick={() => setModalOpen(false)}>Close Modal</button>
+          </div>
+
+
+        </Modal>
 
       </div>
 
