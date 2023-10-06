@@ -13,6 +13,8 @@ import t4 from "../images/tokend4.png";
 import t5 from "../images/tokend5.png";
 import t6 from "../images/tokend6.png";
 import t7 from "../images/tokend7.png";
+import {Helmet} from "react-helmet";
+
 const TokenomicsComp = () => {
   const [selectedMenuItem, setSelectedMenuItem] = useState(1);
 
@@ -21,6 +23,10 @@ const TokenomicsComp = () => {
   };
   return (
     <>
+      <Helmet>
+            <title>SecureDApp: Expert Tokenomics Design, Development & Audit Services</title>
+            <meta name="description" content="SecureDApp offers comprehensive tokenomics design, development, and audit services tailored for blockchain-based projects. With a team of experts, we ensure your token economy aligns with business goals, attracts investors, and stands strong in the market." />
+        </Helmet>
       <Navbar onItemClick={handleMenuItemClick} />
       <TokenFirstSec />
 
