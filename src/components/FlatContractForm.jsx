@@ -112,9 +112,12 @@ const FlatContractForm = () => {
   const sendOTP = async () => {
 
     setLoading(true);
+    
     // setshowsendotp(false);
     // setshowverify(true);
     // setLoading(false);
+    // await new Promise(resolve => setTimeout(resolve, 5000));
+    // setshowanalyse(true);
     // return;
 
 

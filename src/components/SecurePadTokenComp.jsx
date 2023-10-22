@@ -12,6 +12,8 @@ import t5 from "../images/tokenb5.png";
 import tw1 from "../images/tokenwork1.png";
 import tw2 from "../images/tokenwork2.png";
 import SectionHeader from "./SectionHeader";
+import {Helmet} from "react-helmet";
+
 const SecurePadTokenComp = () => {
   const [selectedMenuItem, setSelectedMenuItem] = useState(1);
 
@@ -20,6 +22,10 @@ const SecurePadTokenComp = () => {
   };
   return (
     <>
+       <Helmet>
+            <title>SecurePAD: The Premier No-Code, Zero-Fee, Cross-Chain Token Launchpad</title>
+            <meta name="description" content="Introducing SecurePAD, the world's pioneering zero-fee, security-centric, no-code, cross-chain token launchpad. Empower your projects with KYC verification, smart contract auditing, and the ability to launch tokens on multiple blockchains without any coding experience." />
+        </Helmet>
       <Navbar onItemClick={handleMenuItemClick} />
       <SecureDAppToken />
       <div className="features ">

@@ -9,6 +9,8 @@ import Navbar from "./Navbar";
 import SmartContractDevhero from "./SmartContractDevhero";
 import SpecialNav from "./SpecialNav";
 import SmartContractWorkflow from "./SmartContractWorkflow";
+import {Helmet} from "react-helmet";
+
 const SmartContractdev = () => {
   const [selectedMenuItem, setSelectedMenuItem] = useState(1);
 
@@ -17,6 +19,10 @@ const SmartContractdev = () => {
   };
   return (
     <>
+     <Helmet>
+            <title>SecureDApp: Expertise in Smart Contract Development & Security</title>
+            <meta name="description" content="SecureDApp specializes in smart contract development and security, offering consulting, development, auditing, and testing services. Dive into comprehensive blockchain security solutions and secure your Web3 journey with SecureDApp." />
+        </Helmet>
       <SpecialNav onItemClick={handleMenuItemClick} />
       <SmartContractDevhero />
       <SmartContractWorkflow />

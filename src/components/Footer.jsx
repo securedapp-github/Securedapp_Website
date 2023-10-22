@@ -53,6 +53,13 @@ const Footer = () => {
               >
                 Career
               </a>
+              <a
+                href="https://securedapp.gitbook.io/securedapp-launchpad/contact-us"
+                target="_blank"
+                className="text-[#5F5F5F] transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600"
+              >
+                Contact Us
+              </a>
             </div>
           </div>
 
@@ -62,12 +69,7 @@ const Footer = () => {
             </h3>
 
             <div className="flex flex-col items-start mt-4 space-y-4">
-              <a
-                href="/smart-contract-scanner-solidity-shield"
-                className="text-[#5F5F5F] transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600"
-              >
-                Solidity Shield
-              </a>
+              
               <a
                 href="#"
                 className="text-[#5F5F5F] transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600"
@@ -81,13 +83,7 @@ const Footer = () => {
               >
                 Our Services
               </a>
-              <a
-                href="https://securedapp.gitbook.io/securedapp-launchpad/privacy-policy"
-                target="_blank"
-                className="text-[#5F5F5F] transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600"
-              >
-                Privacy Policy
-              </a>
+            
               <a
                 href="https://securedapp.gitbook.io/securedapp-launchpad/workplace-policy"
                 target="_blank"
@@ -101,6 +97,28 @@ const Footer = () => {
                 className="text-[#5F5F5F] transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600"
               >
                 Our Mission & Core values
+              </a>
+              <a
+                href="https://securedapp.gitbook.io/securedapp-launchpad/shipping-and-delivery-policy"
+                target="_blank"
+                className="text-[#5F5F5F] transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600"
+              >
+                Shipping & Delivery Policy
+              </a>
+              
+              <a
+                href="https://securedapp.gitbook.io/securedapp-launchpad/cancellation-and-refund-policy"
+                target="_blank"
+                className="text-[#5F5F5F] transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600"
+              >
+                Cancellation and Refunds
+              </a>
+              <a
+                href="https://securedapp.gitbook.io/securedapp-launchpad/pricing-policy"
+                target="_blank"
+                className="text-[#5F5F5F] transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600"
+              >
+                Pricing Policy
               </a>
             </div>
           </div>
@@ -119,6 +137,12 @@ const Footer = () => {
                 Search
               </a>
               <a
+                href="/smart-contract-scanner-solidity-shield"
+                className="text-[#5F5F5F] transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600"
+              >
+                Solidity Shield
+              </a>
+              <a
                 href="https://securedapp.gitbook.io/securedapp-launchpad"
                 target="_blank"
                 className="text-[#5F5F5F] transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600"
@@ -132,7 +156,7 @@ const Footer = () => {
               >
                 Wallet
               </a>
-              <a
+            {/*   <a
                 href="https://securedapp.gitbook.io/securedapp-launchpad"
                 target="_blank"
                 className="text-[#5F5F5F] transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600"
@@ -152,14 +176,14 @@ const Footer = () => {
                 className="text-[#5F5F5F] transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600"
               >
                 News
-              </a>
-              <a
+              </a> */}
+              {/* <a
                 href="https://securedapp.gitbook.io/securedapp-launchpad"
                 target="_blank"
                 className="text-[#5F5F5F] transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600"
               >
                 Playlist
-              </a>
+              </a> */}
               <a
                 href="https://securedapp.gitbook.io/securedapp-launchpad"
                 target="_blank"
@@ -266,7 +290,7 @@ const Footer = () => {
           </div>
           <div className="flex items-center space-x-4 py-[20px] lg:py-[0px] text-white">
             <a
-              href="https://securedapp.gitbook.io/securedapp-launchpad/t-and-c"
+              href="https://securedapp.gitbook.io/securedapp-launchpad/terms-and-conditions"
               target="_blank"
               className="text-[#5F5F5F] px-[20px] hover:text-blue-600 transition-colors duration-200"
             >
@@ -274,7 +298,7 @@ const Footer = () => {
             </a>{" "}
             |
             <a
-              href="https://securedapp.gitbook.io/securedapp-launchpad/privacy-policy"
+              href="https://securedapp.gitbook.io/securedapp-launchpad/privacy-policy-securedapp"
               target="_blank"
               className="text-[#5F5F5F] px-[20px] hover:text-blue-600 transition-colors duration-200"
             >
@@ -319,6 +343,8 @@ const Footer = () => {
             </a>
           </div>
         </div>
+        <div className=" flex flex-col items-center justify-between  sm:flex-row  text-[#5F5F5F] px-[20px]">Powered By VettedCode Technologies India Pvt. Ltd.</div>
+
       </div>
     </footer>
   );
