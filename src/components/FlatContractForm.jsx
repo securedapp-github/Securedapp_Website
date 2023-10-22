@@ -112,7 +112,7 @@ const FlatContractForm = () => {
   const sendOTP = async () => {
 
     setLoading(true);
-    
+
     // setshowsendotp(false);
     // setshowverify(true);
     // setLoading(false);
@@ -121,8 +121,8 @@ const FlatContractForm = () => {
     // return;
 
 
-    fetch('http://127.0.0.1:8000/sendOtp2', {
-      // fetch("https://139-59-5-56.nip.io:3443/sendOtp2", {
+    // fetch('http://127.0.0.1:8000/sendOtp2', {
+      fetch("https://139-59-5-56.nip.io:3443/sendOtp2", {
       method: "POST",
       body: JSON.stringify({
         mail: email,
@@ -151,8 +151,8 @@ const FlatContractForm = () => {
   const verifyOTP = () => {
     setLoading(true);
 
-    fetch('http://127.0.0.1:8000/verifyOtp2', {
-      // fetch("https://139-59-5-56.nip.io:3443/audits", {
+    // fetch('http://127.0.0.1:8000/verifyOtp2', {
+      fetch("https://139-59-5-56.nip.io:3443/verifyOtp2", {
       method: "POST",
       body: JSON.stringify({
         mail: email,
@@ -218,8 +218,8 @@ const FlatContractForm = () => {
     formData.append("files", file);
     formData.append('version', version);
 
-    fetch('http://127.0.0.1:8000/audits', {
-      // fetch("https://139-59-5-56.nip.io:3443/audits", {
+    // fetch('http://127.0.0.1:8000/audits', {
+      fetch("https://139-59-5-56.nip.io:3443/audits", {
       method: "POST",
       body: formData,
     })
@@ -403,8 +403,8 @@ const FlatContractForm = () => {
   const getScanHistory = async () => {
     setLoading(true);
 
-    fetch('http://127.0.0.1:8000/getHistory', {
-      // fetch("https://139-59-5-56.nip.io:3443/getHistory", {
+    // fetch('http://127.0.0.1:8000/getHistory', {
+      fetch("https://139-59-5-56.nip.io:3443/getHistory", {
       method: "POST",
       body: JSON.stringify({
         mail: email,
@@ -434,8 +434,8 @@ const FlatContractForm = () => {
   const downloadReport = async (id) => {
     setLoading(true);
 
-    fetch('http://127.0.0.1:8000/getReport', {
-      // fetch("https://139-59-5-56.nip.io:3443/getHistory", {
+    // fetch('http://127.0.0.1:8000/getReport', {
+      fetch("https://139-59-5-56.nip.io:3443/getReport", {
       method: "POST",
       body: JSON.stringify({
         id: id,
@@ -618,8 +618,8 @@ const FlatContractForm = () => {
   const verifyInvoice = async () => {
     setLoading(true);
 
-    fetch('http://127.0.0.1:8000/updatePayment', {
-      // fetch("https://139-59-5-56.nip.io:3443/updatePlan", {
+    // fetch('http://127.0.0.1:8000/updatePayment', {
+      fetch("https://139-59-5-56.nip.io:3443/updatePayment", {
       method: "POST",
       body: JSON.stringify({
         mail: email,
