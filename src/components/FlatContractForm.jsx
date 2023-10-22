@@ -112,10 +112,10 @@ const FlatContractForm = () => {
   const sendOTP = async () => {
 
     setLoading(true);
-    setshowsendotp(false);
-    setshowverify(true);
-    setLoading(false);
-    return;
+    // setshowsendotp(false);
+    // setshowverify(true);
+    // setLoading(false);
+    // return;
 
 
     fetch('http://127.0.0.1:8000/sendOtp2', {
@@ -518,7 +518,7 @@ const FlatContractForm = () => {
             <table className="w-full lg:mt-[50px] ">
               <thead>
                 <tr>
-                  <th>Hash</th>
+                  <th>Report ID</th>
                   <th>Date</th>
                   <th>Report Link</th>
                 </tr>
@@ -547,6 +547,7 @@ const FlatContractForm = () => {
                         rel="noopener noreferrer"
                         onClick={(e) => {
                           e.preventDefault();
+                          console.log(row.id);
                           downloadReport(row.id);
                         }}
                       >
@@ -666,7 +667,7 @@ const FlatContractForm = () => {
 
     return (
 
-      <section className="lg:pt-[40px] md:pt-[160px] pt-[150px]  contacthero bg-fixed">
+      <section className="lg:pt-[40px] md:pt-[160px] pt-[150px] mt-[70px]  contacthero bg-fixed">
         <div className='lg:px-[80px] md:px-[50px] px-[20px] '>
           <h1 className="text-white font-sans md:text-4xl text-5xl font-bold leading-9">
             SecureDApp Solidity Shield <span className="text-[#12D577] font-sans text-4xl font-bold leading-9">Subscription Plans</span>
@@ -768,7 +769,7 @@ const FlatContractForm = () => {
           </div>
         )}
 
-        <div className='lg:px-[80px] md:px-[50px] px-[20px] lg:pt-[30px] md:pt-[25px] pt-[10px] lg:pb-[10px]'>
+        <div className='lg:px-[80px] md:px-[50px] px-[20px] lg:pt-[30px] md:pt-[25px] pt-[10px] lg:pb-[10px] mt-[100px]'>
 
           <h1 className='text-white font-sans text-[22px] font-medium leading-[37px]'>
             <span className='text-[#00C767] text-[30px] font-extrabold'>Secure payment :
