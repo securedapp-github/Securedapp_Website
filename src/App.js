@@ -49,7 +49,7 @@ function App() {
       <Route exact path="/token-launchpad-Securepad" element={<SecurePadTokenComp />} />
       <Route exact path="/tokenomics-design" element={<TokenomicsComp />} />
       <Route exact path="/blog" element={<BlogComp />} />
-    </Routes>
+      </Routes>
   );
 }
 

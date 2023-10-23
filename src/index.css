@@ -362,6 +362,28 @@
   /* Optionally, you can set the background attachment to fixed for a fixed background */
   /* background-attachment: fixed; */
 }
+.profilehero {
+  /* Set the background image URL here */
+
+  background-image: url("https://res.cloudinary.com/dsjgdufgl/image/upload/v1692512801/contacthero_zkirwx.png");
+
+  /* Full height and width of the viewport */
+  width: auto;
+  height: max-content;
+
+  /* Background image should cover the entire element */
+  background-size: cover;
+
+  /* Center the background image */
+  background-position: initial;
+
+  z-index: 1000000000000000000;
+
+
+
+  /* Optionally, you can set the background attachment to fixed for a fixed background */
+  /* background-attachment: fixed; */
+}
 .smartdevbg {
   /* Set the background image URL here */
 
