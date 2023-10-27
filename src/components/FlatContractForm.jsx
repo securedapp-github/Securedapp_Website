@@ -8,6 +8,8 @@ import jsPDF from 'jspdf';
 import autoTable from 'jspdf-autotable';
 import Modal from "react-modal";
 import QRCode from 'qrcode.react';
+import logo from "../images/logo2.jpeg";
+
 
 const FlatContractForm = () => {
   const [showverify, setshowverify] = useState(false); // for otp verify screen options
@@ -636,11 +638,11 @@ const FlatContractForm = () => {
         console.log(data);
         if(data.success){
           toast.success("Plan Activated Successfully");
+          setTimeout(function () { window.location.reload(true); }, 5000);
         }else{
-          toast("Plan Activation Failed");
+          toast("Plan Activation Failed, try again");
         }
         setLoading(false);
-        setTimeout(function () { window.location.reload(true); }, 5000);
       })
       .catch((err) => {
         console.log(err.message);
@@ -822,8 +824,11 @@ const FlatContractForm = () => {
   }
 
   const generatePDF = async (reportData) => {
+    try{
+      
+    console.log(11);
     const date = reportData.date;
-    const logo = 'https://raw.githubusercontent.com/himang305/audit_fe/master/SD.jpeg';
+    // const logo = logo;
     const pdf = new jsPDF('p', 'mm', 'a4');
     const linePositionY = 25;
 
@@ -1056,6 +1061,10 @@ const FlatContractForm = () => {
     pdf.text('hello@securedapp.in', 10, 290, null, null, 'left');
 
     pdf.save('Securedapp_SolidityShield_Report.pdf');
+    console.log(24);
+  }catch(e){
+    console.log("error: ", e);
+  }
   };
 
   return (
