@@ -76,13 +76,7 @@ const Footer = () => {
               >
                 Audit Process
               </a>
-              <a
-                href="https://securedapp.gitbook.io/securedapp-launchpad"
-                target="_blank"
-                className="text-[#5F5F5F] transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600"
-              >
-                Our Services
-              </a>
+            
             
               <a
                 href="https://securedapp.gitbook.io/securedapp-launchpad/workplace-policy"
@@ -129,13 +123,7 @@ const Footer = () => {
             </h3>
 
             <div className="flex flex-col items-start mt-4 space-y-4">
-              <a
-                href="https://securedapp.gitbook.io/securedapp-launchpad"
-                target="_blank"
-                className="text-[#5F5F5F] transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600"
-              >
-                Search
-              </a>
+            
               <a
                 href="/smart-contract-scanner-solidity-shield"
                 className="text-[#5F5F5F] transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600"
@@ -149,48 +137,7 @@ const Footer = () => {
               >
                 Rewards
               </a>
-              <a
-                href="https://securedapp.gitbook.io/securedapp-launchpad"
-                target="_blank"
-                className="text-[#5F5F5F] transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600"
-              >
-                Wallet
-              </a>
-            {/*   <a
-                href="https://securedapp.gitbook.io/securedapp-launchpad"
-                target="_blank"
-                className="text-[#5F5F5F] transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600"
-              >
-                Firewall + VPN
-              </a>
-              <a
-                href="https://securedapp.gitbook.io/securedapp-launchpad"
-                target="_blank"
-                className="text-[#5F5F5F] transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600"
-              >
-                Talk
-              </a>
-              <a
-                href="https://securedapp.gitbook.io/securedapp-launchpad"
-                target="_blank"
-                className="text-[#5F5F5F] transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600"
-              >
-                News
-              </a> */}
-              {/* <a
-                href="https://securedapp.gitbook.io/securedapp-launchpad"
-                target="_blank"
-                className="text-[#5F5F5F] transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600"
-              >
-                Playlist
-              </a> */}
-              <a
-                href="https://securedapp.gitbook.io/securedapp-launchpad"
-                target="_blank"
-                className="text-[#5F5F5F] transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600"
-              >
-                All features
-              </a>
+              
             </div>
           </div>
 
@@ -207,24 +154,8 @@ const Footer = () => {
               >
                 Community
               </a>
-              <a
-                href="/"
-                className="text-[#5F5F5F] transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600"
-              >
-                Contributors
-              </a>
-              <a
-                href="/"
-                className="text-[#5F5F5F] transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600"
-              >
-                Events
-              </a>
-              <a
-                href="/"
-                className="text-[#5F5F5F] transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600"
-              >
-                Newsletters
-              </a>
+              
+             
             </div>
           </div>
 
@@ -241,26 +172,13 @@ const Footer = () => {
               >
                 Tokens
               </a>
-              <a
-                href="https://securedapp.gitbook.io/securedapp-launchpad"
-                target="_blank"
-                className="text-[#5F5F5F] transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600"
-              >
-                Apps & Services
-              </a>
+            
               <a
                 href="https://securedapp.gitbook.io/securedapp-launchpad"
                 target="_blank"
                 className="text-[#5F5F5F] transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600"
               >
                 Wallets
-              </a>
-              <a
-                href="https://securedapp.gitbook.io/securedapp-launchpad"
-                target="_blank"
-                className="text-[#5F5F5F] transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600"
-              >
-                Interchain security
               </a>
               <a
                 href="https://securedapp.in/blog/"

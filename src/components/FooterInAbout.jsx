@@ -66,12 +66,7 @@ const FooterInAbout = () => {
               >
                 Audit Process
               </a>
-              <a
-                href="/"
-                className="text-[#FFF] transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600"
-              >
-                Our Services
-              </a>
+            
            
               <a
                 href="https://securedapp.gitbook.io/securedapp-launchpad/workplace-policy"
@@ -116,12 +111,7 @@ const FooterInAbout = () => {
             </h3>
 
             <div className="flex flex-col items-start mt-4 space-y-4">
-              <a
-                href="/"
-                className="text-[#FFF] transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600"
-              >
-                Search
-              </a>
+              
               <a
                 href="/smart-contract-scanner-solidity-shield"
                 className="text-[#FFF] transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600"
@@ -134,42 +124,7 @@ const FooterInAbout = () => {
               >
                 Rewards
               </a>
-              <a
-                href="/"
-                className="text-[#FFF] transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600"
-              >
-                Wallet
-              </a>
-              {/* <a
-                href="/"
-                className="text-[#FFF] transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600"
-              >
-                Firewall + VPN
-              </a>
-              <a
-                href="/"
-                className="text-[#FFF] transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600"
-              >
-                Talk
-              </a>
-              <a
-                href="/"
-                className="text-[#FFF] transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600"
-              >
-                News
-              </a>
-              <a
-                href="/"
-                className="text-[#FFF] transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600"
-              >
-                Playlist
-              </a> */}
-              <a
-                href="/"
-                className="text-[#FFF] transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600"
-              >
-                All features
-              </a>
+             
             </div>
           </div>
 
@@ -186,24 +141,8 @@ const FooterInAbout = () => {
               >
                 Community
               </a>
-              <a
-                href="/"
-                className="text-[#FFF] transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600"
-              >
-                Contributors
-              </a>
-              <a
-                href="/"
-                className="text-[#FFF] transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600"
-              >
-                Events
-              </a>
-              <a
-                href="/"
-                className="text-[#FFF] transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600"
-              >
-                Newsletters
-              </a>
+             
+              
             </div>
           </div>
 
@@ -220,23 +159,12 @@ const FooterInAbout = () => {
               >
                 Tokens
               </a>
-              <a
-                href="/"
-                className="text-[#FFF] transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600"
-              >
-                Apps & Services
-              </a>
+              
               <a
                 href="/"
                 className="text-[#FFF] transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600"
               >
                 Wallets
-              </a>
-              <a
-                href="/"
-                className="text-[#FFF] transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600"
-              >
-                Interchain security
               </a>
               <a
                 href="/blog"

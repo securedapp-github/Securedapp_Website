@@ -23,7 +23,8 @@ const SecureDAppToken = () => {
         <div className="flex justify-center items-center md:mb-[20px] mb-[50px] md:ml-0 ml-[40px] pr-[30px] ">
           <button
             onClick={() => {
-              toast("Coming Soon");
+              // toast("Coming Soon");
+              window.open("https://securepad.xyz/", "_blank");
             }}
             className=" lg:mt-[50px] md:mb-[10px] md:mt-[5px] mt-[25px] h-[60px] w-[341px] py-2 px-8  border border-transparent text-black  rounded-full [background:linear-gradient(90deg,_#12d576,_#2d5c8f)] hover:[background:linear-gradient(90deg,_#2d5c8f,_#12d576)] shadow-[0px_0px_80px_rgba(18,_213,_118,_0.25)]  text-center font-sans md:text-xl text-xl font-normal leading-normal"
           >
