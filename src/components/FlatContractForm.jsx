@@ -576,8 +576,8 @@ const FlatContractForm = () => {
     setLoading(true);
 
     let cost = 0;
-    if (planid == 1) cost = 69;
-    if (planid == 2) cost = 199;
+    if (planid == 1) cost = 99;
+    if (planid == 2) cost = 289;
     if (planid == 3) cost = 1000;
 
     if (cost > 0) {
@@ -716,8 +716,8 @@ const FlatContractForm = () => {
                   </button>
                 </div>
                 <div className="w-1/5 py-2 px-4 border text-center flex flex-col items-center "><h1 className='text-white font-sans md:text-[22px] text-[15px] font-bold leading-[27px] text-center '> Plus Plan</h1>
-                  <h1 className='text-white font-sans md:text-[36px] text-[25px] font-bold leading-[27px] text-center lg:py-[17px] md:py-[30px] py-[20px] '> $69
-                    <span className='text-white font-sans text-[13px] font-medium leading-[27px] text-center py-[2px] block '> $ 11.5 / Scan</span>
+                  <h1 className='text-white font-sans md:text-[36px] text-[25px] font-bold leading-[27px] text-center lg:py-[17px] md:py-[30px] py-[20px] '> $99
+                    <span className='text-white font-sans text-[13px] font-medium leading-[27px] text-center py-[2px] block '> $ 16.5 / Scan</span>
                   </h1>
 
                   <button
@@ -728,8 +728,8 @@ const FlatContractForm = () => {
                 </div>
 
                 <div className="w-1/5 py-2 px-4 border text-center flex flex-col items-center "><h1 className='text-white font-sans md:text-[22px] text-[15px] font-bold leading-[27px] text-center '>Premium Plan</h1>
-                  <h1 className='text-white font-sans md:text-[36px] text-[25px]  font-bold leading-[27px] text-center lg:py-[17px] md:py-[15px] py-[20px]  '> $199
-                    <span className='text-white font-sans text-[13px] font-bold leading-[27px] text-center py-[2px] block '> $ 8.3 / <span className='font-medium'>Scan
+                  <h1 className='text-white font-sans md:text-[36px] text-[25px]  font-bold leading-[27px] text-center lg:py-[17px] md:py-[15px] py-[20px]  '> $289
+                    <span className='text-white font-sans text-[13px] font-bold leading-[27px] text-center py-[2px] block '> $ 12.04 / <span className='font-medium'>Scan
                     </span> </span></h1>
 
 
