@@ -641,7 +641,7 @@ const FlatContractForm = () => {
           toast.success("Plan Activated Successfully");
           setTimeout(function () { window.location.reload(true); }, 5000);
         }else{
-          toast("Plan Activation Failed, try again");
+          toast("Payment not confirmed yet, verify after few seconds");
         }
         setLoading(false);
       })
