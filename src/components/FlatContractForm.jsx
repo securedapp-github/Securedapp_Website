@@ -172,6 +172,7 @@ const FlatContractForm = () => {
       })
       .then((data) => {
         console.log(data);
+        if(data.length == 0) toast("Wrong OTP");
         let userdata = data[0];
 
         let plandetail = "Free Plan";
@@ -181,7 +182,7 @@ const FlatContractForm = () => {
         if (userdata.plan == 2) {
           plandetail = "Premium Plan"
         }
-        if (userdata.plan == 2) {
+        if (userdata.plan == 3) {
           plandetail = "Exclusive Plan"
         }
         setplan(plandetail);
@@ -520,7 +521,7 @@ const FlatContractForm = () => {
 
 
           {showHistoryTable && ( // Render the table only if showTable is true
-            <table className="w-full lg:mt-[50px] ">
+            <table className="w-full lg:mt-[50px] " style={{ backgroundColor: 'black', border: '2px solid white', marginTop: '20px' }}>
               <thead>
                 <tr>
                   <th>Report ID</th>
@@ -531,10 +532,10 @@ const FlatContractForm = () => {
               <tbody className='border-t-[0.5px] overflow-scroll '>
                 {tableData.map((row, index) => (
                   <tr key={index} className={index % 2 === 0 ? 'bg-transparent' : 'bg-[#12D57612] bg-opacity-7'}>
-                    <td className="px-4 py-2">{row.id} </td>
-                    <td className="px-4 py-2">{row.date} </td>
+                    <td className="px-4 py-2 text-white text-center">{row.id} </td>
+                    <td className="px-4 py-2 text-white text-center">{row.date} </td>
 
-                    <td className="px-4 py-2 flex gap-4">
+                    <td className="px-4 py-2 flex gap-4 text-white text-center">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="24"
@@ -1185,7 +1186,8 @@ const FlatContractForm = () => {
                   <select
                     value={version}
                     onChange={(e) => { setVersion(e.target.value) }}
-                    className="md:w-11/12 w-full border rounded-[20px] p-3 text-white"
+                    className="md:w-11/12 w-full border rounded-[20px] p-3 text-white"  
+                    style={{ backgroundColor: 'black' }}
                   >
                     {versionOptions.map((version) => (
                       <option key={version} value={version}>
