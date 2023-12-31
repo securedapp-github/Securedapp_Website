@@ -20,6 +20,15 @@
   /* Optionally, you can set the background attachment to fixed for a fixed background */
   /* background-attachment: fixed; */
 }
+html{
+  height:100vh;
+}
+body{
+  height:100vh;
+}
+#root{
+  height: 100vh;
+}
 .client {
   /* Set the background image URL here */
 
@@ -493,6 +502,7 @@
   /* background-attachment: fixed; */
 }
 .blogindi{
+  height:100vh;
   background-image: url("./images/bloghero_fpkpef.png");
   background-repeat: no-repeat;
   background-size: cover;

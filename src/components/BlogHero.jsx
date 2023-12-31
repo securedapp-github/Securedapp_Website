@@ -2,18 +2,49 @@ import React from "react";
 import { useEffect ,useState} from "react";
 import {Link} from 'react-router-dom';
 
+
+function formatDate(dateString) {
+  const options = { month: 'long', day: 'numeric', year: 'numeric' };
+  const date = new Date(dateString);
+  const formattedDate = date.toLocaleDateString('en-US', options);
+
+  const month = date.toLocaleString('default', { month: 'short' });
+  const day = date.getDate();
+  const year = date.getFullYear();
+
+  const suffix = getDaySuffix(day); // Function to get day suffix (e.g., 'th', 'st', 'nd')
+
+  return `${month} ${day}${suffix} ${year}`;
+}
+
+// Function to get the suffix for the day (e.g., 'th', 'st', 'nd')
+function getDaySuffix(day) {
+  if (day >= 11 && day <= 13) {
+    return 'th';
+  }
+  switch (day % 10) {
+    case 1:
+      return 'st';
+    case 2:
+      return 'nd';
+    case 3:
+      return 'rd';
+    default:
+      return 'th';
+  }
+}
 const BlogCard = ({url,id,topic, date, title, link }) => {
   // console.log(id)
   const alp={topic1:topic,data:date,title1:title,link1:link}
   return (
-    <Link to={`https://securedapp.io/blog/${url}`} state={alp}>
-      <img src={link} alt="not found" className="mx-auto w-full h-60 rounded-lg" />
+    <Link to={`/blog/${url}`} state={alp}>
+      <img src={link} alt="not found" className="mx-auto  w-full h-60 rounded-lg" />
       {/* <div className="flex flex-col justify-between lg:px-0 px-7 rounded-3xl " style={{backgroundImage:`url(${link})`,backgroundRepeat:'no-repeat'}}> */}
       <div className="grid  pt-2 lg:grid-cols-2 sm:grid-cols-1">
-        <div className="rounded-md bg-[#07bc0c] font-semibold my-auto text-lg">{topic}</div>
+        <div className="rounded-md bg-[#07bc0c] font-semibold my-auto text-sm px-1">{topic}</div>
         <div className="text-white">{date}</div>
         </div> 
-      <div className="text-white pt-2">{title.slice(0,100)}...</div>
+      <div className="text-white pt-2 text-sm">{title.slice(0,100)}...</div>
     </Link>
   );
 };
@@ -22,18 +53,18 @@ const BlogCard1 = ({url,id,topic, date, title, link }) => {
   // console.log(id)
   const alp={topic1:topic,data:date,title1:title,link1:link}
   return (
-    <Link to={`https://securedapp.io/blog/${url}`} state={alp}>
+    <Link to={`/blog/${url}`} state={alp}>
       <div className="grid lg:grid-cols-2 lg:gap-3">
         <div>
-      <img src={link} alt="not found" className="mx-auto w-full h-60 rounded-lg" />
+      <img src={link} alt="not found" className="mx-auto rounded-lg w-full  lg:h-50 " />
       </div>
       {/* <div className="flex flex-col justify-between lg:px-0 px-7 rounded-3xl " style={{backgroundImage:`url(${link})`,backgroundRepeat:'no-repeat'}}> */}
       <div>
       <div className="grid pt-2 gap-1 lg:grid-cols-2 sm:grid-cols-1">
-        <div className="rounded-md bg-[#07bc0c] font-semibold my-auto text-lg">{topic}</div>
+        <div className="rounded-md bg-[#07bc0c] font-semibold my-auto text-sm px-1">{topic}</div>
         <div className="text-white">{date}</div>
         </div> 
-      <div className="text-white pt-2">{title.slice(0,100)}...</div>
+      <div className="text-white pt-2 text-sm">{title.slice(0,100)}...</div>
       </div>
       </div>
     </Link>
@@ -42,13 +73,13 @@ const BlogCard1 = ({url,id,topic, date, title, link }) => {
 
 const BlogCard3=({blog1,blog2})=>{
   return (
-    <div className="mx-10 my-10  grid gap-10 lg:grid-cols-4">
+    <div className="mx-10 my-10 grid gap-10 lg:grid-cols-4">
     <div className="col-span-2">
     <BlogCard2
             url={blog1.url}
             id={blog1.id}
             topic={blog1.heading}
-              date={blog1.date}
+              date={formatDate(blog1.date)}
               title={blog1.content}
               link={blog1.image}
             />
@@ -60,7 +91,7 @@ const BlogCard3=({blog1,blog2})=>{
             url={blog.url}
             id={blog.id}
             topic={blog.heading}
-              date={blog.date}
+              date={formatDate(blog.date)}
               title={blog.content}
               link={blog.image}
             />
@@ -74,14 +105,14 @@ const BlogCard3=({blog1,blog2})=>{
 const BlogCard2=({url,id,topic, date, title, link })=>{
   const alp={topic1:topic,data:date,title1:title,link1:link}
   return (
-    <Link to={`https://securedapp.io/blog/${url}`} state={alp}>
-      <img src={link} alt="not found" className="mx-auto w-full h-100 rounded-lg" />
+    <Link to={`/blog/${url}`} state={alp}>
+      <img src={link} alt="not found" className="mx-auto w-full h-[25rem] rounded-lg" />
       {/* <div className="flex flex-col justify-between lg:px-0 px-7 rounded-3xl " style={{backgroundImage:`url(${link})`,backgroundRepeat:'no-repeat'}}> */}
       <div className="gap-4 grid  pt-2 sm:grid-cols-1 lg:grid-cols-2">
-        <div className="rounded-md bg-[#07bc0c] font-semibold text-lg my-auto text-center">{topic}</div>
+        <div className="rounded-md bg-[#07bc0c] font-semibold text-sm my-auto text-center px-1">{topic}</div>
         <div className="text-white text-center">{date}</div>
         </div>
-        <div className="text-white pt-2">{title?title.slice(0,200):(<p>Loading</p>)}...</div>
+        <div className="text-white pt-2 text-sm">{title?title.slice(0,200):(<p>Loading</p>)}...</div>
     </Link>
   )
 }
@@ -95,6 +126,7 @@ const BlogHero = () => {
   let [totPage, setTotPage]=useState(0);
   let [firstSec,setFirstSec]=useState([]);
   // const [totalResults,setTotalResults]=(0);
+
   const handleNext=()=>{
     let ind1=3*pageNo;
     let ind2=ind1+1;
@@ -111,8 +143,8 @@ const BlogHero = () => {
     let ind2=ind1-1;
     let ind3=ind2-1;
     console.log(ind1,ind2,ind3,firstSec[ind1],firstSec[ind2],firstSec[ind3])
-    setBlog1(firstSec[ind1]);
-    setBlog2([firstSec[ind2],firstSec[ind3]]);
+    setBlog1(firstSec[ind3]);
+    setBlog2([firstSec[ind2],firstSec[ind1]]);
     setPageNo(pageNo-1);
   }
   useEffect(()=>{
@@ -171,13 +203,14 @@ const BlogHero = () => {
           </a>
         </div>
       </div>
-      <h2 className="mx-10 mt-20  inline text-4xl text-white border-4 border-transparent border-b-[#07bc0c]">Web3 Security</h2>
+      <div className="xl:mx-auto xl:w-5/6  2xl:w-4/6">
+      <h2 className="mx-10 mt-20  inline text-xl font-bold text-white border-4 border-transparent border-b-[#07bc0c]">Web3 Security</h2>
     <BlogCard3 blog1={blog1} blog2={blog2}/>
     <div className="flex justify-between mx-10 mb-20">
     <button onClick={handlePrev} className="rounded-sm text-[#07bc0c] font-semibold text-lg border border-[#07bc0c] px-5 py-2" disabled={pageNo==1}>Prev</button>
     <button onClick={handleNext} className="rounded-sm text-[#07bc0c] font-semibold text-lg border border-[#07bc0c] px-5 py-2" disabled={pageNo==totPage}>Next</button>
     </div>
-    <h2 className="mx-10 text-4xl inline text-white border-4 border-transparent border-b-[#07bc0c]">Web3 Security</h2>
+    <h2 className="mx-10 text-xl font-bold inline text-white border-4 border-transparent border-b-[#07bc0c]">Web3 Security</h2>
       <div className="grid gap-10 mx-10 my-10 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1">
           {blogs.map((blog) => (
         <div className="text-center">
@@ -185,7 +218,7 @@ const BlogHero = () => {
               url={blog.url}
               id={blog.id}
               topic={blog.heading}
-              date={blog.date}
+              date={formatDate(blog.date.slice(0,10))}
               title={blog.content}
               link={blog.image}
             />
@@ -212,6 +245,7 @@ const BlogHero = () => {
             </span>
           </button>
         </div> */}
+      </div>
       </div>
       <div className="mx-[100px] py-[90px]">
         <span className="text-white font-sans text-[24px] font-normal leading-[170%]">
