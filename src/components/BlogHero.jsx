@@ -1,91 +1,164 @@
 import React from "react";
+import { useEffect ,useState} from "react";
+import {Link} from 'react-router-dom';
 
-const BlogCard = ({ topic, date, title, link }) => {
+const BlogCard = ({url,id,topic, date, title, link }) => {
+  // console.log(id)
+  const alp={topic1:topic,data:date,title1:title,link1:link}
   return (
-    <a href={link} className="lg:mx-0 mx-3 md:mx-auto">
-      <div className="blogimg flex flex-col justify-between lg:px-0 px-7 rounded-3xl ">
-        <div className="w-[200px] h-[25px] bg-black bg-opacity-90 mt-[14px] lg:mx-[14px]   flex justify-center items-center rounded-[36px]">
-          <span className="text-white font-sans text-[15px] font-normal leading-normal">
-            {topic}
-          </span>
-        </div>
-
-        <div className="flex flex-col my-[14px] ml-[14px]">
-          <div>
-            <span className="text-white font-sans text-[14px] font-bold leading-normal">
-              {date}
-            </span>
-          </div>
-
-          <div>
-            <span className="text-white font-sans text-[20px] font-bold leading-normal">
-              {title}
-            </span>
-          </div>
-        </div>
-      </div>
-    </a>
+    <Link to={`https://securedapp.io/blog/${url}`} state={alp}>
+      <img src={link} alt="not found" className="mx-auto w-full h-60 rounded-lg" />
+      {/* <div className="flex flex-col justify-between lg:px-0 px-7 rounded-3xl " style={{backgroundImage:`url(${link})`,backgroundRepeat:'no-repeat'}}> */}
+      <div className="grid  pt-2 lg:grid-cols-2 sm:grid-cols-1">
+        <div className="rounded-md bg-[#07bc0c] font-semibold my-auto text-lg">{topic}</div>
+        <div className="text-white">{date}</div>
+        </div> 
+      <div className="text-white pt-2">{title.slice(0,100)}...</div>
+    </Link>
   );
 };
 
+const BlogCard1 = ({url,id,topic, date, title, link }) => {
+  // console.log(id)
+  const alp={topic1:topic,data:date,title1:title,link1:link}
+  return (
+    <Link to={`https://securedapp.io/blog/${url}`} state={alp}>
+      <div className="grid lg:grid-cols-2 lg:gap-3">
+        <div>
+      <img src={link} alt="not found" className="mx-auto w-full h-60 rounded-lg" />
+      </div>
+      {/* <div className="flex flex-col justify-between lg:px-0 px-7 rounded-3xl " style={{backgroundImage:`url(${link})`,backgroundRepeat:'no-repeat'}}> */}
+      <div>
+      <div className="grid pt-2 gap-1 lg:grid-cols-2 sm:grid-cols-1">
+        <div className="rounded-md bg-[#07bc0c] font-semibold my-auto text-lg">{topic}</div>
+        <div className="text-white">{date}</div>
+        </div> 
+      <div className="text-white pt-2">{title.slice(0,100)}...</div>
+      </div>
+      </div>
+    </Link>
+  );
+};
+
+const BlogCard3=({blog1,blog2})=>{
+  return (
+    <div className="mx-10 my-10  grid gap-10 lg:grid-cols-4">
+    <div className="col-span-2">
+    <BlogCard2
+            url={blog1.url}
+            id={blog1.id}
+            topic={blog1.heading}
+              date={blog1.date}
+              title={blog1.content}
+              link={blog1.image}
+            />
+    </div>
+    <div className="col-span-2 grid gap-10 grid-rows-2">
+    {blog2.map((blog) => (
+        <div className="text-center">
+            <BlogCard1
+            url={blog.url}
+            id={blog.id}
+            topic={blog.heading}
+              date={blog.date}
+              title={blog.content}
+              link={blog.image}
+            />
+        </div>
+          ))}
+    </div>
+    </div>
+  )
+}
+
+const BlogCard2=({url,id,topic, date, title, link })=>{
+  const alp={topic1:topic,data:date,title1:title,link1:link}
+  return (
+    <Link to={`https://securedapp.io/blog/${url}`} state={alp}>
+      <img src={link} alt="not found" className="mx-auto w-full h-100 rounded-lg" />
+      {/* <div className="flex flex-col justify-between lg:px-0 px-7 rounded-3xl " style={{backgroundImage:`url(${link})`,backgroundRepeat:'no-repeat'}}> */}
+      <div className="gap-4 grid  pt-2 sm:grid-cols-1 lg:grid-cols-2">
+        <div className="rounded-md bg-[#07bc0c] font-semibold text-lg my-auto text-center">{topic}</div>
+        <div className="text-white text-center">{date}</div>
+        </div>
+        <div className="text-white pt-2">{title?title.slice(0,200):(<p>Loading</p>)}...</div>
+    </Link>
+  )
+}
+
 const BlogHero = () => {
-  const blogs = [
-    {
-      id: 1,
-      topic: "NFT, TOKEN, TOKEN SALES",
-      date: "June 30, 2023",
-      title: "Blits Estates: The Future of Real Estate Investing",
-      link: "#",
-    },
-    {
-      id: 2,
-      topic: "NFT, TOKEN, TOKEN SALES",
-      date: "June 16, 2023",
-      title: "How Does Fractional Investment Work? And What Are Its Benefits?",
-      link: "#",
-    },
-    {
-      id: 3,
-      topic: "NFT, TOKEN, TOKEN SALES",
-      date: "June 8, 2023",
-      title:
-        "How To Design Tokenomics For Your Cryptocurrency: The Basics Of Creating Your Token",
-      link: "#",
-    },
-    {
-      id: 4,
-      topic: "NFT, TOKEN, TOKEN SALES",
-      date: "May 31, 2023",
-      title: "SAFT: Revolutionizing Token Sales with a Secure Investment Model",
-      link: "#",
-    },
-    {
-      id: 5,
-      topic: "NFT, TOKEN, TOKEN SALES",
-      date: "May 21, 2023",
-      title: "Token Launchpads: A Guide for Investors",
-      link: "#",
-    },
-    {
-      id: 6,
-      topic: "NFT, TOKEN, TOKEN SALES",
-      date: "May 12, 2023",
-      title: "Token Offerings 101: An Overview of ICOs, STOs, IDOs, and More",
-      link: "#",
-    },
-    {
-      id: 7,
-      topic: "NFT, TOKEN, TOKEN SALES",
-      date: "May 3, 2023",
-      title: "The Future of DApps: Trends to Watch in 2023 and Beyond",
-      link: "#",
-    },
-    // Add more blog data objects
-  ];
+  let [blog1,setBlog1]=useState({});
+  let [blog2,setBlog2]=useState([]);
+  let [blogs,setBlogs]=useState([]);
+  let [page,setPage]=useState({});
+  let [pageNo,setPageNo]=useState(1);
+  let [totPage, setTotPage]=useState(0);
+  let [firstSec,setFirstSec]=useState([]);
+  // const [totalResults,setTotalResults]=(0);
+  const handleNext=()=>{
+    let ind1=3*pageNo;
+    let ind2=ind1+1;
+    let ind3=ind2+1;
+    // console.log(ind1,ind2,ind3,firstSec[ind1],firstSec[ind2],firstSec[ind3])
+    setBlog1(firstSec[ind1]);
+    if(firstSec.length==ind3)setBlog2([firstSec[ind2]]);
+    else if(firstSec.length>ind3)setBlog2([firstSec[ind2],firstSec[ind3]]);
+    else setBlog2([]);
+    setPageNo(pageNo+1);
+  }
+  const handlePrev=()=>{
+    let ind1=3*(pageNo-1)-1;
+    let ind2=ind1-1;
+    let ind3=ind2-1;
+    console.log(ind1,ind2,ind3,firstSec[ind1],firstSec[ind2],firstSec[ind3])
+    setBlog1(firstSec[ind1]);
+    setBlog2([firstSec[ind2],firstSec[ind3]]);
+    setPageNo(pageNo-1);
+  }
+  useEffect(()=>{
+    // const fetchData=async ()=>{
+    //   const url=`https://139-59-5-56.nip.io:3443/getBlogList`;
+    //   const ft=await fetch(url)
+    //   const resp=await ft.json()
+    // }
+    const fetchData = async () => {
+      try {
+        const response = await fetch('https://139-59-5-56.nip.io:3443/getBlogList');
+        if (!response.ok) {
+          throw new Error('Failed to fetch data');
+        }
+        const data = await response.json();
+
+        // Ensure that the component is still mounted before updating state
+        if (BlogHero.mounted) {
+          setFirstSec(data.slice(0,4))
+          setBlog1(data[0]);
+          setBlog2(data.slice(1,3));
+          setTotPage(2);
+          setBlogs(data.slice(3));
+          setPage({topic1:blog1.topic,data:blog1.date,title1:blog1.title,link1:blog1.link})
+        }
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    // Use a flag to check if the component is still mounted before updating state
+    BlogHero.mounted = true;
+    fetchData();
+
+    return () => {
+      // Cleanup function to set mounted flag to false when component unmounts
+      BlogHero.mounted = false;
+    };
+
+  },[])
+  // const fetchMoreData=async ()=>{
+  // }
   return (
     <div className="md:pt-[80px] pt-[130px]  bloghero ">
-      <div className="md:pt-[50px] lg:mx-[80px] border-b-2 border-gray-500">
-        <div className="flex gap-[40px] py-[15px] lg:px-0 px-[30px]">
+      <div className="md:pt-[50px] mb-10 mx-10 border-b-2 border-gray-500">
+        <div className="flex gap-[40px] py-[15px] lg:px-0 ">
           <a href="/">
             <span className="text-white font-sans text-[16px] font-normal leading-normal">
               Home
@@ -98,21 +171,28 @@ const BlogHero = () => {
           </a>
         </div>
       </div>
-
-      <div className="lg:pt-[50px] lg:mx-[80px]  flex lg:flex-row flex-col-reverse lg:pb-[0px] ">
-        <div className="flex lg:w-8/12 md:w-full flex-wrap md:flex-row gap-[40px] ">
+      <h2 className="mx-10 mt-20  inline text-4xl text-white border-4 border-transparent border-b-[#07bc0c]">Web3 Security</h2>
+    <BlogCard3 blog1={blog1} blog2={blog2}/>
+    <div className="flex justify-between mx-10 mb-20">
+    <button onClick={handlePrev} className="rounded-sm text-[#07bc0c] font-semibold text-lg border border-[#07bc0c] px-5 py-2" disabled={pageNo==1}>Prev</button>
+    <button onClick={handleNext} className="rounded-sm text-[#07bc0c] font-semibold text-lg border border-[#07bc0c] px-5 py-2" disabled={pageNo==totPage}>Next</button>
+    </div>
+    <h2 className="mx-10 text-4xl inline text-white border-4 border-transparent border-b-[#07bc0c]">Web3 Security</h2>
+      <div className="grid gap-10 mx-10 my-10 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1">
           {blogs.map((blog) => (
+        <div className="text-center">
             <BlogCard
-              key={blog.id}
-              topic={blog.topic}
+              url={blog.url}
+              id={blog.id}
+              topic={blog.heading}
               date={blog.date}
-              title={blog.title}
-              link={blog.link}
+              title={blog.content}
+              link={blog.image}
             />
-          ))}
         </div>
+          ))}
 
-        <div className="flex flex-col gap-[20px] lg:py-0 py-7 px-6 lg:w-auto md:w-full">
+        {/* <div className="flex flex-col gap-[20px] lg:py-0 py-7 px-6 lg:w-auto md:w-full">
           <button className="w-[340px] h-[64px] rounded-[20px] border border-white mx-auto  border-opacity-20">
             {" "}
             <span className="text-white font-sans text-[24px] font-normal leading-[170%]">
@@ -131,7 +211,7 @@ const BlogHero = () => {
               Market Research
             </span>
           </button>
-        </div>
+        </div> */}
       </div>
       <div className="mx-[100px] py-[90px]">
         <span className="text-white font-sans text-[24px] font-normal leading-[170%]">

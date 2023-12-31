@@ -1,5 +1,4 @@
 import "./App.css";
-
 import { useEffect, useState } from "react";
 
 import { Route, Routes } from "react-router-dom";
@@ -13,6 +12,7 @@ import DappDevComp from "./components/DappDevComp";
 import SecurePadTokenComp from "./components/SecurePadTokenComp";
 import BlogComp from "./components/BlogComp";
 import TokenomicsComp from "./components/TokenomicsComp";
+import BlogIndi from "./components/BlogIndi";
 // import ReactGA from 'react-ga';
 // const TRACKING_ID = "G-GXZX7PXY8D"; 
 // ReactGA.initialize(TRACKING_ID);
@@ -48,6 +48,7 @@ function App() {
       <Route exact path="/dapp-development" element={<DappDevComp />} />
       <Route exact path="/token-launchpad-Securepad" element={<SecurePadTokenComp />} />
       <Route exact path="/tokenomics-design" element={<TokenomicsComp />} />
+      <Route exact path="/blog/:id" element={<BlogIndi/>} />
       <Route exact path="/blog" element={<BlogComp />} />
       </Routes>
   );

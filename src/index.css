@@ -492,6 +492,11 @@
   /* Optionally, you can set the background attachment to fixed for a fixed background */
   /* background-attachment: fixed; */
 }
+.blogindi{
+  background-image: url("./images/bloghero_fpkpef.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 .blogimg {
   /* Set the background image URL here */
 
