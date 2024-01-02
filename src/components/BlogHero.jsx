@@ -33,15 +33,15 @@ function getDaySuffix(day) {
       return 'th';
   }
 }
-const BlogCard = ({url,id,topic, date, title, link }) => {
+const BlogCard = ({url,tag,id,topic, date, title, link }) => {
   // console.log(id)
-  const alp={topic1:topic,data:date,title1:title,link1:link}
+  const alp={topic1:topic,data:date,title1:title,link1:link,tag:tag}
   return (
     <Link to={`/blog/${url}`} state={alp}>
       <img src={link} alt="not found" className="mx-auto  w-full h-60 rounded-lg" />
       {/* <div className="flex flex-col justify-between lg:px-0 px-7 rounded-3xl " style={{backgroundImage:`url(${link})`,backgroundRepeat:'no-repeat'}}> */}
       <div className="grid  pt-2 lg:grid-cols-2 sm:grid-cols-1">
-        <div className="rounded-md bg-[#07bc0c] font-semibold my-auto text-sm px-1">{topic}</div>
+        <div className="rounded-md bg-[#07bc0c] text-white font-semibold my-auto text-sm px-1">{topic}</div>
         <div className="text-white">{date}</div>
         </div> 
       <div className="text-white pt-2 text-sm">{title.slice(0,100)}...</div>
@@ -49,9 +49,9 @@ const BlogCard = ({url,id,topic, date, title, link }) => {
   );
 };
 
-const BlogCard1 = ({url,id,topic, date, title, link }) => {
+const BlogCard1 = ({url,tag,id,topic, date, title, link }) => {
   // console.log(id)
-  const alp={topic1:topic,data:date,title1:title,link1:link}
+  const alp={topic1:topic,data:date,title1:title,link1:link,tag:tag}
   return (
     <Link to={`/blog/${url}`} state={alp}>
       <div className="grid lg:grid-cols-2 lg:gap-3">
@@ -61,7 +61,7 @@ const BlogCard1 = ({url,id,topic, date, title, link }) => {
       {/* <div className="flex flex-col justify-between lg:px-0 px-7 rounded-3xl " style={{backgroundImage:`url(${link})`,backgroundRepeat:'no-repeat'}}> */}
       <div>
       <div className="grid pt-2 gap-1 lg:grid-cols-2 sm:grid-cols-1">
-        <div className="rounded-md bg-[#07bc0c] font-semibold my-auto text-sm px-1">{topic}</div>
+        <div className="rounded-md bg-[#07bc0c] text-white font-semibold my-auto text-sm px-1">{topic}</div>
         <div className="text-white">{date}</div>
         </div> 
       <div className="text-white pt-2 text-sm">{title.slice(0,100)}...</div>
@@ -76,6 +76,7 @@ const BlogCard3=({blog1,blog2})=>{
     <div className="mx-10 my-10 grid gap-10 lg:grid-cols-4">
     <div className="col-span-2">
     <BlogCard2
+            tag={blog1.tags}
             url={blog1.url}
             id={blog1.id}
             topic={blog1.heading}
@@ -88,6 +89,7 @@ const BlogCard3=({blog1,blog2})=>{
     {blog2.map((blog) => (
         <div className="text-center">
             <BlogCard1
+            tag={blog.tags}
             url={blog.url}
             id={blog.id}
             topic={blog.heading}
@@ -102,14 +104,14 @@ const BlogCard3=({blog1,blog2})=>{
   )
 }
 
-const BlogCard2=({url,id,topic, date, title, link })=>{
-  const alp={topic1:topic,data:date,title1:title,link1:link}
+const BlogCard2=({url,tag,id,topic, date, title, link })=>{
+  const alp={topic1:topic,data:date,title1:title,link1:link,tag:tag}
   return (
     <Link to={`/blog/${url}`} state={alp}>
       <img src={link} alt="not found" className="mx-auto w-full h-[25rem] rounded-lg" />
       {/* <div className="flex flex-col justify-between lg:px-0 px-7 rounded-3xl " style={{backgroundImage:`url(${link})`,backgroundRepeat:'no-repeat'}}> */}
       <div className="gap-4 grid  pt-2 sm:grid-cols-1 lg:grid-cols-2">
-        <div className="rounded-md bg-[#07bc0c] font-semibold text-sm my-auto text-center px-1">{topic}</div>
+        <div className="rounded-md bg-[#07bc0c] text-white font-semibold text-sm my-auto text-center px-1">{topic}</div>
         <div className="text-white text-center">{date}</div>
         </div>
         <div className="text-white pt-2 text-sm">{title?title.slice(0,200):(<p>Loading</p>)}...</div>
@@ -142,7 +144,6 @@ const BlogHero = () => {
     let ind1=3*(pageNo-1)-1;
     let ind2=ind1-1;
     let ind3=ind2-1;
-    console.log(ind1,ind2,ind3,firstSec[ind1],firstSec[ind2],firstSec[ind3])
     setBlog1(firstSec[ind3]);
     setBlog2([firstSec[ind2],firstSec[ind1]]);
     setPageNo(pageNo-1);
@@ -169,6 +170,7 @@ const BlogHero = () => {
           setTotPage(2);
           setBlogs(data.slice(3));
           setPage({topic1:blog1.topic,data:blog1.date,title1:blog1.title,link1:blog1.link})
+          // console.log(data)
         }
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -189,8 +191,8 @@ const BlogHero = () => {
   // }
   return (
     <div className="md:pt-[80px] pt-[130px]  bloghero ">
-      <div className="md:pt-[50px] mb-10 mx-10 border-b-2 border-gray-500">
-        <div className="flex gap-[40px] py-[15px] lg:px-0 ">
+      <div className="md:pt-[50px] mb-10 mx-10">
+        {/*<div className="flex gap-[40px] py-[15px] lg:px-0 ">
           <a href="/">
             <span className="text-white font-sans text-[16px] font-normal leading-normal">
               Home
@@ -201,8 +203,8 @@ const BlogHero = () => {
               Blog
             </span>
           </a>
+        </div> */}
         </div>
-      </div>
       <div className="xl:mx-auto xl:w-5/6  2xl:w-4/6">
       <h2 className="mx-10 mt-20  inline text-xl font-bold text-white border-4 border-transparent border-b-[#07bc0c]">Web3 Security</h2>
     <BlogCard3 blog1={blog1} blog2={blog2}/>
@@ -215,6 +217,7 @@ const BlogHero = () => {
           {blogs.map((blog) => (
         <div className="text-center">
             <BlogCard
+              tag={blog.tags}
               url={blog.url}
               id={blog.id}
               topic={blog.heading}

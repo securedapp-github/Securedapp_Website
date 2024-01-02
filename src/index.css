@@ -502,7 +502,6 @@ body{
   /* background-attachment: fixed; */
 }
 .blogindi{
-  height:100vh;
   background-image: url("./images/bloghero_fpkpef.png");
   background-repeat: no-repeat;
   background-size: cover;
