@@ -29,7 +29,23 @@ function BlogIndi() {
   const tempDiv = document.createElement('div');
   
   // Set innerHTML of the div to the result string (containing HTML tags)
-  tempDiv.innerHTML = result;
+  var paragraphs = result.split("][");
+
+  paragraphs.forEach(function (paragraphText) {
+    // Remove any remaining square brackets
+    paragraphText = paragraphText.replace(/\[|\]/g, '');
+
+    // Create a <p> element
+    var paragraphElement = document.createElement("p");
+
+    // Set the content of the <p> element
+    paragraphElement.innerHTML = paragraphText;
+
+    // Append the <p> element to the container
+    tempDiv.appendChild(paragraphElement);
+});
+
+  // tempDiv.innerHTML = result;
   const anchorTags = tempDiv.querySelectorAll('a');
 // Loop through all anchor tags and set their text color
 anchorTags.forEach(tag => {

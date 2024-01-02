@@ -252,7 +252,7 @@ const BlogHero = () => {
       </div>
       <div className="mx-[100px] py-[90px]">
         <span className="text-white font-sans text-[24px] font-normal leading-[170%]">
-          older
+          -
         </span>
       </div>
     </div>
