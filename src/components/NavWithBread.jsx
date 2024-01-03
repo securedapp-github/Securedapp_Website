@@ -30,7 +30,7 @@ function NavbarWithBread({ onItemClick }) {
     console.log(index);
   };
   return (
-    <div className="z-[23432423423]  ">
+    <div className="z-[23432423423]">
       <header className="absolute inset-x-0 top-0 z-50">
         <nav
           className="flex items-center justify-between py-6 lg:mx-[80px] border-b-2 border-gray-500"
