@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect ,useState} from "react";
 import {Link} from 'react-router-dom';
-
+import Request from "./Request1";
 
 function formatDate(dateString) {
   const options = { month: 'long', day: 'numeric', year: 'numeric' };
@@ -33,9 +33,27 @@ function getDaySuffix(day) {
       return 'th';
   }
 }
+function getOrig(title1){
+  let l2=title1?title1:"";
+      const largeString=l2;
+  // Use regular expression to find text between <>
+      const matches = largeString.match(/<[^>]*>/g);
+  
+  // Replace matches with hyperlinks and links
+      const result = largeString.replace(/<([^|]+)\|([^>]+)>/g, '$1');
+      let paragraphs = result.split("][");
+      let result1='';
+      paragraphs.forEach(function (paragraphText) {
+        // Remove any remaining square brackets
+        paragraphText = paragraphText.replace(/\[|\]/g, '');
+        result1=result1+paragraphText;
+    });
+      return result1;
+}
 const BlogCard = ({url,tag,id,topic, date, title, link }) => {
   // console.log(id)
   const alp={topic1:topic,data:date,title1:title,link1:link,tag:tag}
+  const title2=getOrig(title);
   return (
     <Link to={`/blog/${url}`} state={alp}>
       <img src={link} alt="not found" className="mx-auto  w-full h-60 rounded-lg" />
@@ -44,7 +62,7 @@ const BlogCard = ({url,tag,id,topic, date, title, link }) => {
         <div className="rounded-md bg-[#07bc0c] text-white font-semibold my-auto text-sm px-1">{topic}</div>
         <div className="text-white">{date}</div>
         </div> 
-      <div className="text-white pt-2 text-sm">{title.slice(0,100)}...</div>
+      <div className="text-white pt-2 text-sm">{title2.slice(0,100)}...</div>
     </Link>
   );
 };
@@ -52,6 +70,7 @@ const BlogCard = ({url,tag,id,topic, date, title, link }) => {
 const BlogCard1 = ({url,tag,id,topic, date, title, link }) => {
   // console.log(id)
   const alp={topic1:topic,data:date,title1:title,link1:link,tag:tag}
+  const title2=getOrig(title);
   return (
     <Link to={`/blog/${url}`} state={alp}>
       <div className="grid lg:grid-cols-2 lg:gap-3">
@@ -64,7 +83,7 @@ const BlogCard1 = ({url,tag,id,topic, date, title, link }) => {
         <div className="rounded-md bg-[#07bc0c] text-white font-semibold my-auto text-sm px-1">{topic}</div>
         <div className="text-white">{date}</div>
         </div> 
-      <div className="text-white pt-2 text-sm">{title.slice(0,100)}...</div>
+      <div className="text-white pt-2 text-sm">{title2.slice(0,100)}...</div>
       </div>
       </div>
     </Link>
@@ -106,6 +125,7 @@ const BlogCard3=({blog1,blog2})=>{
 
 const BlogCard2=({url,tag,id,topic, date, title, link })=>{
   const alp={topic1:topic,data:date,title1:title,link1:link,tag:tag}
+  const title2=getOrig(title);
   return (
     <Link to={`/blog/${url}`} state={alp}>
       <img src={link} alt="not found" className="mx-auto w-full h-[25rem] rounded-lg" />
@@ -114,7 +134,7 @@ const BlogCard2=({url,tag,id,topic, date, title, link })=>{
         <div className="rounded-md bg-[#07bc0c] text-white font-semibold text-sm my-auto text-center px-1">{topic}</div>
         <div className="text-white text-center">{date}</div>
         </div>
-        <div className="text-white pt-2 text-sm">{title?title.slice(0,200):(<p>Loading</p>)}...</div>
+        <div className="text-white pt-2 text-sm">{title2?title2.slice(0,200):(<p>Loading</p>)}...</div>
     </Link>
   )
 }
@@ -212,6 +232,9 @@ const BlogHero = () => {
     <button onClick={handlePrev} className="rounded-sm text-[#07bc0c] font-semibold text-lg border border-[#07bc0c] px-5 py-2" disabled={pageNo==1}>Prev</button>
     <button onClick={handleNext} className="rounded-sm text-[#07bc0c] font-semibold text-lg border border-[#07bc0c] px-5 py-2" disabled={pageNo==totPage}>Next</button>
     </div>
+    </div>
+    <div className="pb-10"><Request/></div>
+    <div className="xl:mx-auto xl:w-5/6  2xl:w-4/6">
     <h2 className="mx-10 text-xl font-bold inline text-white border-4 border-transparent border-b-[#07bc0c]">Web3 Security</h2>
       <div className="grid gap-10 mx-10 my-10 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1">
           {blogs.map((blog) => (

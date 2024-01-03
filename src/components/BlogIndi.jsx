@@ -3,6 +3,7 @@ import { useLocation} from 'react-router-dom';
 import NavbarWithBread from "./NavWithBread";
 import Footer from './Footer';
 import {Helmet} from "react-helmet";
+import Request from './Request1';
 
 function BlogIndi() {
   const [selectedMenuItem, setSelectedMenuItem] = useState(1);
@@ -13,6 +14,7 @@ function BlogIndi() {
     const location=useLocation()
     const {topic1,data,title1,link1,tag}=location.state;
     let l1;
+    // console.log(title1);
     l1=tag.split(',')
     useEffect(()=>{
       l1=tag.split(',')
@@ -22,14 +24,29 @@ function BlogIndi() {
       const matches = largeString.match(/<[^>]*>/g);
   
   // Replace matches with hyperlinks and links
-      const result = largeString.replace(/<([^|]+)\|([^>]+)>/g, '<a href="$2">$1</a>');
+      const result = largeString.replace(/<([^|]+)\|([^>]+)>/g, '<a target="_blank" href="$2">$1</a>');
   
   // Print the result
      // Create a temporary div element
   const tempDiv = document.createElement('div');
-  
+  let paragraphs = result.split("][");
+  tempDiv.innerHTML='';
+  // console.log(paragraphs)
+  paragraphs.forEach(function (paragraphText) {
+    // Remove any remaining square brackets
+    paragraphText = paragraphText.replace(/\[|\]/g, '');
+
+    // Create a <p> element
+    var paragraphElement = document.createElement("p");
+
+    // Set the content of the <p> element
+    paragraphElement.innerHTML = paragraphText;
+
+    // Append the <p> element to the container
+    tempDiv.appendChild(paragraphElement);
+});
   // Set innerHTML of the div to the result string (containing HTML tags)
-  tempDiv.innerHTML = result;
+  // tempDiv.innerHTML = result;
   const anchorTags = tempDiv.querySelectorAll('a');
 // Loop through all anchor tags and set their text color
 anchorTags.forEach(tag => {
@@ -63,6 +80,7 @@ anchorTags.forEach(tag => {
       </div> 
   <div id='content1' className="text-black pt-2 text-xl text-white sm:pt-10 w-full px-10 sm:w-full sm:px-10 lg:w-1/2 lg:mx-auto lg:px-0"></div>
   </div> 
+  <div><Request/></div>
   <div>
   <Footer />
   </div>
