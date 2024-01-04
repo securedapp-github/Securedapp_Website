@@ -35,6 +35,8 @@ function BlogIndi() {
   paragraphs.forEach(function (paragraphText) {
     // Remove any remaining square brackets
     paragraphText = paragraphText.replace(/\[|\]/g, '');
+    paragraphText = paragraphText.replace(/\/n\//g, '<br><br>');
+    paragraphText = paragraphText.replace(/\*\*(.*?)\*\*/g, '<span style=" font-size: 28px; font-weight: bold;">$1</span>');
 
     // Create a <p> element
     var paragraphElement = document.createElement("p");
@@ -52,6 +54,10 @@ function BlogIndi() {
 anchorTags.forEach(tag => {
   tag.style.color = '#07bc0c'; // Set text color to #07bc0c
 });
+
+
+
+
   let l3=document.getElementById('content1');
   l3.innerHTML='';
   l3.appendChild(tempDiv) 
@@ -73,12 +79,14 @@ anchorTags.forEach(tag => {
     })}
     </div>
     <div className='w-full px-10 lg:px-0 lg:w-1/2 mx-auto pb-10 text-4xl text-white font-semibold'>{topic1}</div>
-    <img src={link1} alt="not found" className=" mx-auto rounded-lg  h-[32rem] w-full px-10 sm:w-full sm:px-10 lg:w-1/2 lg:mx-auto lg:px-0" />
-    <div className="w-1/2 mx-auto gap-4 grid  pt-2 sm:grid-cols-1 lg:grid-cols-2">
-      <div className="rounded-lg bg-[#07bc0c] text-white text-lg font-semibold inline my-auto text-center">{topic1}</div>
-      <div className="text-center text-md text-white">{data}</div>
+    <div className='sm:px-10 lg:px-0'>
+    <img src={link1} alt="not found" className="bg-gradient-to-r p-1 from-[#07bc0c] via-[#3B82F6] to-[#ffffff] mx-auto rounded-xl  h-[32rem] w-full sm:w-full lg:w-1/2 lg:mx-auto" />
+    </div>
+    <div className="w-1/2 mx-auto gap-4 grid mt-2 pt-2 sm:grid-cols-1 lg:grid-cols-2">
+      <div className="rounded-lg bg-[#07bc0c] py-2 text-white text-lg font-semibold inline my-auto text-center">{topic1}</div>
+      <div className="text-center text-md text-white my-auto">{data}</div>
       </div> 
-  <div id='content1' className="text-black pt-2 text-xl text-white sm:pt-10 w-full px-10 sm:w-full sm:px-10 lg:w-1/2 lg:mx-auto lg:px-0"></div>
+  <div id='content1' className="text-black pt-1 text-xl text-white sm:pt-10 w-full px-10 sm:w-full sm:px-10 lg:w-1/2 lg:mx-auto lg:px-0"></div>
   </div> 
   <div><Request/></div>
   <div>

@@ -56,7 +56,7 @@ const BlogCard = ({url,tag,id,topic, date, title, link }) => {
   const title2=getOrig(title);
   return (
     <Link to={`/blog/${url}`} state={alp}>
-      <img src={link} alt="not found" className="mx-auto  w-full h-60 rounded-lg" />
+      <img src={link} alt="not found" className="bg-gradient-to-r p-1 from-[#07bc0c] via-[#3B82F6] to-[#ffffff] mx-auto  w-full h-60 rounded-lg" />
       {/* <div className="flex flex-col justify-between lg:px-0 px-7 rounded-3xl " style={{backgroundImage:`url(${link})`,backgroundRepeat:'no-repeat'}}> */}
       <div className="grid  pt-2 lg:grid-cols-2 sm:grid-cols-1">
         <div className="rounded-md bg-[#07bc0c] text-white font-semibold my-auto text-sm px-1">{topic}</div>
@@ -75,7 +75,7 @@ const BlogCard1 = ({url,tag,id,topic, date, title, link }) => {
     <Link to={`/blog/${url}`} state={alp}>
       <div className="grid lg:grid-cols-2 lg:gap-3">
         <div>
-      <img src={link} alt="not found" className="mx-auto rounded-lg w-full  lg:h-50 " />
+      <img src={link} alt="not found" className="bg-gradient-to-r p-1 from-[#07bc0c] via-[#3B82F6] to-[#ffffff] mx-auto rounded-lg w-full  lg:h-50 " />
       </div>
       {/* <div className="flex flex-col justify-between lg:px-0 px-7 rounded-3xl " style={{backgroundImage:`url(${link})`,backgroundRepeat:'no-repeat'}}> */}
       <div>
@@ -128,7 +128,7 @@ const BlogCard2=({url,tag,id,topic, date, title, link })=>{
   const title2=getOrig(title);
   return (
     <Link to={`/blog/${url}`} state={alp}>
-      <img src={link} alt="not found" className="mx-auto w-full h-[25rem] rounded-lg" />
+      <img src={link} alt="not found" className="bg-gradient-to-r p-1 from-[#07bc0c] via-[#3B82F6] to-[#ffffff] mx-auto w-full h-[25rem] rounded-lg" />
       {/* <div className="flex flex-col justify-between lg:px-0 px-7 rounded-3xl " style={{backgroundImage:`url(${link})`,backgroundRepeat:'no-repeat'}}> */}
       <div className="gap-4 grid  pt-2 sm:grid-cols-1 lg:grid-cols-2">
         <div className="rounded-md bg-[#07bc0c] text-white font-semibold text-sm my-auto text-center px-1">{topic}</div>
