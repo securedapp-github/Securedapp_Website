@@ -35,6 +35,8 @@ function BlogIndi() {
   paragraphs.forEach(function (paragraphText) {
     // Remove any remaining square brackets
     paragraphText = paragraphText.replace(/\[|\]/g, '');
+    paragraphText = paragraphText.replace(/\/n\//g, '<br><br>');
+    paragraphText = paragraphText.replace(/\*\*(.*?)\*\*/g, '<span style=" font-size: 28px; font-weight: bold;">$1</span>');
 
     // Create a <p> element
     var paragraphElement = document.createElement("p");
@@ -52,6 +54,10 @@ function BlogIndi() {
 anchorTags.forEach(tag => {
   tag.style.color = '#07bc0c'; // Set text color to #07bc0c
 });
+
+
+
+
   let l3=document.getElementById('content1');
   l3.innerHTML='';
   l3.appendChild(tempDiv) 
