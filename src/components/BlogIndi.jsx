@@ -21,11 +21,15 @@ function BlogIndi() {
       let l2=title1
       const largeString=l2;
   // Use regular expression to find text between <>
-      const matches = largeString.match(/<[^>]*>/g);
-  
+      // const matches = largeString.match(/<[^>]*>/g);
+      console.log(largeString);
+
   // Replace matches with hyperlinks and links
-      const result = largeString.replace(/<([^|]+)\|([^>]+)>/g, '<a target="_blank" href="$2">$1</a>');
-  
+      const result1 = largeString.replace(/<([^|]+)\|([^>]+)>/g, '<a target="_blank" href="$2">$1</a>');
+      const result = result1.replace(/&lt;([^|]+)\|([^&]+)&gt;/g, '<a target="_blank" href="$2">$1</a>');
+
+      console.log(result);
+
   // Print the result
      // Create a temporary div element
   const tempDiv = document.createElement('div');
