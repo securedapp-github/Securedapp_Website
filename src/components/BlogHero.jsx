@@ -180,17 +180,21 @@ const BlogHero = () => {
         if (!response.ok) {
           throw new Error('Failed to fetch data');
         }
-        const data = await response.json();
-
+        let data = await response.json();
+        
         // Ensure that the component is still mounted before updating state
         if (BlogHero.mounted) {
+          data=data.filter((d1)=>{
+            return d1.status==1;
+          })
+          data.sort((a,b)=>b.sequence-a.sequence);
           setFirstSec(data.slice(0,4))
           setBlog1(data[0]);
           setBlog2(data.slice(1,3));
           setTotPage(2);
           setBlogs(data.slice(3));
           setPage({topic1:blog1.topic,data:blog1.date,title1:blog1.title,link1:blog1.link})
-          // console.log(data)
+          console.log(data)
         }
       } catch (error) {
         console.error('Error fetching data:', error);
