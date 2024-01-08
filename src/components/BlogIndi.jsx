@@ -65,22 +65,22 @@ anchorTags.forEach(tag => {
         </Helmet>
       <NavbarWithBread onItemClick={handleMenuItemClick} />
     <div className='blogindi pt-40 pb-10'>
-    <div className='mx-auto w-full px-10 lg:px-0 lg:w-1/2 pb-5'>
+    <div className='mx-auto w-full px-10 lg:px-0 lg:w-3/4 pb-5'>
     {l1.map((item)=>{
       return (
         <span className='rounded-md mx-1 px-2 py-1 bg-[#07bc0c] text-white text-xl font-semibold'>{item}</span>
       )
     })}
     </div>
-    <div className='w-full px-10 lg:px-0 lg:w-1/2 mx-auto pb-10 text-4xl text-white font-semibold'>{topic1}</div>
+    <div className='w-full px-10 lg:px-0 lg:w-3/4 mx-auto pb-10 text-4xl text-white font-semibold'>{topic1}</div>
     <div className='sm:px-10 lg:px-0'>
-    <img src={link1} alt="not found" className="bg-gradient-to-r p-1 from-[#07bc0c] via-[#3B82F6] to-[#ffffff] mx-auto rounded-xl  h-[32rem] w-full sm:w-full lg:w-1/2 lg:mx-auto" />
+    <img src={link1} alt="not found" className="bg-gradient-to-r p-1 from-[#07bc0c] via-[#3B82F6] to-[#ffffff] mx-auto rounded-xl   w-3/4 sm:w-full lg:w-3/4 lg:mx-auto" />
     </div>
-    <div className="w-1/2 mx-auto gap-4 grid mt-2 pt-2 sm:grid-cols-1 lg:grid-cols-2">
+    <div className="w-3/4 mx-auto gap-4 grid mt-2 pt-2 sm:grid-cols-1 lg:grid-cols-2">
       <div className="rounded-lg bg-[#07bc0c] py-2 text-white text-lg font-semibold inline my-auto text-center">{topic1}</div>
       <div className="text-center text-md text-white my-auto">{data}</div>
       </div> 
-  <div id='content1' className="text-black pt-1 text-xl text-white sm:pt-10 w-full px-10 sm:w-full sm:px-10 lg:w-1/2 lg:mx-auto lg:px-0"></div>
+  <div id='content1' className="text-black pt-1 text-xl text-white sm:pt-10 w-full px-10 sm:w-full sm:px-10 lg:w-3/4 lg:mx-auto lg:px-0"></div>
   </div> 
   <div><Request/></div>
   <div>
