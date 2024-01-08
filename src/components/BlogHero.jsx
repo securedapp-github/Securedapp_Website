@@ -75,7 +75,7 @@ const BlogCard1 = ({url,tag,id,topic, date, title, link }) => {
     <Link to={`/blog/${url}`} state={alp}>
       <div className="grid lg:grid-cols-2 lg:gap-3">
         <div>
-      <img src={link} alt="not found" className="bg-gradient-to-r p-1 from-[#07bc0c] via-[#3B82F6] to-[#ffffff] mx-auto rounded-lg w-full  lg:h-50 " />
+      <img src={link} alt="not found" className="bg-gradient-to-r p-1 from-[#07bc0c] via-[#3B82F6] to-[#ffffff] mx-auto rounded-lg w-full  lg:h-[12rem] " />
       </div>
       {/* <div className="flex flex-col justify-between lg:px-0 px-7 rounded-3xl " style={{backgroundImage:`url(${link})`,backgroundRepeat:'no-repeat'}}> */}
       <div>
