@@ -58,6 +58,7 @@ const BlogCard = ({url,tag,id,topic, date, title, link }) => {
   // console.log(id)
   const alp={topic1:topic,data:date,title1:title,link1:link,tag:tag}
   const title2=getOrig(title);
+  // console.log("titlee ", title2);
   return (
     <Link to={`/blog/${url}`} state={alp}>
       <img src={link} alt="not found" className="bg-gradient-to-r p-1 from-[#07bc0c] via-[#3B82F6] to-[#ffffff] mx-auto  w-full h-60 rounded-lg" />
@@ -75,7 +76,11 @@ const BlogCard = ({url,tag,id,topic, date, title, link }) => {
 const BlogCard1 = ({url,tag,id,topic, date, title, link }) => {
   // console.log(id)
   const alp={topic1:topic,data:date,title1:title,link1:link,tag:tag}
+  // console.log("titlee_22 ", title);
+
   const title2=getOrig(title);
+  // console.log("titlee_2 ", title2);
+
   return (
     <Link to={`/blog/${url}`} state={alp}>
       <div className="grid lg:grid-cols-2 lg:gap-3">
@@ -284,7 +289,7 @@ const BlogHero = () => {
       </div>
       <div className="mx-[100px] py-[90px]">
         <span className="text-white font-sans text-[24px] font-normal leading-[170%]">
-          older
+          
         </span>
       </div>
     </div>
