@@ -58,6 +58,7 @@ const BlogCard = ({url,tag,id,topic, date, title, link }) => {
   // console.log(id)
   const alp={topic1:topic,data:date,title1:title,link1:link,tag:tag}
   const title2=getOrig(title);
+  // console.log("titlee ", title2);
   return (
     <Link to={`/blog/${url}`} state={alp}>
       <img src={link} alt="not found" className="bg-gradient-to-r p-1 from-[#07bc0c] via-[#3B82F6] to-[#ffffff] mx-auto  w-full h-60 rounded-lg" />
@@ -75,12 +76,16 @@ const BlogCard = ({url,tag,id,topic, date, title, link }) => {
 const BlogCard1 = ({url,tag,id,topic, date, title, link }) => {
   // console.log(id)
   const alp={topic1:topic,data:date,title1:title,link1:link,tag:tag}
+  // console.log("titlee_22 ", title);
+
   const title2=getOrig(title);
+  // console.log("titlee_2 ", title2);
+
   return (
     <Link to={`/blog/${url}`} state={alp}>
       <div className="grid lg:grid-cols-2 lg:gap-3">
         <div>
-      <img src={link} alt="not found" className="bg-gradient-to-r p-1 from-[#07bc0c] via-[#3B82F6] to-[#ffffff] mx-auto rounded-lg w-full  lg:h-50 " />
+      <img src={link} alt="not found" className="bg-gradient-to-r p-1 from-[#07bc0c] via-[#3B82F6] to-[#ffffff] mx-auto rounded-lg w-full  lg:h-[12rem] " />
       </div>
       {/* <div className="flex flex-col justify-between lg:px-0 px-7 rounded-3xl " style={{backgroundImage:`url(${link})`,backgroundRepeat:'no-repeat'}}> */}
       <div>
@@ -185,17 +190,21 @@ const BlogHero = () => {
         if (!response.ok) {
           throw new Error('Failed to fetch data');
         }
-        const data = await response.json();
-
+        let data = await response.json();
+        
         // Ensure that the component is still mounted before updating state
         if (BlogHero.mounted) {
+          data=data.filter((d1)=>{
+            return d1.status==1;
+          })
+          data.sort((a,b)=>b.sequence-a.sequence);
           setFirstSec(data.slice(0,4))
           setBlog1(data[0]);
           setBlog2(data.slice(1,3));
           setTotPage(2);
           setBlogs(data.slice(3));
           setPage({topic1:blog1.topic,data:blog1.date,title1:blog1.title,link1:blog1.link})
-          // console.log(data)
+          console.log(data)
         }
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -280,7 +289,7 @@ const BlogHero = () => {
       </div>
       <div className="mx-[100px] py-[90px]">
         <span className="text-white font-sans text-[24px] font-normal leading-[170%]">
-          older
+          
         </span>
       </div>
     </div>
