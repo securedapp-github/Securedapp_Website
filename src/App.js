@@ -13,6 +13,9 @@ import SecurePadTokenComp from "./components/SecurePadTokenComp";
 import BlogComp from "./components/BlogComp";
 import TokenomicsComp from "./components/TokenomicsComp";
 import BlogIndi from "./components/BlogIndi";
+import SecureWatch from "./components/SecureWatch";
+import Securewatch1 from "./components/Securewatch1";
+import Securewatch2 from "./components/Securewatch2";
 // import ReactGA from 'react-ga';
 // const TRACKING_ID = "G-GXZX7PXY8D"; 
 // ReactGA.initialize(TRACKING_ID);
@@ -50,6 +53,9 @@ function App() {
       <Route exact path="/tokenomics-design" element={<TokenomicsComp />} />
       <Route exact path="/blog/:id" element={<BlogIndi/>} />
       <Route exact path="/blog" element={<BlogComp />} />
+      <Route exact path="/securewatch" element={<SecureWatch/>} />
+      <Route exact path="/securewatch1" element={<Securewatch1/>} />
+      <Route exact path="/securewatch2" element={<Securewatch2/>} />
       </Routes>
   );
 }

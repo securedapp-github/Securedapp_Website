@@ -62,7 +62,7 @@ const BlogCard = ({url,tag,id,topic, date, title, link }) => {
         <div className="rounded-md bg-[#07bc0c] text-white font-semibold my-auto text-sm px-1">{topic}</div>
         <div className="text-white">{date}</div>
         </div> 
-      <div className="text-white pt-2 text-sm">{title2.slice(0,100)}...</div>
+      <div className="text-white pt-2 text-sm text-start">{title2.slice(0,100)}...</div>
     </Link>
   );
 };
@@ -83,7 +83,7 @@ const BlogCard1 = ({url,tag,id,topic, date, title, link }) => {
         <div className="rounded-md bg-[#07bc0c] text-white font-semibold my-auto text-sm px-1">{topic}</div>
         <div className="text-white">{date}</div>
         </div> 
-      <div className="text-white pt-2 text-sm">{title2.slice(0,100)}...</div>
+      <div className="text-white pt-2 text-sm text-start">{title2.slice(0,100)}...</div>
       </div>
       </div>
     </Link>
@@ -134,7 +134,7 @@ const BlogCard2=({url,tag,id,topic, date, title, link })=>{
         <div className="rounded-md bg-[#07bc0c] text-white font-semibold text-sm my-auto text-center px-1">{topic}</div>
         <div className="text-white text-center">{date}</div>
         </div>
-        <div className="text-white pt-2 text-sm">{title2?title2.slice(0,200):(<p>Loading</p>)}...</div>
+        <div className="text-white pt-2 text-sm text-start">{title2?title2.slice(0,200):(<p>Loading</p>)}...</div>
     </Link>
   )
 }

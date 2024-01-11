@@ -506,6 +506,11 @@ body{
   background-repeat: no-repeat;
   background-size: cover;
 }
+.securewatch{
+  background-image: url("./images/bloghero_fpkpef.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 .blogimg {
   /* Set the background image URL here */
 
