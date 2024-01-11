@@ -42,8 +42,10 @@ function getOrig(title1){
   // Replace matches with hyperlinks and links
       // const result = largeString.replace(/<([^|]+)\|([^>]+)>/g, '$1');
       const result2 = largeString.replace(/<([^|]+)\|([^>]+)>/g, '$1 ');
-      const result = result2.replace(/&lt;([^|]+)\|([^&]+)&gt;/g, '$1 ');
-
+      const result3 = result2.replace(/&lt;([^|]+)\|([^&]+)&gt;/g, '$1 ');
+      let result4 = result3.replace(/\/n\//g, '');
+      let result = result4.replace(/\*\*.*?\*\*/g, '');
+      
       let paragraphs = result.split("][");
       let result1='';
       paragraphs.forEach(function (paragraphText) {
