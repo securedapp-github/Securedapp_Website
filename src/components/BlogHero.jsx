@@ -59,8 +59,18 @@ function getOrig(title1){
 const BlogCard = ({url,tag,id,topic, date, title, link }) => {
   // console.log(id)
   const alp={topic1:topic,data:date,title1:title,link1:link,tag:tag}
-  const title2=getOrig(title);
-  // console.log("titlee ", title2);
+  useEffect(()=>{const title2=getOrig(title);
+  const tempDiv = document.createElement('div');
+  tempDiv.innerHTML=title2;
+  const l2=document.getElementById(id)
+  l2.innerHTML='';
+  const l4=tempDiv.textContent;
+  // console.log(l4)
+  const l5=l4.slice(0,100)+"..."
+  const tempDiv1=document.createElement('div');
+  tempDiv1.innerHTML=l5;
+  l2.appendChild(tempDiv1)
+},[])
   return (
     <Link to={`/blog/${url}`} state={alp}>
       <img src={link} alt="not found" className="bg-gradient-to-r p-1 from-[#07bc0c] via-[#3B82F6] to-[#ffffff] mx-auto  w-full h-60 rounded-lg" />
@@ -69,8 +79,7 @@ const BlogCard = ({url,tag,id,topic, date, title, link }) => {
         <div className="rounded-md bg-[#07bc0c] text-white font-semibold my-auto text-sm px-1">{topic}</div>
         <div className="text-white">{date}</div>
         </div> 
-      <div className="text-white pt-2 text-sm">{title2.slice(0,100)}...</div>
-      
+      <div id={id} className="text-white pt-2 text-sm text-start"></div>
     </Link>
   );
 };
@@ -78,11 +87,18 @@ const BlogCard = ({url,tag,id,topic, date, title, link }) => {
 const BlogCard1 = ({url,tag,id,topic, date, title, link }) => {
   // console.log(id)
   const alp={topic1:topic,data:date,title1:title,link1:link,tag:tag}
-  // console.log("titlee_22 ", title);
-
-  const title2=getOrig(title);
-  // console.log("titlee_2 ", title2);
-
+  useEffect(()=>{const title2=getOrig(title);
+    const tempDiv = document.createElement('div');
+    tempDiv.innerHTML=title2;
+    const l2=document.getElementById(id)
+    l2.innerHTML='';
+    const l4=tempDiv.textContent;
+    // console.log(l4)
+    const l5=l4.slice(0,100)+"..."
+    const tempDiv1=document.createElement('div');
+    tempDiv1.innerHTML=l5;
+    l2.appendChild(tempDiv1)
+  },[])
   return (
     <Link to={`/blog/${url}`} state={alp}>
       <div className="grid lg:grid-cols-2 lg:gap-3">
@@ -95,7 +111,7 @@ const BlogCard1 = ({url,tag,id,topic, date, title, link }) => {
         <div className="rounded-md bg-[#07bc0c] text-white font-semibold my-auto text-sm px-1">{topic}</div>
         <div className="text-white">{date}</div>
         </div> 
-      <div className="text-white pt-2 text-sm">{title2.slice(0,100)}...</div>
+      <div id={id} className="text-white pt-2 text-sm text-start"></div>
       </div>
       </div>
     </Link>
@@ -137,7 +153,18 @@ const BlogCard3=({blog1,blog2})=>{
 
 const BlogCard2=({url,tag,id,topic, date, title, link })=>{
   const alp={topic1:topic,data:date,title1:title,link1:link,tag:tag}
-  const title2=getOrig(title);
+  useEffect(()=>{const title2=getOrig(title);
+    const tempDiv = document.createElement('div');
+    tempDiv.innerHTML=title2;
+    const l4=tempDiv.textContent;
+    const l5=l4.slice(0,200)+"..."
+    const tempDiv1=document.createElement('div');
+    tempDiv1.innerHTML=l5;
+    console.log(id)
+    const l2=document.getElementsByClassName('cont1')
+    l2[0].innerHTML='';
+    l2[0].appendChild(tempDiv1)
+  },[id])
   return (
     <Link to={`/blog/${url}`} state={alp}>
       <img src={link} alt="not found" className="bg-gradient-to-r p-1 from-[#07bc0c] via-[#3B82F6] to-[#ffffff] mx-auto w-full h-[25rem] rounded-lg" />
@@ -146,7 +173,7 @@ const BlogCard2=({url,tag,id,topic, date, title, link })=>{
         <div className="rounded-md bg-[#07bc0c] text-white font-semibold text-sm my-auto text-center px-1">{topic}</div>
         <div className="text-white text-center">{date}</div>
         </div>
-        <div className="text-white pt-2 text-sm">{title2?title2.slice(0,200):(<p>Loading</p>)}...</div>
+        <div className="cont1 text-white pt-2 text-sm text-start"></div>
     </Link>
   )
 }
