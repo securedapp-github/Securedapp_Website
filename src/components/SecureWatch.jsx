@@ -4,6 +4,7 @@ import Footer from './Footer';
 import {Helmet} from "react-helmet";
 import m1_image from "../images/Group891.png"
 import Transmission from "./Transmission";
+import {useNavigate} from 'react-router-dom'
 
 function SecureWatch() {
     const [selectedMenuItem, setSelectedMenuItem] = useState(1);
@@ -11,6 +12,10 @@ function SecureWatch() {
     const handleMenuItemClick = (index) => {
       setSelectedMenuItem(index);
     };
+    const navigate = useNavigate()
+    const nextPage=()=>{
+        navigate('/securewatch1')
+    }
   return (
     <>
     <Helmet>
@@ -54,7 +59,7 @@ function SecureWatch() {
 <div className='font-bold text-xl text-white'>User-Friendly Interface</div>
       </div>
       <div className='text-[#ABABAB] font-medium text-lg'>Enjoy a hassle-free experience with SecureDApp's user-friendly interface. Seamlessly integrate Solidity Shield into your development workflow, navigate scan results effortlessly, and access actionable insights. </div>
-      <button className='font-extrabold text-black bg-[#00D870] mt-10 rounded-xl px-7 py-4 text-xl'>View Plans</button>
+      <button onClick={nextPage} className='font-extrabold text-black bg-[#00D870] mt-10 rounded-xl px-7 py-4 text-xl'>View Plans</button>
       </div>
       <div className='flex-1 my-auto'>
       <img src={m1_image} className='my-auto -rotate-6 w-full' alt="not found"/>
