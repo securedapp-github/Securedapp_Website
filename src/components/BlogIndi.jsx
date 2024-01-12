@@ -21,11 +21,15 @@ function BlogIndi() {
       let l2=title1
       const largeString=l2;
   // Use regular expression to find text between <>
-      const matches = largeString.match(/<[^>]*>/g);
-  
+      // const matches = largeString.match(/<[^>]*>/g);
+      console.log(largeString);
+
   // Replace matches with hyperlinks and links
-      const result = largeString.replace(/<([^|]+)\|([^>]+)>/g, '<a target="_blank" href="$2">$1</a>');
-  
+      const result1 = largeString.replace(/<([^|]+)\|([^>]+)>/g, '<a target="_blank" href="$2">$1</a>');
+      const result = result1.replace(/&lt;([^|]+)\|([^&]+)&gt;/g, '<a target="_blank" href="$2">$1</a>');
+
+      console.log(result);
+
   // Print the result
      // Create a temporary div element
   const tempDiv = document.createElement('div');
@@ -35,6 +39,8 @@ function BlogIndi() {
   paragraphs.forEach(function (paragraphText) {
     // Remove any remaining square brackets
     paragraphText = paragraphText.replace(/\[|\]/g, '');
+    paragraphText = paragraphText.replace(/\/n\//g, '<br><br>');
+    paragraphText = paragraphText.replace(/\*\*(.*?)\*\*/g, '<span style=" font-size: 28px; font-weight: bold;">$1</span>');
 
     // Create a <p> element
     var paragraphElement = document.createElement("p");
@@ -52,6 +58,10 @@ function BlogIndi() {
 anchorTags.forEach(tag => {
   tag.style.color = '#07bc0c'; // Set text color to #07bc0c
 });
+
+
+
+
   let l3=document.getElementById('content1');
   l3.innerHTML='';
   l3.appendChild(tempDiv) 

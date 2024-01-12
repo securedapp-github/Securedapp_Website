@@ -37,10 +37,15 @@ function getOrig(title1){
   let l2=title1?title1:"";
       const largeString=l2;
   // Use regular expression to find text between <>
-      const matches = largeString.match(/<[^>]*>/g);
+      // const matches = largeString.match(/<[^>]*>/g);
   
   // Replace matches with hyperlinks and links
-      const result = largeString.replace(/<([^|]+)\|([^>]+)>/g, '$1');
+      // const result = largeString.replace(/<([^|]+)\|([^>]+)>/g, '$1');
+      const result2 = largeString.replace(/<([^|]+)\|([^>]+)>/g, '$1 ');
+      const result3 = result2.replace(/&lt;([^|]+)\|([^&]+)&gt;/g, '$1 ');
+      let result4 = result3.replace(/\/n\//g, '');
+      let result = result4.replace(/\*\*.*?\*\*/g, '');
+      
       let paragraphs = result.split("][");
       let result1='';
       paragraphs.forEach(function (paragraphText) {
@@ -48,6 +53,7 @@ function getOrig(title1){
         paragraphText = paragraphText.replace(/\[|\]/g, '');
         result1=result1+paragraphText;
     });
+    
       return result1;
 }
 const BlogCard = ({url,tag,id,topic, date, title, link }) => {
@@ -312,7 +318,7 @@ const BlogHero = () => {
       </div>
       <div className="mx-[100px] py-[90px]">
         <span className="text-white font-sans text-[24px] font-normal leading-[170%]">
-          older
+          
         </span>
       </div>
     </div>
