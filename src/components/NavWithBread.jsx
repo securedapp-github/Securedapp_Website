@@ -4,7 +4,10 @@ import { Dialog } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import Logo from "../images/logoblacktextsdlogowhite-1@2x.png";
 import AuditModal from "./AuditModal";
+
+import {useNavigate} from 'react-router-dom'
 const navigation = [
+  {name:'Securewatch',href:'/securewatch'},
   {
     name: "Solidity Shield Scan",
     href: "/smart-contract-scanner-solidity-shield",
@@ -17,7 +20,7 @@ const navigation = [
 
 function NavbarWithBread({ onItemClick }) {
   const [showModal, setShowModal] = useState(false);
-
+  const navigate=useNavigate();
   const handleModalClose = () => {
     setShowModal(false);
   };
