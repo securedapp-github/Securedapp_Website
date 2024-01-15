@@ -13,6 +13,7 @@ import SecurePadTokenComp from "./components/SecurePadTokenComp";
 import BlogComp from "./components/BlogComp";
 import TokenomicsComp from "./components/TokenomicsComp";
 import BlogIndi from "./components/BlogIndi";
+import TxnComp from "./components/TxnComp";
 import SecureWatch from "./components/SecureWatch";
 import Securewatch1 from "./components/Securewatch1";
 import Securewatch2 from "./components/Securewatch2";
@@ -56,6 +57,7 @@ function App() {
       <Route exact path="/securewatch" element={<SecureWatch/>} />
       <Route exact path="/securewatch1" element={<Securewatch1/>} />
       <Route exact path="/securewatch2" element={<Securewatch2/>} />
+      <Route exact path="/txn-status/:id" element={<TxnComp />} />
       </Routes>
   );
 }

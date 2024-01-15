@@ -9,6 +9,11 @@ import autoTable from 'jspdf-autotable';
 import Modal from "react-modal";
 import QRCode from 'qrcode.react';
 import logo from "../images/logo2.jpeg";
+import sha256 from 'crypto-js/sha256';
+import {Buffer} from 'buffer';
+import axios from "axios";
+
+const { v4: uuidv4 } = require('uuid');
 
 
 const FlatContractForm = () => {
@@ -27,7 +32,9 @@ const FlatContractForm = () => {
   const [showHistoryTable, setShowHisotryTable] = useState(false); // table toggle
   const [tableData, setTableData] = useState([]);
 
-  const [showPlans, setshowPlans] = useState(false);   // for scan history and scan plans
+  const [showPlans, setshowPlans] = useState(true);   // for scan history and scan plans
+  // const [showPlans, setshowPlans] = useState(false);   // for scan history and scan plans
+
   const [showScanResult, setShowScanResult] = useState(false);  // for scan results
 
   const [version, setVersion] = useState('0.8.17');
@@ -576,44 +583,102 @@ const FlatContractForm = () => {
     setLoading(true);
 
     let cost = 0;
-    if (planid == 1) cost = 99;
-    if (planid == 2) cost = 289;
-    if (planid == 3) cost = 1000;
+    if (planid == 1) cost = 8000;
+    if (planid == 2) cost = 24000;
+    if (planid == 3) cost = 60000;
 
     if (cost > 0) {
       setplanid(planid);
-      fetch('https://api.nowpayments.io/v1/payment', {
-        method: "POST",
-        body: JSON.stringify({
-          "price_amount": cost,
-          "price_currency": "usd",
-          "pay_currency": "USDTMATIC",
-          "pay_amount": cost,
-          "order_description": "Purchase of Plan " + planid,
-          "is_fixed_rate": true,
-          "is_fee_paid_by_user": false
-        }),
-        headers: {
-          "x-api-key": "F2TDXCK-K0Q4N8J-JWSHQW1-P5AM1RH",
-          "Content-type": "application/json",
+
+      const transactionid = "Tr-"+uuidv4().toString(36).slice(-6);
+      console.log("Txn_ID : ", transactionid);
+
+      const payload = {
+        merchantId: "PGTESTPAYUAT", //process.env.NEXT_PUBLIC_MERCHANT_ID,
+        merchantTransactionId: transactionid,
+        merchantUserId: 'MUID-'+uuidv4().toString(36).slice(-6),
+        amount: cost*100,
+        redirectUrl: `http://localhost:3000/txn-status/${transactionid}`,
+        redirectMode: "REDIRECT",
+        // redirectMode: "POST",
+        callbackUrl: `http://localhost:3000/api/status/${transactionid}`,
+        mobileNumber: '9598241681',
+        paymentInstrument: {
+          type: "PAY_PAGE",
         },
-      })
-        .then((res) => { console.log(res); return res.json(); })
-        .then((data) => {
-          console.log(2);
-          console.log(data);
-          setpaymentid(data.payment_id);
-          setpaymentaddress(data.pay_address);
-          setpaymentamount(data.pay_amount);
-          setModalOpen(true);
-          toast.success("Invoice Generated Successfully");
-          setLoading(false);
-        })
-        .catch((err) => {
-          console.log(err.message);
-          setLoading(false);
-          toast("Error in Invoice gGneration, Try again");
-        });
+      };
+
+      const dataPayload = JSON.stringify(payload);
+      console.log("payload :",dataPayload);
+
+      const dataBase64 = Buffer.from(dataPayload).toString("base64");
+      console.log("base64 :", dataBase64);
+
+      const fullURL =
+        // dataBase64 + "/pg/v1/pay" + process.env.NEXT_PUBLIC_SALT_KEY;
+        dataBase64 + "/pg/v1/pay" + "099eb0cd-02cf-4e2a-8aca-3e6c6aff0399";
+        
+     const dataSha256 = sha256(fullURL);
+      // const checksum = dataSha256 + "###" + process.env.NEXT_PUBLIC_SALT_INDEX;
+      const checksum = dataSha256 + "###" + "1";
+
+      console.log("c====",checksum);
+
+    const UAT_PAY_API_URL =
+    "https://api-preprod.phonepe.com/apis/pg-sandbox/pg/v1/pay";
+
+
+  const response = await axios.post(
+    UAT_PAY_API_URL,
+    {
+      request: dataBase64,
+    },
+    {
+      headers: {
+        accept: "application/json",
+        "Content-Type": "application/json",
+         "X-VERIFY": checksum,
+      },
+    }
+  );
+
+  const redirect=response.data.data.instrumentResponse.redirectInfo.url;
+  window.location.replace(redirect)
+
+
+      // fetch('https://api.nowpayments.io/v1/payment', {
+      //   method: "POST",
+      //   body: JSON.stringify({
+      //     "price_amount": cost,
+      //     "price_currency": "usd",
+      //     "pay_currency": "USDTMATIC",
+      //     "pay_amount": cost,
+      //     "order_description": "Purchase of Plan " + planid,
+      //     "is_fixed_rate": true,
+      //     "is_fee_paid_by_user": false
+      //   }),
+      //   headers: {
+      //     "x-api-key": "F2TDXCK-K0Q4N8J-JWSHQW1-P5AM1RH",
+      //     "Content-type": "application/json",
+      //   },
+      // })
+      //   .then((res) => { console.log(res); return res.json(); })
+      //   .then((data) => {
+      //     console.log(2);
+      //     console.log(data);
+      //     setpaymentid(data.payment_id);
+      //     setpaymentaddress(data.pay_address);
+      //     setpaymentamount(data.pay_amount);
+      //     setModalOpen(true);
+      //     toast.success("Invoice Generated Successfully");
+      //     setLoading(false);
+      //   })
+      //   .catch((err) => {
+      //     console.log(err.message);
+      //     setLoading(false);
+      //     toast("Error in Invoice gGneration, Try again");
+      //   });
+
     }
 
   }
