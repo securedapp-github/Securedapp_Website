@@ -46,7 +46,7 @@ const Transmission = () => {
           background:
             "radial-gradient(50%_50%_at_50%_50%,_rgba(18,_213,_118,_0.24),_rgba(0,_0,_0,_0))",
         }}
-        className="lg:py-[40px] lg:px-[80px] md:p-[70px] p-[50px] bg-gradient-to-r from-green-500 via-emerald-500 to-cyan-600 flex lg:justify-between lg:flex-row flex-col items-center    "
+        className="lg:px-[80px] md:px-[70px] px-[50px] bg-gradient-to-r from-green-500 via-emerald-500 to-cyan-600 flex lg:justify-between lg:flex-row flex-col items-center    "
       >
         <div className=" md:text-[48px] md:leading-[110%] text-3xl text-center whitespace-break-spaces w-fit font-sans font-bold leading-[110%] text-black">
           Receive Transmissions
