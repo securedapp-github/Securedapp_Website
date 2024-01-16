@@ -27,10 +27,14 @@ const TxnHero = () => {
       const response = await fetch(`${apiUrl}?txnid=${id}`);
       const result = await response.json();
 
-      console.log(result);
+      // console.log(result.data.status);
       setLoading(false);
+      if (result.data?.status && result.data.status === 1) {
+        setstatus("Successful");
+      }else{
+        setstatus("Pending (Contact Team)");
+      }
 
-      // setData(result);
     } catch (error) {
       setLoading(false);
       console.log(error);
