@@ -4,6 +4,7 @@ import Footer from './Footer';
 import {Helmet} from "react-helmet";
 import m1_image from "../images/Group891.png"
 import Transmission from "./Transmission";
+import {useNavigate} from 'react-router-dom'
 
 function Check({color}){
 
@@ -20,6 +21,10 @@ function SecureWatch1() {
     const handleMenuItemClick = (index) => {
       setSelectedMenuItem(index);
     };
+    const navigate=useNavigate()
+    const nextPage = () => {
+      navigate('/securewatch2')
+    }
   return (
     <>
     <Helmet>
@@ -87,7 +92,7 @@ function SecureWatch1() {
 </span>
         </div>
         <div className='text-center pt-8'>
-        <button className='w-5/6 py-1 border-2  rounded-md border-[#00D870] text-[#00D870] mx-auto font-bold text-lg'>Get Started</button>
+        <button onClick={nextPage} className='w-5/6 py-1 border-2  rounded-md border-[#00D870] text-[#00D870] mx-auto font-bold text-lg'>Get Started</button>
         </div>
         </div>
         </div>
@@ -147,7 +152,7 @@ function SecureWatch1() {
 </span>
         </div>
         <div className='text-center pt-8'>
-        <button className='w-5/6 py-1 border-2 text-white bg-black  rounded-md border-black text- mx-auto font-bold text-lg'>Get Started</button>
+        <button onClick={nextPage} className='w-5/6 py-1 border-2 text-white bg-black  rounded-md border-black text- mx-auto font-bold text-lg'>Get Started</button>
         </div>
         </div>
         </div>
@@ -208,7 +213,7 @@ function SecureWatch1() {
 </span>
         </div>
         <div className='text-center pt-8'>
-        <button className='w-5/6 py-1 border-2  rounded-md border-[#00D870] text-[#00D870] mx-auto font-bold text-lg'>Get Started</button>
+        <button onClick={nextPage} className='w-5/6 py-1 border-2  rounded-md border-[#00D870] text-[#00D870] mx-auto font-bold text-lg'>Get Started</button>
         </div>
         </div>
         </div>
