@@ -11,15 +11,54 @@ import m4 from '../images/memoji(3).png'
 import m5 from '../images/memoji(4).png'
 import m6 from '../images/memoji(5).png'
 import m7 from '../images/nastyatoki.png'
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function SecureWatch2() {
     const [selectedMenuItem, setSelectedMenuItem] = useState(1);
+    const [email, setEmail] = useState("");
 
     const handleMenuItemClick = (index) => {
       setSelectedMenuItem(index);
     };
+
+    const sendMail = async (e) => {
+      e.preventDefault();
+  
+      if (email == "") {
+        toast("Invalid Mail");
+        return;
+      }
+      fetch("https://139-59-5-56.nip.io:3443/contactMail", {
+        method: "POST",
+        body: JSON.stringify({
+          name: "Transmission Mail",
+          mail: email,
+          msg: "Mail for secure watch",
+        }),
+        headers: {
+          "Content-type": "application/json",
+        },
+      })
+        .then((res) => {})
+        .then((data) => {
+          toast.success("Mail Send Successfully");
+        })
+        .catch((err) => {
+          console.log(err.message);
+          toast("Error in sending mail");
+        });
+    };
+
+
   return (
     <>
+    <ToastContainer
+        position="top-center"
+        autoClose={2000}
+        theme="dark"
+        pauseOnHover
+      />
     <Helmet>
             <title>SecureDApp Blog: Expert Insights on NFTs, Token Sales & DeFi Trends</title>
             <meta name="description" content="Dive into SecureDApp's blog for insightful articles on NFTs, token sales, and the future of DeFi. Stay updated with the latest trends, guides, and expert opinions on blockchain, tokenomics, and more." />
@@ -45,9 +84,9 @@ function SecureWatch2() {
         <img src={m7} className='relative right-6' alt="not found"/>
         </div>
         <div className='pt-6'>
-        <input type="email"  placeholder='Enter your Email Address' className='bg-transparent border-2 border-[#12FF8D] rounded-lg h-[3rem] w-[20rem] md:w-[24rem] placeholder-[rgba(255,255,255,0.37)] focus:outline-none text-white font-bold text-sm pl-4'/>
+        <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder='Enter your Email Address' className='bg-transparent border-2 border-[#12FF8D] rounded-lg h-[3rem] w-[20rem] md:w-[24rem] placeholder-[rgba(255,255,255,0.37)] focus:outline-none text-white font-bold text-sm pl-4'/>
         </div>
-        <button className='mt-8 text-black font-bold text-lg bg-[#00D870] rounded-xl py-3 px-8 mb-8'>Continue</button>
+        <button onClick={sendMail} className='mt-8 text-black font-bold text-lg bg-[#00D870] rounded-xl py-3 px-8 mb-8'>Continue</button>
       </div>
       <Transmission/>
       <div>
