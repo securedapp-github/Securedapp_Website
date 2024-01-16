@@ -9,6 +9,11 @@ import autoTable from 'jspdf-autotable';
 import Modal from "react-modal";
 import QRCode from 'qrcode.react';
 import logo from "../images/logo2.jpeg";
+import sha256 from 'crypto-js/sha256';
+import {Buffer} from 'buffer';
+import axios from "axios";
+
+const { v4: uuidv4 } = require('uuid');
 
 
 const FlatContractForm = () => {
@@ -28,6 +33,8 @@ const FlatContractForm = () => {
   const [tableData, setTableData] = useState([]);
 
   const [showPlans, setshowPlans] = useState(false);   // for scan history and scan plans
+  // const [showPlans, setshowPlans] = useState(false);   // for scan history and scan plans
+
   const [showScanResult, setShowScanResult] = useState(false);  // for scan results
 
   const [version, setVersion] = useState('0.8.17');
@@ -576,51 +583,102 @@ const FlatContractForm = () => {
     setLoading(true);
 
     let cost = 0;
-    if (planid == 1) cost = 99;
-    if (planid == 2) cost = 289;
-    if (planid == 3) cost = 1000;
+    if (planid == 1) cost = 100;
+    if (planid == 2) cost = 200;
+    if (planid == 3) cost = 300;
 
     if (cost > 0) {
       setplanid(planid);
-      fetch('https://api.nowpayments.io/v1/payment', {
+
+      const transactionid = "Tr-"+uuidv4().toString(36).slice(-6);
+      console.log("Txn_ID : ", transactionid);
+
+
+      const response2 = await fetch("https://139-59-5-56.nip.io:3443/payment-insert", {
         method: "POST",
         body: JSON.stringify({
-          "price_amount": cost,
-          "price_currency": "usd",
-          "pay_currency": "USDTMATIC",
-          "pay_amount": cost,
-          "order_description": "Purchase of Plan " + planid,
-          "is_fixed_rate": true,
-          "is_fee_paid_by_user": false
+          mail: email,
+          paymentid: transactionid,
+          planid: planid
         }),
         headers: {
-          "x-api-key": "F2TDXCK-K0Q4N8J-JWSHQW1-P5AM1RH",
-          "Content-type": "application/json",
+          "Content-type": "application/json"
         },
-      })
-        .then((res) => { console.log(res); return res.json(); })
-        .then((data) => {
-          console.log(2);
-          console.log(data);
-          setpaymentid(data.payment_id);
-          setpaymentaddress(data.pay_address);
-          setpaymentamount(data.pay_amount);
-          setModalOpen(true);
-          toast.success("Invoice Generated Successfully");
-          setLoading(false);
-        })
-        .catch((err) => {
-          console.log(err.message);
-          setLoading(false);
-          toast("Error in Invoice gGneration, Try again");
-        });
+      });
+  
+      const data = await response2.json();
+      console.log("db entry data : ", data);
+  
+      if (!data.success) {
+        console.log("Failed DB payment Entry");
+        return;
+      }
+
+      const payload = {
+        merchantId: "PGTESTPAYUAT", //process.env.NEXT_PUBLIC_MERCHANT_ID,
+        merchantTransactionId: transactionid,
+        merchantUserId: 'himang305@gmail.com',
+        amount: cost*100,
+        redirectUrl: `https://139-59-5-56.nip.io:3443/payment-update`,
+        // redirectUrl: `http://127.0.0.1:8000/payment-update`,
+        // redirectMode: "REDIRECT",
+        redirectMode: "POST",
+        // callbackUrl: `http://127.0.0.1:8000/payment-update`,
+        // callbackUrl: `http://139-59-5-56.nip.io:3443/payment-update`,
+        mobileNumber: '9598241681',
+        paymentInstrument: {
+          type: "PAY_PAGE",
+        },
+      };
+
+      const dataPayload = JSON.stringify(payload);
+      console.log("payload :",dataPayload);
+
+      const dataBase64 = Buffer.from(dataPayload).toString("base64");
+      console.log("base64 :", dataBase64);
+
+      const fullURL =
+        // dataBase64 + "/pg/v1/pay" + process.env.NEXT_PUBLIC_SALT_KEY;
+        dataBase64 + "/pg/v1/pay" + "099eb0cd-02cf-4e2a-8aca-3e6c6aff0399";
+        
+     const dataSha256 = sha256(fullURL);
+      // const checksum = dataSha256 + "###" + process.env.NEXT_PUBLIC_SALT_INDEX;
+      const checksum = dataSha256 + "###" + "1";
+
+      console.log("c====",checksum);
+
+    const UAT_PAY_API_URL =
+    "https://api-preprod.phonepe.com/apis/pg-sandbox/pg/v1/pay";
+
+
+  const response = await axios.post(
+    UAT_PAY_API_URL,
+    {
+      request: dataBase64,
+    },
+    {
+      headers: {
+        accept: "application/json",
+        "Content-Type": "application/json",
+         "X-VERIFY": checksum,
+      },
+    }
+  );
+    console.log("response : ", response);
+
+  const redirect=response.data.data.instrumentResponse.redirectInfo.url;
+  console.log("redirect : ", redirect);
+
+  
+  window.location.replace(redirect)
+
     }
 
   }
 
   const verifyInvoice = async () => {
     setLoading(true);
-
+return;
     // fetch('http://127.0.0.1:8000/updatePayment', {
       fetch("https://139-59-5-56.nip.io:3443/updatePayment", {
       method: "POST",
@@ -716,7 +774,7 @@ const FlatContractForm = () => {
                   </button>
                 </div>
                 <div className="w-1/5 py-2 px-4 border text-center flex flex-col items-center "><h1 className='text-white font-sans md:text-[22px] text-[15px] font-bold leading-[27px] text-center '> Plus Plan</h1>
-                  <h1 className='text-white font-sans md:text-[36px] text-[25px] font-bold leading-[27px] text-center lg:py-[17px] md:py-[30px] py-[20px] '> $99
+                  <h1 className='text-white font-sans md:text-[36px] text-[25px] font-bold leading-[27px] text-center lg:py-[17px] md:py-[30px] py-[20px] '> $100
                     <span className='text-white font-sans text-[13px] font-medium leading-[27px] text-center py-[2px] block '> $ 16.5 / Scan</span>
                   </h1>
 
@@ -728,7 +786,7 @@ const FlatContractForm = () => {
                 </div>
 
                 <div className="w-1/5 py-2 px-4 border text-center flex flex-col items-center "><h1 className='text-white font-sans md:text-[22px] text-[15px] font-bold leading-[27px] text-center '>Premium Plan</h1>
-                  <h1 className='text-white font-sans md:text-[36px] text-[25px]  font-bold leading-[27px] text-center lg:py-[17px] md:py-[15px] py-[20px]  '> $289
+                  <h1 className='text-white font-sans md:text-[36px] text-[25px]  font-bold leading-[27px] text-center lg:py-[17px] md:py-[15px] py-[20px]  '> $200
                     <span className='text-white font-sans text-[13px] font-bold leading-[27px] text-center py-[2px] block '> $ 12.04 / <span className='font-medium'>Scan
                     </span> </span></h1>
 
@@ -740,7 +798,7 @@ const FlatContractForm = () => {
                   </button>
                 </div>
                 <div className="w-1/5 py-2 px-4 border text-center flex flex-col items-center "><h1 className='text-white font-sans md:text-[22px] text-[15px] font-bold leading-[27px] text-center '>Enterprise Plan</h1>
-                  <h1 className='text-white font-sans md:text-[36px] text-[25px] font-bold leading-[27px] text-center md:py-[17px] py-[35px] '> $1000
+                  <h1 className='text-white font-sans md:text-[36px] text-[25px] font-bold leading-[27px] text-center md:py-[17px] py-[35px] '> $300
                     <span className='text-white font-sans text-[13px] font-medium leading-[27px] text-center py-[2px] block'> Exclusive</span>
                   </h1>
 
