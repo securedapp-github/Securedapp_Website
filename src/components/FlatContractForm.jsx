@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import SectionHeader from "./SectionHeader";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -64,6 +64,19 @@ const FlatContractForm = () => {
   const [paymentaddress, setpaymentaddress] = useState("");
   const [paymentamount, setpaymentamount] = useState(0);
 
+
+  useEffect(() => {
+    var user = sessionStorage.getItem("securedapp_session_user");
+    console.log("session : ", user);
+    // var user_mail = user[0].mail
+    if (user == null) {
+      console.log("login session");
+    } else {
+      console.log("existing login session");
+      setEmail(user);
+      updateUserSession(user);
+    }
+  }, []);
 
   const customStyles = {
     overlay: {
@@ -157,6 +170,59 @@ const FlatContractForm = () => {
     setLoading(false);
   };
 
+  const updateUserSession = (mails) => {
+    setLoading(true);
+
+    // fetch('http://127.0.0.1:8000/verifyOtp2', {
+      fetch("https://139-59-5-56.nip.io:3443/getUser", {
+      method: "POST",
+      body: JSON.stringify({
+        mail: mails
+      }),
+      headers: {
+        "Content-type": "application/json",
+      },
+    })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        }
+        throw new Error("Network response was not ok.");
+      })
+      .then((data) => {
+        console.log(data);
+        if(data.length == 0) toast("User Detail Error");
+        let userdata = data[0];
+
+        let plandetail = "Free Plan";
+        if (userdata.plan == 1) {
+          plandetail = "Basic Plan"
+        }
+        if (userdata.plan == 2) {
+          plandetail = "Premium Plan"
+        }
+        if (userdata.plan == 3) {
+          plandetail = "Exclusive Plan"
+        }
+        setplan(plandetail);
+        setcredit(userdata.credit);
+        setrcredit(userdata.rcredit);
+
+        setshowPlans(true);
+        setshowverify(false);
+        setshowsendotp(false);
+        sessionStorage.setItem("securedapp_session_user", mails);
+
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        setLoading(false);
+      });
+
+    setLoading(false);
+
+  };
+
   const verifyOTP = () => {
     setLoading(true);
 
@@ -198,6 +264,8 @@ const FlatContractForm = () => {
 
         setshowPlans(true);
         setshowverify(false);
+
+        sessionStorage.setItem("securedapp_session_user", email);
 
       })
       .catch((error) => {
@@ -674,41 +742,6 @@ const FlatContractForm = () => {
 
     }
 
-  }
-
-  const verifyInvoice = async () => {
-    setLoading(true);
-return;
-    // fetch('http://127.0.0.1:8000/updatePayment', {
-      fetch("https://139-59-5-56.nip.io:3443/updatePayment", {
-      method: "POST",
-      body: JSON.stringify({
-        mail: email,
-        paymentid: paymentid,
-        planid: planid
-      }),
-      headers: {
-        "Content-type": "application/json",
-        "x-api-key": "F2TDXCK-K0Q4N8J-JWSHQW1-P5AM1RH"
-      },
-    })
-      .then((res) => { return res.json(); })
-      .then((data) => {
-        console.log(data);
-        if(data.success){
-          toast.success("Plan Activated Successfully");
-          setTimeout(function () { window.location.reload(true); }, 5000);
-        }else{
-          toast("Payment not confirmed yet, verify after few seconds");
-        }
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.log(err.message);
-        setLoading(false);
-        toast("Error in activating plan, Try again");
-      });
-  
   }
 
   const Plans = () => {
@@ -1276,30 +1309,6 @@ return;
           <HistorySection /> <Plans />
         </>)}
 
-        <Modal
-          isOpen={modalOpen}
-          onRequestClose={() => setModalOpen(false)}
-          style={customStyles}
-        >
-          <div style={customStyles.header}>
-            <h2>Secure Payment Gateway</h2>
-          </div>
-          <div style={customStyles.paymentDetails}>
-            <h3>Payment Details</h3>
-            <div style={{ marginTop: '10px' }} >
-              <QRCode value={paymentaddress} />
-            </div>
-            <p>Web3 Address: {paymentaddress}</p>
-            <p>Amount: {paymentamount} : "USDT"</p>
-            <p>Chain: Polygon Mainnet</p>
-          </div>
-          <div>
-            <button style={customStyles.verifyButton} onClick={() => verifyInvoice()}>Verify</button>
-            <button style={customStyles.verifyButton} onClick={() => setModalOpen(false)}>Close Modal</button>
-          </div>
-
-
-        </Modal>
 
       </div>
 
