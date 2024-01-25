@@ -7,7 +7,7 @@ import AuditModal from "./AuditModal";
 
 import {useNavigate} from 'react-router-dom'
 const navigation = [
-  {name:'Securewatch',href:'/securewatch'},
+  {name:'SecureWatch',href:'/securewatch'},
   {
     name: "Solidity Shield Scan",
     href: "/smart-contract-scanner-solidity-shield",
