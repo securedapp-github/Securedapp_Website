@@ -29,12 +29,10 @@ function SecureWatch2() {
         toast("Invalid Mail");
         return;
       }
-      fetch("https://139-59-5-56.nip.io:3443/contactMail", {
+      fetch("https://139-59-5-56.nip.io:3443/addSecurewatchUser", {
         method: "POST",
         body: JSON.stringify({
-          name: "Transmission Mail",
           mail: email,
-          msg: "Mail for secure watch",
         }),
         headers: {
           "Content-type": "application/json",
