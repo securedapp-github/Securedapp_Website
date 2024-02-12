@@ -4,17 +4,30 @@ import rouhan from "../images/rouhan.png";
 import AboutContent from "./AboutContent";
 import himanshu from "../images/himanshu.png";
 import abishek from "../images/abishek.png";
+import m1 from '../images/messeng.png'
+import m2 from '../images/telegram.png'
+import m3 from '../images/twitter.png'
 
 const TeamCard = ({ image, name, designation, description }) => (
   <div className="w-[calc(25% - 20px)] w-[calc(33.33% - 20px)] lg:w-[300px] lg:ml-[25px] mx-[20px] pb-[20px]">
-    <div className="bg-transparent border border-[#3D3D3D] lg:h-[610px] md:h-[620px] h-[620px] lg:w-auto md:w-[300px] w-[300px] overflow-x-visible  p-0 shadow-md">
-      <div className="relative h-[300px] mb-4 bg-[#D9D9D9]">
+    <div className="bg-transparent border rounded-md border-[#3D3D3D] lg:h-[654px] md:h-[674px] h-[674px] lg:w-auto md:w-[300px] w-[300px] overflow-x-visible  p-0 shadow-md">
+      <div className="relative rounded-md h-[300px] mb-4 bg-[#D9D9D9]">
         <img
           src={image}
           alt={name}
-          className="object-cover w-full h-full  rounded-t"
+          className="rounded-md object-cover w-full h-full  rounded-t"
         />
       </div>
+      <div className="flex flex-row justify-center gap-3 items-center">
+        <div className="w-8 h-8">
+        <img src={m1} alt="" className="w-8 rounded-md h-8" />
+        </div>
+        <div className="w-10 h-10">        <img src={m2} alt="" className="w-10 h-10" />
+</div>
+        <div className="w-10 h-10">
+        <img src={m3} alt="" className="w-10 h-10" />
+          </div>
+        </div>
       <div className="text-2xl font-bold leading-normal text-white font-sans pt-1 pl-[21px]">
         {name}
       </div>

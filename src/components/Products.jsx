@@ -46,22 +46,23 @@ const ProductCard = {
 const Card = ({ heading, description, link }) => {
   return (
     <div
-      className=" md:p-8 p-5  rounded-[20px]"
+      className=" md:p-8 p-5  rounded-[20px] font-gilroy"
       style={{ background: "rgba(255, 255, 255, 0.05)" }}
     >
       <div className=" h-full flex flex-col justify-between rounded-lg overflow-hidden">
         <div>
-          <h2 className="md:text-2xl text-xl text-white font-sans leading-[100%] font-bold mb-4">
+          <h2 className="md:text-2xl text-xl text-white font-gilroy leading-[100%] font-bold mb-4">
             {heading}
           </h2>
           <Subheading content={description} />
         </div>
-        <a
+        <button
           href={link}
-          className="text-[#12D576] font-sans underline font-normal text-xl mt-4 inline-block"
+          className="text-[#ffffff] py-3 font-gilroy font-normal text-xl mt-4 inline-block bg-[#12D576]"
+          style={{'borderRadius':'20px'}}
         >
           Read More
-        </a>
+        </button>
       </div>
     </div>
   );

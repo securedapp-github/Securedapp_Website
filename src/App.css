@@ -5,6 +5,9 @@
   width: 100%;
   height: max-content;
 }
+*{
+  font-family: 'Gilroy';
+}
 
 /* .App {
   background-color: black;

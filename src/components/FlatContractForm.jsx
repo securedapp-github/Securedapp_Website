@@ -1177,7 +1177,7 @@ const FlatContractForm = () => {
 
         {showsendotp && (
           <>
-            <div className="flex justify-center items-center mt-[50px] lg:px-0 md:px-[50px] px-[20px]">
+            <div className="flex justify-start items-start mt-[50px]  px-[80px]">
               <SectionHeader
                 content={
                   "Enter Email : Verify OTP : SCAN"
@@ -1186,7 +1186,7 @@ const FlatContractForm = () => {
             </div>
 
             <form >
-              <div className="flex md:flex-row flex-col gap-4 min-w-full justify-between mt-[30px] px-[80px]">
+              <div className="flex md:flex-row flex-col gap-4 min-w-full justify-start mt-[30px] px-[80px]">
 
                 <div className="md:w-2/6 w-full">
                   <input
@@ -1224,7 +1224,7 @@ const FlatContractForm = () => {
             </div>
 
             <form >
-              <div className="flex md:flex-row flex-col gap-4 min-w-full justify-between mt-[30px] px-[80px]">
+              <div className="flex md:flex-row flex-col gap-4 min-w-full justify-start mt-[30px] px-[80px]">
 
 
                 <div className="md:w-2/6 w-full">
@@ -1264,7 +1264,7 @@ const FlatContractForm = () => {
             </div>
 
             <form onSubmit={handleSubmit} style={{ marginBottom: '20px' }}>
-              <div className="flex md:flex-row flex-col gap-4 min-w-full justify-between mt-[30px] px-[80px]">
+              <div className="flex md:flex-row flex-col gap-4 min-w-full justify-start mt-[30px] px-[80px]">
 
                 <div className="md:w-3/6 w-full ">
                   <input

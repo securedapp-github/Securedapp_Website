@@ -9,7 +9,7 @@ const StatsSubheading = ({ content }) => {
   };
   return (
     <div
-      className="text-white pt-1 text-[24px] font-bold  font-sans leading-[110%] "
+      className="text-white pt-1 text-[24px] font-bold  font-gilroy leading-[110%] "
       style={textStyles}
     >
       {content}

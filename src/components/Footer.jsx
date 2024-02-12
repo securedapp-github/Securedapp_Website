@@ -13,7 +13,7 @@ const Footer = () => {
       "radial-gradient(50% 50.00% at 50% 50.00%, rgba(18, 213, 118, 0.24) 0%, rgba(0, 0, 0, 0.00) 100%)",
   };
   return (
-    <footer className="foot">
+    <footer className="foot font-gilroy">
       <div className="container px-6 py-8 mx-auto">
         <div className="grid grid-cols-2 gap-6 mt-12 sm:grid-cols-2 md:grid-cols-3 lg:px-[50px] lg:grid-cols-4 xl:grid-cols-5">
           <div>
@@ -24,7 +24,7 @@ const Footer = () => {
             <div className="flex flex-col items-start mt-4 space-y-4">
               <a
                 href="/about-us"
-                className="text-[#5F5F5F] font-sans font-normal leading-[170%] text-lg transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600"
+                className="text-[#5F5F5F] font-gilroy font-normal leading-[170%] text-lg transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600"
               >
                 Team
               </a>
@@ -200,7 +200,7 @@ const Footer = () => {
         <hr className="my-6 border-gray-200 md:my-10 dark:border-gray-700" />
 
         <div className="flex flex-col items-center justify-between  sm:flex-row lg:px-[10px] ">
-          <div className="pl-[50px] sm:py-[20px]">
+          <div className="md:pl-[50px] sm:py-[20px]">
             <a href="/">
               {" "}
               <img src={logo} alt="logo" />
@@ -230,7 +230,7 @@ const Footer = () => {
               Lite Paper
             </a>
           </div>
-          <div className="flex items-center justify-center pr-[50px] space-x-4 sm:justify-end">
+          <div className="flex items-center justify-center space-x-4 sm:justify-end md:pr-[50px]">
             <a
               href="https://discord.com/invite/jQcd5WwhNy"
               target="_blank"
@@ -261,7 +261,7 @@ const Footer = () => {
             </a>
           </div>
         </div>
-        <div className=" flex flex-col items-center justify-between  sm:flex-row  text-[#5F5F5F] px-[20px]">Powered By VettedCode Technologies India Pvt. Ltd.</div>
+        <div className=" flex flex-col items-center justify-between py-1 md:py-0  sm:flex-row  text-[#5F5F5F] px-[0px] sm:px-[20px]">Powered By VettedCode Technologies India Pvt. Ltd.</div>
 
       </div>
     </footer>

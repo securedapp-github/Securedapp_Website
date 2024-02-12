@@ -6,7 +6,7 @@ import StatsSubheading from "./StasSubHeading";
 
 const Stats = () => {
   return (
-    <section className="flex justify-around statsbg h-[160px]  py-5">
+    <section className="flex justify-around statsbg h-[160px]  py-5 font-gilroy">
       <div className="stats shadow w-full bg-transparent border-none lg:px-[100px] md:px-[50px] flex  ">
         <div className="stat">
           {/* <div className="stat-figure text-secondary">
@@ -27,7 +27,7 @@ const Stats = () => {
           <div className="stat-value">
             <StatsHeader content={"USD 20 Million"} />
           </div>
-          <StatsSubheading content={"+Protected"} />
+          <StatsSubheading content={"+ Protected"} />
         </div>
         <div className="border-l"></div> {/* Vertical separation line */}
         <div className="stat">

@@ -1,5 +1,5 @@
 import React from "react";
-import { FaFacebook, FaTwitter, FaInstagram, FaTelegram } from "react-icons/fa";
+import { FaDiscord, FaTwitter, FaInstagram, FaTelegram } from "react-icons/fa";
 import logo from "../images/logo.png";
 const FooterInScan = () => {
   return (
@@ -185,7 +185,7 @@ const FooterInScan = () => {
         <hr className="my-6 border-gray-200 md:my-10 dark:border-gray-700" />
 
         <div className="flex flex-col items-center justify-between  sm:flex-row lg:px-[10px] ">
-          <div className="pl-[50px] sm:py-[20px]">
+          <div className="md:pl-[50px] sm:py-[20px]">
             <a href="/">
               {" "}
               <img src={logo} alt="logo" />
@@ -215,13 +215,13 @@ const FooterInScan = () => {
               Lite Paper
             </a>
           </div>
-          <div className="flex items-center justify-center pr-[50px] space-x-4 sm:justify-end">
+          <div className="flex items-center justify-center md:pr-[50px] space-x-4 sm:justify-end">
             <a
               href="https://discord.com/invite/jQcd5WwhNy"
               target="_blank"
               className="text-gray-300 hover:text-blue-600 transition-colors duration-200"
             >
-              <FaFacebook className="w-[30px] h-[30px]" />
+              <FaDiscord className="w-[30px] h-[30px]" />
             </a>
             <a
               href="https://twitter.com/secure_dapp"
@@ -246,7 +246,7 @@ const FooterInScan = () => {
             </a>
           </div>
         </div>
-        <div className=" flex flex-col items-center justify-between  sm:flex-row  text-[#5F5F5F] px-[20px]">Powered By VettedCode Technologies India Pvt. Ltd.</div>
+        <div className=" flex flex-col items-center justify-between  py-1 md:py-0 sm:flex-row  text-[#5F5F5F] px-[0px] sm:px-[20px]">Powered By VettedCode Technologies India Pvt. Ltd.</div>
 
       </div>
     </footer>

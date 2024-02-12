@@ -101,10 +101,10 @@ const FAQ = () => {
   };
 
   return (
-    <div className="lg:py-[40px] lg:px-[80px] md:p-[70px] p-[20px] flex md:flex-row flex-col faq">
+    <div className="lg:py-[40px] lg:px-[80px] md:p-[70px] p-[20px] flex md:flex-row flex-col faq font-gilroy">
       <div className="md:w-3/6  lg:py-8 md:p-2 p-1.5">
         <SectionHeader content={"Frequently Asked Questions"} />
-        <p className="text-[#FFFFFFB2] py-3 text-opacity-70 font-sans md:text-lg text-base font-normal leading-[150%]">
+        <p className="text-[#FFFFFFB2] py-3 text-opacity-70 font-gilroy md:text-lg text-base font-normal leading-[150%]">
           Haven't found the answers you are looking for? Contact us at
           <span className="text-[#12D576]"> support@securdapp.in</span>
         </p>
@@ -114,7 +114,7 @@ const FAQ = () => {
               selectedCategory === "token"
                 ? "bg-[#12D576] text-black"
                 : "bg-transparent text-white"
-            } py-4 rounded-xl font-sans border border-white text-xl font-bold leading-[110%]`}
+            } py-4 rounded-xl font-gilroy border border-white text-xl font-bold leading-[110%]`}
             onClick={handleTokenClick}
           >
             Token
@@ -124,7 +124,7 @@ const FAQ = () => {
               selectedCategory === "security"
                 ? "bg-[#12D576] text-black"
                 : "bg-transparent text-white"
-            } py-4 border border-white rounded-xl font-sans text-xl font-semibold leading-[110%]`}
+            } py-4 border border-white rounded-xl font-gilroy text-xl font-semibold leading-[110%]`}
             onClick={handleSecurityClick}
           >
             Security
