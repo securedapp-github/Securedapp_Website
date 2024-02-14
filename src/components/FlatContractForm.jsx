@@ -9,9 +9,9 @@ import autoTable from 'jspdf-autotable';
 import Modal from "react-modal";
 import QRCode from 'qrcode.react';
 import logo from "../images/logo2.jpeg";
-import sha256 from 'crypto-js/sha256';
-import {Buffer} from 'buffer';
-import axios from "axios";
+// import sha256 from 'crypto-js/sha256';
+// import {Buffer} from 'buffer';
+// import axios from "axios";
 
 const { v4: uuidv4 } = require('uuid');
 
@@ -651,16 +651,11 @@ const FlatContractForm = () => {
     setLoading(true);
 
     let cost = 0;
-    if (planid == 1) cost = 15000;
-    if (planid == 2) cost = 30000;
-    if (planid == 3) cost = 80000;
-
-    if (cost > 0) {
+    if (planid > 0) {
       setplanid(planid);
 
       const transactionid = "Tr-"+uuidv4().toString(36).slice(-6);
       console.log("Txn_ID : ", transactionid);
-
 
       const response2 = await fetch("https://139-59-5-56.nip.io:3443/payment-insert", {
         method: "POST",
@@ -677,72 +672,13 @@ const FlatContractForm = () => {
       const data = await response2.json();
       console.log("db entry data : ", data);
   
-      if (!data.success) {
+      if (!data.status) {
         console.log("Failed DB payment Entry");
         return;
+      }else{
+        window.location.replace(data.redirect)
       }
-
-      const payload = {
-        merchantId: "M22P2TA2GX0OB", //process.env.NEXT_PUBLIC_MERCHANT_ID,
-        merchantTransactionId: transactionid,
-        merchantUserId: 'himang305@gmail.com',
-        amount: cost*100,
-        redirectUrl: `https://139-59-5-56.nip.io:3443/payment-update`,
-        // redirectUrl: `http://127.0.0.1:8000/payment-update`,
-        // redirectMode: "REDIRECT",
-        redirectMode: "POST",
-        // callbackUrl: `http://127.0.0.1:8000/payment-update`,
-        // callbackUrl: `http://139-59-5-56.nip.io:3443/payment-update`,
-        mobileNumber: '9598241681',
-        paymentInstrument: {
-          type: "PAY_PAGE",
-        },
-      };
-
-      const dataPayload = JSON.stringify(payload);
-      console.log("payload :",dataPayload);
-
-      const dataBase64 = Buffer.from(dataPayload).toString("base64");
-      console.log("base64 :", dataBase64);
-
-      const fullURL =
-        // dataBase64 + "/pg/v1/pay" + process.env.NEXT_PUBLIC_SALT_KEY;
-        dataBase64 + "/pg/v1/pay" + "099eb0cd-02cf-4e2a-8aca-3e6c6aff0399";
-        
-     const dataSha256 = sha256(fullURL);
-      // const checksum = dataSha256 + "###" + process.env.NEXT_PUBLIC_SALT_INDEX;
-      const checksum = dataSha256 + "###" + "1";
-
-      console.log("c====",checksum);
-
-    const UAT_PAY_API_URL =
-    "https://api.phonepe.com/apis/hermes/pg/v1/pay";
-    // "https://api-preprod.phonepe.com/apis/pg-sandbox/pg/v1/pay";
-
-
-  const response = await axios.post(
-    UAT_PAY_API_URL,
-    {
-      request: dataBase64,
-    },
-    {
-      headers: {
-        accept: "application/json",
-        "Content-Type": "application/json",
-         "X-VERIFY": checksum,
-      },
     }
-  );
-    console.log("response : ", response);
-
-  const redirect=response.data.data.instrumentResponse.redirectInfo.url;
-  console.log("redirect : ", redirect);
-
-  
-  window.location.replace(redirect)
-
-    }
-
   }
 
   const Plans = () => {
@@ -1309,7 +1245,6 @@ const FlatContractForm = () => {
         {showPlans && (<>
           <HistorySection /> <Plans />
         </>)}
-
 
       </div>
 
