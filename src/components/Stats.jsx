@@ -25,9 +25,9 @@ const Stats = () => {
             </svg>
           </div> */}
           <div className="stat-value">
-            <StatsHeader content={"USD 20 Million"} />
+            <StatsHeader content={"USD 30 Million +"} />
           </div>
-          <StatsSubheading content={"+ Protected"} />
+          <StatsSubheading content={"Protected"} />
         </div>
         <div className="border-l"></div> {/* Vertical separation line */}
         <div className="stat">
@@ -39,7 +39,7 @@ const Stats = () => {
         <div className="border-l"></div> {/* Vertical separation line */}
         <div className="stat">
           <div className="stat-value">
-            <StatsHeader content={"75+"} />
+            <StatsHeader content={"115+"} />
           </div>
           <StatsSubheading content={"Smart Contract Scans"} />
         </div>

@@ -4,13 +4,13 @@ import rouhan from "../images/rouhan.png";
 import AboutContent from "./AboutContent";
 import himanshu from "../images/himanshu.png";
 import abishek from "../images/abishek.png";
-import m1 from '../images/messeng.png'
+import m1 from '../images/linkedin.png'
 import m2 from '../images/telegram.png'
 import m3 from '../images/twitter.png'
 
 const TeamCard = ({ image, name, designation, description }) => (
   <div className="w-[calc(25% - 20px)] w-[calc(33.33% - 20px)] lg:w-[300px] lg:ml-[25px] mx-[20px] pb-[20px]">
-    <div className="bg-transparent border rounded-md border-[#3D3D3D] lg:h-[654px] md:h-[674px] h-[674px] lg:w-auto md:w-[300px] w-[300px] overflow-x-visible  p-0 shadow-md">
+    <div className="bg-transparent border rounded-md border-[#3D3D3D] lg:h-[670px] md:h-[690px] h-[690px] lg:w-auto md:w-[300px] w-[300px] overflow-x-visible  p-0 shadow-md">
       <div className="relative rounded-md h-[300px] mb-4 bg-[#D9D9D9]">
         <img
           src={image}
@@ -80,7 +80,7 @@ const MeettheTeam = () => {
             Meet the Team
           </h1>
         </div>
-        <div className="flex overflow-x-auto lg:pl-[60px] lg:justify-start lg:w-[1350px]  ">
+        <div className="flex justify-center overflow-x-auto">
           {teamMembers.map((member, index) => (
             <TeamCard key={index} {...member} />
           ))}
