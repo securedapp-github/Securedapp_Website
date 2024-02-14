@@ -5,7 +5,7 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import Logo from "../images/logoblacktextsdlogowhite-1@2x.png";
 import AuditModal from "./AuditModal";
 const navigation = [
-  {name:'Securewatch',href:'/securewatch'},
+  {name:'SecureWatch',href:'/securewatch'},
   { name: "Solidity Shield Scan", href: "/smart-contract-scanner-solidity-shield" },
   { name: "SecurePAD", href: "/token-launchpad-Securepad" },
   { name: "About Us", href: "/about-us", special: true },

@@ -29,12 +29,10 @@ function SecureWatch2() {
         toast("Invalid Mail");
         return;
       }
-      fetch("https://139-59-5-56.nip.io:3443/contactMail", {
+      fetch("https://139-59-5-56.nip.io:3443/addSecurewatchUser", {
         method: "POST",
         body: JSON.stringify({
-          name: "Transmission Mail",
           mail: email,
-          msg: "Mail for secure watch",
         }),
         headers: {
           "Content-type": "application/json",
@@ -69,11 +67,11 @@ function SecureWatch2() {
         <span className='text-white pr-1'>
         Stay Informed!</span>
         <span className='text-[#12D576] px-1'>
-        SecureDApp</span>
+        SecureWatch</span>
         <span className='text-white pl-1'>
         is in the Making</span>
   </div>
-        <div className='w-full sm:w-5/6 lg:w-3/5 px-2 sm:px-0 mx-auto text-xl font-medium text-[#ABABAB] pt-4'>Our product is currently under development, but you can be among the first to experience it. We'll notify you as soon as SecureDApp is ready to safeguard your smart contracts.</div>
+        <div className='w-full sm:w-5/6 lg:w-3/5 px-2 sm:px-0 mx-auto text-xl font-medium text-[#ABABAB] pt-4'>Hey! We're in the final stretch to unveil something incredible! We're hustling to finalize something awesome. Being candid, we're a bit behind schedule. Drop your email, and we'll shoot you a heads-up as soon as it's ready. Hang tight—your patience means the world!</div>
         <div className='pt-10 flex flex-row justify-center'>
         <img src={m1} className='relative left-6' alt="not found"/>
         <img src={m2} className='relative left-4' alt="not found"/>

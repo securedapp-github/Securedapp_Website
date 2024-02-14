@@ -38,59 +38,35 @@ function SecureWatch1() {
         <div className='mx-auto w-full sm:w-3/4 md:mx-0 md:w-1/2 lg:w-1/3'>
         <div className='mx-auto bg-white text-center py-2 w-1/2 font-medium text-md px-6 rounded-t-xl invisible'>Most selling plan</div>
         <div className='border-2 border-white rounded-3xl pt-6 pb-10'>
-        <div className='font-bold text-3xl text-white px-10 border-b-2 border-white pb-6'>Free</div>
+        <div className='font-bold text-3xl text-white px-10 border-b-2 border-white pb-6'>Trial</div>
         <div className='text-[#00D870] px-10 pt-8'>
-        <span className='font-extrabold text-8xl'>$0</span>
-        <span className='font-medium text-2xl'>/ Month</span>
+        <span className='font-extrabold text-8xl'>$100</span>
+        <span className='font-medium text-2xl'> / Month</span>
         </div>
         <div className='text-white text-lg font-semibold pl-10 pr-8 pt-6'>
-        Enjoy a hassle-free experience with SecureDApp's user-friendly interface. Seamlessly integrate Solidity Shield.</div>
+        Ensure a worry-free experience with SecureWatch's intuitive interface, providing real-time transaction monitoring and efficient threat detection and resolution capabilities.</div>
         
         <div className='flex flex-row gap-2 px-10 pt-3'>
         <Check color={'#12D576'}/>
-<span className='text-white text-lg font-medium'>1 Scan Run
+<span className='text-white text-lg font-medium'>Assets Discovery
 </span>
         </div>
         <div className='flex flex-row gap-2 px-10 pt-1'>
         <Check color={'#12D576'}/>        
-<span className='text-white text-lg font-medium'>All Super Spotter
+<span className='text-[rgba(255,255,255,0.2)] text-lg font-medium'>Threat Modeling
 </span>
         </div>
         <div className='flex flex-row gap-2 px-10 pt-1'>
         <Check color={'#12D576'}/>
-<span className='text-white text-lg font-medium'>Vulnerability Count
+<span className='text-[rgba(255,255,255,0.2)] text-lg font-medium'>Custom Triggers (Unlimited)
 </span>
         </div>
         <div className='flex flex-row gap-2 px-10 pt-1'>
         <Check color={'#12D576'}/>
-<span className='text-white text-lg font-medium'>Vulnerability Decsriptions
+<span className='text-[rgba(255,255,255,0.2)] text-lg font-medium'>Regulatory Compliance with Built-in Reporting Features
 </span>
         </div>
-        <div className='flex flex-row gap-2 px-10 pt-1'>
-        <Check color={'rgba(255,255,255,0.2)'}/>
-<span className='text-[rgba(255,255,255,0.2)]  text-lg font-medium'>Audit Report
-</span>
-        </div>
-        <div className='flex flex-row gap-2 px-10 pt-1'>
-        <Check color={'rgba(255,255,255,0.2)'}/>
-<span className='text-[rgba(255,255,255,0.2)]  text-lg font-medium'>Report Publish 
-</span>
-        </div>
-        <div className='flex flex-row gap-2 px-10 pt-1'>
-        <Check color={'rgba(255,255,255,0.2)'}/>
-<span className='text-[rgba(255,255,255,0.2)]  text-lg font-medium'>Report Download
-</span>
-        </div>
-        <div className='flex flex-row gap-2 px-10 pt-1'>
-        <Check color={'rgba(255,255,255,0.2)'}/>
-<span className='text-[rgba(255,255,255,0.2)]  text-lg font-medium'>Github
-</span>
-        </div>
-        <div className='flex flex-row gap-2 px-10 pt-1'>
-        <Check color={'rgba(255,255,255,0.2)'}/>
-<span className='text-[rgba(255,255,255,0.2)] text-lg font-medium'>Social Shares
-</span>
-        </div>
+
         <div className='text-center pt-8'>
         <button onClick={nextPage} className='w-5/6 py-1 border-2  rounded-md border-[#00D870] text-[#00D870] mx-auto font-bold text-lg'>Get Started</button>
         </div>
@@ -101,54 +77,30 @@ function SecureWatch1() {
         <div className='border-1 border-black rounded-3xl bg-[#12D576] pt-6 pb-10'>
         <div className='font-bold text-3xl text-black px-10 pb-6 border-b-2 border-black'>Premium</div>
         <div className='text-black px-10 pt-8'>
-        <span className='font-extrabold text-8xl'>$5</span>
-        <span className='font-medium text-2xl'>/ Month</span>
+        <span className='font-extrabold text-8xl'>$399</span>
+        <span className='font-medium text-2xl'> / Month</span>
         </div>
         <div className='text-black text-lg font-semibold pl-10 pr-8 pt-6'>
-        Enjoy a hassle-free experience with SecureDApp's user-friendly interface. Seamlessly integrate Solidity Shield.</div> 
+        Ensure a worry-free experience with SecureWatch's intuitive interface, providing real-time transaction monitoring and efficient threat detection and resolution capabilities.</div> 
         <div className='flex flex-row gap-2  px-10 pt-3'>
         <Check color={'#000000'}/>
-<span className='text-black text-lg font-medium'>1 Scan Run
+<span className='text-black text-lg font-medium'>Asset Discovery
 </span>
         </div>
         <div className='flex flex-row gap-2 px-10 pt-1'>
         <Check color={'#000000'}/>        
-<span className='text-black text-lg font-medium'>All Super Spotter
+<span className='text-black text-lg font-medium'>Threat Modeling
 </span>
         </div>
         <div className='flex flex-row gap-2 px-10 pt-1'>
         <Check color={'#000000'}/>
-<span className='text-black text-lg font-medium'>Vulnerability Count
+<span className='text-black text-lg font-medium'>Custom Trigger (5)
 </span>
         </div>
-        <div className='flex flex-row gap-2 px-10 pt-1'>
-        <Check color={'#000000'}/>
-<span className='text-black text-lg font-medium'>Vulnerability Decsriptions
-</span>
-        </div>
-        <div className='flex flex-row gap-2 px-10 pt-1'>
-        <Check color={'#000000'}/>
-<span className='text-black  text-lg font-medium'>Audit Report
-</span>
-        </div>
-        <div className='flex flex-row gap-2 px-10 pt-1'>
-        <Check color={'#000000'}/>
-<span className='text-black  text-lg font-medium'>Report Publish 
-</span>
-        </div>
-        <div className='flex flex-row gap-2 px-10 pt-1'>
-        <Check color={'#000000'}/>
-<span className='text-black text-lg font-medium'>Report Download
-</span>
-        </div>
+       
         <div className='flex flex-row gap-2 px-10 pt-1'>
         <Check color={'rgba(0,0,0,0.25)'}/>
-<span className='text-[rgba(0,0,0,0.25)]  text-lg font-medium'>Github
-</span>
-        </div>
-        <div className='flex flex-row gap-2 px-10 pt-1'>
-        <Check color={'rgba(0,0,0,0.25)'}/>
-<span className='text-[rgba(0,0,0,0.25)] text-lg font-medium'>Social Shares
+<span className='text-[rgba(0,0,0,0.25)] text-lg font-medium'>Regulatory Compliance with Built-in Reporting Features
 </span>
         </div>
         <div className='text-center pt-8'>
@@ -161,57 +113,33 @@ function SecureWatch1() {
         <div className='border-2 border-white rounded-3xl pt-6 pb-10'>
         <div className='font-bold text-3xl text-white border-b-2 border-white px-10 pb-6'>Premium Plus</div>
         <div className='text-[#00D870] px-10 pt-8'>
-        <span className='font-extrabold text-8xl'>$10</span>
+        <span className='font-extrabold text-8xl'>$699</span>
         <span className='font-medium text-2xl'>/ Month</span>
         </div>
         <div className='text-white text-lg font-semibold pl-10 pr-8 pt-5'>
-        Enjoy a hassle-free experience with SecureDApp's user-friendly interface. Seamlessly integrate Solidity Shield.</div>
+        Ensure a worry-free experience with SecureWatch's intuitive interface, providing real-time transaction monitoring and efficient threat detection and resolution capabilities.</div>
         
         <div className='flex flex-row gap-2 px-10 pt-3'>
         <Check color={'#12D576'}/>
-<span className='text-white text-lg font-medium'>1 Scan Run
+<span className='text-white text-lg font-medium'>Assets Discovery
 </span>
         </div>
         <div className='flex flex-row gap-2 px-10 pt-1'>
         <Check color={'#12D576'}/>        
-<span className='text-white text-lg font-medium'>All Super Spotter
+<span className='text-white text-lg font-medium'>Threat Modeling
 </span>
         </div>
         <div className='flex flex-row gap-2 px-10 pt-1'>
         <Check color={'#12D576'}/>
-<span className='text-white text-lg font-medium'>Vulnerability Count
+<span className='text-white text-lg font-medium'>Custom Triggers (Unlimited)
 </span>
         </div>
         <div className='flex flex-row gap-2 px-10 pt-1'>
         <Check color={'#12D576'}/>
-<span className='text-white text-lg font-medium'>Vulnerability Decsriptions
+<span className='text-white text-lg font-medium'>Regulatory Compliance with Built-in Reporting Features
 </span>
         </div>
-        <div className='flex flex-row gap-2 px-10 pt-1'>
-        <Check color={'#12D576'}/>
-<span className='text-white  text-lg font-medium'>Audit Report
-</span>
-        </div> 
-        <div className='flex flex-row gap-2 px-10 pt-1'>
-        <Check color={'#12D576'}/>
-<span className='text-white  text-lg font-medium'>Report Publish 
-</span>
-        </div>
-        <div className='flex flex-row gap-2 px-10 pt-1'>
-        <Check color={'#12D576'}/>
-<span className='text-white  text-lg font-medium'>Report Download
-</span>
-        </div>
-        <div className='flex flex-row gap-2 px-10 pt-1'>
-        <Check color={'#12D576'}/>
-<span className='text-white  text-lg font-medium'>Github
-</span>
-        </div>
-        <div className='flex flex-row gap-2 px-10 pt-1'>
-        <Check color={'#12D576'}/>
-<span className='text-white text-lg font-medium'>Social Shares
-</span>
-        </div>
+       
         <div className='text-center pt-8'>
         <button onClick={nextPage} className='w-5/6 py-1 border-2  rounded-md border-[#00D870] text-[#00D870] mx-auto font-bold text-lg'>Get Started</button>
         </div>
