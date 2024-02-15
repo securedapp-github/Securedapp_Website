@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import SectionHeader from "./SectionHeader";
 import Subheading from "./Subheading";
 
+
 const FAQ = () => {
   const [selectedQuestion, setSelectedQuestion] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState("token");

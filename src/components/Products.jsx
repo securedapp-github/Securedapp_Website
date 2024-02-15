@@ -58,7 +58,7 @@ const Card = ({ heading, description, link }) => {
         </div>
         <button
           href={link}
-          className="text-[#ffffff] py-3 font-gilroy font-normal text-xl mt-4 inline-block bg-[#12D576]"
+          className="text-[#000000] py-3 font-gilroy font-semibold text-[20px] mt-4 inline-block bg-[#12D576]"
           style={{'borderRadius':'20px'}}
         >
           Read More

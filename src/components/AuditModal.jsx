@@ -69,11 +69,11 @@ const blurryDivStyle = {
       />
     
     <div style={{ ...blurryDivStyle }} className="fixed top-0 font-gilroy left-0 right-0 bottom-0 flex justify-center items-center    bg-gray-900 bg-opacity-80 z-[10000142323]">	
-        <div className="w-[600px] p-6 rounded-lg bg-white shadow-lg">	
+        <div className="w-[600px] p-6 rounded-lg bg-white backdrop-blur-md shadow-lg">	
           <div className="flex justify-end">	
             <button	
               onClick={onClose}	
-              className="  bg-white right-[470px] border rounded px-4 py-2    hover:bg-red-400 text-black hover:text-white"	
+              className="  bg-white right-[470px] rounded px-4 py-2 text-black hover:text-white"	
             >	
             <div className="w-8 h-8">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#12d576"><path d="M11.9997 10.5865L16.9495 5.63672L18.3637 7.05093L13.4139 12.0007L18.3637 16.9504L16.9495 18.3646L11.9997 13.4149L7.04996 18.3646L5.63574 16.9504L10.5855 12.0007L5.63574 7.05093L7.04996 5.63672L11.9997 10.5865Z"></path></svg>

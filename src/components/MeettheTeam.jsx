@@ -47,28 +47,28 @@ const MeettheTeam = () => {
       name: "Himanshu Gautam",
       designation: "Co-Founder & CTO",
       description:
-        "Meet Himanshu, an experienced, smart contract auditor with over 05 years of experience in the field. He has done his Masters in Technology from IIT Kanpur. He has a strong background in computer science and a deep understanding of blockchain technology. Himanshu has worked with many clients, including top-notch blockchain companies, startups, and the government projects.",
+        "Meet Himanshu, an experienced, smart contract auditor with over 05 years of experience in the field. With a Master's in Technology from IIT Kanpur, he combines a strong computer science foundation with extensive blockchain expertise. Himanshu's portfolio is diverse, featuring collaborations with leading blockchain firms, innovative startups, and prestigious government projects.",
     },
     {
       image: abishek,
       name: "Abhishek Singh",
       designation: "Co-Founder & CEO",
       description:
-        "Meet Abhishek, a marketing expert with over 15 years of experience helping startups to grow and succeed. Abhishek holds a masters degree in management from Bangalore university. Throughout his career, Abhishek has worked with many companies, from early-stage startups to well-established enterprises, to develop and execute marketing strategies that drive results.",
+        "Abhishek is a seasoned marketing maestro with a 15-year track record of propelling startups to success. A holder of a Master's degree in Management from Bangalore University, Abhishek has a rich history of collaborating with a spectrum of companies, from early-stage startups to established giants. His expertise lies in crafting and implementing marketing strategies that not only resonate with audiences but also deliver tangible outcomes.",
     },
     {
       image: andrew,
       name: "Andrews Ellavendhan",
       designation: "Head of creative",
       description:
-        "Meet Andrew, he is a senior creative designer with over 12 years of experience in UI/UX, graphic design, and branding. He is passionate about creating user-centred experiences that are both visually appealing and functional. Andrew has a strong understanding of the latest design trends and technologies, and he is always up-to-date on the latest industry best practices.",
+        "Andrew is a senior creative designer with a 12-year track record in UI/UX, graphic design, and branding. Focused on crafting user-centered experiences, he merges visual appeal with functionality. His keen insight into the latest design trends and technologies ensures he remains at the forefront of industry best practices.",
     },
     {
       image: rouhan,
       name: "Abhishek Roushan",
       designation: "Head of Partnerships & Outreach",
       description:
-        "Meet Abhishek Roushan, Head of    Partnership & Outreach With 8+ web3 companies under my belt as a consultant, I have honed my skills as an expert UI and 3D Designer. My passion for AR/VR drives me to create immersive experiences, while my sales acumen forges meaningful connections and fosters growth. Scaling communities to 50k+ members, I continue to pioneer digital transformation within the Metaverse.",
+        "With over 8 web3 companies under his belt, Abhishek has honed his skills as an expert UI and 3D designer. Driven by a passion for AR/VR, he creates immersive experiences and builds strong connections that spur growth. Known for scaling communities to over 50,000 members, Abhishek is a vanguard of digital innovation in the Metaverse.",
     },
     // Add more team members here
   ];

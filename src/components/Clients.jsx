@@ -63,7 +63,7 @@ const Clients = () => {
           Leading DApp startups trust us to secure their blockchain applications
         </div>
       </div>
-      <div className="lg:w-8/12 my-auto lg:px-[30px]  lg:mt-0 mt-[50px] py-5 rounded-2xl" style={{'backgroundColor':'rgba(255,255,255,0.3)','backdropFilter':'blur(30px)'}}>
+      <div className="lg:w-8/12 my-auto lg:px-[30px]  lg:mt-0 mt-[50px] py-5 rounded-2xl" style={{'backgroundColor':'rgba(255,255,255,0.15)','backdropFilter':'blur(30px)'}}>
         <Slider {...settings}>
           <div>
         <img src={c2} alt="" className="my-auto h-14 mx-auto"/>
