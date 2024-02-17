@@ -107,7 +107,6 @@ const BlogCard = ({ url, tag, id, topic, date, title, link }) => {
         alt="not found"
         className=" mx-auto  w-full h-40 rounded-lg"
       />
-      {/* <div className="flex flex-col justify-between lg:px-0 px-7 rounded-3xl " style={{backgroundImage:`url(${link})`,backgroundRepeat:'no-repeat'}}> */}
       <div className=" text-left pt-3 ">
         <div className="rounded-md  text-white " style={{ fontSize: "23px" }}>
           {topic}
@@ -144,7 +143,6 @@ const BlogCard1 = ({ url, tag, id, topic, date, title, link }) => {
     const l2 = document.getElementById(id);
     l2.innerHTML = "";
     const l4 = tempDiv.textContent;
-    // console.log(l4)
     const l5 = l4.slice(0, 100) + "...";
     const tempDiv1 = document.createElement("div");
     tempDiv1.innerHTML = l5;
@@ -155,7 +153,7 @@ const BlogCard1 = ({ url, tag, id, topic, date, title, link }) => {
     border: "1px white solid",
     padding: "20px",
     borderRadius: "10px",
-    margin: "10px",
+    // margin: "5px",
   };
   return (
     <Link to={`/blog/${url}`} state={alp} style={divStyle}>
@@ -167,17 +165,22 @@ const BlogCard1 = ({ url, tag, id, topic, date, title, link }) => {
             className=" mx-auto rounded-lg w-full  lg:h-[12rem] "
           />
         </div>
-        {/* <div className="flex flex-col justify-between lg:px-0 px-7 rounded-3xl " style={{backgroundImage:`url(${link})`,backgroundRepeat:'no-repeat'}}> */}
         <div>
-          <div className="grid pt-2 gap-1 lg:grid-cols-2 sm:grid-cols-1">
-            <div className="rounded-md text-left text-white font-semibold my-auto text-sm px-1 ">
+          <div className="grid pt-2 gap-1 lg:grid-cols-1 sm:grid-cols-1">
+            <div
+              className="rounded-md text-left text-white font-semibold my-auto text-sm px-1 "
+              style={{ fontSize: "15px" }}
+            >
               {topic}
             </div>
-            <div className="text-white" style={{ fontWeight: "lighter" }}>
-              {date}
-            </div>
           </div>
-          <div id={id} className="text-white pt-2 text-sm text-start"></div>
+          <div id={id} className="text-white pt-5 text-sm text-start"></div>
+          <div
+            className="text-white text-left pt-2"
+            style={{ fontWeight: "lighter" }}
+          >
+            {date}
+          </div>
         </div>
       </div>
     </Link>
@@ -186,8 +189,8 @@ const BlogCard1 = ({ url, tag, id, topic, date, title, link }) => {
 
 const BlogCard3 = ({ blog1, blog2 }) => {
   return (
-    <div className="mx-10 my-10 grid gap-10 lg:grid-cols-4">
-      <div className="col-span-2">
+    <div className="mx-10 my-10 grid  lg:grid-cols-4">
+      <div className="col-span-2 my-5">
         <BlogCard2
           tag={blog1.tags}
           url={blog1.url}
@@ -198,9 +201,9 @@ const BlogCard3 = ({ blog1, blog2 }) => {
           link={blog1.image}
         />
       </div>
-      <div className="col-span-2 grid gap-10 grid-rows-2">
+      <div className="col-span-2  ">
         {blog2.map((blog) => (
-          <div className="text-center">
+          <div className="text-center m-5">
             <BlogCard1
               tag={blog.tags}
               url={blog.url}
@@ -230,7 +233,7 @@ const BlogCard2 = ({ url, tag, id, topic, date, title, link }) => {
     const tempDiv = document.createElement("div");
     tempDiv.innerHTML = title2;
     const l4 = tempDiv.textContent;
-    const l5 = l4.slice(0, 200) + "...";
+    const l5 = l4.slice(0, 700) + "...";
     const tempDiv1 = document.createElement("div");
     tempDiv1.innerHTML = l5;
     console.log(id);
@@ -251,22 +254,18 @@ const BlogCard2 = ({ url, tag, id, topic, date, title, link }) => {
         alt="not found"
         className=" mx-auto w-full h-[25rem] rounded-lg"
       />
-      {/* <div className="flex flex-col justify-between lg:px-0 px-7 rounded-3xl " style={{backgroundImage:`url(${link})`,backgroundRepeat:'no-repeat'}}> */}
-      <div className="gap-4 grid  pt-2 sm:grid-cols-1 lg:grid-cols-2">
+      <div className="gap-4 grid  pt-2 sm:grid-cols-1 lg:grid-cols-1">
         <div
-          className="rounded-md text-left text-white font-semibold pt-2   "
+          className="rounded-md text-left text-white font-semibold pt-2  "
           style={{ fontSize: "20px" }}
         >
           {topic}
         </div>
-        <div
-          className="text-white text-center"
-          style={{ fontWeight: "lighter" }}
-        >
-          {date}
-        </div>
       </div>
       <div className="cont1 text-white pt-2 text-sm text-start"></div>
+      <div className="text-white  pt-2" style={{ fontWeight: "lighter" }}>
+        {date}
+      </div>
     </Link>
   );
 };
@@ -279,33 +278,34 @@ const BlogHero = () => {
   let [pageNo, setPageNo] = useState(1);
   let [totPage, setTotPage] = useState(0);
   let [firstSec, setFirstSec] = useState([]);
-  // const [totalResults,setTotalResults]=(0);
 
   const handleNext = () => {
-    let ind1 = 3 * pageNo;
+    let ind1 = 4 * pageNo;
     let ind2 = ind1 + 1;
     let ind3 = ind2 + 1;
+    let ind4 = ind3 + 1;
     // console.log(ind1,ind2,ind3,firstSec[ind1],firstSec[ind2],firstSec[ind3])
     setBlog1(firstSec[ind1]);
-    if (firstSec.length == ind3) setBlog2([firstSec[ind2]]);
-    else if (firstSec.length > ind3) setBlog2([firstSec[ind2], firstSec[ind3]]);
+    if (firstSec.length == ind4) setBlog2([firstSec[ind2]]);
+    else if (firstSec.length > ind4)
+      setBlog2([firstSec[ind2], firstSec[ind3], firstSec[ind4]]);
     else setBlog2([]);
     setPageNo(pageNo + 1);
   };
   const handlePrev = () => {
-    let ind1 = 3 * (pageNo - 1) - 1;
+    // let ind1 = 3 * (pageNo - 1) - 1;
+    // let ind2 = ind1 - 1;
+    // let ind3 = ind2 - 1;
+    let ind1 = 4 * (pageNo - 1) - 1;
     let ind2 = ind1 - 1;
     let ind3 = ind2 - 1;
-    setBlog1(firstSec[ind3]);
-    setBlog2([firstSec[ind2], firstSec[ind1]]);
+    let ind4 = ind3 - 1;
+
+    setBlog1(firstSec[ind4]);
+    setBlog2([firstSec[ind3], firstSec[ind2], firstSec[ind1]]);
     setPageNo(pageNo - 1);
   };
   useEffect(() => {
-    // const fetchData=async ()=>{
-    //   const url=`https://139-59-5-56.nip.io:3443/getBlogList`;
-    //   const ft=await fetch(url)
-    //   const resp=await ft.json()
-    // }
     const fetchData = async () => {
       try {
         const response = await fetch(
@@ -322,11 +322,11 @@ const BlogHero = () => {
             return d1.status == 1;
           });
           data.sort((a, b) => b.sequence - a.sequence);
-          setFirstSec(data.slice(0, 4));
+          setFirstSec(data.slice(0, 8));
           setBlog1(data[0]);
-          setBlog2(data.slice(1, 3));
+          setBlog2(data.slice(1, 4));
           setTotPage(2);
-          setBlogs(data.slice(3));
+          setBlogs(data.slice(4));
           setPage({
             topic1: blog1.topic,
             data: blog1.date,
@@ -349,24 +349,10 @@ const BlogHero = () => {
       BlogHero.mounted = false;
     };
   }, []);
-  // const fetchMoreData=async ()=>{
-  // }
+
   return (
     <div className="md:pt-[80px] pt-[130px]  bloghero ">
-      <div className="md:pt-[50px] mb-10 mx-10">
-        {/*<div className="flex gap-[40px] py-[15px] lg:px-0 ">
-          <a href="/">
-            <span className="text-white font-sans text-[16px] font-normal leading-normal">
-              Home
-            </span>
-          </a>
-          <a href="/blog">
-            <span className="text-[#12D576] font-sans text-[16px] font-bold leading-normal">
-              Blog
-            </span>
-          </a>
-        </div> */}
-      </div>
+      <div className="md:pt-[50px] mb-10 mx-10"></div>
       <div className="xl:mx-auto xl:w-5/6  2xl:w-4/6">
         <h2 className="mx-10 mt-20  inline text-xl font-bold text-white  ">
           Web3 Security
@@ -421,41 +407,7 @@ const BlogHero = () => {
                 link={blog.image}
               />
             </div>
-            //           <div className="grid gap-5 mt-10 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1  ">
-            // {blogs.map((blog) => (
-            //   <div className="text-center">
-            //     <BlogCard
-            //       tag={blog.tags}
-            //       url={blog.url}
-            //       id={blog.id}
-            //       topic={blog.heading}
-            //       date={formatDate(blog.date.slice(0, 10))}
-            //       title={blog.content}
-            //       link={blog.image}
-            //     />
-            //   </div>
           ))}
-
-          {/* <div className="flex flex-col gap-[20px] lg:py-0 py-7 px-6 lg:w-auto md:w-full">
-          <button className="w-[340px] h-[64px] rounded-[20px] border border-white mx-auto  border-opacity-20">
-            {" "}
-            <span className="text-white font-sans text-[24px] font-normal leading-[170%]">
-              Team
-            </span>
-          </button>
-          <button className="w-[340px] h-[64px] rounded-[20px] border border-white  mx-auto border-opacity-20">
-            {" "}
-            <span className="text-white font-sans text-[24px] font-normal leading-[170%]">
-              Smart Contract
-            </span>
-          </button>{" "}
-          <button className="w-[340px] h-[64px] rounded-[20px] border border-white mx-auto  border-opacity-20">
-            {" "}
-            <span className="text-white font-sans text-[24px] font-normal leading-[170%]">
-              Market Research
-            </span>
-          </button>
-        </div> */}
         </div>
       </div>
       <div className="mx-[100px] py-[90px]">
