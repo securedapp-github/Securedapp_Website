@@ -190,7 +190,7 @@ const BlogCard1 = ({ url, tag, id, topic, date, title, link }) => {
 const BlogCard3 = ({ blog1, blog2 }) => {
   return (
     <div className="mx-10 my-10 grid  lg:grid-cols-4">
-      <div className="col-span-2 my-5">
+      <div className="col-span-2 my-5 grid">
         <BlogCard2
           tag={blog1.tags}
           url={blog1.url}
@@ -201,9 +201,9 @@ const BlogCard3 = ({ blog1, blog2 }) => {
           link={blog1.image}
         />
       </div>
-      <div className="col-span-2  ">
+      <div className="col-span-2 grid">
         {blog2.map((blog) => (
-          <div className="text-center m-5">
+          <div className="text-center m-4">
             <BlogCard1
               tag={blog.tags}
               url={blog.url}
