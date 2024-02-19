@@ -67,7 +67,7 @@ const AboutUsHero = () => {
       </div>
 
       <div className="lg:w-[830px] lg:mx-[80px] lg:mt-[75px] mt-[40px] mx-[20px]">
-        <h1 className="font-sans lg:text-[64px] text-[40px] text-ellipsis font-bold leading-[110%] bg-custom-gradient bg-clip-text text-transparent ">
+        <h1 className="font-sans lg:text-[37px] text-[40px] text-ellipsis font-bold leading-[110%] bg-custom-gradient bg-clip-text text-transparent ">
         SecureDApp: Making Web3 Secured for Everyone
         </h1>
       </div>

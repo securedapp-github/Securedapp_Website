@@ -56,13 +56,13 @@ const Card = ({ heading, description, link }) => {
           </h2>
           <Subheading content={description} />
         </div>
-        <button
+        <a
           href={link}
-          className="text-[#000000] py-3 font-gilroy font-semibold text-[20px] mt-4 inline-block bg-[#12D576]"
+          className="text-[#000000] py-3 font-gilroy font-semibold text-[20px] mt-4 inline-block bg-[#12D576] "
           style={{'borderRadius':'20px'}}
         >
-          Read More
-        </button>
+         <span className="text-[#000000] flex items-center justify-center">Read More</span> 
+        </a>
       </div>
     </div>
   );

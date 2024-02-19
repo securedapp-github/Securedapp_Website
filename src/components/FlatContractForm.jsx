@@ -126,6 +126,36 @@ const fakeData=[
     plan: 0,
     planexpiry: null,
     rcredit: 0,
+    status: 0},{created_on: "2023-11-13T11:42:11.000Z",
+    credit: 1,
+    email: "jhashubham976@gmail.com",
+    id: 44,
+    modified_on: "2024-02-12T17:29:26.000Z",
+    otp: 8138,
+    otptime: "2024-02-12T17:34:27.000Z",
+    plan: 0,
+    planexpiry: null,
+    rcredit: 0,
+    status: 0},{created_on: "2023-11-13T11:42:11.000Z",
+    credit: 1,
+    email: "jhashubham976@gmail.com",
+    id: 44,
+    modified_on: "2024-02-12T17:29:26.000Z",
+    otp: 8138,
+    otptime: "2024-02-12T17:34:27.000Z",
+    plan: 0,
+    planexpiry: null,
+    rcredit: 0,
+    status: 0},{created_on: "2023-11-13T11:42:11.000Z",
+    credit: 1,
+    email: "jhashubham976@gmail.com",
+    id: 44,
+    modified_on: "2024-02-12T17:29:26.000Z",
+    otp: 8138,
+    otptime: "2024-02-12T17:34:27.000Z",
+    plan: 0,
+    planexpiry: null,
+    rcredit: 0,
     status: 0}
 ]
 const FlatContractForm = () => {
@@ -614,9 +644,13 @@ const FlatContractForm = () => {
         throw new Error("Network response was not ok.");
       })
       .then((data) => {
-        setTableData(fakeData);
-        setTableDataInd(fakeData.slice(0,10));
-        setTotHistory(parseInt(fakeData.length/10)+((fakeData.length%10)!==0?1:0));
+        console.log(data);
+        setTableData(data);
+        setTableDataInd(data.slice(0,10));
+        setTotHistory(parseInt(data.length/10)+((data.length%10)!==0?1:0));
+        // setTableData(fakeData);
+        // setTableDataInd(fakeData.slice(0,5));
+        // setTotHistory(parseInt(fakeData.length/5)+((fakeData.length%5)!==0?1:0));
       })
       .catch((error) => {
         console.error("Error:", error);
@@ -1343,11 +1377,11 @@ const FlatContractForm = () => {
                   />
                 </div>
 
-                <div className="md:w-1/6 w-full">
+                <div className="md:w-1/6 w-full ">
                   <select
                     value={version}
                     onChange={(e) => { setVersion(e.target.value) }}
-                    className="md:w-11/12 w-full border rounded-[20px] p-3 text-white"  
+                    className="md:w-11/12 w-full border rounded-[20px] p-3 text-white h-full"  
                     style={{ backgroundColor: 'black' }}
                   >
                     {versionOptions.map((version) => (
