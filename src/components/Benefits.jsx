@@ -37,13 +37,13 @@ const value = {
 
 const Comp = ({ url, head, content }) => {
   return (
-    <div className=" md:p-[60px] md:pl-0 p-[10px] lg:w-1/4 w-full font-gilroy">
+    <div className=" md:p-[60px] md:pl-0 p-[10px] lg:w-1/4 w-full  ">
       <div>
         <div className=" p-[10px]">
           <img src={url} alt="" />
         </div>
         <div className="p-[10px]">
-          <h2 className="text-[20px] font-gilroy font-bold leading-[100%] text-white">
+          <h2 className="text-[20px] font-sans font-bold leading-[100%] text-white">
             {head}
           </h2>
           <Subheading content={content} />
