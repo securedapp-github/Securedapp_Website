@@ -4,7 +4,6 @@ module.exports = {
   theme: {
     fontFamily: {
       sans: ["Roboto", "sans-serif"],
-      gilroy:['Gilroy']
     },
     extend: {
       colors: {

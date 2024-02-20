@@ -2,30 +2,19 @@ import React from "react";
 import {
   FaDiscord,
   FaFacebook,
+  FaTwitter,
   FaLinkedin,
   FaTelegram,
 } from "react-icons/fa";
-import { FaXTwitter } from "react-icons/fa6";
 import logo from "../images/logo.png";
-import { FaRegArrowAltCircleUp } from "react-icons/fa";
-
 const Footer = () => {
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-  };
   const style = {
     background:
       "radial-gradient(50% 50.00% at 50% 50.00%, rgba(18, 213, 118, 0.24) 0%, rgba(0, 0, 0, 0.00) 100%)",
   };
   return (
-    <footer className="foot font-gilroy">
+    <footer className="foot">
       <div className="container px-6 py-8 mx-auto">
-      <div onClick={scrollToTop} className="cursor-pointer flex justify-end">
-      <FaRegArrowAltCircleUp color="#ffffff" className="w-14 h-14 my-auto"/>
-      </div>
         <div className="grid grid-cols-2 gap-6 mt-12 sm:grid-cols-2 md:grid-cols-3 lg:px-[50px] lg:grid-cols-4 xl:grid-cols-5">
           <div>
             <h3 className="text-xl font-bold pb-[15px] text-white leading-[110%]">
@@ -35,39 +24,39 @@ const Footer = () => {
             <div className="flex flex-col items-start mt-4 space-y-4">
               <a
                 href="/about-us"
-                className="text-[#FFFFFF] font-gilroy font-normal leading-[170%] text-lg transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600"
+                className="text-[#5F5F5F] font-sans font-normal leading-[170%] text-lg transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600"
               >
                 Team
               </a>
               <a
                 href="/about-us"
-                className="text-[#FFFFFF] transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600"
+                className="text-[#5F5F5F] transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600"
               >
                 About Us
               </a>
               <a
                 href="/"
-                className="text-[#FFFFFF] transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600"
+                className="text-[#5F5F5F] transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600"
               >
                 Request a quote
               </a>
               <a
                 href="#"
-                className="text-[#FFFFFF] transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600"
+                className="text-[#5F5F5F] transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600"
               >
                 Referral
               </a>
               <a
                 href="https://securedapp.gitbook.io/securedapp-launchpad/careers"
                 target="_blank"
-                className="text-[#FFFFFF] transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600"
+                className="text-[#5F5F5F] transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600"
               >
                 Career
               </a>
               <a
                 href="https://securedapp.gitbook.io/securedapp-launchpad/contact-us"
                 target="_blank"
-                className="text-[#FFFFFF] transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600"
+                className="text-[#5F5F5F] transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600"
               >
                 Contact Us
               </a>
@@ -83,7 +72,7 @@ const Footer = () => {
               
               <a
                 href="#"
-                className="text-[#FFFFFF] transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600"
+                className="text-[#5F5F5F] transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600"
               >
                 Audit Process
               </a>
@@ -92,21 +81,21 @@ const Footer = () => {
               <a
                 href="https://securedapp.gitbook.io/securedapp-launchpad/workplace-policy"
                 target="_blank"
-                className="text-[#FFFFFF] transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600"
+                className="text-[#5F5F5F] transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600"
               >
                 Workplace Policy
               </a>
               <a
                 href="https://securedapp.gitbook.io/securedapp-launchpad"
                 target="_blank"
-                className="text-[#FFFFFF] transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600"
+                className="text-[#5F5F5F] transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600"
               >
                 Our Mission & Core values
               </a>
               <a
                 href="https://securedapp.gitbook.io/securedapp-launchpad/shipping-and-delivery-policy"
                 target="_blank"
-                className="text-[#FFFFFF] transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600"
+                className="text-[#5F5F5F] transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600"
               >
                 Shipping & Delivery Policy
               </a>
@@ -114,14 +103,14 @@ const Footer = () => {
               <a
                 href="https://securedapp.gitbook.io/securedapp-launchpad/cancellation-and-refund-policy"
                 target="_blank"
-                className="text-[#FFFFFF] transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600"
+                className="text-[#5F5F5F] transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600"
               >
                 Cancellation and Refunds
               </a>
               <a
                 href="https://securedapp.gitbook.io/securedapp-launchpad/pricing-policy"
                 target="_blank"
-                className="text-[#FFFFFF] transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600"
+                className="text-[#5F5F5F] transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600"
               >
                 Pricing Policy
               </a>
@@ -137,14 +126,14 @@ const Footer = () => {
             
               <a
                 href="/smart-contract-scanner-solidity-shield"
-                className="text-[#FFFFFF] transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600"
+                className="text-[#5F5F5F] transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600"
               >
                 Solidity Shield
               </a>
               <a
                 href="https://securedapp.gitbook.io/securedapp-launchpad"
                 target="_blank"
-                className="text-[#FFFFFF] transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600"
+                className="text-[#5F5F5F] transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600"
               >
                 Rewards
               </a>
@@ -161,7 +150,7 @@ const Footer = () => {
               <a
                 href="https://linktr.ee/securedapp"
                 target="_blank"
-                className="text-[#FFFFFF] transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600"
+                className="text-[#5F5F5F] transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600"
               >
                 Community
               </a>
@@ -179,7 +168,7 @@ const Footer = () => {
               <a
                 href="securepad.netlify.app"
                 target="_blank"
-                className="text-[#FFFFFF] transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600"
+                className="text-[#5F5F5F] transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600"
               >
                 Tokens
               </a>
@@ -187,13 +176,13 @@ const Footer = () => {
               <a
                 href="https://securedapp.gitbook.io/securedapp-launchpad"
                 target="_blank"
-                className="text-[#FFFFFF] transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600"
+                className="text-[#5F5F5F] transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600"
               >
                 Wallets
               </a>
               <a
                 href="/blog"
-                className="text-[#FFFFFF] transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600"
+                className="text-[#5F5F5F] transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600"
               >
                 Blog
               </a>
@@ -209,9 +198,9 @@ const Footer = () => {
         </div>
 
         <hr className="my-6 border-gray-200 md:my-10 dark:border-gray-700" />
-        
+
         <div className="flex flex-col items-center justify-between  sm:flex-row lg:px-[10px] ">
-          <div className="md:pl-[50px] sm:py-[20px]">
+          <div className="pl-[50px] sm:py-[20px]">
             <a href="/">
               {" "}
               <img src={logo} alt="logo" />
@@ -221,7 +210,7 @@ const Footer = () => {
             <a
               href="https://securedapp.gitbook.io/securedapp-launchpad/terms-and-conditions"
               target="_blank"
-              className="text-[#FFFFFF] px-[20px] hover:text-blue-600 transition-colors duration-200"
+              className="text-[#5F5F5F] px-[20px] hover:text-blue-600 transition-colors duration-200"
             >
               Terms of Conditions
             </a>{" "}
@@ -229,19 +218,19 @@ const Footer = () => {
             <a
               href="https://securedapp.gitbook.io/securedapp-launchpad/privacy-policy-securedapp"
               target="_blank"
-              className="text-[#FFFFFF] px-[20px] hover:text-blue-600 transition-colors duration-200"
+              className="text-[#5F5F5F] px-[20px] hover:text-blue-600 transition-colors duration-200"
             >
               Privacy Policy
             </a>{" "}
             |
             <a
               href="/"
-              className="text-[#FFFFFF] hover:text-blue-600 transition-colors duration-200"
+              className="text-[#5F5F5F] hover:text-blue-600 transition-colors duration-200"
             >
               Lite Paper
             </a>
           </div>
-          <div className="flex items-center justify-center space-x-4 sm:justify-end md:pr-[50px]">
+          <div className="flex items-center justify-center pr-[50px] space-x-4 sm:justify-end">
             <a
               href="https://discord.com/invite/jQcd5WwhNy"
               target="_blank"
@@ -254,7 +243,7 @@ const Footer = () => {
               target="_blank"
               className="text-gray-300 hover:text-blue-600 transition-colors duration-200"
             >
-              <FaXTwitter className="w-[30px] h-[30px]" />
+              <FaTwitter className="w-[30px] h-[30px]" />
             </a>
             <a
               href="https://www.instagram.com/securedapp_official/"
@@ -272,7 +261,7 @@ const Footer = () => {
             </a>
           </div>
         </div>
-        <div className=" flex flex-col items-center justify-between py-1 md:py-0  sm:flex-row  text-[#FFFFFF] px-[0px] sm:px-[20px]">Powered By VettedCode Technologies India Pvt. Ltd.</div>
+        <div className=" flex flex-col items-center justify-between  sm:flex-row  text-[#5F5F5F] px-[20px]">Powered By VettedCode Technologies India Pvt. Ltd.</div>
 
       </div>
     </footer>

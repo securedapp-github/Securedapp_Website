@@ -28,9 +28,9 @@ const AuditCard = {
 
 const Card = ({ heading, description }) => {
   return (
-    <div className="p-4 pl-0 font-gilroy">
+    <div className="p-4 pl-0">
       <div className="bg-transparent border-white border rounded-[20px] p-6">
-        <h2 className="md:text-2xl text-xl text-white font-gilroy leading-[100%] font-bold mb-4">
+        <h2 className="md:text-2xl text-xl text-white font-sans leading-[100%] font-bold mb-4">
           {heading}
         </h2>
         <Subheading content={description} />

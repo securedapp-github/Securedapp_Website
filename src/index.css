@@ -2,9 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-*{
-  font-family: 'Gilroy';
-}
 .hero {
   /* Set the background image URL here */
 
