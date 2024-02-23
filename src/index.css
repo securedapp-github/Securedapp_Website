@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 *{
-  font-family: 'Gilroy';
+  font-family:'Gilroy';
 }
 .hero {
   /* Set the background image URL here */
@@ -862,7 +862,6 @@ body{
 }
 
 .gradient-border {
-  /* border-radius: 41px; */
   border-width: 5px;
   border-style: solid;
   border-image: linear-gradient(to bottom right, #2d5c8f, #12d576);
