@@ -18,11 +18,9 @@ const HomeComp = () => {
   const handleMenuItemClick = (index) => {
     setSelectedMenuItem(index);
   };
-  
 
   return (
     <>
-    
        <Helmet>
             <title>SecuredApp.io: Leading Web3 Security & Smart Contract Audit Solutions</title>
             <meta name="description" content="Explore securedapp.io for comprehensive Web3 security solutions tailored for DApps and smart contracts. Dive into the benefits of audits, their robust services, and their commitment to Ethereum blockchain security. Trusted by many, they've protected over USD 20 Million in assets." />

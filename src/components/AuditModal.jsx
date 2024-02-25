@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Loader from 'utils/loader';
-import m1 from '../images/remove.png'
 
 const AuditModal = ({ onClose }) => {
 
@@ -68,16 +67,14 @@ const blurryDivStyle = {
         pauseOnHover
       />
     
-    <div style={{ ...blurryDivStyle }} className="fixed top-0 font-gilroy left-0 right-0 bottom-0 flex justify-center items-center    bg-gray-900 bg-opacity-80 z-[10000142323]">	
-        <div className="w-[600px] p-6 rounded-lg bg-white backdrop-blur-md shadow-lg">	
+    <div style={{ ...blurryDivStyle }} className="fixed top-0 left-0 right-0 bottom-0 flex justify-center items-center    bg-gray-900 bg-opacity-80 z-[10000142323]">	
+        <div className="w-[600px] p-6 rounded-lg bg-white shadow-lg">	
           <div className="flex justify-end">	
             <button	
               onClick={onClose}	
-              className="  bg-white right-[470px] rounded px-4 py-2 text-black hover:text-white"	
+              className="  bg-white right-[470px] border rounded px-4 py-2    hover:bg-red-400 text-black hover:text-white"	
             >	
-            <div className="w-8 h-8">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#12d576"><path d="M11.9997 10.5865L16.9495 5.63672L18.3637 7.05093L13.4139 12.0007L18.3637 16.9504L16.9495 18.3646L11.9997 13.4149L7.04996 18.3646L5.63574 16.9504L10.5855 12.0007L5.63574 7.05093L7.04996 5.63672L11.9997 10.5865Z"></path></svg>
-              </div>
+              Close	
             </button>	
           </div>	
           <div className="flex justify-center items-center py-[10px] ">	
@@ -95,15 +92,15 @@ const blurryDivStyle = {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                placeholder="Your Name"
+                placeholder=" "
                 required
               />
-              {/* <label
+              <label
                 for="floating_first_name"
                 className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
               >
                 Your name
-              </label> */}
+              </label>
             </div>
             <div className="relative z-0 w-full mb-6 group">
               <input
@@ -111,21 +108,21 @@ const blurryDivStyle = {
                 name="floating_last_name"
                 id="floating_last_name"
                 className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                placeholder="Nickname"
+                placeholder=" "
               />
-              {/* <label
+              <label
                 for="floating_last_name"
                 className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
               >
                 Nickname
-              </label> */}
+              </label>
             </div>
           </div>
           <div className="grid md:grid-cols-2 md:gap-6">
             <div className="relative z-0 w-full mb-6 group">
               <label
                 htmlFor="service"
-                className="block text-sm font-medium text-start text-gray-500 dark:text-gray-300"
+                className="block text-sm font-medium text-gray-500 dark:text-gray-300"
               >
                 Select Service
               </label>
@@ -156,15 +153,15 @@ const blurryDivStyle = {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                placeholder="Corporate email"
+                placeholder=" "
                 required
               />
-              {/* <label
+              <label
                 for="floating_company"
                 className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
               >
                 Corporate email
-              </label> */}
+              </label>
             </div>
           </div>
           <div className="pt-[15px]">
@@ -177,7 +174,7 @@ const blurryDivStyle = {
               placeholder="Project details (descriptions, links to documentation, smart contract source code, etc.)"
             ></textarea>
           </div>
-          <div className="flex items-center py-2">
+          <div className="flex items-center py-3">
             <input
               id="link-checkbox"
               type="checkbox"

@@ -30,10 +30,10 @@ const value = {
 
 const Card = ({ image, heading, content }) => {
   return (
-    <div className="p-4 md:px-[10px] font-gilroy">
+    <div className="p-4 md:px-[10px]">
       <div className="bg-transparent border-0">
         <img src={image} alt="" className=" mb-4" />
-        <h2 className="md:text-2xl text-xl text-white font-gilroy leading-[100%] font-bold mb-4">
+        <h2 className="md:text-2xl text-xl text-white font-sans leading-[100%] font-bold mb-4">
           {heading}
         </h2>
         <Subheading content={content} />

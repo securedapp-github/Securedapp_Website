@@ -28,7 +28,7 @@ function Navbar({ onItemClick }) {
     console.log(index);
   };
   return (
-    <div className="z-[23432423423] font-gilroy" >
+    <div className="z-[23432423423] ">
       <header className="absolute inset-x-0 top-0 z-50">
         <nav
           className="flex items-center justify-between p-6 lg:px-8 border-b-2 border-gray-500"
@@ -60,7 +60,7 @@ function Navbar({ onItemClick }) {
               <a
                 key={item.name}
                 href={item.href}
-                className="text-[16px] font-normal text-center my-auto font-gilroy whitespace-nowrap leading-6 pt-0 w-max  text-gray-100"
+                className="text-[16px] font-normal text-center my-auto font-sans whitespace-nowrap leading-6 pt-0 w-max  text-gray-100"
                 onClick={() => handleItemClick(index)}
               >
                 {item.name}
@@ -118,7 +118,7 @@ function Navbar({ onItemClick }) {
                       key={item.name}
                       href={item.href}
                       onClick={() => handleItemClick(index)}
-                      className="-mx-3 block rounded-lg px-7 py-2 text-base font-semibold font-gilroy leading-7 text-gray-100 hover:bg-gray-800"
+                      className="-mx-3 block rounded-lg px-7 py-2 text-base font-semibold font-sans leading-7 text-gray-100 hover:bg-gray-800"
                     >
                       <span> {item.name}</span>
                     </a>

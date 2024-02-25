@@ -5,13 +5,6 @@
   width: 100%;
   height: max-content;
 }
-body{
-  caret-color: blue;
-}
-
-*{
-  font-family: 'Gilroy';
-}
 
 /* .App {
   background-color: black;

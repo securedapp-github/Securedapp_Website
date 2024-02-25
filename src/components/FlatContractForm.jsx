@@ -12,149 +12,7 @@ import logo from "../images/logo2.jpeg";
 import CryptoJS from 'crypto-js';
 const { v4: uuidv4 } = require('uuid');
 
-const fakeData=[
-  {created_on: "2023-11-13T11:42:11.000Z",
-    credit: 1,
-    email: "jhashubham976@gmail.com",
-    id: 44,
-    modified_on: "2024-02-12T17:29:26.000Z",
-    otp: 8138,
-    otptime: "2024-02-12T17:34:27.000Z",
-    plan: 0,
-    planexpiry: null,
-    rcredit: 0,
-    status: 0},{created_on: "2023-11-13T11:42:11.000Z",
-    credit: 1,
-    email: "jhashubham976@gmail.com",
-    id: 44,
-    modified_on: "2024-02-12T17:29:26.000Z",
-    otp: 8138,
-    otptime: "2024-02-12T17:34:27.000Z",
-    plan: 0,
-    planexpiry: null,
-    rcredit: 0,
-    status: 0},{created_on: "2023-11-13T11:42:11.000Z",
-    credit: 1,
-    email: "jhashubham976@gmail.com",
-    id: 44,
-    modified_on: "2024-02-12T17:29:26.000Z",
-    otp: 8138,
-    otptime: "2024-02-12T17:34:27.000Z",
-    plan: 0,
-    planexpiry: null,
-    rcredit: 0,
-    status: 0},{created_on: "2023-11-13T11:42:11.000Z",
-    credit: 1,
-    email: "jhashubham976@gmail.com",
-    id: 44,
-    modified_on: "2024-02-12T17:29:26.000Z",
-    otp: 8138,
-    otptime: "2024-02-12T17:34:27.000Z",
-    plan: 0,
-    planexpiry: null,
-    rcredit: 0,
-    status: 0},{created_on: "2023-11-13T11:42:11.000Z",
-    credit: 1,
-    email: "jhashubham976@gmail.com",
-    id: 44,
-    modified_on: "2024-02-12T17:29:26.000Z",
-    otp: 8138,
-    otptime: "2024-02-12T17:34:27.000Z",
-    plan: 0,
-    planexpiry: null,
-    rcredit: 0,
-    status: 0},{created_on: "2023-11-13T11:42:11.000Z",
-    credit: 1,
-    email: "jhashubham976@gmail.com",
-    id: 44,
-    modified_on: "2024-02-12T17:29:26.000Z",
-    otp: 8138,
-    otptime: "2024-02-12T17:34:27.000Z",
-    plan: 0,
-    planexpiry: null,
-    rcredit: 0,
-    status: 0},{created_on: "2023-11-13T11:42:11.000Z",
-    credit: 1,
-    email: "jhashubham976@gmail.com",
-    id: 44,
-    modified_on: "2024-02-12T17:29:26.000Z",
-    otp: 8138,
-    otptime: "2024-02-12T17:34:27.000Z",
-    plan: 0,
-    planexpiry: null,
-    rcredit: 0,
-    status: 0},{created_on: "2023-11-13T11:42:11.000Z",
-    credit: 1,
-    email: "jhashubham976@gmail.com",
-    id: 44,
-    modified_on: "2024-02-12T17:29:26.000Z",
-    otp: 8138,
-    otptime: "2024-02-12T17:34:27.000Z",
-    plan: 0,
-    planexpiry: null,
-    rcredit: 0,
-    status: 0},{created_on: "2023-11-13T11:42:11.000Z",
-    credit: 1,
-    email: "jhashubham976@gmail.com",
-    id: 44,
-    modified_on: "2024-02-12T17:29:26.000Z",
-    otp: 8138,
-    otptime: "2024-02-12T17:34:27.000Z",
-    plan: 0,
-    planexpiry: null,
-    rcredit: 0,
-    status: 0},{created_on: "2023-11-13T11:42:11.000Z",
-    credit: 1,
-    email: "jhashubham976@gmail.com",
-    id: 44,
-    modified_on: "2024-02-12T17:29:26.000Z",
-    otp: 8138,
-    otptime: "2024-02-12T17:34:27.000Z",
-    plan: 0,
-    planexpiry: null,
-    rcredit: 0,
-    status: 0},{created_on: "2023-11-13T11:42:11.000Z",
-    credit: 1,
-    email: "jhashubham976@gmail.com",
-    id: 44,
-    modified_on: "2024-02-12T17:29:26.000Z",
-    otp: 8138,
-    otptime: "2024-02-12T17:34:27.000Z",
-    plan: 0,
-    planexpiry: null,
-    rcredit: 0,
-    status: 0},{created_on: "2023-11-13T11:42:11.000Z",
-    credit: 1,
-    email: "jhashubham976@gmail.com",
-    id: 44,
-    modified_on: "2024-02-12T17:29:26.000Z",
-    otp: 8138,
-    otptime: "2024-02-12T17:34:27.000Z",
-    plan: 0,
-    planexpiry: null,
-    rcredit: 0,
-    status: 0},{created_on: "2023-11-13T11:42:11.000Z",
-    credit: 1,
-    email: "jhashubham976@gmail.com",
-    id: 44,
-    modified_on: "2024-02-12T17:29:26.000Z",
-    otp: 8138,
-    otptime: "2024-02-12T17:34:27.000Z",
-    plan: 0,
-    planexpiry: null,
-    rcredit: 0,
-    status: 0},{created_on: "2023-11-13T11:42:11.000Z",
-    credit: 1,
-    email: "jhashubham976@gmail.com",
-    id: 44,
-    modified_on: "2024-02-12T17:29:26.000Z",
-    otp: 8138,
-    otptime: "2024-02-12T17:34:27.000Z",
-    plan: 0,
-    planexpiry: null,
-    rcredit: 0,
-    status: 0}
-]
+
 const FlatContractForm = () => {
   const [showverify, setshowverify] = useState(false); // for otp verify screen options
   const [modalOpen, setModalOpen] = useState(false);
@@ -196,9 +54,6 @@ const FlatContractForm = () => {
   const [assembly, setassembly] = useState(0);
   const [erc, seterc] = useState("");
   const [total, settotal] = useState(0);
-  const [page,setPage]=useState(1)
-  const [totHistory,setTotHistory]=useState(0)
-  const [tableDataInd,setTableDataInd]=useState([])
 
   //Invoice States
   const [planid, setplanid] = useState(0);
@@ -266,7 +121,6 @@ const FlatContractForm = () => {
       cursor: 'pointer',
     }
   };
-
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -513,7 +367,7 @@ const FlatContractForm = () => {
       className="w-[100%] dark:bg-neutral-600 rounded-full mb-[35px] "
       style={{
         boxShadow: "6px 4px 5px 0px rgba(0, 0, 0, 0.06) inset",
-        background: "rgba(255, 255, 255, 0.30)",
+        background: "rgba(0, 0, 0, 0.20)",
       }}
     >
       <div
@@ -645,11 +499,6 @@ const FlatContractForm = () => {
       .then((data) => {
         console.log(data);
         setTableData(data);
-        setTableDataInd(data.slice(0,10));
-        setTotHistory(parseInt(data.length/10)+((data.length%10)!==0?1:0));
-        // setTableData(fakeData);
-        // setTableDataInd(fakeData.slice(0,5));
-        // setTotHistory(parseInt(fakeData.length/5)+((fakeData.length%5)!==0?1:0));
       })
       .catch((error) => {
         console.error("Error:", error);
@@ -657,15 +506,6 @@ const FlatContractForm = () => {
       });
 
     setLoading(false);
-  }
-
-  const handlePrev=()=>{
-    setPage(page-1);
-    setTableDataInd(tableData.slice((page-2)*10,(page-2)*10+10));
-  }
-  const handleNext=()=>{
-    setPage(page+1);
-    setTableDataInd(tableData.slice((page)*10,(page)*10+10))
   }
 
   const downloadReport = async (id) => {
@@ -755,17 +595,16 @@ const FlatContractForm = () => {
 
 
           {showHistoryTable && ( // Render the table only if showTable is true
-          <>
             <table className="w-full lg:mt-[50px] " style={{ backgroundColor: 'black', border: '2px solid white', marginTop: '20px' }}>
               <thead>
-                <tr className="text-[#12D576]">
+                <tr>
                   <th>Report ID</th>
                   <th>Date</th>
                   <th>Report Link</th>
                 </tr>
               </thead>
               <tbody className='border-t-[0.5px] overflow-scroll '>
-                {tableDataInd.map((row, index) => (
+                {tableData.map((row, index) => (
                   <tr key={index} className={index % 2 === 0 ? 'bg-transparent' : 'bg-[#12D57612] bg-opacity-7'}>
                     <td className="px-4 py-2 text-white text-center">{row.id} </td>
                     <td className="px-4 py-2 text-white text-center">{row.date} </td>
@@ -797,14 +636,8 @@ const FlatContractForm = () => {
                     </td>
                   </tr>
                 ))}
-                
               </tbody>
             </table>
-            <div className="flex flex-row justify-between mt-5 px-2">
-                        <button onClick={()=>{handlePrev()}} disabled={page===1} className="text-white bg-[#12D576] px-6 py-3 font-medium rounded-md">Prev</button>
-                        <button onClick={()=>{handleNext()}} disabled={page===totHistory} className="text-white bg-[#12D576] px-6 py-3 font-medium rounded-md">Next</button>
-            </div>
-        </>
           )}
         </div>
 
@@ -994,7 +827,7 @@ const FlatContractForm = () => {
 
         </div>
 
-        {/* <div className='lg:px-[80px]  md:px-[50px] px-[20px] lg:py-[40px] md:py-[30px] py-[20px]' >
+        <div className='lg:px-[80px]  md:px-[50px] px-[20px] lg:py-[40px] md:py-[30px] py-[20px]' >
 
           <div className='flex lg:flex-row flex-col lg:gap-[100px md:gap-[50px] gap-[40px]'>
             <div className='flex gap-4 justify-center '>
@@ -1009,7 +842,7 @@ const FlatContractForm = () => {
               "SecureDApp has helped me to keep my smart contracts safe and secure. I would highly recommend their service."  </div>
           </div>
 
-        </div> */}
+        </div>
 
 
 
@@ -1279,7 +1112,7 @@ const FlatContractForm = () => {
 
         {showsendotp && (
           <>
-            <div className="flex justify-start items-start mt-[50px]  px-[80px]">
+            <div className="flex justify-center items-center mt-[50px] lg:px-0 md:px-[50px] px-[20px]">
               <SectionHeader
                 content={
                   "Enter Email : Verify OTP : SCAN"
@@ -1288,7 +1121,7 @@ const FlatContractForm = () => {
             </div>
 
             <form >
-              <div className="flex md:flex-row flex-col gap-4 min-w-full justify-start mt-[30px] px-[80px]">
+              <div className="flex md:flex-row flex-col gap-4 min-w-full justify-between mt-[30px] px-[80px]">
 
                 <div className="md:w-2/6 w-full">
                   <input
@@ -1326,7 +1159,7 @@ const FlatContractForm = () => {
             </div>
 
             <form >
-              <div className="flex md:flex-row flex-col gap-4 min-w-full justify-start mt-[30px] px-[80px]">
+              <div className="flex md:flex-row flex-col gap-4 min-w-full justify-between mt-[30px] px-[80px]">
 
 
                 <div className="md:w-2/6 w-full">
@@ -1366,7 +1199,7 @@ const FlatContractForm = () => {
             </div>
 
             <form onSubmit={handleSubmit} style={{ marginBottom: '20px' }}>
-              <div className="flex md:flex-row flex-col gap-4 min-w-full justify-start mt-[30px] px-[80px]">
+              <div className="flex md:flex-row flex-col gap-4 min-w-full justify-between mt-[30px] px-[80px]">
 
                 <div className="md:w-3/6 w-full ">
                   <input
@@ -1376,11 +1209,11 @@ const FlatContractForm = () => {
                   />
                 </div>
 
-                <div className="md:w-1/6 w-full ">
+                <div className="md:w-1/6 w-full">
                   <select
                     value={version}
                     onChange={(e) => { setVersion(e.target.value) }}
-                    className="md:w-11/12 w-full border rounded-[20px] p-3 text-white h-full"  
+                    className="md:w-11/12 w-full border rounded-[20px] p-3 text-white"  
                     style={{ backgroundColor: 'black' }}
                   >
                     {versionOptions.map((version) => (
