@@ -9,10 +9,7 @@ import autoTable from 'jspdf-autotable';
 import Modal from "react-modal";
 import QRCode from 'qrcode.react';
 import logo from "../images/logo2.jpeg";
-// import sha256 from 'crypto-js/sha256';
-// import {Buffer} from 'buffer';
-// import axios from "axios";
-
+import CryptoJS from 'crypto-js';
 const { v4: uuidv4 } = require('uuid');
 
 const fakeData=[
@@ -211,15 +208,17 @@ const FlatContractForm = () => {
 
 
   useEffect(() => {
-    var user = sessionStorage.getItem("securedapp_session_user");
+    var user = sessionStorage.getItem("session_user");
     console.log("session : ", user);
     // var user_mail = user[0].mail
     if (user == null) {
       console.log("login session");
     } else {
       console.log("existing login session");
-      setEmail(user);
-      updateUserSession(user);
+      const bytes = CryptoJS.AES.decrypt(user, "secretKey123");
+      const email = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
+      setEmail(email);
+      updateUserSession(email);
     }
   }, []);
 
@@ -357,7 +356,7 @@ const FlatContractForm = () => {
         setshowPlans(true);
         setshowverify(false);
         setshowsendotp(false);
-        sessionStorage.setItem("securedapp_session_user", mails);
+        sessionStorage.setItem("session_user", CryptoJS.AES.encrypt(JSON.stringify(mails), "secretKey123").toString());
 
       })
       .catch((error) => {
@@ -411,7 +410,7 @@ const FlatContractForm = () => {
         setshowPlans(true);
         setshowverify(false);
 
-        sessionStorage.setItem("securedapp_session_user", email);
+        sessionStorage.setItem("session_user", CryptoJS.AES.encrypt(JSON.stringify(email), "secretKey123").toString());
 
       })
       .catch((error) => {
