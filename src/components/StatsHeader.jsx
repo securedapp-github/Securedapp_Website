@@ -9,7 +9,7 @@ const StatsHeader = ({ content }) => {
         WebkitBackgroundClip: "text",
         WebkitTextFillColor: "transparent",
       }}
-      className=" md:text-[40px] text-2xl text-left whitespace-break-spaces w-fit font-gilroy font-bold leading-[102%]  bg-custom-gradient bg-clip-text text-transparent"
+      className=" md:text-[40px] text-2xl text-left whitespace-break-spaces w-fit font-sans font-bold leading-[102%]  bg-custom-gradient bg-clip-text text-transparent"
     >
       {content}
     </div>
