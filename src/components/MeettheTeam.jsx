@@ -47,7 +47,7 @@ const MeettheTeam = () => {
     {
       image: himanshu,
       linkedin:"https://www.linkedin.com/in/himanshu-gautam-69647289/",
-      telegram:"https://web.telegram.org/k/#@himang305",
+      telegram:"https://t.me/himang305",
       twitter:"https://twitter.com/Himansh58851412",
       name: "Himanshu Gautam",
       designation: "Co-Founder & CTO",
@@ -57,7 +57,7 @@ const MeettheTeam = () => {
     {
       image: abishek,
       linkedin:"https://www.linkedin.com/in/avicsingh01/",
-      telegram:"https://web.telegram.org/k/#@a_bhisheks",
+      telegram:"https://t.me/a_bhisheks",
       twitter:"https://twitter.com/A_bhisheks",
       name: "Abhishek Singh",
       designation: "Co-Founder & CEO",
@@ -67,7 +67,7 @@ const MeettheTeam = () => {
     {
       image: andrew,
       linkedin:"https://www.linkedin.com/in/andrews-ellavendhan-34929433/",
-      telegram:"https://web.telegram.org/k/#@andrews_a",
+      telegram:"https://t.me/andrews_a",
       twitter:"https://x.com/andrewsarena?t=B-kCwIYXYo8-vkJUD9PPBA&s=09",
       name: "Andrews Ellavendhan",
       designation: "Head of creative",
@@ -77,7 +77,7 @@ const MeettheTeam = () => {
     {
       image: rouhan,
       linkedin:"https://www.linkedin.com/in/abhishek-metakraft/",
-      telegram:"https://web.telegram.org/k/#@TheMetakrafterGuy",
+      telegram:"https://t.me/TheMetakrafterGuy",
       twitter:"https://twitter.com/themetakrafter",
       name: "Abhishek Roushan",
       designation: "Head of Partnerships & Outreach",
