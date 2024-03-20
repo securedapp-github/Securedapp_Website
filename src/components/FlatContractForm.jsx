@@ -4,17 +4,17 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Loader from "utils/loader";
 import image1 from "../realestateperson.png";
-import jsPDF from 'jspdf';
-import autoTable from 'jspdf-autotable';
+import jsPDF from "jspdf";
+import autoTable from "jspdf-autotable";
 import Modal from "react-modal";
-import QRCode from 'qrcode.react';
+import QRCode from "qrcode.react";
 import logo from "../images/logo2.jpeg";
-import sha256 from 'crypto-js/sha256';
-import {Buffer} from 'buffer';
+import sha256 from "crypto-js/sha256";
+import { Buffer } from "buffer";
 import axios from "axios";
+import Chart from "chart.js/auto";
 
-const { v4: uuidv4 } = require('uuid');
-
+const { v4: uuidv4 } = require("uuid");
 
 const FlatContractForm = () => {
   const [showverify, setshowverify] = useState(false); // for otp verify screen options
@@ -32,15 +32,42 @@ const FlatContractForm = () => {
   const [showHistoryTable, setShowHisotryTable] = useState(false); // table toggle
   const [tableData, setTableData] = useState([]);
 
-  const [showPlans, setshowPlans] = useState(false);   // for scan history and scan plans
+  const [showPlans, setshowPlans] = useState(false); // for scan history and scan plans
   // const [showPlans, setshowPlans] = useState(false);   // for scan history and scan plans
 
-  const [showScanResult, setShowScanResult] = useState(false);  // for scan results
+  const [showScanResult, setShowScanResult] = useState(false); // for scan results
 
-  const [version, setVersion] = useState('0.8.17');
+  const [version, setVersion] = useState("0.8.17");
   const versionOptions = [
-    '0.7.0', '0.7.1', '0.7.2', '0.7.3', '0.7.4', '0.7.5', '0.7.6',
-    '0.8.0', '0.8.1', '0.8.2', '0.8.3', '0.8.4', '0.8.5', '0.8.6', '0.8.7', '0.8.8', '0.8.9', '0.8.10', '0.8.11', '0.8.12', '0.8.13', '0.8.14', '0.8.15', '0.8.16', '0.8.17', '0.8.18', '0.8.19', '0.8.20', '0.8.21'
+    "0.7.0",
+    "0.7.1",
+    "0.7.2",
+    "0.7.3",
+    "0.7.4",
+    "0.7.5",
+    "0.7.6",
+    "0.8.0",
+    "0.8.1",
+    "0.8.2",
+    "0.8.3",
+    "0.8.4",
+    "0.8.5",
+    "0.8.6",
+    "0.8.7",
+    "0.8.8",
+    "0.8.9",
+    "0.8.10",
+    "0.8.11",
+    "0.8.12",
+    "0.8.13",
+    "0.8.14",
+    "0.8.15",
+    "0.8.16",
+    "0.8.17",
+    "0.8.18",
+    "0.8.19",
+    "0.8.20",
+    "0.8.21",
   ];
 
   const [email, setEmail] = useState("");
@@ -64,7 +91,6 @@ const FlatContractForm = () => {
   const [paymentaddress, setpaymentaddress] = useState("");
   const [paymentamount, setpaymentamount] = useState(0);
 
-
   useEffect(() => {
     var user = sessionStorage.getItem("securedapp_session_user");
     console.log("session : ", user);
@@ -80,47 +106,47 @@ const FlatContractForm = () => {
 
   const customStyles = {
     overlay: {
-      backgroundColor: 'rgba(0, 0, 0, 0.5)',
+      backgroundColor: "rgba(0, 0, 0, 0.5)",
     },
     content: {
-      width: '500px',
-      margin: 'auto',
-      border: '1px solid #ccc',
-      background: '#fff',
-      borderRadius: '4px',
-      boxShadow: '0 2px 10px rgba(0, 0, 0, 0.1)',
-      textAlign: 'center',
+      width: "500px",
+      margin: "auto",
+      border: "1px solid #ccc",
+      background: "#fff",
+      borderRadius: "4px",
+      boxShadow: "0 2px 10px rgba(0, 0, 0, 0.1)",
+      textAlign: "center",
     },
     header: {
-      background: '#000000', // Set the background color for the header strip
-      color: '#fff', // Set the text color for the header strip
-      padding: '10px', // Add some padding to the header strip
-      borderTopLeftRadius: '4px',
-      borderTopRightRadius: '4px'
+      background: "#000000", // Set the background color for the header strip
+      color: "#fff", // Set the text color for the header strip
+      padding: "10px", // Add some padding to the header strip
+      borderTopLeftRadius: "4px",
+      borderTopRightRadius: "4px",
     },
     paymentDetails: {
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center', // Center-align the content horizontally
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center", // Center-align the content horizontally
     },
     verifyButton: {
-      backgroundColor: '#4CAF50', // Background color for the "Verify" button
-      color: '#fff', // Text color for the "Verify" button
-      border: 'none',
-      padding: '10px 20px',
-      margin: '25px',
-      borderRadius: '4px',
-      cursor: 'pointer',
+      backgroundColor: "#4CAF50", // Background color for the "Verify" button
+      color: "#fff", // Text color for the "Verify" button
+      border: "none",
+      padding: "10px 20px",
+      margin: "25px",
+      borderRadius: "4px",
+      cursor: "pointer",
     },
     closeButton: {
-      backgroundColor: '#d9534f', // Background color for the "Close Modal" button
-      color: '#fff', // Text color for the "Close Modal" button
-      border: 'none',
-      padding: '10px 20px',
-      margin: '5px',
-      borderRadius: '4px',
-      cursor: 'pointer',
-    }
+      backgroundColor: "#d9534f", // Background color for the "Close Modal" button
+      color: "#fff", // Text color for the "Close Modal" button
+      border: "none",
+      padding: "10px 20px",
+      margin: "5px",
+      borderRadius: "4px",
+      cursor: "pointer",
+    },
   };
 
   const handleEmailChange = (e) => {
@@ -132,7 +158,6 @@ const FlatContractForm = () => {
   };
 
   const sendOTP = async () => {
-
     setLoading(true);
 
     // setshowsendotp(false);
@@ -142,9 +167,8 @@ const FlatContractForm = () => {
     // setshowanalyse(true);
     // return;
 
-
     // fetch('http://127.0.0.1:8000/sendOtp2', {
-      fetch("https://139-59-5-56.nip.io:3443/sendOtp2", {
+    fetch("https://139-59-5-56.nip.io:3443/sendOtp2", {
       method: "POST",
       body: JSON.stringify({
         mail: email,
@@ -153,7 +177,7 @@ const FlatContractForm = () => {
         "Content-type": "application/json",
       },
     })
-      .then((res) => { })
+      .then((res) => {})
       .then((data) => {
         toast.success("OTP Send Successfully, Check Mail");
         setshowsendotp(false);
@@ -174,10 +198,10 @@ const FlatContractForm = () => {
     setLoading(true);
 
     // fetch('http://127.0.0.1:8000/verifyOtp2', {
-      fetch("https://139-59-5-56.nip.io:3443/getUser", {
+    fetch("https://139-59-5-56.nip.io:3443/getUser", {
       method: "POST",
       body: JSON.stringify({
-        mail: mails
+        mail: mails,
       }),
       headers: {
         "Content-type": "application/json",
@@ -191,18 +215,18 @@ const FlatContractForm = () => {
       })
       .then((data) => {
         console.log(data);
-        if(data.length == 0) toast("User Detail Error");
+        if (data.length == 0) toast("User Detail Error");
         let userdata = data[0];
 
         let plandetail = "Free Plan";
         if (userdata.plan == 1) {
-          plandetail = "Basic Plan"
+          plandetail = "Basic Plan";
         }
         if (userdata.plan == 2) {
-          plandetail = "Premium Plan"
+          plandetail = "Premium Plan";
         }
         if (userdata.plan == 3) {
-          plandetail = "Exclusive Plan"
+          plandetail = "Exclusive Plan";
         }
         setplan(plandetail);
         setcredit(userdata.credit);
@@ -212,7 +236,6 @@ const FlatContractForm = () => {
         setshowverify(false);
         setshowsendotp(false);
         sessionStorage.setItem("securedapp_session_user", mails);
-
       })
       .catch((error) => {
         console.error("Error:", error);
@@ -220,18 +243,17 @@ const FlatContractForm = () => {
       });
 
     setLoading(false);
-
   };
 
   const verifyOTP = () => {
     setLoading(true);
 
     // fetch('http://127.0.0.1:8000/verifyOtp2', {
-      fetch("https://139-59-5-56.nip.io:3443/verifyOtp2", {
+    fetch("https://139-59-5-56.nip.io:3443/verifyOtp2", {
       method: "POST",
       body: JSON.stringify({
         mail: email,
-        otp: enterotp
+        otp: enterotp,
       }),
       headers: {
         "Content-type": "application/json",
@@ -245,18 +267,18 @@ const FlatContractForm = () => {
       })
       .then((data) => {
         console.log(data);
-        if(data.length == 0) toast("Wrong OTP");
+        if (data.length == 0) toast("Wrong OTP");
         let userdata = data[0];
 
         let plandetail = "Free Plan";
         if (userdata.plan == 1) {
-          plandetail = "Basic Plan"
+          plandetail = "Basic Plan";
         }
         if (userdata.plan == 2) {
-          plandetail = "Premium Plan"
+          plandetail = "Premium Plan";
         }
         if (userdata.plan == 3) {
-          plandetail = "Exclusive Plan"
+          plandetail = "Exclusive Plan";
         }
         setplan(plandetail);
         setcredit(userdata.credit);
@@ -266,7 +288,6 @@ const FlatContractForm = () => {
         setshowverify(false);
 
         sessionStorage.setItem("securedapp_session_user", email);
-
       })
       .catch((error) => {
         console.error("Error:", error);
@@ -274,7 +295,6 @@ const FlatContractForm = () => {
       });
 
     setLoading(false);
-
   };
 
   const handleSubmit = (e) => {
@@ -294,10 +314,10 @@ const FlatContractForm = () => {
     const formData = new FormData();
     formData.append("mail", email);
     formData.append("files", file);
-    formData.append('version', version);
+    formData.append("version", version);
 
     // fetch('http://127.0.0.1:8000/audits', {
-      fetch("https://139-59-5-56.nip.io:3443/audits", {
+    fetch("https://139-59-5-56.nip.io:3443/audits", {
       method: "POST",
       body: formData,
     })
@@ -308,7 +328,6 @@ const FlatContractForm = () => {
         throw new Error("Network response was not ok.");
       })
       .then((data) => {
-
         setShowScanResult(true);
         generateTable(data);
         // setFile(null);
@@ -316,7 +335,6 @@ const FlatContractForm = () => {
         if (credit > 1 && rcredit > 1) {
           generatePDF(data);
         }
-
       })
       .catch((error) => {
         console.error("Error:", error);
@@ -337,11 +355,11 @@ const FlatContractForm = () => {
       5 -
       Number(
         data.findings[finding_names[0]] +
-        data.findings[finding_names[1]] +
-        data.findings[finding_names[2]] +
-        3
+          data.findings[finding_names[1]] +
+          data.findings[finding_names[2]] +
+          3
       ) *
-      0.239;
+        0.239;
 
     setcritical(data.findings[finding_names[0]]);
     setmedium(data.findings[finding_names[1]]);
@@ -482,7 +500,7 @@ const FlatContractForm = () => {
     setLoading(true);
 
     // fetch('http://127.0.0.1:8000/getHistory', {
-      fetch("https://139-59-5-56.nip.io:3443/getHistory", {
+    fetch("https://139-59-5-56.nip.io:3443/getHistory", {
       method: "POST",
       body: JSON.stringify({
         mail: email,
@@ -507,13 +525,13 @@ const FlatContractForm = () => {
       });
 
     setLoading(false);
-  }
+  };
 
   const downloadReport = async (id) => {
     setLoading(true);
 
     // fetch('http://127.0.0.1:8000/getReport', {
-      fetch("https://139-59-5-56.nip.io:3443/getReport", {
+    fetch("https://139-59-5-56.nip.io:3443/getReport", {
       method: "POST",
       body: JSON.stringify({
         id: id,
@@ -538,65 +556,73 @@ const FlatContractForm = () => {
       });
 
     setLoading(false);
-  }
+  };
 
   const HistorySection = () => {
-
-
     return (
-      <section className=' pt-[0px] lg:px-[80px] md:px-[50px] px-[20px] pb-[70px] '>
-        <div className='pt-[70px]'>
-          <h1 className='text-white font-sans text-[40px] font-bold leading-[72px]'>Solidity Shield - <span className='text-[#12D576]'>Smart Contract Scanner
-          </span>
+      <section className=" pt-[0px] lg:px-[80px] md:px-[50px] px-[20px] pb-[70px] ">
+        <div className="pt-[70px]">
+          <h1 className="text-white font-sans text-[40px] font-bold leading-[72px]">
+            Solidity Shield -{" "}
+            <span className="text-[#12D576]">Smart Contract Scanner</span>
           </h1>
         </div>
 
-        <div className='flex lg:flex-row flex-col gap-10 pt-5'>
-
-          <div className='text-center  border-[0.5px] border-white md:w-[380px]  '>
-            <h1 className='text-white font-sans text-[24px] font-normal leading-[30px] px-6 py-4'><span className='font-normal'> User: </span>{email}
+        <div className="flex lg:flex-row flex-col gap-10 pt-5">
+          <div className="text-center  border-[0.5px] border-white md:w-[380px]  ">
+            <h1 className="text-white font-sans text-[24px] font-normal leading-[30px] px-6 py-4">
+              <span className="font-normal"> User: </span>
+              {email}
             </h1>
           </div>
 
-          <div className='text-center border-[0.5px] border-white md:w-[380px] '>
-            <h1 className='text-white font-sans text-[24px] font-normal leading-[30px] px-6 py-4'><span className='font-normal'> Plan: </span>{plan}
+          <div className="text-center border-[0.5px] border-white md:w-[380px] ">
+            <h1 className="text-white font-sans text-[24px] font-normal leading-[30px] px-6 py-4">
+              <span className="font-normal"> Plan: </span>
+              {plan}
             </h1>
           </div>
 
-          <div className='text-center border-[0.5px] border-white md:w-[380px] '>
-            <h1 className='text-white font-sans text-[24px] font-normal leading-[30px] px-6 py-4'><span className='font-normal'> Remaining Scan Credit: </span>{rcredit}/{credit}
+          <div className="text-center border-[0.5px] border-white md:w-[380px] ">
+            <h1 className="text-white font-sans text-[24px] font-normal leading-[30px] px-6 py-4">
+              <span className="font-normal"> Remaining Scan Credit: </span>
+              {rcredit}/{credit}
             </h1>
           </div>
 
-          <div>
+          <div></div>
 
-          </div>
-
-          <div>
-
-          </div>
-
+          <div></div>
         </div>
 
         <div>
-
-          <div style={{ display: 'flex', gap: '10px' }}>
+          <div style={{ display: "flex", gap: "10px" }}>
             <button
-              className='flex px-[22px] py-[11px] text-black justify-center items-center gap-3 rounded-[11px] bg-[#FFF] mt-4'
-              onClick={() => { getScanHistory(); setShowHisotryTable(!showHistoryTable) }}>
-              {showHistoryTable ? 'Hide Scan History' : 'Show Scan History'}
+              className="flex px-[22px] py-[11px] text-black justify-center items-center gap-3 rounded-[11px] bg-[#FFF] mt-4"
+              onClick={() => {
+                getScanHistory();
+                setShowHisotryTable(!showHistoryTable);
+              }}
+            >
+              {showHistoryTable ? "Hide Scan History" : "Show Scan History"}
             </button>
             <button
-              className='flex px-[22px] py-[11px] text-black justify-center items-center gap-3 rounded-[11px] bg-[#FFF] mt-4'
-              onClick={() => setshowFileUpload(!showFileUpload)}>
+              className="flex px-[22px] py-[11px] text-black justify-center items-center gap-3 rounded-[11px] bg-[#FFF] mt-4"
+              onClick={() => setshowFileUpload(!showFileUpload)}
+            >
               Scan Contract
             </button>
           </div>
 
-
-
           {showHistoryTable && ( // Render the table only if showTable is true
-            <table className="w-full lg:mt-[50px] " style={{ backgroundColor: 'black', border: '2px solid white', marginTop: '20px' }}>
+            <table
+              className="w-full lg:mt-[50px] "
+              style={{
+                backgroundColor: "black",
+                border: "2px solid white",
+                marginTop: "20px",
+              }}
+            >
               <thead>
                 <tr>
                   <th>Report ID</th>
@@ -604,11 +630,22 @@ const FlatContractForm = () => {
                   <th>Report Link</th>
                 </tr>
               </thead>
-              <tbody className='border-t-[0.5px] overflow-scroll '>
+              <tbody className="border-t-[0.5px] overflow-scroll ">
                 {tableData.map((row, index) => (
-                  <tr key={index} className={index % 2 === 0 ? 'bg-transparent' : 'bg-[#12D57612] bg-opacity-7'}>
-                    <td className="px-4 py-2 text-white text-center">{row.id} </td>
-                    <td className="px-4 py-2 text-white text-center">{row.date} </td>
+                  <tr
+                    key={index}
+                    className={
+                      index % 2 === 0
+                        ? "bg-transparent"
+                        : "bg-[#12D57612] bg-opacity-7"
+                    }
+                  >
+                    <td className="px-4 py-2 text-white text-center">
+                      {row.id}{" "}
+                    </td>
+                    <td className="px-4 py-2 text-white text-center">
+                      {row.date}{" "}
+                    </td>
 
                     <td className="px-4 py-2 flex gap-4 text-white text-center">
                       <svg
@@ -623,7 +660,8 @@ const FlatContractForm = () => {
                           fill="#12D576"
                         />
                       </svg>
-                      <a href={"link"}
+                      <a
+                        href={"link"}
                         target="_blank"
                         rel="noopener noreferrer"
                         onClick={(e) => {
@@ -641,13 +679,11 @@ const FlatContractForm = () => {
             </table>
           )}
         </div>
-
       </section>
-    )
-  }
+    );
+  };
 
   const PurchasePlan = async (planid) => {
-
     setLoading(true);
 
     let cost = 0;
@@ -658,25 +694,27 @@ const FlatContractForm = () => {
     if (cost > 0) {
       setplanid(planid);
 
-      const transactionid = "Tr-"+uuidv4().toString(36).slice(-6);
+      const transactionid = "Tr-" + uuidv4().toString(36).slice(-6);
       console.log("Txn_ID : ", transactionid);
 
+      const response2 = await fetch(
+        "https://139-59-5-56.nip.io:3443/payment-insert",
+        {
+          method: "POST",
+          body: JSON.stringify({
+            mail: email,
+            paymentid: transactionid,
+            planid: planid,
+          }),
+          headers: {
+            "Content-type": "application/json",
+          },
+        }
+      );
 
-      const response2 = await fetch("https://139-59-5-56.nip.io:3443/payment-insert", {
-        method: "POST",
-        body: JSON.stringify({
-          mail: email,
-          paymentid: transactionid,
-          planid: planid
-        }),
-        headers: {
-          "Content-type": "application/json"
-        },
-      });
-  
       const data = await response2.json();
       console.log("db entry data : ", data);
-  
+
       if (!data.success) {
         console.log("Failed DB payment Entry");
         return;
@@ -685,22 +723,22 @@ const FlatContractForm = () => {
       const payload = {
         merchantId: "M22P2TA2GX0OB", //process.env.NEXT_PUBLIC_MERCHANT_ID,
         merchantTransactionId: transactionid,
-        merchantUserId: 'himang305@gmail.com',
-        amount: cost*100,
+        merchantUserId: "himang305@gmail.com",
+        amount: cost * 100,
         redirectUrl: `https://139-59-5-56.nip.io:3443/payment-update`,
         // redirectUrl: `http://127.0.0.1:8000/payment-update`,
         // redirectMode: "REDIRECT",
         redirectMode: "POST",
         // callbackUrl: `http://127.0.0.1:8000/payment-update`,
         // callbackUrl: `http://139-59-5-56.nip.io:3443/payment-update`,
-        mobileNumber: '9598241681',
+        mobileNumber: "9598241681",
         paymentInstrument: {
           type: "PAY_PAGE",
         },
       };
 
       const dataPayload = JSON.stringify(payload);
-      console.log("payload :",dataPayload);
+      console.log("payload :", dataPayload);
 
       const dataBase64 = Buffer.from(dataPayload).toString("base64");
       console.log("base64 :", dataBase64);
@@ -708,369 +746,593 @@ const FlatContractForm = () => {
       const fullURL =
         // dataBase64 + "/pg/v1/pay" + process.env.NEXT_PUBLIC_SALT_KEY;
         dataBase64 + "/pg/v1/pay" + "099eb0cd-02cf-4e2a-8aca-3e6c6aff0399";
-        
-     const dataSha256 = sha256(fullURL);
+
+      const dataSha256 = sha256(fullURL);
       // const checksum = dataSha256 + "###" + process.env.NEXT_PUBLIC_SALT_INDEX;
       const checksum = dataSha256 + "###" + "1";
 
-      console.log("c====",checksum);
+      console.log("c====", checksum);
 
-    const UAT_PAY_API_URL =
-    "https://api.phonepe.com/apis/hermes/pg/v1/pay";
-    // "https://api-preprod.phonepe.com/apis/pg-sandbox/pg/v1/pay";
+      const UAT_PAY_API_URL = "https://api.phonepe.com/apis/hermes/pg/v1/pay";
+      // "https://api-preprod.phonepe.com/apis/pg-sandbox/pg/v1/pay";
 
+      const response = await axios.post(
+        UAT_PAY_API_URL,
+        {
+          request: dataBase64,
+        },
+        {
+          headers: {
+            accept: "application/json",
+            "Content-Type": "application/json",
+            "X-VERIFY": checksum,
+          },
+        }
+      );
+      console.log("response : ", response);
 
-  const response = await axios.post(
-    UAT_PAY_API_URL,
-    {
-      request: dataBase64,
-    },
-    {
-      headers: {
-        accept: "application/json",
-        "Content-Type": "application/json",
-         "X-VERIFY": checksum,
-      },
+      const redirect = response.data.data.instrumentResponse.redirectInfo.url;
+      console.log("redirect : ", redirect);
+
+      window.location.replace(redirect);
     }
-  );
-    console.log("response : ", response);
-
-  const redirect=response.data.data.instrumentResponse.redirectInfo.url;
-  console.log("redirect : ", redirect);
-
-  
-  window.location.replace(redirect)
-
-    }
-
-  }
+  };
 
   const Plans = () => {
     const plans = [
-      { name: 'No of Scans', c1: "1 Scan", c2: "6 Scan", c3: "24 Scan", c4: "Unlimited" },
-      { name: 'Run', c1: "All Super Spotter", c2: "All Super Spotter", c3: "All Super Spotter", c4: "All Super Spotter" },
-      { name: 'Audit Score', c1: true, c2: true, c3: true, c4: true },
-      { name: 'Vulnerability Count', c1: true, c2: true, c3: true, c4: true },
-      { name: 'Vulnerability Descriptions', c1: false, c2: true, c3: true, c4: true },
-      { name: 'Audit Report', c1: false, c2: true, c3: true, c4: true },
-      { name: 'Report Publish', c1: false, c2: false, c3: true, c4: true },
-      { name: 'Report Download', c1: false, c2: false, c3: true, c4: true },
-      { name: 'Github', c1: false, c2: false, c3: true, c4: true },
-      { name: 'Social Shares (SecureDApp)', c1: false, c2: false, c3: true, c4: true },
-      { name: 'Dedicate Blog (SecureDApp)', c1: false, c2: false, c3: true, c4: true },
-      { name: 'Email Support', c1: false, c2: false, c3: true, c4: true },
-      { name: 'API', c1: false, c2: false, c3: false, c4: true },
-      { name: 'Dedicated Support', c1: false, c2: false, c3: false, c4: true },
+      {
+        name: "No of Scans",
+        c1: "1 Scan",
+        c2: "6 Scan",
+        c3: "24 Scan",
+        c4: "Unlimited",
+      },
+      {
+        name: "Run",
+        c1: "All Super Spotter",
+        c2: "All Super Spotter",
+        c3: "All Super Spotter",
+        c4: "All Super Spotter",
+      },
+      { name: "Audit Score", c1: true, c2: true, c3: true, c4: true },
+      { name: "Vulnerability Count", c1: true, c2: true, c3: true, c4: true },
+      {
+        name: "Vulnerability Descriptions",
+        c1: false,
+        c2: true,
+        c3: true,
+        c4: true,
+      },
+      { name: "Audit Report", c1: false, c2: true, c3: true, c4: true },
+      { name: "Report Publish", c1: false, c2: false, c3: true, c4: true },
+      { name: "Report Download", c1: false, c2: false, c3: true, c4: true },
+      { name: "Github", c1: false, c2: false, c3: true, c4: true },
+      {
+        name: "Social Shares (SecureDApp)",
+        c1: false,
+        c2: false,
+        c3: true,
+        c4: true,
+      },
+      {
+        name: "Dedicate Blog (SecureDApp)",
+        c1: false,
+        c2: false,
+        c3: true,
+        c4: true,
+      },
+      { name: "Email Support", c1: false, c2: false, c3: true, c4: true },
+      { name: "API", c1: false, c2: false, c3: false, c4: true },
+      { name: "Dedicated Support", c1: false, c2: false, c3: false, c4: true },
     ];
 
     return (
-
       <section className="lg:pt-[40px] md:pt-[160px] pt-[150px] mt-[70px]  contacthero bg-fixed">
-        <div className='lg:px-[80px] md:px-[50px] px-[20px] '>
+        <div className="lg:px-[80px] md:px-[50px] px-[20px] ">
           <h1 className="text-white font-sans md:text-4xl text-5xl font-bold leading-9">
-            SecureDApp Solidity Shield <span className="text-[#12D577] font-sans text-4xl font-bold leading-9">Subscription Plans</span>
+            SecureDApp Solidity Shield{" "}
+            <span className="text-[#12D577] font-sans text-4xl font-bold leading-9">
+              Subscription Plans
+            </span>
           </h1>
 
           {/* <h1 className="text-[#12D577] font-sans text-[34px] font-bold
   leading-[72px]">Subscription Plans
           </h1> */}
 
-          <div className='my-[35px]'>
-            <h1 className='text-white font-sans text-[18px] font-normal leading-[30px]'>   Scan your smart contracts for security vulnerabilities with SecureDApp’’s Solidity Shield. Our automated scanning engine will identify and report on potential security risks, helping you to keep your contracts safe and secure.</h1>
+          <div className="my-[35px]">
+            <h1 className="text-white font-sans text-[18px] font-normal leading-[30px]">
+              {" "}
+              Scan your smart contracts for security vulnerabilities with
+              SecureDApp’’s Solidity Shield. Our automated scanning engine will
+              identify and report on potential security risks, helping you to
+              keep your contracts safe and secure.
+            </h1>
           </div>
 
-          <div className='flex gap-5'>
+          <div className="flex gap-5">
             <button
               onClick={() => setshowFileUpload(!showFileUpload)}
-              className='flex px-[32px] py-[21px] text-white justify-center items-center gap-3 rounded-[11px] bg-[#00D870] '> Get Started For Free
+              className="flex px-[32px] py-[21px] text-white justify-center items-center gap-3 rounded-[11px] bg-[#00D870] "
+            >
+              {" "}
+              Get Started For Free
             </button>
 
             <button
-              onClick={() => { setIsPlanVisible(!isplanVisible); }}
-              className='flex px-[32px] py-[21px] text-black justify-center items-center gap-3 rounded-[11px] bg-[#FFF] '>
-              {isplanVisible ? 'Hide Plans' : 'See Plans'}
+              onClick={() => {
+                setIsPlanVisible(!isplanVisible);
+              }}
+              className="flex px-[32px] py-[21px] text-black justify-center items-center gap-3 rounded-[11px] bg-[#FFF] "
+            >
+              {isplanVisible ? "Hide Plans" : "See Plans"}
             </button>
-
           </div>
-
         </div>
 
         {isplanVisible && (
           <div className="container lg:mx-auto lg:px-0 my-10 md:px-4  ">
             <div className="min-w-full bg-transparent rounded-3xl border overflow-hidden">
               <div className="flex  ">
-                <div className="w-1/5 lg:py-2 md:py-6 px-4 border text-center text-white font-sans md:text-[36px] text-[25px] font-bold leading-normal flex justify-center items-center "><h1> Plans </h1></div>
-                <div className="w-1/5 py-2 px-4 border text-center flex flex-col items-center "><h1 className='text-white font-sans md:text-[22px] text-[15px] font-bold leading-[27px] text-center '> Base Plan</h1>
-                  <h1 className='text-white font-sans md:text-[36px] text-[25px] font-bold leading-[27px] text-center lg:py-[32px] md:py-[45px] py-[50px]'> Free</h1>
+                <div className="w-1/5 lg:py-2 md:py-6 px-4 border text-center text-white font-sans md:text-[36px] text-[25px] font-bold leading-normal flex justify-center items-center ">
+                  <h1> Plans </h1>
+                </div>
+                <div className="w-1/5 py-2 px-4 border text-center flex flex-col items-center ">
+                  <h1 className="text-white font-sans md:text-[22px] text-[15px] font-bold leading-[27px] text-center ">
+                    {" "}
+                    Base Plan
+                  </h1>
+                  <h1 className="text-white font-sans md:text-[36px] text-[25px] font-bold leading-[27px] text-center lg:py-[32px] md:py-[45px] py-[50px]">
+                    {" "}
+                    Free
+                  </h1>
                   <button
                     onClick={() => setshowFileUpload(!showFileUpload)}
-                    className='bg-[#00C767] text-white flex md:px-[15px] py-[10px] justify-center rounded-[4px] text-center'> Choose This Plan
+                    className="bg-[#00C767] text-white flex md:px-[15px] py-[10px] justify-center rounded-[4px] text-center"
+                  >
+                    {" "}
+                    Choose This Plan
                   </button>
                 </div>
-                <div className="w-1/5 py-2 px-4 border text-center flex flex-col items-center "><h1 className='text-white font-sans md:text-[22px] text-[15px] font-bold leading-[27px] text-center '> Plus Plan</h1>
-                  <h1 className='text-white font-sans md:text-[36px] text-[25px] font-bold leading-[27px] text-center lg:py-[17px] md:py-[30px] py-[20px] '> Rs 15000
-                    <span className='text-white font-sans text-[13px] font-medium leading-[27px] text-center py-[2px] block '> Rs 2500 / Scan</span>
+                <div className="w-1/5 py-2 px-4 border text-center flex flex-col items-center ">
+                  <h1 className="text-white font-sans md:text-[22px] text-[15px] font-bold leading-[27px] text-center ">
+                    {" "}
+                    Plus Plan
+                  </h1>
+                  <h1 className="text-white font-sans md:text-[36px] text-[25px] font-bold leading-[27px] text-center lg:py-[17px] md:py-[30px] py-[20px] ">
+                    {" "}
+                    Rs 15000
+                    <span className="text-white font-sans text-[13px] font-medium leading-[27px] text-center py-[2px] block ">
+                      {" "}
+                      Rs 2500 / Scan
+                    </span>
                   </h1>
 
                   <button
-                    onClick={() => { PurchasePlan(1) }}
-
-                    className='bg-[#00C767] text-white flex md:px-[15px]  py-[10px] justify-center rounded-[4px] text-center'> Choose This Plan
+                    onClick={() => {
+                      PurchasePlan(1);
+                    }}
+                    className="bg-[#00C767] text-white flex md:px-[15px]  py-[10px] justify-center rounded-[4px] text-center"
+                  >
+                    {" "}
+                    Choose This Plan
                   </button>
                 </div>
-
-                <div className="w-1/5 py-2 px-4 border text-center flex flex-col items-center "><h1 className='text-white font-sans md:text-[22px] text-[15px] font-bold leading-[27px] text-center '>Premium Plan</h1>
-                  <h1 className='text-white font-sans md:text-[36px] text-[25px]  font-bold leading-[27px] text-center lg:py-[17px] md:py-[15px] py-[20px]  '> Rs 30000
-                    <span className='text-white font-sans text-[13px] font-bold leading-[27px] text-center py-[2px] block '> Rs 1250 / <span className='font-medium'>Scan
-                    </span> </span></h1>
-
-
-                  <button
-                    onClick={() => { PurchasePlan(2) }}
-
-                    className='bg-[#00C767] text-white flex md:px-[15px] py-[10px] justify-center rounded-[4px] text-center'> Choose This Plan
-                  </button>
-                </div>
-                <div className="w-1/5 py-2 px-4 border text-center flex flex-col items-center "><h1 className='text-white font-sans md:text-[22px] text-[15px] font-bold leading-[27px] text-center '>Enterprise Plan</h1>
-                  <h1 className='text-white font-sans md:text-[36px] text-[25px] font-bold leading-[27px] text-center md:py-[17px] py-[35px] '> 80000
-                    <span className='text-white font-sans text-[13px] font-medium leading-[27px] text-center py-[2px] block'> Exclusive</span>
+                <div className="w-1/5 py-2 px-4 border text-center flex flex-col items-center ">
+                  <h1 className="text-white font-sans md:text-[22px] text-[15px] font-bold leading-[27px] text-center ">
+                    Premium Plan
+                  </h1>
+                  <h1 className="text-white font-sans md:text-[36px] text-[25px]  font-bold leading-[27px] text-center lg:py-[17px] md:py-[15px] py-[20px]  ">
+                    {" "}
+                    Rs 30000
+                    <span className="text-white font-sans text-[13px] font-bold leading-[27px] text-center py-[2px] block ">
+                      {" "}
+                      Rs 1250 / <span className="font-medium">Scan</span>{" "}
+                    </span>
                   </h1>
 
                   <button
-                    onClick={() => { PurchasePlan(3) }}
-                    className='bg-[#00C767] text-white flex md:px-[15px] py-[10px] justify-center rounded-[4px] text-center'> Choose This Plan
+                    onClick={() => {
+                      PurchasePlan(2);
+                    }}
+                    className="bg-[#00C767] text-white flex md:px-[15px] py-[10px] justify-center rounded-[4px] text-center"
+                  >
+                    {" "}
+                    Choose This Plan
                   </button>
-                </div>          </div>
+                </div>
+                <div className="w-1/5 py-2 px-4 border text-center flex flex-col items-center ">
+                  <h1 className="text-white font-sans md:text-[22px] text-[15px] font-bold leading-[27px] text-center ">
+                    Enterprise Plan
+                  </h1>
+                  <h1 className="text-white font-sans md:text-[36px] text-[25px] font-bold leading-[27px] text-center md:py-[17px] py-[35px] ">
+                    {" "}
+                    80000
+                    <span className="text-white font-sans text-[13px] font-medium leading-[27px] text-center py-[2px] block">
+                      {" "}
+                      Exclusive
+                    </span>
+                  </h1>
+
+                  <button
+                    onClick={() => {
+                      PurchasePlan(3);
+                    }}
+                    className="bg-[#00C767] text-white flex md:px-[15px] py-[10px] justify-center rounded-[4px] text-center"
+                  >
+                    {" "}
+                    Choose This Plan
+                  </button>
+                </div>{" "}
+              </div>
               {plans.map((plan, index) => (
                 <div className="flex text-white" key={index}>
-                  <div className="w-1/5 py-7 md:px-4 px-2 border md:text-[17px] text-[10px] font-bold leading-[24px] ">{plan.name}</div>
-                  <div className="w-1/5 py-7 px-4 border text-center md:text-[17px] text-[10px]">{plan.c1 === true ? (<h1 className='flex justify-center'>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
-                      <path d="M20.5 6.87903L9.5 17.879L4.5 12.879" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
-                    </svg></h1>) : (plan.c1)}</div>
-                  <div className="w-1/5 py-7 px-4 border text-center md:text-[17px] text-[10px] ">{plan.c2 === true ? (<h1 className='flex justify-center'>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
-                      <path d="M20.5 6.87903L9.5 17.879L4.5 12.879" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
-                    </svg></h1>) : (plan.c2)}</div>
+                  <div className="w-1/5 py-7 md:px-4 px-2 border md:text-[17px] text-[10px] font-bold leading-[24px] ">
+                    {plan.name}
+                  </div>
+                  <div className="w-1/5 py-7 px-4 border text-center md:text-[17px] text-[10px]">
+                    {plan.c1 === true ? (
+                      <h1 className="flex justify-center">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="25"
+                          height="25"
+                          viewBox="0 0 25 25"
+                          fill="none"
+                        >
+                          <path
+                            d="M20.5 6.87903L9.5 17.879L4.5 12.879"
+                            stroke="white"
+                            stroke-width="4"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          />
+                        </svg>
+                      </h1>
+                    ) : (
+                      plan.c1
+                    )}
+                  </div>
+                  <div className="w-1/5 py-7 px-4 border text-center md:text-[17px] text-[10px] ">
+                    {plan.c2 === true ? (
+                      <h1 className="flex justify-center">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="25"
+                          height="25"
+                          viewBox="0 0 25 25"
+                          fill="none"
+                        >
+                          <path
+                            d="M20.5 6.87903L9.5 17.879L4.5 12.879"
+                            stroke="white"
+                            stroke-width="4"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          />
+                        </svg>
+                      </h1>
+                    ) : (
+                      plan.c2
+                    )}
+                  </div>
 
-                  <div className="w-1/5 py-7 px-4 border text-center md:text-[17px] text-[10px]">{plan.c3 == true ? <h1 className='flex justify-center'>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
-                      <path d="M20.5 6.87903L9.5 17.879L4.5 12.879" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
-                    </svg></h1> : (plan.c3)}</div>
-                  <div className="w-1/5 py-7 px-4 border text-center md:text-[17px] text-[10px]">{plan.c4 == true ? <h1 className='flex justify-center'>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
-                      <path d="M20.5 6.87903L9.5 17.879L4.5 12.879" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
-                    </svg></h1> : (plan.c4)}</div>
+                  <div className="w-1/5 py-7 px-4 border text-center md:text-[17px] text-[10px]">
+                    {plan.c3 == true ? (
+                      <h1 className="flex justify-center">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="25"
+                          height="25"
+                          viewBox="0 0 25 25"
+                          fill="none"
+                        >
+                          <path
+                            d="M20.5 6.87903L9.5 17.879L4.5 12.879"
+                            stroke="white"
+                            stroke-width="4"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          />
+                        </svg>
+                      </h1>
+                    ) : (
+                      plan.c3
+                    )}
+                  </div>
+                  <div className="w-1/5 py-7 px-4 border text-center md:text-[17px] text-[10px]">
+                    {plan.c4 == true ? (
+                      <h1 className="flex justify-center">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="25"
+                          height="25"
+                          viewBox="0 0 25 25"
+                          fill="none"
+                        >
+                          <path
+                            d="M20.5 6.87903L9.5 17.879L4.5 12.879"
+                            stroke="white"
+                            stroke-width="4"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          />
+                        </svg>
+                      </h1>
+                    ) : (
+                      plan.c4
+                    )}
+                  </div>
                 </div>
               ))}
             </div>
           </div>
         )}
 
-        <div className='lg:px-[80px] md:px-[50px] px-[20px] lg:pt-[30px] md:pt-[25px] pt-[10px] lg:pb-[10px] mt-[100px]'>
-
-          <h1 className='text-white font-sans text-[22px] font-medium leading-[37px]'>
-            <span className='text-[#00C767] text-[30px] font-extrabold'>Secure payment :
-            </span> We use a secure payment processor that is PCI compliant and has a  good reputation for security. Your payment information is safe with us.
+        <div className="lg:px-[80px] md:px-[50px] px-[20px] lg:pt-[30px] md:pt-[25px] pt-[10px] lg:pb-[10px] mt-[100px]">
+          <h1 className="text-white font-sans text-[22px] font-medium leading-[37px]">
+            <span className="text-[#00C767] text-[30px] font-extrabold">
+              Secure payment :
+            </span>{" "}
+            We use a secure payment processor that is PCI compliant and has a
+            good reputation for security. Your payment information is safe with
+            us.
           </h1>
-
         </div>
-        <div className='lg:px-[80px]  md:px-[50px] px-[20px] lg:py-[15px] md:pt-[25px] pt-[10px]'>
-
-          <h1 className='text-white font-sans text-[22px] font-medium leading-[37px]'>
-            <span className='text-[#00C767] text-[30px] font-extrabold'>Guarantee :
-            </span> We are so confident in our service that we offer a 100% satisfaction guarantee.
+        <div className="lg:px-[80px]  md:px-[50px] px-[20px] lg:py-[15px] md:pt-[25px] pt-[10px]">
+          <h1 className="text-white font-sans text-[22px] font-medium leading-[37px]">
+            <span className="text-[#00C767] text-[30px] font-extrabold">
+              Guarantee :
+            </span>{" "}
+            We are so confident in our service that we offer a 100% satisfaction
+            guarantee.
           </h1>
-
         </div>
-        <div className='lg:px-[80px]  md:px-[50px] px-[20px] lg:py-[10px] md:pt-[25px]  pt-[10px]'>
-
-          <h1 className='text-white font-sans text-[22px] font-medium leading-[37px]'>
-            <span className='text-[#00C767] text-[30px] font-extrabold'>Privacy Policy :
-            </span> We respect your privacy and will never share your information with third parties.
+        <div className="lg:px-[80px]  md:px-[50px] px-[20px] lg:py-[10px] md:pt-[25px]  pt-[10px]">
+          <h1 className="text-white font-sans text-[22px] font-medium leading-[37px]">
+            <span className="text-[#00C767] text-[30px] font-extrabold">
+              Privacy Policy :
+            </span>{" "}
+            We respect your privacy and will never share your information with
+            third parties.
           </h1>
-
         </div>
 
-        <div className='lg:px-[80px]  md:px-[50px] px-[20px] lg:py-[40px] md:py-[30px] py-[20px]' >
-
-          <div className='flex lg:flex-row flex-col lg:gap-[100px md:gap-[50px] gap-[40px]'>
-            <div className='flex gap-4 justify-center '>
-              <div><img src={image1} alt='image1' />
+        <div className="lg:px-[80px]  md:px-[50px] px-[20px] lg:py-[40px] md:py-[30px] py-[20px]">
+          <div className="flex lg:flex-row flex-col lg:gap-[100px md:gap-[50px] gap-[40px]">
+            <div className="flex gap-4 justify-center ">
+              <div>
+                <img src={image1} alt="image1" />
               </div>
-              <div className='flex flex-col justify-around'> <h1 className='text-white text-center text-[30px] font-bold leading-[18px]'>Eshan</h1>
-                <h1 className='text-white text-center text-[14px] font-medium leading-[18px]'>CEO of BlitsEstate</h1>
+              <div className="flex flex-col justify-around">
+                {" "}
+                <h1 className="text-white text-center text-[30px] font-bold leading-[18px]">
+                  Eshan
+                </h1>
+                <h1 className="text-white text-center text-[14px] font-medium leading-[18px]">
+                  CEO of BlitsEstate
+                </h1>
               </div>
             </div>
 
-            <div className='flex text-white font-sans text-[28px] font-medium leading-[40px]'>
-              "SecureDApp has helped me to keep my smart contracts safe and secure. I would highly recommend their service."  </div>
+            <div className="flex text-white font-sans text-[28px] font-medium leading-[40px]">
+              "SecureDApp has helped me to keep my smart contracts safe and
+              secure. I would highly recommend their service."{" "}
+            </div>
           </div>
-
         </div>
-
-
-
-
       </section>
-    )
+    );
+  };
+
+  function formatDate(dateString) {
+    const options = { month: "long", day: "numeric", year: "numeric" };
+    const date = new Date(dateString);
+    const formattedDate = date.toLocaleDateString("en-US", options);
+
+    const month = date.toLocaleString("default", { month: "short" });
+    const day = date.getDate();
+    const year = date.getFullYear();
+
+    const suffix = getDaySuffix(day); // Function to get day suffix (e.g., 'th', 'st', 'nd')
+
+    return ` ${day}${suffix} ${month} ${year}`;
   }
-
+  function getDaySuffix(day) {
+    if (day >= 11 && day <= 13) {
+      return "th";
+    }
+    switch (day % 10) {
+      case 1:
+        return "st";
+      case 2:
+        return "nd";
+      case 3:
+        return "rd";
+      default:
+        return "th";
+    }
+  }
   const generatePDF = async (reportData) => {
-    try{
-      
-    console.log(11);
-    const date = reportData.date;
-    // const logo = logo;
-    const pdf = new jsPDF('p', 'mm', 'a4');
-    const linePositionY = 25;
+    try {
+      console.log(11);
+      const date = formatDate(reportData.date);
+      // const logo = logo;
+      const pdf = new jsPDF("p", "mm", "a4");
+      const linePositionY = 25;
 
-    pdf.setFontSize(10);
-    pdf.setFont("times", "bold");
-    pdf.setTextColor(100, 100, 100);
-    pdf.text(date, 180, 275);
-    pdf.text('SecureDapp', 10, 275);
-    pdf.setFont("times", "normal");
-    pdf.text('235, 2nd & 3rd Floor, 13th Cross Rd, Indira Nagar II Stage,', 10, 280, null, null, 'left');
-    pdf.text('Hoysala Nagar, Indiranagar, Bengaluru, Karnataka 560038', 10, 285, null, null, 'left');
-    pdf.text('hello@securedapp.in', 10, 290, null, null, 'left');
+      // Set background color on the left side (red)
+      pdf.setFillColor(4, 170, 109);
+      pdf.rect(0, 0, 50, pdf.internal.pageSize.getHeight(), "F");
+      // first page of logo and company symbol
+      const pageWidth = pdf.internal.pageSize.getWidth();
+      const rightRectWidth = pageWidth - 50; // Width of the right section
 
-    pdf.setFontSize(18); // Change font size to 18
-    pdf.setFont("times", "bold"); // Set font to bold
-    pdf.text('SecureDApp Solidity Shield Audit Report', 48, 20); // Adjust the coordinates
+      // Set background color on the right side
+      pdf.setFillColor(255, 255, 255);
+      pdf.rect(50, 0, rightRectWidth, pdf.internal.pageSize.getHeight(), "F");
+      pdf.setFontSize(10);
+      pdf.setFont("times", "bold");
+      pdf.setTextColor(100, 100, 100);
 
-    // Executive Summary
-    pdf.setFontSize(12);
+      pdf.text("SecureDapp", 185, 275);
+      pdf.setFont("times", "normal");
+      pdf.text(
+        "235, 2nd & 3rd Floor, 13th Cross Rd, Indira Nagar II Stage,",
+        120,
+        280,
+        null,
+        null,
+        "left"
+      );
+      pdf.text(
+        "Hoysala Nagar, Indiranagar, Bengaluru, Karnataka 560038",
+        120,
+        285,
+        null,
+        null,
+        "left"
+      );
+      pdf.text("hello@securedapp.in", 120, 290, null, null, "left");
 
-    const headers = [
-      ['AUDIT_HASH', reportData.id],
-      ['Contracts', reportData.contracts],
-      ['Lines', reportData.lines],
-      ['Assembly Lines', reportData.assembly_lines],
-      ['ERCs', reportData.ercs.join(', ')]
-    ];
+      pdf.setFontSize(25);
+      pdf.text(date, 135, 140);
+      pdf.setFontSize(50);
+      pdf.addImage(logo, "JPEG", 89, 108, 15, 15);
+      pdf.text("SecureDApp", 105, 120);
+      pdf.line(50, 0, 50, 300);
 
-    pdf.autoTable({
-      startY: 45,
-      head: [['Executive Summary', '']], // Empty header row
-      body: headers,
-      styles: { fillColor: [211, 211, 211] },
-      headStyles: {
-        fillColor: [4, 170, 109],
-        cellPadding: 2, // Increase row height by setting cellPadding
-        fontSize: 12, // Adjust font size if needed
-      },
-      theme: 'grid', // Add grid lines if desired
-    });
-
-
-    // Add "Findings" data table
-    const findingsHeaders = [['Audit Findings', 'Count']];
-    const findingsData = Object.entries(reportData.findings).map(([key, value]) => {
-      let lowerKey = key.toLowerCase();
-
-      if (lowerKey === 'high_issues') {
-        lowerKey = 'CRITICAL';
-      } else if (lowerKey === 'medium_issues') {
-        lowerKey = 'MEDIUM';
-      } else if (lowerKey === 'low_issues') {
-        lowerKey = 'LOW';
-      } else if (lowerKey === 'informational_issues') {
-        lowerKey = 'INFORMATIONAL';
-      } else if (lowerKey === 'optimization_issues') {
-        lowerKey = 'OPTIMIZATIONS';
-      }
-
-      return [lowerKey, value];
-    }).reverse();
-
-    pdf.autoTable({
-      startY: pdf.lastAutoTable.finalY + 30,
-      head: findingsHeaders,
-      body: findingsData,
-      styles: { fillColor: [211, 211, 211] },
-      // headStyles: { fillColor: [4, 170, 109] },
-      headStyles: {
-        fillColor: [4, 170, 109],
-        cellPadding: 2, // Increase row height by setting cellPadding
-        fontSize: 12, // Adjust font size if needed
-      },
-    });
-
-    pdf.addImage(logo, 'JPEG', 10, 11, 10, 10);
-
-    pdf.text(date, 180, 15);
-    pdf.setDrawColor(0, 128, 0);
-    pdf.line(10, linePositionY, 200, linePositionY);
-    pdf.setDrawColor(0, 128, 0);
-    pdf.line(10, 270, 200, 270);
-    pdf.setFontSize(10);
-    pdf.setFont("times", "bold");
-    pdf.setTextColor(100, 100, 100);
-    pdf.text(date, 180, 275);
-    pdf.text('SecureDapp', 10, 275);
-    pdf.setFont("times", "normal");
-    pdf.text('235, 2nd & 3rd Floor, 13th Cross Rd, Indira Nagar II Stage,', 10, 280, null, null, 'left');
-    pdf.text('Hoysala Nagar, Indiranagar, Bengaluru, Karnataka 560038', 10, 285, null, null, 'left');
-    pdf.text('hello@securedapp.in', 10, 290, null, null, 'left');
-
-
-    // Vulnerabilities Found
-
-    if (reportData[1] != null) {
-
+      // report start.
       pdf.addPage();
-      pdf.setFontSize(18);
+      pdf.setFontSize(10);
+      pdf.setFont("times", "bold");
+      pdf.setTextColor(100, 100, 100);
+      pdf.text(date, 175, 275);
+      pdf.text("SecureDapp", 10, 275);
+      pdf.setFont("times", "normal");
+      pdf.text(
+        "235, 2nd & 3rd Floor, 13th Cross Rd, Indira Nagar II Stage,",
+        10,
+        280,
+        null,
+        null,
+        "left"
+      );
+      pdf.text(
+        "Hoysala Nagar, Indiranagar, Bengaluru, Karnataka 560038",
+        10,
+        285,
+        null,
+        null,
+        "left"
+      );
+      pdf.text("hello@securedapp.in", 10, 290, null, null, "left");
+
+      pdf.setFontSize(18); // Change font size to 18
       pdf.setFont("times", "bold"); // Set font to bold
-      pdf.text('Vulnerabilities Found', 78, 35);
+      pdf.text("SecureDApp's Solidity Shield Audit Report", 48, 20); // Adjust the coordinates
 
-      let startY = 40;
-      [1, 2, 3, 4, 5].forEach((index) => {
-        if (reportData[index] && Object.keys(reportData[index]).length > 0) {
-          let headString = '';
-          switch (index) {
-            case 1:
-              headString = 'CRITICAL';
-              break;
-            case 2:
-              headString = 'MEDIUM';
-              break;
-            case 3:
-              headString = 'LOW';
-              break;
-            case 4:
-              headString = 'INFORMATIONAL';
-              break;
-            case 5:
-              headString = 'OPTIMIZATIONS';
-              break;
-          }
-          // const vulnerabilitiesData = Object.entries(reportData[index]).map(([type, locations]) => [type, locations.join(', ')]);
-          const vulnerabilitiesData = Object.entries(reportData[index]).map(([type, locations]) => {
-            // Remove "contracts/" prefix from each location string if present
-            const cleanedLocations = locations.map(location => location.replace(/^contracts\//, ''));
-            return [type, cleanedLocations.join(', ')];
-          });
+      // Executive Summary
+      pdf.setFontSize(12);
 
-          pdf.autoTable({
-            head: [[headString, 'Locations']],
-            body: vulnerabilitiesData,
-            startY: startY,
-            styles: { fillColor: [211, 211, 211] },
-            headStyles: { fillColor: [4, 170, 109] },
-          });
-          startY = pdf.previousAutoTable.finalY + 10;
-        }
+      const headers = [
+        ["AUDIT_HASH", reportData.id],
+        ["Contracts", reportData.contracts],
+        ["Lines", reportData.lines],
+        ["Assembly Lines", reportData.assembly_lines],
+        ["ERCs", reportData.ercs.join(", ")],
+      ];
+
+      pdf.autoTable({
+        startY: 45,
+        head: [["Executive Summary", ""]], // Empty header row
+        body: headers,
+        styles: { fillColor: [211, 211, 211] },
+        headStyles: {
+          fillColor: [4, 170, 109],
+          cellPadding: 2, // Increase row height by setting cellPadding
+          fontSize: 12, // Adjust font size if needed
+        },
+        //    theme: "grid", // Add grid lines if desired
       });
 
-      pdf.addImage(logo, 'JPEG', 10, 11, 10, 10);
-      pdf.setFontSize(13);
-      pdf.setFont("times", "bold");
-      pdf.text("SecureDApp", 21, 19);
-      pdf.text(date, 180, 15);
+      // Add "Findings" data table
+      const findingsHeaders = [["Audit Findings", "Count"]];
+      const findingsData = Object.entries(reportData.findings)
+        .map(([key, value]) => {
+          let lowerKey = key.toLowerCase();
 
+          if (lowerKey === "high_issues") {
+            lowerKey = "CRITICAL";
+          } else if (lowerKey === "medium_issues") {
+            lowerKey = "MEDIUM";
+          } else if (lowerKey === "low_issues") {
+            lowerKey = "LOW";
+          } else if (lowerKey === "informational_issues") {
+            lowerKey = "INFORMATIONAL";
+          } else if (lowerKey === "optimization_issues") {
+            lowerKey = "OPTIMIZATIONS";
+          }
 
-      pdf.text(date, 180, 15);
+          return [lowerKey, value];
+        })
+        .reverse();
+      console.log(findingsData);
+      pdf.autoTable({
+        startY: pdf.lastAutoTable.finalY + 30,
+        head: findingsHeaders,
+        body: findingsData,
+        styles: { fillColor: [211, 211, 211] },
+        // headStyles: { fillColor: [4, 170, 109] },
+        headStyles: {
+          fillColor: [4, 170, 109],
+          cellPadding: 2, // Increase row height by setting cellPadding
+          fontSize: 12, // Adjust font size if needed
+        },
+      });
+
+      //graph for audit findings
+      const canvas = document.createElement("canvas");
+      canvas.width = 400;
+      canvas.height = 400;
+      // const labels = ["Data 1", "Data 2", "Data 3", "Data 4", "Data 5"];
+      // const data = [10, 20, 30, 40, 50];
+      // Get canvas context
+      console.log(findingsData.map((item) => item[0]));
+      console.log(findingsData.map((item) => item[1]));
+      const ctx = canvas.getContext("2d");
+      const chartData = {
+        labels: findingsData.map((item) => item[0]), // Using the first column of findingData's item[0] ['CRITICAL', 'MEDIUM', 'LOW', 'INFORMATIONAL', 'OPTIMIZATIONS'] as labels
+        datasets: [
+          {
+            label: "Count",
+            data: findingsData.map((item) => item[1]), // Using the second column of findingsData item[1] [0, 0, 1, 30, 1] as data
+            backgroundColor: "rgb(4, 170, 109)",
+            borderColor: "rgb(75, 192, 192, 1)",
+            borderWidth: 1,
+          },
+        ],
+      };
+
+      new Chart(ctx, {
+        type: "bar",
+        data: chartData,
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true,
+            },
+          },
+        },
+      });
+      // Convert canvas to image
+      const chartImage = canvas.toDataURL("images/jpeg");
+      pdf.addImage(chartImage, "JPEG", 70, 150, 180, 100);
+      //end for graph
+
+      pdf.addImage(logo, "JPEG", 10, 11, 10, 10);
+
+      pdf.text(date, 170, 20);
       pdf.setDrawColor(0, 128, 0);
       pdf.line(10, linePositionY, 200, linePositionY);
       pdf.setDrawColor(0, 128, 0);
@@ -1078,86 +1340,524 @@ const FlatContractForm = () => {
       pdf.setFontSize(10);
       pdf.setFont("times", "bold");
       pdf.setTextColor(100, 100, 100);
-      pdf.text(date, 180, 275);
-      pdf.text('SecureDapp', 10, 275);
+      pdf.text(date, 175, 275);
+      pdf.text("SecureDapp", 10, 275);
       pdf.setFont("times", "normal");
-      pdf.text('235, 2nd & 3rd Floor, 13th Cross Rd, Indira Nagar II Stage,', 10, 280, null, null, 'left');
-      pdf.text('Hoysala Nagar, Indiranagar, Bengaluru, Karnataka 560038', 10, 285, null, null, 'left');
-      pdf.text('hello@securedapp.in', 10, 290, null, null, 'left');
+      pdf.text(
+        "235, 2nd & 3rd Floor, 13th Cross Rd, Indira Nagar II Stage,",
+        10,
+        280,
+        null,
+        null,
+        "left"
+      );
+      pdf.text(
+        "Hoysala Nagar, Indiranagar, Bengaluru, Karnataka 560038",
+        10,
+        285,
+        null,
+        null,
+        "left"
+      );
+      pdf.text("hello@securedapp.in", 10, 290, null, null, "left");
+      let startY = 40;
+      // Vulnerabilities Found
+      let arr = [];
+      if (reportData[1] != null) {
+        pdf.addPage();
+        pdf.setFontSize(18);
+        pdf.setFont("times", "bold"); // Set font to bold
+        pdf.text("Vulnerabilities Found", 78, 35);
 
+        [1, 2, 3, 4, 5].forEach((index) => {
+          if (reportData[index] && Object.keys(reportData[index]).length > 0) {
+            let headString = "";
+            switch (index) {
+              case 1:
+                headString = "CRITICAL";
+                break;
+              case 2:
+                headString = "MEDIUM";
+                break;
+              case 3:
+                headString = "LOW";
+                break;
+              case 4:
+                headString = "INFORMATIONAL";
+                break;
+              case 5:
+                headString = "OPTIMIZATIONS";
+                break;
+            }
+            // const vulnerabilitiesData = Object.entries(reportData[index]).map(([type, locations]) => [type, locations.join(', ')]);
+            const vulnerabilitiesData = Object.entries(reportData[index]).map(
+              ([type, locations]) => {
+                // Remove "contracts/" prefix from each location string if present
+                const cleanedLocations = locations.map((location) =>
+                  location.replace(/^contracts\//, "")
+                );
+                return [type, cleanedLocations.join(", ")];
+              }
+            );
+
+            vulnerabilitiesData.map((a) => {
+              arr.push(a[0]);
+            });
+            pdf.autoTable({
+              head: [[headString, "Locations"]],
+              body: vulnerabilitiesData,
+              startY: startY,
+              styles: { fillColor: [211, 211, 211] },
+              headStyles: { fillColor: [4, 170, 109] },
+            });
+            startY = pdf.previousAutoTable.finalY + 10;
+          }
+        });
+
+        pdf.addImage(logo, "JPEG", 10, 11, 10, 10);
+        pdf.setFontSize(13);
+        pdf.setFont("times", "bold");
+        pdf.text("SecureDApp", 21, 19);
+        pdf.text(date, 170, 20);
+        pdf.setDrawColor(0, 128, 0);
+        pdf.line(10, linePositionY, 200, linePositionY);
+        pdf.setDrawColor(0, 128, 0);
+        pdf.line(10, 270, 200, 270);
+        pdf.setFontSize(10);
+        pdf.setFont("times", "bold");
+        pdf.setTextColor(100, 100, 100);
+        pdf.text(date, 175, 275);
+        pdf.text("SecureDapp", 10, 275);
+        pdf.setFont("times", "normal");
+        pdf.text(
+          "235, 2nd & 3rd Floor, 13th Cross Rd, Indira Nagar II Stage,",
+          10,
+          280,
+          null,
+          null,
+          "left"
+        );
+        pdf.text(
+          "Hoysala Nagar, Indiranagar, Bengaluru, Karnataka 560038",
+          10,
+          285,
+          null,
+          null,
+          "left"
+        );
+        pdf.text("hello@securedapp.in", 10, 290, null, null, "left");
+      }
+
+      pdf.addPage();
+      // vulnerabilities description and solution page
+
+      pdf.setFontSize(18);
+      pdf.setFont("times", "bold"); // Set font to bold
+      pdf.text("Vulnerabilities Description", 72, 35);
+      pdf.setFont("times", "normal");
+      pdf.setFontSize(10);
+      // Function to handle text wrapping
+      const textArray = [
+        "abiencoderv2-array: This error indicates a vulnerability related to the storage of array data in the ABI encoder v2. It poses a high risk as it can potentially lead to data corruption or manipulation.",
+        "arbitrary-send-erc20: This error points to the usage of the transferFrom function with arbitrary sender addresses, which can lead to unauthorized transfers of ERC20 tokens. It's categorized as high risk due to its potential for financial loss. ",
+        "array-by-reference: Modifying storage arrays by value rather than reference can lead to unexpected behavior or data corruption, hence posing a high risk.",
+        "encode-packed-collision: This error highlights a collision in the ABI encoding process, which can result in incorrect interpretation of function calls or data manipulation, posing a high risk to contract integrity.",
+        "incorrect-shift: Incorrect order of parameters in a shift instruction can lead to unintended behavior or vulnerabilities, posing a high risk.",
+        "multiple-constructors: Having multiple constructor schemes can lead to confusion or unexpected behavior during contract deployment, hence posing a high risk.",
+        "name-reused: Reusing a contract's name can lead to ambiguity or confusion, posing a high risk due to potential misunderstandings or unintended interactions",
+        "protected-vars: Unprotected variables can be manipulated by unauthorized parties, posing a high risk to data integrity and security.",
+        "public-mappings-nested: Public mappings with nested variables can expose sensitive data to unauthorized access, posing a high risk to data privacy and integrity.",
+        "rtlo: The use of the Right-To-Left-Override control character can lead to misleading or obfuscated code, posing a high risk due to potential for code injection or manipulation.",
+        "pragma: The pragma directive in Solidity is used to specify the compiler version that the source code should be compiled with. It ensures that the code is compiled using a compatible compiler version to avoid potential issues or unexpected behavior due to changes in language syntax or compiler optimizations.",
+        "shadowing-state: This error occurs when state variables are shadowed, meaning they share the same name as variables defined in a wider scope. It poses a high risk as it can lead to confusion and unintended consequences due to ambiguity in variable references.",
+        "dead-code: Functions that are not used is categorized as informational as it provides insights into unused functions within the contract, which can aid in code review or optimization efforts.",
+        "solc-version: Incorrect Solidity version is categorized as informational as it provides insights into the usage of incorrect Solidity versions within the contract, which can aid in ensuring compatibility or adherence to best practices.",
+        "naming-convention: Conformity to Solidity naming conventions is categorized as informational as it provides insights into adherence to Solidity naming conventions within the contract, which can aid in code readability or maintainability.",
+        "codex: While not posing a direct security risk, utilizing Codex to find vulnerabilities is a recommended practice for improving contract security. This error is categorized as high severity due to its importance in vulnerability detection.",
+        "uninitialized-fptr-cst: Uninitialized function pointer calls in constructors pose a low risk as they can lead to issues with contract initialization or unexpected behavior related to function pointer assignments.",
+        "uninitialized-state: Uninitialized state variables pose a high risk as they can lead to unpredictable behavior or vulnerabilities in the contract's logic or storage state.",
+        "uninitialized-storage: Similarly, uninitialized storage variables pose a high risk as they can lead to unpredictable behavior or vulnerabilities related to the contract's storage state.",
+        "unprotected-upgrade: Unprotected upgradeable contracts pose a high risk as they can be vulnerable to unauthorized modifications or upgrades, potentially leading to unexpected behavior or security breaches.",
+        "arbitrary-send-eth: Functions that send Ether to arbitrary destinations pose a medium risk as they can potentially facilitate unauthorized transfers of Ether to unintended recipients.",
+        "controlled-array-length: Tainted array length assignments pose a medium risk as they can lead to unintended or malicious modification of array lengths, potentially affecting the contract's behavior or state.",
+        "controlled-delegatecall: Controlled delegatecall destinations pose a medium risk as they can lead to unintended or malicious execution of code in external contracts, potentially compromising the security or integrity of the contract.",
+        "delegatecall-loop: Payable functions using delegatecall inside a loop pose a medium risk as they can lead to unexpected or unintended execution of code in external contracts, potentially resulting in undesired behavior or security vulnerabilities.",
+        "incorrect-exp: Incorrect exponentiation poses a medium risk as it can lead to incorrect mathematical calculations, potentially affecting the accuracy or integrity of computations within the contract.",
+        "incorrect-return: Incorrect usage of the return instruction in assembly mode poses a medium risk as it can lead to unexpected behavior or vulnerabilities related to contract execution or state manipulation",
+        "msg-value-loop: Using msg.value inside a loop poses a medium risk as it can lead to unexpected or unintended gas consumption or Ether transfers, potentially affecting contract functionality or leading to gas exhaustion vulnerabilities.",
+        "reentrancy-eth: Reentrancy vulnerabilities involving the theft of Ether pose a medium risk as they can lead to unauthorized withdrawals or manipulation of contract funds, potentially resulting in financial loss or exploitation.",
+        "return-leave: Incorrect usage of return instead of leave poses a medium risk as it can lead to unexpected control flow or vulnerabilities related to contract execution, potentially affecting contract behavior or security.",
+        "storage-array: A signed storage integer array compiler bug poses a medium risk as it can lead to unexpected or unintended behavior related to storage operations or manipulation of array data, potentially affecting contract state or functionality.",
+        "unchecked-transfer: Unchecked tokens transfer poses a medium risk as it can lead to unauthorized or unintended transfers of tokens, potentially resulting in financial loss or exploitation.",
+        "weak-prng: Weak pseudo-random number generation poses a medium risk as it can lead to predictable or exploitable randomness, potentially enabling attacks or manipulation of contract behavior or state.",
+        "domain-separator-collision: Detects ERC20 tokens that have a function whose signature collides with EIP-2612's DOMAIN_SEPARATOR(). This poses a medium risk as it can lead to issues with interoperability or compatibility with other standards.",
+        "enum-conversion: Detects dangerous enum conversion, which poses a medium risk due to potential vulnerabilities or unexpected behavior related to enum types and their conversions.",
+        "erc20-interface: Incorrect ERC20 interfaces pose a medium risk as they can lead to compatibility issues or unexpected behavior when interacting with ERC20-compliant contracts or applications.",
+        "erc721-interface: Similarly, incorrect ERC721 interfaces pose a medium risk as they can lead to compatibility issues or unexpected behavior when interacting with ERC721-compliant contracts or applications.",
+        "incorrect-equality: Dangerous strict equalities pose a medium risk as they can lead to unexpected or unintended behavior related to comparison operations, potentially affecting contract logic or security.",
+        "locked-ether: Contracts that lock Ether pose a medium risk as they can potentially lock funds indefinitely or lead to issues with fund recovery, affecting the usability or security of the contract.",
+        "mapping-deletion: Deletion on mapping containing a structure poses a medium risk as it can lead to unexpected or unintended behavior related to data deletion or manipulation, potentially affecting contract state or functionality.",
+        "shadowing-abstract: State variables shadowing from abstract contracts pose a medium risk as they can lead to confusion or unintended consequences due to ambiguity in variable references.",
+        "tautological-compare: Comparing a variable to itself always returns true or false, depending on comparison, posing a medium risk due to potential issues with logic or unintended consequences.",
+        "tautology: Tautology or contradiction poses a medium risk as it can lead to issues with logic or unintended consequences due to redundant or contradictory statements.",
+        "write-after-write: Unused write poses a medium risk as it can lead to inefficient or unnecessary operations, potentially affecting contract performance or gas usage.",
+        "boolean-cst: Misuse of Boolean constant poses a medium risk as it can lead to issues with logic or unintended consequences due to incorrect or inconsistent usage of Boolean values.",
+        "constant-function-asm: Constant functions using assembly code pose a medium risk as they can lead to issues with portability or compatibility with different EVM implementations or Solidity versions.",
+        "constant-function-state: Constant functions changing the state pose a medium risk as they can lead to unexpected or unintended changes to contract state, potentially affecting contract behavior or security.",
+        "divide-before-multiply: Imprecise arithmetic operations order poses a medium risk as it can lead to incorrect mathematical calculations, potentially affecting the accuracy or integrity of computations within the contract.",
+        "out-of-order-retryable: Out-of-order retryable transactions pose a medium risk as they can lead to issues with transaction ordering or unexpected behavior related to transaction retries or retries",
+        "reentrancy-no-eth: Reentrancy vulnerabilities (no theft of ethers) pose a medium risk as they can lead to unexpected or unintended behavior related to reentrant calls, potentially affecting contract behavior or security.",
+        "reused-constructor: Reused base constructor poses a medium risk as it can lead to issues with inheritance or unintended consequences due to multiple constructor invocations.",
+        "tx-origin: Dangerous usage of tx.origin poses a medium risk as it can lead to issues with authentication or authorization, potentially enabling unauthorized access or manipulation of contract state.",
+        "unchecked-lowlevel: Unchecked low-level calls pose a medium risk as they can lead to issues with gas usage or unexpected behavior related to low-level interactions with the EVM.",
+        "unchecked-send: Unchecked send poses a medium risk as it can lead to issues with gas usage or unexpected behavior related to transfers of Ether or tokens.",
+        "uninitialized-local: Uninitialized local variables pose a medium risk as they can lead to unpredictable behavior or vulnerabilities related to contract execution or state manipulation.",
+        "unused-return: Unused return values pose a medium risk as they can lead to inefficiencies or unnecessary complexity in contract code, potentially affecting contract performance or gas usage.",
+        "incorrect-modifier: Modifiers that can return the default value pose a low risk as they can lead to issues with contract logic or unexpected behavior related to modifier execution.",
+        "shadowing-builtin: Built-in symbol shadowing poses a low risk as it can lead to confusion or unintended consequences due to ambiguity in variable references or function calls.",
+        "shadowing-local: Local variables shadowing poses a low risk as it can lead to confusion or unintended consequences due to ambiguity in variable references or function calls.",
+        "variable-scope: Local variables used prior their declaration pose a low risk as they can lead to confusion or unintended consequences due to ambiguity in variable references or function calls.",
+        "void-cst: Constructor called not implemented poses a low risk as it can lead to issues with contract initialization or unexpected behavior related to constructor execution.",
+        "calls-loop: Multiple calls in a loop pose a low risk as they can lead to issues with gas usage or unexpected behavior related to multiple invocations of external contracts.",
+        "events-access: Missing Events Access Control poses a low risk as it can lead to issues with event emission or unintended consequences due to unauthorized access to event data.",
+        "events-maths: Missing Events Arithmetic poses a low risk as it can lead to issues with event emission or unintended consequences due to incorrect or inconsistent event data.",
+        "incorrect-unary: Dangerous unary expressions pose a low risk as they can lead to issues with logic or unintended consequences due to incorrect or inconsistent unary operations.",
+        "missing-zero-check: Missing Zero Address Validation poses a low risk as it can lead to issues with security or unexpected behavior related to invalid or unauthorized addresses.",
+        "reentrancy-benign: Benign reentrancy vulnerabilities pose a low risk as they can lead to issues with contract behavior or security due to unexpected or unintended reentrant calls.",
+        "reentrancy-events: Reentrancy vulnerabilities leading to out-of-order Events pose a low risk as they can lead to issues with event emission or unexpected behavior related to event data.",
+        "return-bomb: A low level callee may consume all callers gas unexpectedly. This poses a low risk as it can lead to issues with gas usage or unexpected behavior related to gas exhaustion.",
+        "timestamp: Dangerous usage of block.timestamp poses a low risk as it can lead to issues with security or unexpected behavior related to timestamp-dependent logic.",
+        "assembly: Assembly usage is categorized as informational as it provides insights into the usage of assembly code within the contract, which can be used for optimization or fine-tuning contract performance.",
+        "assert-State-Change: Assert state change is categorized as informational as it provides insights into assertions related to state changes within the contract, which can aid in understanding contract behavior or logic.",
+        "boolean-Equal: Comparison to boolean constant is categorized as informational as it provides insights into comparisons to boolean constants within the contract, which can aid in understanding contract behavior or logic.",
+        "cyclomatic-complexity: Detects functions with high (> 11) cyclomatic complexity. This is categorized as informational as it provides insights into the complexity of contract functions, which can aid in code review or optimization efforts.",
+        "deprecated-standards: Deprecated Solidity Standards is categorized as informational as it provides insights into the usage of deprecated Solidity standards or practices within the contract, which can aid in identifying areas for improvement or modernization.",
+        "erc20-indexed: Un-indexed ERC20 event parameters is categorized as informational as it provides insights into ERC20 event parameters that are not indexed, which can aid in understanding event emission or event handling within the contract.",
+        "function-init-state: Function initializing state variables is categorized as informational as it provides insights into functions responsible for initializing state variables within the contract, which can aid in understanding contract initialization or setup.",
+        "incorrect-using-for: Detects using-for statement usage when no function from a given library matches a given type is categorized as informational as it provides insights into the usage of using-for statements within the contract, which can aid in understanding library interactions or dependencies.",
+        "low-level-calls: Low level calls is categorized as informational as it provides insights into the usage of low-level calls within the contract, which can aid in understanding interactions with the EVM or other contracts.",
+        "missing-inheritance: Missing inheritance is categorized as informational as it provides insights into missing inheritance declarations within the contract, which can aid in understanding contract architecture or design.",
+        "redundant-statements: Redundant statements is categorized as informational as it provides insights into redundant statements within the contract, which can aid in code review or optimization efforts.",
+        "unimplemented-functions: Unimplemented functions is categorized as informational as it provides insights into unimplemented functions within the contract, which can aid in understanding contract functionality or development progress.",
+        "unused-state: Unused state variables is categorized as informational as it provides insights into unused state variables within the contract, which can aid in code review or optimization efforts.",
+        "costly-loop: Costly operations in a loop is categorized as informational as it provides insights into expensive operations within loops, which can aid in code review or optimization efforts.",
+        "reentrancy-unlimited-gas: Reentrancy vulnerabilities through send and transfer is categorized as informational as it provides insights into potential reentrancy vulnerabilities within the ",
+        "similar-names: Variable names are too similar is categorized as informational as it provides insights into variable naming conventions within the contract, which can aid in code readability or maintainability.",
+        "too-many-digits: Conformance to numeric notation best practices is categorized as informational as it provides insights into adherence to numeric notation best practices within the contract, which can aid in code readability or maintainability.",
+        "cache-array-length: Detects for loops that use length member of some storage array in their loop condition and don't modify it. This optimization is categorized as high risk as it can lead to unnecessary gas consumption or potential vulnerabilities related to array manipulation.",
+        "constable-states: State variables that could be declared constant is categorized as high risk as it can lead to issues with contract logic or unexpected behavior related to state variables that should be constant.",
+        "external-function: Public function that could be declared external is categorized as high risk as it can lead to issues with gas usage or unexpected behavior related to function calls that could be marked as external.",
+        "immutable-states: State variables that could be declared immutable is categorized as high risk as it can lead to issues with contract logic or unexpected behavior related to state variables that should be immutable.",
+        "var-read-using-this: Contract reads its own variable using this is categorized as high risk as it can lead to issues with contract logic or unexpected behavior related to incorrect or inconsistent usage of this keyword.",
+        "suicidal: Functions allowing anyone to destruct the contract pose a high risk as they can be exploited by malicious actors to intentionally destroy the contract and its associated data.",
+        "arbitrary-send-erc20-permit: Similar to the arbitrary-send-erc20 error, this vulnerability specifically involves the transferFrom function with arbitrary sender addresses but also includes the use of permit, posing a medium risk due to potential for unauthorized token transfers with additional permissions.",
+      ];
+      let Vularr = [];
+      arr.map((text) => {
+        for (let text1 of textArray) {
+          if (text1.includes(text)) {
+            let x = text1.split(":");
+            Vularr.push(x);
+          }
+        }
+      });
+      let Vulsolution = [
+        "abiencoderv2-array solution: Update the ABI encoder v2 implementation to properly handle array data. Ensure that array storage is managed securely, avoiding vulnerabilities such as data corruption or manipulation.",
+        "arbitrary-send-erc20 solution: Implement strict access controls for ERC20 token transfers, ensuring that only authorized users can initiate transfers. Use whitelists or permission-based systems to restrict token movements to trusted addresses.",
+        "array-by-reference Solution: Modify storage arrays by reference rather than value to ensure that changes are reflected consistently throughout the contract. Utilize proper data structures and access patterns to prevent unexpected behavior or data corruption.",
+        "encode-packed-collision solution: Review the ABI encoding process and resolve any collisions to ensure that function calls are interpreted correctly. Adjust encoding methods or function signatures as necessary to avoid ambiguity and maintain contract integrity.",
+        "incorrect-shift solution: Verify and correct the order of parameters in shift instructions to ensure that operations are performed as intended. Double-check bitwise operations to prevent unintended behavior that could lead to vulnerabilities.",
+        "multiple-constructors solution: Consolidate multiple constructor schemes into a single constructor to streamline contract deployment and reduce complexity. Ensure that initialization logic is clear and unambiguous to avoid confusion during contract instantiation.",
+        "name-reused solution: Use unique and descriptive names for contracts to avoid ambiguity and potential conflicts. Choose names that accurately reflect the purpose and functionality of each contract to facilitate understanding and prevent unintended interactions.",
+        "protected-vars solution: Implement access control mechanisms such as modifiers or visibility specifiers to protect variables from unauthorized access or manipulation. Ensure that sensitive data is only accessible to authorized parties to maintain data integrity and security.",
+        "public-mappings-nested solution: Review and redesign data structures to minimize exposure of sensitive data. Consider using private or internal mappings instead of public mappings with nested variables to limit access to privileged information.",
+        "rtlo solution: Avoid using the Right-To-Left-Override control character to prevent potential code injection or manipulation. Ensure that all input data is properly sanitized and validated to mitigate the risk of malicious attacks.",
+        "pragma solution: Specify the appropriate compiler version using the pragma directive to ensure compatibility and consistency in code compilation. Regularly update pragma statements to align with the latest Solidity language features and best practices.",
+        "shadowing-state solution: Rename or restructure variables to eliminate shadowing and clarify variable scope. Use unique names for state variables to prevent confusion and unintended consequences related to variable references.",
+        "dead-code solution: Remove unused functions and code segments to improve code readability, reduce complexity, and minimize attack surface. Conduct regular code reviews and refactorings to identify and eliminate redundant or obsolete code.",
+        "solc-version solution: Update the Solidity version to the correct one specified for the contract. Ensure that the contract is compatible with the targeted Solidity compiler version to avoid potential issues or unexpected behavior.",
+        "naming-convention solution: Enforce Solidity naming conventions consistently throughout the contract codebase. Use descriptive and meaningful names for variables, functions, and contracts to enhance code readability and maintainability.",
+        "codex solution: Integrate Codex for vulnerability detection and utilize its findings to address any identified issues. Regularly scan the contract codebase with Codex to improve contract security and mitigate potential vulnerabilities.",
+        "uninitialized-fptr-cst solution: Initialize function pointers properly in constructors to avoid issues with contract initialization or unexpected behavior related to function pointer assignments.",
+        "uninitialized-state solution: Ensure that all state variables are properly initialized to prevent unpredictable behavior or vulnerabilities in the contract's logic or storage state.",
+        "uninitialized-storage solution: Properly initialize storage variables to avoid unpredictable behavior or vulnerabilities related to the contract's storage state. Initialize storage variables within the contract constructor or relevant functions to ensure consistent behavior.",
+        "unprotected-upgrade solution: Implement access controls and authentication mechanisms to secure upgradeable contracts from unauthorized modifications or upgrades. Utilize techniques such as access modifiers, role-based permissions, or multi-signature schemes to enforce upgrade restrictions and maintain contract integrity.",
+        "arbitrary-send-eth solution: Implement proper access controls and validation checks for functions that send Ether to arbitrary destinations. Use permission-based systems or whitelists to restrict Ether transfers to trusted addresses and prevent unauthorized withdrawals.",
+        "controlled-array-length solution: Validate and sanitize input data to prevent tainted array length assignments that could lead to unintended or malicious modification of array lengths. Implement input validation checks to ensure that array length assignments are within expected bounds and do not pose security risks.",
+        "controlled-delegatecall solution: Validate and sanitize delegatecall destinations to prevent unintended or malicious execution of code in external contracts. Implement access controls and validation checks to ensure that delegatecall destinations are trusted and do not pose security risks.",
+        "delegatecall-loop solution: Avoid using delegatecall inside loops, especially in payable functions, to prevent unintended or unexpected execution of code in external contracts. Review and refactor code to eliminate delegatecall loops and ensure that contract behavior is predictable and secure.",
+        "incorrect-exp solution: Review and correct exponentiation operations to ensure accurate mathematical calculations. Use standard libraries or built-in functions for exponentiation to minimize the risk of errors and ensure computational integrity.",
+        "incorrect-return solution: Verify and correct the usage of the return instruction in assembly mode to prevent unexpected behavior or vulnerabilities related to contract execution or state manipulation. Ensure that return statements are used appropriately and consistently throughout the contract codebase.",
+        "msg-value-loop solution: Refactor code to avoid using msg.value inside loops to prevent unexpected gas consumption or Ether transfers. Review and redesign contract logic to eliminate the need for msg.value inside loop constructs and ensure efficient and secure contract execution.",
+        "reentrancy-eth solution: Implement reentrancy guards and secure state management techniques to prevent reentrancy vulnerabilities involving the theft of Ether. Use mutex locks, state flags, or withdrawal patterns to ensure that contract funds are not susceptible to unauthorized withdrawals or manipulation.",
+        "return-leave solution: Review and correct the usage of return statements to ensure proper control flow and prevent unexpected behavior related to contract execution. Replace return statements with appropriate control flow constructs such as leave to ensure consistent and secure contract behavior.",
+        "storage-array solution: Address compiler bugs related to signed storage integer arrays to prevent unexpected or unintended behavior related to storage operations or manipulation of array data. Utilize safe storage practices and thorough testing to mitigate the risk of storage-related vulnerabilities.",
+        "unchecked-transfer solution: Implement proper validation and authorization checks for token transfers to prevent unauthorized or unintended transfers of tokens. Use access controls, permission-based systems, or token whitelists to restrict token transfers to trusted addresses and prevent exploitation.",
+        "weak-prng solution: Enhance random number generation mechanisms to prevent weak or predictable randomness that could enable attacks or manipulation of contract behavior or state. Utilize secure random number generation algorithms and external randomness sources to ensure cryptographic strength and unpredictability.",
+        "domain-separator-collision solution: Mitigate collisions between ERC20 token functions and EIP-2612's DOMAIN_SEPARATOR() to ensure interoperability and compatibility with other standards. Adjust function signatures or identifiers to avoid conflicts and maintain consistent",
+        "enum-conversion solution: Review enum conversions and ensure that they are handled safely to prevent vulnerabilities or unexpected behavior. Implement proper validation checks and error handling to handle enum conversions securely and reliably.",
+        "erc20-interface solution: Validate and correct ERC20 interfaces to ensure compatibility and prevent issues when interacting with ERC20-compliant contracts or applications. Align the contract's ERC20 interface with the standard specifications to avoid compatibility problems and ensure smooth integration.",
+        "erc721-interface solution: Validate and correct ERC721 interfaces to ensure compatibility and prevent issues when interacting with ERC721-compliant contracts or applications. Align the contract's ERC721 interface with the standard specifications to avoid compatibility problems and ensure smooth integration.",
+        "incorrect-equality solution: Review strict equality comparisons and ensure they are used correctly to prevent unintended behavior or vulnerabilities. Verify that comparisons are performed accurately and consistently to avoid logic errors or security risks.",
+        "locked-ether solution: Implement secure patterns for handling locked Ether to prevent indefinite locking or issues with fund recovery. Use time-based locks, withdrawal limits, or multisig schemes to ensure that locked Ether can be safely managed and accessed as intended.",
+        "mapping-deletion solution: Review and refactor code to ensure safe deletion of mappings containing structures. Implement proper validation checks and data cleanup procedures to prevent unexpected behavior or vulnerabilities related to data deletion or manipulation.",
+        "shadowing-abstract solution: Avoid shadowing state variables from abstract contracts to prevent confusion or unintended consequences. Ensure that state variables are named uniquely and clearly to maintain clarity and prevent ambiguity.",
+        "tautological-compare solution: Review and correct tautological comparisons to prevent issues with logic or unintended consequences. Ensure that comparisons are meaningful and accurate to avoid logic errors or vulnerabilities.",
+        "tautology solution: Review and eliminate tautologies or contradictions in the contract code to ensure logical consistency and prevent unintended consequences. Refactor code to remove redundant or contradictory statements that may introduce vulnerabilities.",
+        "write-after-write solution: Avoid unused write operations to prevent inefficient or unnecessary operations that could affect contract performance or gas usage. Review and refactor code to eliminate unnecessary write operations and optimize resource usage.",
+        "boolean-cst solution: Use Boolean constants correctly to ensure logical consistency and prevent issues with logic or unintended consequences. Review and correct the usage of Boolean constants to maintain code clarity and prevent logic errors.",
+        "constant-function-asm solution: Review and refactor constant functions using assembly code to ensure portability and compatibility with different EVM implementations or Solidity versions. Use standard Solidity constructs whenever possible to maintain code consistency and readability.",
+        "constant-function-state solution: Review and refactor constant functions that modify the state to ensure that state changes are handled appropriately and consistently. Consider whether state modifications are necessary in constant functions and refactor code as needed to maintain contract behavior and security.",
+        "sivide-before-multiply solution: Review and correct arithmetic operations to ensure accurate mathematical calculations. Ensure that operations are performed in the correct order to prevent issues with arithmetic precision or integrity.",
+        "out-of-order-retryable solution: Handle out-of-order retryable transactions carefully to prevent issues with transaction ordering or unexpected behavior related to transaction retries. Implement proper validation checks and error handling to ensure transaction ordering is maintained correctly.",
+        "reentrancy-no-eth solution: Mitigate reentrancy vulnerabilities (no theft of ethers) by carefully managing reentrant calls and ensuring that state changes are handled safely. Implement reentrancy guards and secure state management techniques to prevent unauthorized access or manipulation of contract state.",
+        "reused-constructor solution: Avoid reusing base constructors to prevent issues with inheritance or unintended consequences. Ensure that constructors are invoked correctly and only once to maintain contract integrity and prevent unexpected behavior.",
+        "tx-origin solution: Safely handle dangerous usage of tx.origin to prevent issues with authentication or authorization. Use alternative authentication mechanisms and avoid relying solely on tx.origin for access control to prevent potential security risks.",
+        "unchecked-lowlevel solution: Handle unchecked low-level calls carefully to prevent issues with gas usage or unexpected behavior related to low-level interactions with the EVM. Implement proper validation checks and error handling to ensure safe and secure low-level call operations.",
+        "unused-return solution: Handle unused return values appropriately to prevent inefficiencies or unnecessary complexity in contract code. Review and refactor code to eliminate unused return values and optimize resource usage where possible.",
+        "incorrect-modifier solution: Review and correct modifiers that can return the default value to prevent issues with contract logic or unexpected behavior. Ensure that modifiers behave as expected and do not introduce vulnerabilities or unintended consequences.",
+        "shadowing-builtin solution: Avoid built-in symbol shadowing to prevent confusion or unintended consequences. Use unique names for variables and functions to prevent ambiguity and maintain clarity in the codebase.",
+        "shadowing-local solution: Prevent local variables from shadowing to avoid confusion or unintended consequences. Use unique names for local variables to maintain clarity and readability in the codebase.",
+        "variable-scope solution: Ensure that local variables are declared before their use to prevent confusion or unintended consequences. Review and refactor code to maintain consistent variable scope and avoid ambiguity.",
+        "void-cst solution: Implement constructor logic as needed to prevent issues with contract initialization or unexpected behavior related to constructor execution. Ensure that all necessary initialization steps are performed correctly to maintain contract integrity and functionality.",
+        "calls-loop solution: Minimize the use of multiple calls inside loops to prevent issues with gas usage or unexpected behavior related to multiple invocations of external contracts. Refactor code to eliminate unnecessary calls and optimize resource usage where possible.",
+        "events-access solution: Implement proper access control mechanisms for event emission to prevent unauthorized access to event data. Ensure that only authorized parties can emit events and access event data to maintain data privacy and security.",
+        "events-maths solution: Handle events arithmetic carefully to prevent issues with event emission or unintended consequences. Review and correct event data calculations to ensure accuracy and consistency in event emission.",
+        "incorrect-unary solution: Review and correct dangerous unary expressions to prevent issues with logic or unintended consequences. Ensure that unary operations are performed accurately and consistently to avoid logic errors or vulnerabilities.",
+        "missing-zero-check solution: Implement proper validation checks for zero address to prevent issues with security or unexpected behavior related to invalid or unauthorized addresses. Ensure that zero addresses are handled securely and consistently throughout the contract codebase.",
+        "reentrancy-benign solution: Address benign reentrancy vulnerabilities to prevent issues with contract behavior or security. Implement reentrancy guards and secure state management techniques to ensure that reentrant calls are handled safely and predictably.",
+        "reentrancy-events solution: Handle reentrancy vulnerabilities leading to out-of-order events carefully to prevent issues with event emission or unexpected behavior. Implement proper event emission mechanisms and validation checks to ensure event data integrity and consistency.",
+        "wrong-event-args solution: Ensure that event arguments are emitted correctly to prevent issues with event emission or unintended consequences. Review and correct event emissions to ensure that event data is accurate and consistent with contract behavior.",
+        "unused-variables solution: Remove unused variables to improve contract readability, reduce complexity, and optimize gas usage. Conduct regular code reviews and refactorings to identify and eliminate redundant or obsolete variables.",
+        "unused-libraries solution: Remove unused libraries to improve contract readability, reduce complexity, and optimize gas usage. Conduct regular code reviews and refactorings to identify and eliminate redundant or obsolete libraries.",
+        "uninitialized-members solution: Initialize struct members properly to prevent unpredictable behavior or vulnerabilities related to contract execution or state manipulation. Ensure that all struct members are initialized before use to maintain contract integrity and security.",
+        "unchecked-calls solution: Handle unchecked calls carefully to prevent issues with gas usage or unexpected behavior related to external function calls. Implement proper validation checks and error handling to ensure safe and secure call operations.",
+        "excessive-states solution: Reduce the number of state variables to improve contract readability, reduce complexity, and optimize gas usage. Identify and eliminate redundant or unnecessary state variables to streamline contract logic and storage.",
+        "empty-blocks solution: Remove empty blocks to improve contract readability and reduce complexity. Conduct regular code reviews and refactorings to identify and eliminate unnecessary empty blocks.",
+        "const-functions solution: Use constant functions where applicable to improve contract efficiency and reduce gas usage. Identify functions that do not modify state and declare them as constant to enable compiler optimizations and improve contract performance.",
+        "assembly-overuse solution: Limit the use of assembly code to only when necessary to improve contract readability, reduce complexity, and optimize gas usage. Refactor code to use higher-level Solidity constructs whenever possible to maintain code consistency and readability.",
+        "assert-dos solution: Mitigate risks associated with excessive assert statements that could lead to denial-of-service (DoS) attacks. Use assert statements judiciously and ensure that they do not introduce vulnerabilities or performance issues.",
+        "useless-statements solution: Remove unused statements to improve contract readability, reduce complexity, and optimize gas usage. Conduct regular code reviews and refactorings to identify and eliminate redundant or obsolete statements.",
+        "useless-modifiers solution: Remove unused modifiers to improve contract readability, reduce complexity, and optimize gas usage. Conduct regular code reviews and refactorings to identify and eliminate redundant or obsolete modifiers.",
+        "useless-assembly solution: Eliminate unnecessary assembly code to improve contract readability, reduce complexity, and optimize gas usage. Refactor code to use standard Solidity constructs whenever possible to maintain code consistency and readability.",
+        "unchecked-tx-origin solution: Safely handle usage of tx.origin to prevent issues with authentication or authorization. Use alternative authentication mechanisms and avoid relying solely on tx.origin for access control to prevent potential security risks.",
+        "unchecked-delegatecall solution: Handle unchecked delegatecall operations carefully to prevent issues with gas usage or unexpected behavior related to delegatecall invocations. Implement proper validation checks and error handling to ensure safe and secure delegatecall operations.",
+        "unused-struct-members solution: Remove unused members from structs to improve contract readability, reduce complexity, and optimize gas usage. Conduct regular code reviews and refactorings to identify and eliminate redundant or obsolete struct members",
+        "unused-state solution: Remove unused state variables to improve contract readability, reduce complexity, and optimize gas usage. Conduct regular code reviews and refactorings to identify and eliminate redundant or obsolete state variables.",
+        "unsigned-comparison solution: Review and correct unsigned comparisons to prevent issues with logic or unintended consequences. Ensure that comparisons between unsigned integers are performed accurately and consistently to avoid logic errors or vulnerabilities.",
+        "uninitialized-variable solution: Initialize variables properly to prevent unpredictable behavior or vulnerabilities related to contract execution or state manipulation. Ensure that all variables are initialized before use to maintain contract integrity and security.",
+        "uninitialized-struct solution: Initialize struct variables properly to prevent unpredictable behavior or vulnerabilities related to contract execution or state manipulation. Ensure that all struct fields are initialized before use to maintain contract integrity and security.",
+        "unchecked-math solution: Use safe math libraries or functions to perform arithmetic operations securely and prevent issues with integer overflow or underflow. Replace unchecked arithmetic operations with safe alternatives to ensure computational integrity and contract security.",
+        "unchecked-cast solution: Avoid unchecked type conversions to prevent issues with data integrity or unintended consequences. Implement proper validation checks and type-safe conversion mechanisms to ensure that type conversions are performed securely and reliably.",
+        "unchecked-blockhash solution: Handle blockhash operations carefully to prevent issues with gas usage or unexpected behavior related to blockhash retrieval. Implement proper validation checks and error handling to ensure safe and secure blockhash operations.",
+        "unchecked-array-index solution: Implement proper bounds checking for array accesses to prevent out-of-bounds errors or vulnerabilities related to unchecked array indexing. Validate array indices before accessing array elements to ensure data integrity and contract security.",
+        "self-destruct-ownership Solution: Secure self-destruct functions to prevent unauthorized contract termination or manipulation of contract ownership. Implement access controls and validation checks to ensure that self-destruct functions can only be called by authorized parties.",
+        "Return-Bomb Solution: Mitigate the risk of low-level callees consuming all callers' gas unexpectedly. Implement gas limits or constraints to prevent excessive gas consumption by low-level callees, ensuring that the contract's gas usage remains within acceptable bounds and preventing potential denial-of-service (DoS) attacks.",
+        "too-many-digits solution: Ensure adherence to numeric notation best practices by avoiding excessive digits in numerical values. Trim down the number of digits to maintain code readability and conform to standard practices, enhancing maintainability and reducing the likelihood of errors.",
+        "immutable-states solution: Declare state variables as immutable where appropriate to prevent unintended modification and ensure data consistency. Immutable variables cannot be altered after initialization, enhancing contract security and reducing the risk of unintentional state changes.",
+      ];
+      let solution = [];
+      arr.map((text) => {
+        for (let text1 of Vulsolution) {
+          if (text1.includes(text)) {
+            let x = text1.split(":");
+            solution.push(x);
+          }
+        }
+      });
+      pdf.autoTable({
+        head: [["Vulnerabilities", "Description"]],
+        body: Vularr,
+        startY: 40,
+        styles: { fillColor: [211, 211, 211] },
+        headStyles: { fillColor: [4, 170, 109] },
+      });
+
+      pdf.addImage(logo, "JPEG", 10, 11, 10, 10);
+      pdf.setFontSize(13);
+      pdf.setFont("times", "bold");
+      pdf.text("SecureDApp", 21, 19);
+      pdf.text(date, 170, 20);
+
+      pdf.setDrawColor(0, 128, 0);
+      pdf.line(10, linePositionY, 200, linePositionY);
+      pdf.setDrawColor(0, 128, 0);
+      pdf.line(10, 270, 200, 270);
+      pdf.setFontSize(10);
+      pdf.setFont("times", "bold");
+      pdf.setTextColor(100, 100, 100);
+      pdf.text(date, 175, 275);
+      pdf.text("SecureDapp", 10, 275);
+      pdf.setFont("times", "normal");
+      pdf.text(
+        "235, 2nd & 3rd Floor, 13th Cross Rd, Indira Nagar II Stage,",
+        10,
+        280,
+        null,
+        null,
+        "left"
+      );
+      pdf.text(
+        "Hoysala Nagar, Indiranagar, Bengaluru, Karnataka 560038",
+        10,
+        285,
+        null,
+        null,
+        "left"
+      );
+      pdf.text("hello@securedapp.in", 10, 290, null, null, "left");
+      //Vulnerabilities description and solution end
+      pdf.addPage();
+      //Vulnerabilities solution page
+      pdf.setFontSize(18);
+      pdf.setFont("times", "bold"); // Set font to bold
+      pdf.text("Vulnerabilities Solution", 72, 35);
+      pdf.setFont("times", "normal");
+      pdf.setFontSize(10);
+      pdf.autoTable({
+        head: [["Vulnerabilities", "Solution"]],
+        body: solution,
+        startY: 40,
+        styles: { fillColor: [211, 211, 211] },
+        headStyles: { fillColor: [4, 170, 109] },
+      });
+      pdf.addImage(logo, "JPEG", 10, 11, 10, 10);
+      pdf.setFontSize(13);
+      pdf.setFont("times", "bold");
+      pdf.text("SecureDApp", 21, 19);
+      pdf.text(date, 170, 20);
+
+      pdf.setDrawColor(0, 128, 0);
+      pdf.line(10, linePositionY, 200, linePositionY);
+      pdf.setDrawColor(0, 128, 0);
+      pdf.line(10, 270, 200, 270);
+      pdf.setFontSize(10);
+      pdf.setFont("times", "bold");
+      pdf.setTextColor(100, 100, 100);
+      pdf.text(date, 175, 275);
+      pdf.text("SecureDapp", 10, 275);
+      pdf.setFont("times", "normal");
+      pdf.text(
+        "235, 2nd & 3rd Floor, 13th Cross Rd, Indira Nagar II Stage,",
+        10,
+        280,
+        null,
+        null,
+        "left"
+      );
+      pdf.text(
+        "Hoysala Nagar, Indiranagar, Bengaluru, Karnataka 560038",
+        10,
+        285,
+        null,
+        null,
+        "left"
+      );
+      pdf.text("hello@securedapp.in", 10, 290, null, null, "left");
+      //Vulnerabilities solution end
+      pdf.addPage();
+
+      // Disclaimer and Contact Us
+      // pdf.setFontSize(12);
+      // pdf.text('Disclaimer', 10, 35);
+
+      pdf.setFontSize(18);
+      pdf.setFont("times", "bold"); // Set font to bold
+      pdf.text("Disclaimer", 82, 35);
+
+      const disclaimerData = [
+        [
+          "Purpose",
+          "This audit report is provided for informational purposes only",
+        ],
+        [
+          "Scope",
+          "The audit was performed based on the state of the software at the time of the audit and may not reflect its current state or any subsequent changes.",
+        ],
+        [
+          "Limitations",
+          "While every effort has been made to ensure the accuracy and completeness of this report, no guarantee is made that all vulnerabilities or issues have been identified. Security audits do not guarantee complete system security.",
+        ],
+        [
+          "Recommendations",
+          "The recommendations provided in this report are based on the best judgment of SecureDApp's security professionals. Implementation of these recommendations is at the discretion of the software's maintainers.",
+        ],
+        [
+          "Responsibility",
+          "It remains the responsibility of the software's maintainers and users to ensure its security and proper functionality. SecureDApp does not accept any liability for any damage or loss caused due to overlooked vulnerabilities or misinterpretations in this report.",
+        ],
+      ];
+      pdf.autoTable({
+        head: [["Topic", "Description"]],
+        body: disclaimerData,
+        startY: 40,
+        styles: { fillColor: [211, 211, 211] },
+        headStyles: { fillColor: [4, 170, 109] },
+      });
+
+      // pdf.setFontSize(12);
+      // pdf.text('Contact Us', 10, pdf.previousAutoTable.finalY + 20);
+
+      pdf.setFontSize(18);
+      pdf.setFont("times", "bold"); // Set font to bold
+      pdf.text("Contact Us", 82, pdf.previousAutoTable.finalY + 20);
+
+      const contactData = [
+        ["Email", "hello@securedapp.in"],
+        ["Phone", "9606015868"],
+        [
+          "Address",
+          "SecureDApp Solutions Pvt. Ltd. 235, 2nd & 3rd Floor,13th Cross Rd, Indira Nagar II Stage,Hoysala Nagar, Indiranagar, Bengaluru, Karnataka 560038",
+        ],
+        ["Website", "securedapp.io"],
+        ["Business Hours", "Monday to Friday, 9 AM - 6 PM IST"],
+      ];
+      pdf.autoTable({
+        head: [["", ""]],
+        body: contactData,
+        startY: pdf.previousAutoTable.finalY + 25,
+        styles: { fillColor: [211, 211, 211] },
+        headStyles: { fillColor: [4, 170, 109] },
+      });
+
+      pdf.addImage(logo, "JPEG", 10, 11, 10, 10);
+      pdf.setFontSize(13);
+      pdf.setFont("times", "bold");
+      pdf.text("SecureDApp", 21, 19);
+      pdf.text(date, 170, 20);
+      pdf.setDrawColor(0, 128, 0);
+      pdf.line(10, linePositionY, 200, linePositionY);
+      pdf.setFontSize(10);
+      pdf.line(10, 270, 200, 270);
+      pdf.setFontSize(10);
+      pdf.setFont("times", "bold");
+      pdf.setTextColor(100, 100, 100);
+      pdf.text(date, 175, 275);
+      pdf.text("SecureDapp", 10, 275);
+      pdf.setFont("times", "normal");
+      pdf.text(
+        "235, 2nd & 3rd Floor, 13th Cross Rd, Indira Nagar II Stage,",
+        10,
+        280,
+        null,
+        null,
+        "left"
+      );
+      pdf.text(
+        "Hoysala Nagar, Indiranagar, Bengaluru, Karnataka 560038",
+        10,
+        285,
+        null,
+        null,
+        "left"
+      );
+      pdf.text("hello@securedapp.in", 10, 290, null, null, "left");
+
+      pdf.save("Securedapp_SolidityShield_Report.pdf");
+      console.log(24);
+    } catch (e) {
+      console.log("error: ", e);
     }
-
-    // Disclaimer and Contact Us
-    pdf.addPage();
-    // pdf.setFontSize(12);
-    // pdf.text('Disclaimer', 10, 35);
-
-    pdf.setFontSize(18);
-    pdf.setFont("times", "bold"); // Set font to bold
-    pdf.text('Disclaimer', 82, 35);
-
-
-    const disclaimerData = [
-      ['Purpose', 'This audit report is provided for informational purposes only'],
-      ['Scope', 'The audit was performed based on the state of the software at the time of the audit and may not reflect its current state or any subsequent changes.'],
-      ['Limitations', 'While every effort has been made to ensure the accuracy and completeness of this report, no guarantee is made that all vulnerabilities or issues have been identified. Security audits do not guarantee complete system security.'],
-      ['Recommendations', "The recommendations provided in this report are based on the best judgment of SecureDApp's security professionals. Implementation of these recommendations is at the discretion of the software's maintainers."],
-      ['Responsibility', "It remains the responsibility of the software's maintainers and users to ensure its security and proper functionality. SecureDApp does not accept any liability for any damage or loss caused due to overlooked vulnerabilities or misinterpretations in this report."],
-    ];
-    pdf.autoTable({
-      head: [['Topic', 'Description']],
-      body: disclaimerData,
-      startY: 40,
-      styles: { fillColor: [211, 211, 211] },
-      headStyles: { fillColor: [4, 170, 109] },
-    });
-
-    // pdf.setFontSize(12);
-    // pdf.text('Contact Us', 10, pdf.previousAutoTable.finalY + 20);
-
-    pdf.setFontSize(18);
-    pdf.setFont("times", "bold"); // Set font to bold
-    pdf.text('Contact Us', 82, pdf.previousAutoTable.finalY + 20);
-
-    const contactData = [
-      ['Email', 'hello@securedapp.in'],
-      ['Phone', '9606015868'],
-      ['Address', 'SecureDApp Solutions Pvt. Ltd. 235, 2nd & 3rd Floor,13th Cross Rd, Indira Nagar II Stage,Hoysala Nagar, Indiranagar, Bengaluru, Karnataka 560038'],
-      ['Website', 'securedapp.io'],
-      ['Business Hours', 'Monday to Friday, 9 AM - 6 PM IST'],
-    ];
-    pdf.autoTable({
-      head: [['', '']],
-      body: contactData,
-      startY: pdf.previousAutoTable.finalY + 25,
-      styles: { fillColor: [211, 211, 211] },
-      headStyles: { fillColor: [4, 170, 109] },
-    });
-
-    pdf.addImage(logo, 'JPEG', 10, 11, 10, 10);
-    pdf.setFontSize(13);
-    pdf.setFont("times", "bold");
-    pdf.text("SecureDApp", 21, 19);
-    pdf.text(date, 180, 15);
-    pdf.setDrawColor(0, 128, 0);
-    pdf.line(10, linePositionY, 200, linePositionY);
-    pdf.setFontSize(10);
-    pdf.line(10, 270, 200, 270);
-    pdf.setFontSize(10);
-    pdf.setFont("times", "bold");
-    pdf.setTextColor(100, 100, 100);
-    pdf.text(date, 180, 275);
-    pdf.text('SecureDapp', 10, 275);
-    pdf.setFont("times", "normal");
-    pdf.text('235, 2nd & 3rd Floor, 13th Cross Rd, Indira Nagar II Stage,', 10, 280, null, null, 'left');
-    pdf.text('Hoysala Nagar, Indiranagar, Bengaluru, Karnataka 560038', 10, 285, null, null, 'left');
-    pdf.text('hello@securedapp.in', 10, 290, null, null, 'left');
-
-    pdf.save('Securedapp_SolidityShield_Report.pdf');
-    console.log(24);
-  }catch(e){
-    console.log("error: ", e);
-  }
   };
 
   return (
@@ -1174,20 +1874,14 @@ const FlatContractForm = () => {
         style={{ ...blurryDivStyle }}
         className="lg:pt-[110px] pt-[110px] py-[60px]    "
       >
-
         {showsendotp && (
           <>
             <div className="flex justify-center items-center mt-[50px] lg:px-0 md:px-[50px] px-[20px]">
-              <SectionHeader
-                content={
-                  "Enter Email : Verify OTP : SCAN"
-                }
-              />
+              <SectionHeader content={"Enter Email : Verify OTP : SCAN"} />
             </div>
 
-            <form >
+            <form>
               <div className="flex md:flex-row flex-col gap-4 min-w-full justify-between mt-[30px] px-[80px]">
-
                 <div className="md:w-2/6 w-full">
                   <input
                     type="email"
@@ -1212,21 +1906,14 @@ const FlatContractForm = () => {
           </>
         )}
 
-
         {showverify && (
           <>
             <div className="flex justify-center items-center mt-[50px] lg:px-0 md:px-[50px] px-[20px]">
-              <SectionHeader
-                content={
-                  "Enter Email : Verify OTP : SCAN"
-                }
-              />
+              <SectionHeader content={"Enter Email : Verify OTP : SCAN"} />
             </div>
 
-            <form >
+            <form>
               <div className="flex md:flex-row flex-col gap-4 min-w-full justify-between mt-[30px] px-[80px]">
-
-
                 <div className="md:w-2/6 w-full">
                   <input
                     type="number"
@@ -1243,7 +1930,8 @@ const FlatContractForm = () => {
                     onClick={() => {
                       verifyOTP();
                     }}
-                    className="md:w-4/6 bg-[#12D576] rounded-[20px] p-3 uppercase text-[#000000]">
+                    className="md:w-4/6 bg-[#12D576] rounded-[20px] p-3 uppercase text-[#000000]"
+                  >
                     Verify OTP
                   </button>
                 </div>
@@ -1254,18 +1942,14 @@ const FlatContractForm = () => {
 
         {showFileUpload && (
           <>
-
             <div className="flex justify-center items-center mt-[50px] lg:px-0 md:px-[50px] px-[20px]">
               <SectionHeader
-                content={
-                  "Select Flatten Contract : Select Compiler : Scan"
-                }
+                content={"Select Flatten Contract : Select Compiler : Scan"}
               />
             </div>
 
-            <form onSubmit={handleSubmit} style={{ marginBottom: '20px' }}>
+            <form onSubmit={handleSubmit} style={{ marginBottom: "20px" }}>
               <div className="flex md:flex-row flex-col gap-4 min-w-full justify-between mt-[30px] px-[80px]">
-
                 <div className="md:w-3/6 w-full ">
                   <input
                     type="file"
@@ -1277,9 +1961,11 @@ const FlatContractForm = () => {
                 <div className="md:w-1/6 w-full">
                   <select
                     value={version}
-                    onChange={(e) => { setVersion(e.target.value) }}
-                    className="md:w-11/12 w-full border rounded-[20px] p-3 text-white"  
-                    style={{ backgroundColor: 'black' }}
+                    onChange={(e) => {
+                      setVersion(e.target.value);
+                    }}
+                    className="md:w-11/12 w-full border rounded-[20px] p-3 text-white"
+                    style={{ backgroundColor: "black" }}
                   >
                     {versionOptions.map((version) => (
                       <option key={version} value={version}>
@@ -1292,29 +1978,27 @@ const FlatContractForm = () => {
                 <div className="md:w-1/6">
                   <button
                     type="submit"
-                    className="md:w-4/6 bg-[#12D576] rounded-[20px] p-3 uppercase text-[#000000]">
+                    className="md:w-4/6 bg-[#12D576] rounded-[20px] p-3 uppercase text-[#000000]"
+                  >
                     SCAN
                   </button>
                 </div>
-
               </div>
             </form>
-
           </>
-
         )}
 
         {showScanResult && <ScanResult />}
 
-        {showPlans && (<>
-          <HistorySection /> <Plans />
-        </>)}
-
-
+        {showPlans && (
+          <>
+            <HistorySection /> <Plans />
+          </>
+        )}
       </div>
-
     </>
   );
 };
 
 export default FlatContractForm;
+
