@@ -8,7 +8,7 @@ import m1 from '../images/linkedin.png'
 import m2 from '../images/telegram.png'
 import m3 from '../images/twitter.png'
 
-const TeamCard = ({ image, name, designation, description }) => (
+const TeamCard = ({ image,linkedin,telegram,twitter, name, designation, description }) => (
   <div className="w-[calc(25% - 20px)] w-[calc(33.33% - 20px)] lg:w-[300px] lg:ml-[25px] mx-[20px] pb-[20px]">
     <div className="bg-transparent border rounded-md border-[#3D3D3D] lg:h-[670px] md:h-[690px] h-[690px] lg:w-auto md:w-[300px] w-[300px] overflow-x-visible  p-0 shadow-md">
       <div className="relative rounded-md h-[300px] mb-4 bg-[#D9D9D9]">
@@ -20,12 +20,14 @@ const TeamCard = ({ image, name, designation, description }) => (
       </div>
       <div className="flex flex-row justify-center gap-3 items-center">
         <div className="w-8 h-8">
-        <img src={m1} alt="" className="w-8 rounded-md h-8" />
+          <a href={linkedin} target="_blank"><img src={m1} alt="" className="w-8 rounded-md h-8" /></a>
+        
         </div>
-        <div className="w-10 h-10">        <img src={m2} alt="" className="w-10 h-10" />
+        <div className="w-10 h-10">     <a href={telegram} target="_blank"><img src={m2} alt="" className="w-10 h-10" /></a>   
 </div>
         <div className="w-10 h-10">
-        <img src={m3} alt="" className="w-10 h-10" />
+          <a href={twitter} target="_blank"><img src={m3} alt="" className="w-10 h-10" /></a>
+        
           </div>
         </div>
       <div className="text-2xl font-bold leading-normal text-white font-sans pt-1 pl-[21px]">
@@ -44,6 +46,9 @@ const MeettheTeam = () => {
   const teamMembers = [
     {
       image: himanshu,
+      linkedin:"https://www.linkedin.com/in/himanshu-gautam-69647289/",
+      telegram:"https://t.me/himang305",
+      twitter:"https://twitter.com/Himansh58851412",
       name: "Himanshu Gautam",
       designation: "Co-Founder & CTO",
       description:
@@ -51,6 +56,9 @@ const MeettheTeam = () => {
     },
     {
       image: abishek,
+      linkedin:"https://www.linkedin.com/in/avicsingh01/",
+      telegram:"https://t.me/a_bhisheks",
+      twitter:"https://twitter.com/A_bhisheks",
       name: "Abhishek Singh",
       designation: "Co-Founder & CEO",
       description:
@@ -58,6 +66,9 @@ const MeettheTeam = () => {
     },
     {
       image: andrew,
+      linkedin:"https://www.linkedin.com/in/andrews-ellavendhan-34929433/",
+      telegram:"https://t.me/andrews_a",
+      twitter:"https://x.com/andrewsarena?t=B-kCwIYXYo8-vkJUD9PPBA&s=09",
       name: "Andrews Ellavendhan",
       designation: "Head of creative",
       description:
@@ -65,6 +76,9 @@ const MeettheTeam = () => {
     },
     {
       image: rouhan,
+      linkedin:"https://www.linkedin.com/in/abhishek-metakraft/",
+      telegram:"https://t.me/TheMetakrafterGuy",
+      twitter:"https://twitter.com/themetakrafter",
       name: "Abhishek Roushan",
       designation: "Head of Partnerships & Outreach",
       description:
