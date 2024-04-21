@@ -1195,8 +1195,8 @@ const FlatContractForm = () => {
       );
       pdf.text("hello@securedapp.in", 120, 290, null, null, "left");
 
-      pdf.setFontSize(25);
-      pdf.text(date, 135, 140);
+      pdf.setFontSize(12);
+      pdf.text(date, 170, 140);
       pdf.setFontSize(50);
       pdf.addImage(logo, "JPEG", 89, 108, 15, 15);
       pdf.text("SecureDApp", 105, 120);
@@ -1278,18 +1278,18 @@ const FlatContractForm = () => {
         })
         .reverse();
       console.log(findingsData);
-      // pdf.autoTable({
-      //   startY: pdf.lastAutoTable.finalY + 30,
-      //   head: findingsHeaders,
-      //   body: findingsData,
-      //   styles: { fillColor: [211, 211, 211] },
-      //   // headStyles: { fillColor: [4, 170, 109] },
-      //   headStyles: {
-      //     fillColor: [4, 170, 109],
-      //     cellPadding: 2, // Increase row height by setting cellPadding
-      //     fontSize: 12, // Adjust font size if needed
-      //   },
-      // });
+      pdf.autoTable({
+        startY: pdf.lastAutoTable.finalY + 30,
+        head: findingsHeaders,
+        body: findingsData,
+        styles: { fillColor: [211, 211, 211] },
+        // headStyles: { fillColor: [4, 170, 109] },
+        headStyles: {
+          fillColor: [4, 170, 109],
+          cellPadding: 2, // Increase row height by setting cellPadding
+          fontSize: 12, // Adjust font size if needed
+        },
+      });
 
       //graph for audit findings
       const canvas = document.createElement("canvas");
@@ -1680,12 +1680,12 @@ const FlatContractForm = () => {
               body: [p],
               styles: {
                 fillColor: [211, 211, 211],
-                cellPadding: 7,
+                cellPadding: 5,
                 fontSize: 9,
               },
               headStyles: {
                 fillColor: [4, 170, 109],
-                cellPadding: 7, // Increase row height by setting cellPadding
+                cellPadding: 5, // Increase row height by setting cellPadding
                 fontSize: 10,
                 // columnStyles: {
                 //   0: { columnWidth: 100 }, // Set a fixed width for the first column
@@ -1695,10 +1695,10 @@ const FlatContractForm = () => {
             });
             pdf.setFontSize(18);
             pdf.setFont("times", "bold");
-            pdf.text("Description", 15, 185);
+            pdf.text("Description", 15, 145);
             pdf.setFont("times", "normal");
             pdf.setFontSize(12);
-            handleTextWrapping(arr1[1], 520, 15, 195);
+            handleTextWrapping(arr1[1], 520, 15, 155);
           }
         });
 
