@@ -1661,25 +1661,23 @@ const FlatContractForm = () => {
         return capitalizedFirstWord + " " + restOfWords;
       }
 
-
       for (let a of arr) {
-        pdf.setFontSize(18);
-        pdf.setFont("times", "bold");
-
+        let p = [removeDashAndCapitalizeFirstWord(a), "High"];
+        pdf.setFontSize(18); // Change font size to 18
+        pdf.setFont("times", "bold"); // Set font to bold
         pdf.text("Vulnerabilities Details", 75, 19);
-        pdf.text("Vulnerability:-", 15, 45);
+
         pdf.setFont("times", "normal");
         pdf.setFontSize(14);
-        pdf.text(removeDashAndCapitalizeFirstWord(a), xcod, ycod);
 
         Vularr.map((arr1) => {
           if (arr1[0].includes(a)) {
-            arr1.shift();
+            arr1[0] = removeDashAndCapitalizeFirstWord(arr1[0]);
 
             pdf.autoTable({
-              startY: 65,
-              head: [["Description", "Critical Level"]], // Empty header row
-              body: [arr1],
+              startY: 35,
+              head: [["Vulnerability Found", "Critical Level"]], // Empty header row
+              body: [p],
               styles: {
                 fillColor: [211, 211, 211],
                 cellPadding: 7,
@@ -1689,23 +1687,30 @@ const FlatContractForm = () => {
                 fillColor: [4, 170, 109],
                 cellPadding: 7, // Increase row height by setting cellPadding
                 fontSize: 10,
-                columnStyles: {
-                  0: { columnWidth: 100 }, // Set a fixed width for the first column
-                  1: { columnWidth: 150 }, // Set a fixed width for the second column
-                },
+                // columnStyles: {
+                //   0: { columnWidth: 100 }, // Set a fixed width for the first column
+                //   1: { columnWidth: 150 }, // Set a fixed width for the second column
+                // },
               },
             });
+            pdf.setFontSize(18);
+            pdf.setFont("times", "bold");
+            pdf.text("Description", 15, 185);
+            pdf.setFont("times", "normal");
+            pdf.setFontSize(12);
+            handleTextWrapping(arr1[1], 520, 15, 195);
           }
         });
+
         solution.map((sol) => {
           if (sol[0].includes(a)) {
             pdf.setFontSize(18);
             pdf.setFont("times", "bold");
-            pdf.text("Recommended Solution:-", 15, 155);
+            pdf.text("Recommended Solution", 15, 225);
             // pdf.text(sol[1], 15, 135);
             pdf.setFont("times", "normal");
             pdf.setFontSize(12);
-            handleTextWrapping(sol[1], 520, 15, 165);
+            handleTextWrapping(sol[1], 520, 15, 235);
           }
         });
         pdf.addImage(logo, "JPEG", 10, 11, 10, 10);
