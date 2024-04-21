@@ -1230,10 +1230,10 @@ const FlatContractForm = () => {
 
       pdf.setFontSize(18); // Change font size to 18
       pdf.setFont("times", "bold"); // Set font to bold
-      pdf.text("SecureDApp's Solidity Shield Audit Report", 48, 20); // Adjust the coordinates
+      pdf.text("SecureDApp's Solidity Shield Audit Report", 43, 20); // Adjust the coordinates
 
       // Executive Summary
-      pdf.setFontSize(12);
+      pdf.setFontSize(13);
 
       const headers = [
         ["AUDIT_HASH", reportData.id],
@@ -1278,35 +1278,35 @@ const FlatContractForm = () => {
         })
         .reverse();
       console.log(findingsData);
-      pdf.autoTable({
-        startY: pdf.lastAutoTable.finalY + 30,
-        head: findingsHeaders,
-        body: findingsData,
-        styles: { fillColor: [211, 211, 211] },
-        // headStyles: { fillColor: [4, 170, 109] },
-        headStyles: {
-          fillColor: [4, 170, 109],
-          cellPadding: 2, // Increase row height by setting cellPadding
-          fontSize: 12, // Adjust font size if needed
-        },
-      });
+      // pdf.autoTable({
+      //   startY: pdf.lastAutoTable.finalY + 30,
+      //   head: findingsHeaders,
+      //   body: findingsData,
+      //   styles: { fillColor: [211, 211, 211] },
+      //   // headStyles: { fillColor: [4, 170, 109] },
+      //   headStyles: {
+      //     fillColor: [4, 170, 109],
+      //     cellPadding: 2, // Increase row height by setting cellPadding
+      //     fontSize: 12, // Adjust font size if needed
+      //   },
+      // });
 
       //graph for audit findings
       const canvas = document.createElement("canvas");
       canvas.width = 400;
       canvas.height = 400;
-      // const labels = ["Data 1", "Data 2", "Data 3", "Data 4", "Data 5"];
-      // const data = [10, 20, 30, 40, 50];
-      // Get canvas context
-      console.log(findingsData.map((item) => item[0]));
-      console.log(findingsData.map((item) => item[1]));
+
+      const labels = findingsData.map((item) => item[0]);
+      const data = findingsData.map((item) => item[1]);
+      console.log(labels);
+      console.log(data);
       const ctx = canvas.getContext("2d");
       const chartData = {
-        labels: findingsData.map((item) => item[0]), // Using the first column of findingData's item[0] ['CRITICAL', 'MEDIUM', 'LOW', 'INFORMATIONAL', 'OPTIMIZATIONS'] as labels
+        labels: labels, // Using the first column of findingData's item[0] ['CRITICAL', 'MEDIUM', 'LOW', 'INFORMATIONAL', 'OPTIMIZATIONS'] as labels
         datasets: [
           {
             label: "Count",
-            data: findingsData.map((item) => item[1]), // Using the second column of findingsData item[1] [0, 0, 1, 30, 1] as data
+            data: data, // Using the second column of findingsData item[1] [0, 0, 1, 30, 1] as data
             backgroundColor: "rgb(4, 170, 109)",
             borderColor: "rgb(75, 192, 192, 1)",
             borderWidth: 1,
@@ -1317,17 +1317,10 @@ const FlatContractForm = () => {
       new Chart(ctx, {
         type: "bar",
         data: chartData,
-        options: {
-          scales: {
-            y: {
-              beginAtZero: true,
-            },
-          },
-        },
       });
       // Convert canvas to image
       const chartImage = canvas.toDataURL("images/jpeg");
-      pdf.addImage(chartImage, "JPEG", 70, 150, 180, 100);
+      pdf.addImage(chartImage, "JPEG", 70, 150, 40, 100);
       //end for graph
 
       pdf.addImage(logo, "JPEG", 10, 11, 10, 10);
@@ -1361,103 +1354,11 @@ const FlatContractForm = () => {
       );
       pdf.text("hello@securedapp.in", 10, 290, null, null, "left");
       let startY = 40;
-      // Vulnerabilities Found
+      // Vulnerabilities Found Description and Solution Pages start
       let arr = [];
-      if (reportData[1] != null) {
-        pdf.addPage();
-        pdf.setFontSize(18);
-        pdf.setFont("times", "bold"); // Set font to bold
-        pdf.text("Vulnerabilities Found", 78, 35);
-
-        [1, 2, 3, 4, 5].forEach((index) => {
-          if (reportData[index] && Object.keys(reportData[index]).length > 0) {
-            let headString = "";
-            switch (index) {
-              case 1:
-                headString = "CRITICAL";
-                break;
-              case 2:
-                headString = "MEDIUM";
-                break;
-              case 3:
-                headString = "LOW";
-                break;
-              case 4:
-                headString = "INFORMATIONAL";
-                break;
-              case 5:
-                headString = "OPTIMIZATIONS";
-                break;
-            }
-            // const vulnerabilitiesData = Object.entries(reportData[index]).map(([type, locations]) => [type, locations.join(', ')]);
-            const vulnerabilitiesData = Object.entries(reportData[index]).map(
-              ([type, locations]) => {
-                // Remove "contracts/" prefix from each location string if present
-                const cleanedLocations = locations.map((location) =>
-                  location.replace(/^contracts\//, "")
-                );
-                return [type, cleanedLocations.join(", ")];
-              }
-            );
-
-            vulnerabilitiesData.map((a) => {
-              arr.push(a[0]);
-            });
-            pdf.autoTable({
-              head: [[headString, "Locations"]],
-              body: vulnerabilitiesData,
-              startY: startY,
-              styles: { fillColor: [211, 211, 211] },
-              headStyles: { fillColor: [4, 170, 109] },
-            });
-            startY = pdf.previousAutoTable.finalY + 10;
-          }
-        });
-
-        pdf.addImage(logo, "JPEG", 10, 11, 10, 10);
-        pdf.setFontSize(13);
-        pdf.setFont("times", "bold");
-        pdf.text("SecureDApp", 21, 19);
-        pdf.text(date, 170, 20);
-        pdf.setDrawColor(0, 128, 0);
-        pdf.line(10, linePositionY, 200, linePositionY);
-        pdf.setDrawColor(0, 128, 0);
-        pdf.line(10, 270, 200, 270);
-        pdf.setFontSize(10);
-        pdf.setFont("times", "bold");
-        pdf.setTextColor(100, 100, 100);
-        pdf.text(date, 175, 275);
-        pdf.text("SecureDapp", 10, 275);
-        pdf.setFont("times", "normal");
-        pdf.text(
-          "235, 2nd & 3rd Floor, 13th Cross Rd, Indira Nagar II Stage,",
-          10,
-          280,
-          null,
-          null,
-          "left"
-        );
-        pdf.text(
-          "Hoysala Nagar, Indiranagar, Bengaluru, Karnataka 560038",
-          10,
-          285,
-          null,
-          null,
-          "left"
-        );
-        pdf.text("hello@securedapp.in", 10, 290, null, null, "left");
-      }
-
-      pdf.addPage();
-      // vulnerabilities description and solution page
-
-      pdf.setFontSize(18);
-      pdf.setFont("times", "bold"); // Set font to bold
-      pdf.text("Vulnerabilities Description", 72, 35);
-      pdf.setFont("times", "normal");
-      pdf.setFontSize(10);
-      // Function to handle text wrapping
-      const textArray = [
+      let solution = [];
+      let Vularr = [];
+      let textArray = [
         "abiencoderv2-array: This error indicates a vulnerability related to the storage of array data in the ABI encoder v2. It poses a high risk as it can potentially lead to data corruption or manipulation.",
         "arbitrary-send-erc20: This error points to the usage of the transferFrom function with arbitrary sender addresses, which can lead to unauthorized transfers of ERC20 tokens. It's categorized as high risk due to its potential for financial loss. ",
         "array-by-reference: Modifying storage arrays by value rather than reference can lead to unexpected behavior or data corruption, hence posing a high risk.",
@@ -1552,15 +1453,7 @@ const FlatContractForm = () => {
         "suicidal: Functions allowing anyone to destruct the contract pose a high risk as they can be exploited by malicious actors to intentionally destroy the contract and its associated data.",
         "arbitrary-send-erc20-permit: Similar to the arbitrary-send-erc20 error, this vulnerability specifically involves the transferFrom function with arbitrary sender addresses but also includes the use of permit, posing a medium risk due to potential for unauthorized token transfers with additional permissions.",
       ];
-      let Vularr = [];
-      arr.map((text) => {
-        for (let text1 of textArray) {
-          if (text1.includes(text)) {
-            let x = text1.split(":");
-            Vularr.push(x);
-          }
-        }
-      });
+
       let Vulsolution = [
         "abiencoderv2-array solution: Update the ABI encoder v2 implementation to properly handle array data. Ensure that array storage is managed securely, avoiding vulnerabilities such as data corruption or manipulation.",
         "arbitrary-send-erc20 solution: Implement strict access controls for ERC20 token transfers, ensuring that only authorized users can initiate transfers. Use whitelists or permission-based systems to restrict token movements to trusted addresses.",
@@ -1656,106 +1549,201 @@ const FlatContractForm = () => {
         "too-many-digits solution: Ensure adherence to numeric notation best practices by avoiding excessive digits in numerical values. Trim down the number of digits to maintain code readability and conform to standard practices, enhancing maintainability and reducing the likelihood of errors.",
         "immutable-states solution: Declare state variables as immutable where appropriate to prevent unintended modification and ensure data consistency. Immutable variables cannot be altered after initialization, enhancing contract security and reducing the risk of unintentional state changes.",
       ];
-      let solution = [];
-      arr.map((text) => {
-        for (let text1 of Vulsolution) {
-          if (text1.includes(text)) {
-            let x = text1.split(":");
-            solution.push(x);
+      let t;
+      if (reportData[1] != null) {
+        pdf.addPage();
+        [1, 2, 3, 4, 5].forEach((index) => {
+          if (reportData[index] && Object.keys(reportData[index]).length > 0) {
+            let headString = "";
+            switch (index) {
+              case 1:
+                headString = "CRITICAL";
+                break;
+              case 2:
+                headString = "MEDIUM";
+                break;
+              case 3:
+                headString = "LOW";
+                break;
+              case 4:
+                headString = "INFORMATIONAL";
+                break;
+              case 5:
+                headString = "OPTIMIZATIONS";
+                break;
+            }
+            // const vulnerabilitiesData = Object.entries(reportData[index]).map(([type, locations]) => [type, locations.join(', ')]);
+            const vulnerabilitiesData = Object.entries(reportData[index]).map(
+              ([type, locations]) => {
+                // Remove "contracts/" prefix from each location string if present
+                const cleanedLocations = locations.map((location) =>
+                  location.replace(/^contracts\//, "")
+                );
+                return [type, cleanedLocations.join(", ")];
+              }
+            );
+
+            vulnerabilitiesData.map((a) => {
+              arr.push(a[0]);
+            });
+            // pdf.autoTable({
+            //   head: [[headString, "Locations"]],
+            //   body: vulnerabilitiesData,
+            //   startY: startY,
+            //   styles: { fillColor: [211, 211, 211] },
+            //   headStyles: { fillColor: [4, 170, 109] },
+            // });
+            startY = pdf.previousAutoTable.finalY + 10;
+          }
+        });
+        arr.map((text) => {
+          for (let text1 of textArray) {
+            if (text1.includes(text)) {
+              let x = text1.split(":");
+              Vularr.push(x);
+            }
+          }
+        });
+
+        arr.map((text) => {
+          for (let text1 of Vulsolution) {
+            if (text1.includes(text)) {
+              let x = text1.split(":");
+              solution.push(x);
+            }
+          }
+        });
+
+        // console.log(arr, "Vulnerabilities Found");
+        // console.log(Vularr, "Description");
+        // console.log(solution, "Recomended Solution");
+        t = solution;
+        Vularr.map((sa1) => {
+          sa1.push("High");
+        });
+      }
+
+      let xcod = 15,
+        ycod = 55;
+
+      // Function to handle text wrapping
+      const handleTextWrapping = (text, maxWidth, x, y) => {
+        let words = text.split(" ");
+        let line = "";
+        let boldFont = "bold"; // Font weight for bold
+
+        for (let i = 0; i < words.length; i++) {
+          let testLine = line + words[i] + " ";
+          let testWidth =
+            pdf.getStringUnitWidth(testLine) * pdf.internal.getFontSize();
+
+          if (testWidth > maxWidth) {
+            pdf.text(line, x, y); // Adjust the coordinates as per your requirement
+            line = words[i] + " ";
+            y = y + 5;
+          } else {
+            line = testLine;
           }
         }
-      });
-      pdf.autoTable({
-        head: [["Vulnerabilities", "Description"]],
-        body: Vularr,
-        startY: 40,
-        styles: { fillColor: [211, 211, 211] },
-        headStyles: { fillColor: [4, 170, 109] },
-      });
 
-      pdf.addImage(logo, "JPEG", 10, 11, 10, 10);
-      pdf.setFontSize(13);
-      pdf.setFont("times", "bold");
-      pdf.text("SecureDApp", 21, 19);
-      pdf.text(date, 170, 20);
+        // Write remaining text if any
+        if (line.trim().length > 0) {
+          pdf.text(line, x, y); // Adjust the coordinates as per your requirement
+        }
+      };
+      function capitalizeFirstLetter(string) {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+      }
+      function removeDashAndCapitalizeFirstWord(str) {
+        const words = str.split("-");
+        const capitalizedFirstWord = capitalizeFirstLetter(words[0]);
+        const restOfWords = words.slice(1).join(" ");
+        return capitalizedFirstWord + " " + restOfWords;
+      }
 
-      pdf.setDrawColor(0, 128, 0);
-      pdf.line(10, linePositionY, 200, linePositionY);
-      pdf.setDrawColor(0, 128, 0);
-      pdf.line(10, 270, 200, 270);
-      pdf.setFontSize(10);
-      pdf.setFont("times", "bold");
-      pdf.setTextColor(100, 100, 100);
-      pdf.text(date, 175, 275);
-      pdf.text("SecureDapp", 10, 275);
-      pdf.setFont("times", "normal");
-      pdf.text(
-        "235, 2nd & 3rd Floor, 13th Cross Rd, Indira Nagar II Stage,",
-        10,
-        280,
-        null,
-        null,
-        "left"
-      );
-      pdf.text(
-        "Hoysala Nagar, Indiranagar, Bengaluru, Karnataka 560038",
-        10,
-        285,
-        null,
-        null,
-        "left"
-      );
-      pdf.text("hello@securedapp.in", 10, 290, null, null, "left");
-      //Vulnerabilities description and solution end
-      pdf.addPage();
-      //Vulnerabilities solution page
-      pdf.setFontSize(18);
-      pdf.setFont("times", "bold"); // Set font to bold
-      pdf.text("Vulnerabilities Solution", 72, 35);
-      pdf.setFont("times", "normal");
-      pdf.setFontSize(10);
-      pdf.autoTable({
-        head: [["Vulnerabilities", "Solution"]],
-        body: solution,
-        startY: 40,
-        styles: { fillColor: [211, 211, 211] },
-        headStyles: { fillColor: [4, 170, 109] },
-      });
-      pdf.addImage(logo, "JPEG", 10, 11, 10, 10);
-      pdf.setFontSize(13);
-      pdf.setFont("times", "bold");
-      pdf.text("SecureDApp", 21, 19);
-      pdf.text(date, 170, 20);
 
-      pdf.setDrawColor(0, 128, 0);
-      pdf.line(10, linePositionY, 200, linePositionY);
-      pdf.setDrawColor(0, 128, 0);
-      pdf.line(10, 270, 200, 270);
-      pdf.setFontSize(10);
-      pdf.setFont("times", "bold");
-      pdf.setTextColor(100, 100, 100);
-      pdf.text(date, 175, 275);
-      pdf.text("SecureDapp", 10, 275);
-      pdf.setFont("times", "normal");
-      pdf.text(
-        "235, 2nd & 3rd Floor, 13th Cross Rd, Indira Nagar II Stage,",
-        10,
-        280,
-        null,
-        null,
-        "left"
-      );
-      pdf.text(
-        "Hoysala Nagar, Indiranagar, Bengaluru, Karnataka 560038",
-        10,
-        285,
-        null,
-        null,
-        "left"
-      );
-      pdf.text("hello@securedapp.in", 10, 290, null, null, "left");
-      //Vulnerabilities solution end
-      pdf.addPage();
+      for (let a of arr) {
+        pdf.setFontSize(18);
+        pdf.setFont("times", "bold");
+
+        pdf.text("Vulnerabilities Details", 75, 19);
+        pdf.text("Vulnerability:-", 15, 45);
+        pdf.setFont("times", "normal");
+        pdf.setFontSize(14);
+        pdf.text(removeDashAndCapitalizeFirstWord(a), xcod, ycod);
+
+        Vularr.map((arr1) => {
+          if (arr1[0].includes(a)) {
+            arr1.shift();
+
+            pdf.autoTable({
+              startY: 65,
+              head: [["Description", "Critical Level"]], // Empty header row
+              body: [arr1],
+              styles: {
+                fillColor: [211, 211, 211],
+                cellPadding: 7,
+                fontSize: 9,
+              },
+              headStyles: {
+                fillColor: [4, 170, 109],
+                cellPadding: 7, // Increase row height by setting cellPadding
+                fontSize: 10,
+                columnStyles: {
+                  0: { columnWidth: 100 }, // Set a fixed width for the first column
+                  1: { columnWidth: 150 }, // Set a fixed width for the second column
+                },
+              },
+            });
+          }
+        });
+        solution.map((sol) => {
+          if (sol[0].includes(a)) {
+            pdf.setFontSize(18);
+            pdf.setFont("times", "bold");
+            pdf.text("Recommended Solution:-", 15, 155);
+            // pdf.text(sol[1], 15, 135);
+            pdf.setFont("times", "normal");
+            pdf.setFontSize(12);
+            handleTextWrapping(sol[1], 520, 15, 165);
+          }
+        });
+        pdf.addImage(logo, "JPEG", 10, 11, 10, 10);
+        pdf.setFontSize(13);
+        pdf.setFont("times", "bold");
+        pdf.text("SecureDApp", 21, 19);
+        pdf.text(date, 170, 20);
+        pdf.setDrawColor(0, 128, 0);
+        pdf.line(10, linePositionY, 200, linePositionY);
+        pdf.setDrawColor(0, 128, 0);
+        pdf.line(10, 270, 200, 270);
+        pdf.setFontSize(10);
+        pdf.setFont("times", "bold");
+        pdf.setTextColor(100, 100, 100);
+        pdf.text(date, 175, 275);
+        pdf.text("SecureDapp", 10, 275);
+        pdf.setFont("times", "normal");
+        pdf.text(
+          "235, 2nd & 3rd Floor, 13th Cross Rd, Indira Nagar II Stage,",
+          10,
+          280,
+          null,
+          null,
+          "left"
+        );
+        pdf.text(
+          "Hoysala Nagar, Indiranagar, Bengaluru, Karnataka 560038",
+          10,
+          285,
+          null,
+          null,
+          "left"
+        );
+        pdf.text("hello@securedapp.in", 10, 290, null, null, "left");
+        pdf.addPage();
+      }
+
+      // Vulnerabilities Found Description and Solution Pages end
 
       // Disclaimer and Contact Us
       // pdf.setFontSize(12);
@@ -2001,4 +1989,3 @@ const FlatContractForm = () => {
 };
 
 export default FlatContractForm;
-
