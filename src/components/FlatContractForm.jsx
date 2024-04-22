@@ -10,8 +10,12 @@ import Modal from "react-modal";
 import QRCode from "qrcode.react";
 import logo from "../images/logo2.jpeg";
 import CryptoJS from "crypto-js";
-const { v4: uuidv4 } = require("uuid");
 
+import sha256 from "crypto-js/sha256";
+import { Buffer } from "buffer";
+import axios from "axios";
+import Chart from "chart.js/auto";
+const { v4: uuidv4 } = require("uuid");
 const fakeData = [
   {
     created_on: "2023-11-13T11:42:11.000Z",
@@ -196,12 +200,6 @@ const fakeData = [
     status: 0,
   },
 ];
-import sha256 from "crypto-js/sha256";
-import { Buffer } from "buffer";
-import axios from "axios";
-import Chart from "chart.js/auto";
-
-const { v4: uuidv4 } = require("uuid");
 
 const FlatContractForm = () => {
   const [showverify, setshowverify] = useState(false); // for otp verify screen options
