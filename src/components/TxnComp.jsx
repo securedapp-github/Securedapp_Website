@@ -75,11 +75,10 @@ const TxnHero = () => {
                 <>
                   <div className="text-[50px]">Thank you.</div>
                   <div className="text-[35px] pb-2">
-                    Payment Done Successfully!
+                    Account Recharged Successfully!
                   </div>
                   <div className="text-[25px]">
-                    You will be redirected to the home page shortly or else
-                    click below to go to the Home page.
+                    You will be redirected to the home page shortly.
                   </div>
                 </>
               ) : (
