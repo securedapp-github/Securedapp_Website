@@ -56,9 +56,13 @@ function BlogIndi() {
     });
 
     const contentElement = document.getElementById("content1");
-    contentElement.innerHTML = "";
-    console.log("tempDiv : ", tempDiv)
-    contentElement.appendChild(tempDiv);
+    if (contentElement) {
+      contentElement.innerHTML = "";
+      console.log("tempDiv : ", tempDiv)
+      contentElement.appendChild(tempDiv);
+    } else {
+      console.error("Element with ID 'content1' not found");
+    }
   };
 
   useEffect(() => {
@@ -67,7 +71,7 @@ function BlogIndi() {
       .then((response) => {
         setBlog(response.data);
         if (response.data) {
-          renderContent(response.data);
+          setTimeout(() => {renderContent(response.data)}, 3000);
         }
       })
       .catch((error) => {
@@ -110,6 +114,7 @@ function BlogIndi() {
                 item.url === id && <span key={index}>{item.heading}</span>
             )}
         </div>
+
         {blog &&
           blog.map(
             (item, index) =>
@@ -142,6 +147,7 @@ function BlogIndi() {
                 </div>
               )
           )}
+
       </div>
       <div>
         <Request />
