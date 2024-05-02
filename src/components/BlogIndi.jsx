@@ -84,25 +84,25 @@ function BlogIndi() {
 
   return (
     <>
-    {blog1 && (
+    {/* {blog1 && ( */}
 <>
-<meta property="og:image" content={`https://securedapp.io/blog/${blog1.url}`} />
-<meta name="description" content="securedapp_blog" />
+<meta property="og:image" content="https://i.ibb.co/zRkXq2p/ai-nuclear-energy-background-future-innovation-disruptive-technology.jpg" />
+{/* <meta name="description" content="securedapp_blog" />
 <meta name="keywords" content="Leading DApp startups trust us to secure their blockchain applications" />
-<meta name="twitter:card" content="summary_large" />
+<meta name="twitter:card" content="summary_large" /> */}
 
       <Helmet>
-        <title>{blog1.heading}</title>
+        {/* <title>{blog1.heading}</title>
         <meta name="description" content={blog1.heading} />
         <meta property="og:title" content={blog1.heading} />
-        <meta property="og:description" content={blog1.heading} />
-        <meta property="og:image" content={blog1.image} />
-        <meta property="og:url" content={`https://securedapp.io/blog/${blog1.url}`} />
-        <meta property="og:type" content="article" />
+        <meta property="og:description" content={blog1.heading} /> */}
+        <meta property="og:image" content="https://i.ibb.co/zRkXq2p/ai-nuclear-energy-background-future-innovation-disruptive-technology.jpg" />
+        {/* <meta property="og:url" content={`https://securedapp.io/blog/${blog1.url}`} />
+        <meta property="og:type" content="article" /> */}
       </Helmet>
 
       </>
-    )}
+    {/* )} */}
       <NavbarWithBread onItemClick={handleMenuItemClick} />
 
       <div className="blogindi pt-40 pb-10">
