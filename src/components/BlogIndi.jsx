@@ -9,6 +9,8 @@ import axios from "axios";
 function BlogIndi() {
   const [selectedMenuItem, setSelectedMenuItem] = useState(1);
   const [blog, setBlog] = useState(null);
+  const [blog1, setBlog1] = useState(null);
+
   const [content, setContent] = useState("");
   const handleMenuItemClick = (index) => {
     setSelectedMenuItem(index);
@@ -21,6 +23,7 @@ function BlogIndi() {
     console.log("ID", id);
     const filteredBlog = blogData.find((item) => item.url === id && item);
     console.log("blog ", filteredBlog);
+    setBlog1(filteredBlog);
     const tempDiv = document.createElement("div");
 
     tempDiv.innerHTML = "";
@@ -81,15 +84,17 @@ function BlogIndi() {
 
   return (
     <>
-      <Helmet>
-        <title>
-          SecureDApp Blog: Expert Insights on NFTs, Token Sales & DeFi Trends
-        </title>
-        <meta
-          name="description"
-          content="Dive into SecureDApp's blog for insightful articles on NFTs, token sales, and the future of DeFi. Stay updated with the latest trends, guides, and expert opinions on blockchain, tokenomics, and more."
-        />
+    {blog1 && (
+    <Helmet>
+        <title>{blog1.heading}</title>
+        <meta name="description" content={blog1.heading} />
+        <meta property="og:title" content={blog1.heading} />
+        <meta property="og:description" content={blog1.heading} />
+        <meta property="og:image" content={blog1.image} />
+        <meta property="og:url" content={`https://securedapp.io/blog/${blog1.url}`} />
+        <meta property="og:type" content="article" />
       </Helmet>
+    )}
       <NavbarWithBread onItemClick={handleMenuItemClick} />
 
       <div className="blogindi pt-40 pb-10">
