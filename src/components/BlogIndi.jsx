@@ -86,12 +86,12 @@ function BlogIndi() {
     <>
     {blog1 && (
 <>
-<meta property="og:image" content={blog1.image} />
-<meta name="description" content={blog1.heading} />
+<meta property="og:image" content={`https://securedapp.io/blog/${blog1.url}`} />
+<meta name="description" content="securedapp_blog" />
 <meta name="keywords" content="Leading DApp startups trust us to secure their blockchain applications" />
 <meta name="twitter:card" content="summary_large" />
 
-    <Helmet>
+      <Helmet>
         <title>{blog1.heading}</title>
         <meta name="description" content={blog1.heading} />
         <meta property="og:title" content={blog1.heading} />
@@ -99,7 +99,6 @@ function BlogIndi() {
         <meta property="og:image" content={blog1.image} />
         <meta property="og:url" content={`https://securedapp.io/blog/${blog1.url}`} />
         <meta property="og:type" content="article" />
-        <link rel="icon" type="image/x-icon" href={`https://securedapp.io/blog/${blog1.url}`} />
       </Helmet>
 
       </>
