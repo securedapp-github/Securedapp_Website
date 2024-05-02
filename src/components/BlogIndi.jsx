@@ -99,7 +99,9 @@ function BlogIndi() {
         <meta property="og:image" content={blog1.image} />
         <meta property="og:url" content={`https://securedapp.io/blog/${blog1.url}`} />
         <meta property="og:type" content="article" />
+        <link rel="icon" type="image/x-icon" href={`https://securedapp.io/blog/${blog1.url}`} />
       </Helmet>
+
       </>
     )}
       <NavbarWithBread onItemClick={handleMenuItemClick} />
