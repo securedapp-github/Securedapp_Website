@@ -20,52 +20,150 @@ function BlogIndi() {
   const { id } = useParams();
 
   const renderContent = (blogData) => {
-    console.log("ID", id);
     const filteredBlog = blogData.find((item) => item.url === id && item);
-    console.log("blog ", filteredBlog);
-    setBlog1(filteredBlog);
-    const tempDiv = document.createElement("div");
+    // const tempDiv = document.createElement("div");
 
-    tempDiv.innerHTML = "";
-    setContent(filteredBlog.content);
+    // tempDiv.innerHTML = "";
+    // setContent(filteredBlog.content);
 
-    const paragraphs = filteredBlog.content.split("][");
+    let paragraphs = filteredBlog.content.split("][");
+
+    // let str1 = "";
+    // let str2 = "";
+    // let v;
+    // paragraphs.forEach((paragraphText) => {
+    //   paragraphText = paragraphText.replace(/\[|\]/g, "");
+    //   // Replace links with anchor tags
+    //   paragraphText = paragraphText.replace(
+    //     /<([^|]+)\|([^>]+)>/g,
+    //     '<a target="_blank" href="$2">$1</a>'
+    //   );
+    //   paragraphText = paragraphText.replace(
+    //     /&lt;([^|]+)\|([^&]+)&gt;/g,
+    //     '<a target="_blank" href="$2">$1</a>'
+    //   );
+
+    //   paragraphText = paragraphText.replace(/\/n\//g, "<br><br>");
+    //   paragraphText = paragraphText.replace(
+    //     /\*\*(.*?)\*\*/g,
+    //     '<span style="font-size: 28px; font-weight: bold;">$1</span>'
+    //   );
+    //   v = paragraphText;
+
+    //   // for (let w = 0; w < paragraphText.length; w++) {
+    //   // const s = paragraphText.indexOf("{");
+    //   // const e = paragraphText.indexOf("}");
+    //   // const i = document.createElement("img");
+    //   // if (s && e) {
+    //   //   for (let i = s + 1; i < e; i++) {
+    //   //     str = str + paragraphText[i];
+    //   //   }
+    //   //   i.setAttribute("src", str);
+    //   //   i.setAttribute("alt", "paragraph image");
+
+    //   //   tempDiv.appendChild(i);
+
+    //   // paragraphText.replace(/\{|\}/, "")
+    //   // paragraphText.replace(str,"")
+    //   // }
+    //   // }
+    // });
+
+    // // let r = 0;
+
+    // // while (r < v.length) {
+    // //   const s = v.indexOf("{"); // finding out index of { and } in the v
+    // //   const e = v.indexOf("}");
+
+    // //   if (s && e) {
+    // //     r = s;
+    // //     // if s and e are present in v
+    // //     for (let j = r; j < s; j++) {
+    // //       str1 += v[j]; // storing the para that contains the image in st1
+    // //     }
+    // //     for (let j = s + 1; j < e; j++) {
+    // //       str2 += v[j]; // storing the image in the str2
+    // //     }
+    // //     // appending para that contains the image.
+    // //     let para = document.createElement("p");
+    // //     para.innerHTML = str1;
+    // //     tempDiv.appendChild(para);
+    // //     str1 = "";
+    // //     // appending the image after the para
+    // //     const i = document.createElement("img");
+    // //     i.setAttribute("src", str2);
+    // //     i.setAttribute("alt", "paragraph image");
+    // //     tempDiv.appendChild(i);
+    // //     str2 = "";
+    // //     v.replace(/\{|\}/, ""); // removing first occurance of { and } from v
+    // //     v.replace(str2, ""); // removing first occurance of str2
+    // //   } else {
+    // //     for (let j = r; j < v.length; j++) {
+    // //       str1 += v[j];
+    // //       r = j;
+    // //     }
+    // //     const para = document.createElement("p");
+    // //     para.innerHTML = str1;
+    // //     tempDiv.appendChild(para);
+    // //   }
+    // // }
+
+    // const paragraphElement = document.createElement("p");
+    // paragraphElement.innerHTML = v;
+    // tempDiv.appendChild(paragraphElement);
+
+    // const anchorTags = tempDiv.querySelectorAll("a");
+    // anchorTags.forEach((tag) => {
+    //   tag.style.color = "#07bc0c"; // Set text color to #07bc0c
+    // });
+
+    // const contentElement = document.getElementById("content1");
+    // contentElement.innerHTML = "";
+    // contentElement.appendChild(tempDiv);
+
+    let str = "";
+
+    const modifiedParagraphs = [];
+
     paragraphs.forEach((paragraphText) => {
-      paragraphText = paragraphText.replace(/\[|\]/g, "");
-      // Replace links with anchor tags
-      paragraphText = paragraphText.replace(
+      // Remove square brackets
+
+      let modifiedText = paragraphText.replace(/\[|\]/g, "");
+
+      // Replace links with anchor tags and add color attribute
+      modifiedText = modifiedText.replace(
         /<([^|]+)\|([^>]+)>/g,
-        '<a target="_blank" href="$2">$1</a>'
+        '<a target="_blank" href="$2" style="color: #07bc0c;">$1</a>'
       );
-      paragraphText = paragraphText.replace(
+      modifiedText = modifiedText.replace(
         /&lt;([^|]+)\|([^&]+)&gt;/g,
-        '<a target="_blank" href="$2">$1</a>'
+        '<a target="_blank" href="$2" style="color: #07bc0c;">$1</a>'
       );
-      paragraphText = paragraphText.replace(/\/n\//g, "<br><br>");
-      paragraphText = paragraphText.replace(
+
+      // Replace '/n/' with line breaks
+      modifiedText = modifiedText.replace(/\/n\//g, "<br><br>");
+
+      // Bold text wrapped in '**'
+      modifiedText = modifiedText.replace(
         /\*\*(.*?)\*\*/g,
         '<span style="font-size: 28px; font-weight: bold;">$1</span>'
       );
 
-      const paragraphElement = document.createElement("p");
-      paragraphElement.innerHTML = paragraphText;
-      console.log("para : ", paragraphElement)
-      tempDiv.appendChild(paragraphElement);
-    });
+      modifiedText = modifiedText.split("\n\n");
+      // Identify and store images
+      const imageRegex = /(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)/g;
+      let images = [];
+      let match;
+      while ((match = imageRegex.exec(modifiedText)) !== null) {
+        images.push({ src: match[0], alt: "Image" }); // Default alt text
+      }
 
-    const anchorTags = tempDiv.querySelectorAll("a");
-    anchorTags.forEach((tag) => {
-      tag.style.color = "#07bc0c"; // Set text color to #07bc0c
+      // Store modified paragraph along with images
+      modifiedParagraphs.push({ modifiedText, images });
     });
+    console.log(modifiedParagraphs);
 
-    const contentElement = document.getElementById("content1");
-    if (contentElement) {
-      contentElement.innerHTML = "";
-      console.log("tempDiv : ", tempDiv)
-      contentElement.appendChild(tempDiv);
-    } else {
-      console.error("Element with ID 'content1' not found");
-    }
+    return modifiedParagraphs;
   };
 
   useEffect(() => {
@@ -74,35 +172,40 @@ function BlogIndi() {
       .then((response) => {
         setBlog(response.data);
         if (response.data) {
-          setTimeout(() => {renderContent(response.data)}, 3000);
+          setContent(renderContent(response.data));
         }
       })
       .catch((error) => {
         console.error("Error fetching blog post:", error);
       });
   }, [id]);
-
+  console.log(content);
   return (
     <>
-    {/* {blog1 && ( */}
-<>
-<meta property="og:image" content="https://i.ibb.co/zRkXq2p/ai-nuclear-energy-background-future-innovation-disruptive-technology.jpg" />
-{/* <meta name="description" content="securedapp_blog" />
+      {/* {blog1 && ( */}
+      <>
+        <meta
+          property="og:image"
+          content="https://i.ibb.co/zRkXq2p/ai-nuclear-energy-background-future-innovation-disruptive-technology.jpg"
+        />
+        {/* <meta name="description" content="securedapp_blog" />
 <meta name="keywords" content="Leading DApp startups trust us to secure their blockchain applications" />
 <meta name="twitter:card" content="summary_large" /> */}
 
-      <Helmet>
-        {/* <title>{blog1.heading}</title>
+        <Helmet>
+          {/* <title>{blog1.heading}</title>
         <meta name="description" content={blog1.heading} />
         <meta property="og:title" content={blog1.heading} />
         <meta property="og:description" content={blog1.heading} /> */}
-        <meta property="og:image" content="https://i.ibb.co/zRkXq2p/ai-nuclear-energy-background-future-innovation-disruptive-technology.jpg" />
-        {/* <meta property="og:url" content={`https://securedapp.io/blog/${blog1.url}`} />
+          <meta
+            property="og:image"
+            content="https://i.ibb.co/zRkXq2p/ai-nuclear-energy-background-future-innovation-disruptive-technology.jpg"
+          />
+          {/* <meta property="og:url" content={`https://securedapp.io/blog/${blog1.url}`} />
         <meta property="og:type" content="article" /> */}
-      </Helmet>
-
+        </Helmet>
       </>
-    {/* )} */}
+      {/* )} */}
       <NavbarWithBread onItemClick={handleMenuItemClick} />
 
       <div className="blogindi pt-40 pb-10">
@@ -127,7 +230,6 @@ function BlogIndi() {
                 item.url === id && <span key={index}>{item.heading}</span>
             )}
         </div>
-
         {blog &&
           blog.map(
             (item, index) =>
@@ -153,14 +255,73 @@ function BlogIndi() {
                     ></div>
                   </div>
 
-                  <div
-                    id="content1"
+                  {/* <div
+                    // id="content1"
                     className="text-black pt-1 text-xl text-white sm:pt-10 w-full px-10 sm:w-full sm:px-10 lg:w-4/6 lg:mx-auto lg:px-0"
-                  ></div>
+                  ></div> */}
+
+                  {/* <div className="text-black pt-1 text-xl text-white sm:pt-10 w-full px-10 sm:w-full sm:px-10 lg:w-4/6 lg:mx-auto lg:px-0">
+                    {content.map((paragraph, index) => (
+                      <div key={index}>
+                        <div
+                          dangerouslySetInnerHTML={{
+                            __html: paragraph.modifiedText,
+                          }}
+                        />
+                        {paragraph.images.map((image, imgIndex) => (
+                          <img key={imgIndex} src={image.src} alt={image.alt} />
+                        ))}
+                      </div>
+                    ))}
+                  </div> */}
+                  <div className="text-black pt-1 text-xl text-white sm:pt-10 w-full px-10 sm:w-full sm:px-10 lg:w-4/6 lg:mx-auto lg:px-0">
+                    {content.map((paragraph, index) => (
+                      <div key={index}>
+                        {paragraph.modifiedText.map((text, textIndex) => {
+                          text = text.replace("{", "");
+                          text = text.replace("}", "");
+
+                          const imageRegex =
+                            /(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)/g;
+                          const match = imageRegex.exec(text);
+                          if (match) {
+                            // If image link found, render image
+                            const img = { alt: match[1], src: match[0] };
+                            return (
+                              <React.Fragment key={textIndex}>
+                                <div
+                                  dangerouslySetInnerHTML={{
+                                    __html: text.replace(imageRegex, ""),
+                                  }}
+                                />
+                                <img
+                                  style={{
+                                    marginTop: 60,
+                                    marginBottom: 60,
+                                    paddingLeft: 38,
+                                    paddingRight: 38,
+                                  }}
+                                  src={img.src}
+                                  alt={img.alt}
+                                />
+                              </React.Fragment>
+                            );
+                          } else {
+                            // If no image link found, render paragraph text
+                            return (
+                              <div
+                                key={textIndex}
+                                dangerouslySetInnerHTML={{ __html: text }}
+                              />
+                            );
+                          }
+                        })}
+                      </div>
+                    ))}
+                  </div>
                 </div>
               )
           )}
-
       </div>
       <div>
         <Request />
