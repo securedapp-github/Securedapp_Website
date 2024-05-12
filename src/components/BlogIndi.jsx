@@ -141,7 +141,7 @@ function BlogIndi() {
       );
 
       // Replace '/n/' with line breaks
-      modifiedText = modifiedText.replace(/\/n\//g, "<br><br>");
+      modifiedText = modifiedText.replace(/\/n\//g, "<br>");
 
       // Bold text wrapped in '**'
       modifiedText = modifiedText.replace(
