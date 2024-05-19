@@ -300,6 +300,8 @@ function BlogIndi() {
                                     marginBottom: 60,
                                     paddingLeft: 38,
                                     paddingRight: 38,
+                                    // width: '45vw',    // Set width to 20% of the viewport width
+                                    height: '45vh',   // Set height to 20% of the viewport height
                                   }}
                                   src={img.src}
                                   alt={img.alt}
