@@ -221,41 +221,7 @@ const FlatContractForm = () => {
   // const [showPlans, setshowPlans] = useState(false);   // for scan history and scan plans
 
   const [showScanResult, setShowScanResult] = useState(false); // for scan results
-
   const [companyName, setcompanyName] = useState("");
-  const [version, setVersion] = useState("0.8.17");
-  const versionOptions = [
-    "0.7.0",
-    "0.7.1",
-    "0.7.2",
-    "0.7.3",
-    "0.7.4",
-    "0.7.5",
-    "0.7.6",
-    "0.8.0",
-    "0.8.1",
-    "0.8.2",
-    "0.8.3",
-    "0.8.4",
-    "0.8.5",
-    "0.8.6",
-    "0.8.7",
-    "0.8.8",
-    "0.8.9",
-    "0.8.10",
-    "0.8.11",
-    "0.8.12",
-    "0.8.13",
-    "0.8.14",
-    "0.8.15",
-    "0.8.16",
-    "0.8.17",
-    "0.8.18",
-    "0.8.19",
-    "0.8.20",
-    "0.8.21",
-  ];
-
   const [email, setEmail] = useState("");
   const [file, setFile] = useState(null);
   const [critical, setcritical] = useState(0);
@@ -282,18 +248,41 @@ const FlatContractForm = () => {
 
   useEffect(() => {
     var user = sessionStorage.getItem("session_user");
-    console.log("session : ", user);
+    // console.log("session : ", user);
     // var user_mail = user[0].mail
     if (user == null) {
-      console.log("login session");
+      // console.log("login session");
     } else {
-      console.log("existing login session");
+      // console.log("existing login session");
       const bytes = CryptoJS.AES.decrypt(user, "secretKey123");
       const email = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
       setEmail(email);
       updateUserSession(email);
     }
   }, []);
+
+
+  const isFlattened = (contracts) => {
+    return !/import\s+/i.test(contracts);
+  };
+
+
+  const detectCompilerVersion = (contracts) => {
+      const matches = contracts.match(/pragma solidity \^?([0-9]+\.[0-9]+\.[0-9]+);/g);
+      if (!matches) return null;
+
+      const versions = matches.map(match => match.match(/([0-9]+\.[0-9]+\.[0-9]+)/)[0]);
+      versions.sort((a, b) => {
+        const [majorA, minorA, patchA] = a.split('.').map(Number);
+        const [majorB, minorB, patchB] = b.split('.').map(Number);
+
+        if (majorA !== majorB) return majorB - majorA;
+        if (minorA !== minorB) return minorB - minorA;
+        return patchB - patchA;
+      });
+
+      return versions[0];
+  };
 
   const customStyles = {
     overlay: {
@@ -375,7 +364,20 @@ const FlatContractForm = () => {
   };
 
   const handleFileChange = (e) => {
-    setFile(e.target.files[0]);
+    // setFile(e.target.files[0]);
+    const selectedFile = e.target.files[0];
+    if (selectedFile && selectedFile.name.endsWith('.sol')) {
+        const reader = new FileReader();
+        reader.onload = (event) => {
+            setcontracts(event.target.result);
+        };
+        reader.readAsText(selectedFile);
+        setFile(selectedFile);
+    } else {
+        toast.error('Only .sol files are allowed.');
+        setFile(null);
+        setcontracts('');
+    }
   };
 
   const sendOTP = async () => {
@@ -404,7 +406,7 @@ const FlatContractForm = () => {
         "Content-type": "application/json",
       },
     })
-      .then((res) => {})
+      .then((res) => { })
       .then((data) => {
         toast.success("OTP Send Successfully, Check Mail");
         setshowsendotp(false);
@@ -442,7 +444,7 @@ const FlatContractForm = () => {
         throw new Error("Network response was not ok.");
       })
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         if (data.length == 0) toast("User Detail Error");
         let userdata = data[0];
 
@@ -498,7 +500,7 @@ const FlatContractForm = () => {
         throw new Error("Network response was not ok.");
       })
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         if (data.length == 0) toast("Wrong OTP");
         let userdata = data[0];
 
@@ -545,8 +547,27 @@ const FlatContractForm = () => {
       return;
     }
 
+    if (!contracts) {
+      toast.error('No contract file uploaded.');
+      return;
+  }
+
+  if (!isFlattened(contracts)) {
+      toast.error('The contract must be flattened before submission.');
+      return;
+  }
+
+  
+  const compilerVersion = detectCompilerVersion(contracts);
+  if (!compilerVersion) {
+      toast.error('Could not detect the compiler version.');
+      return;
+  }
+
+  // console.log(`Compiler version: ${compilerVersion}`);
+
     if (rcredit < 1) {
-      toast("No Credit, Purchase a Plan");
+      toast("No Credit, Please Purchase a Plan to scan");
       return;
     }
 
@@ -554,7 +575,7 @@ const FlatContractForm = () => {
     const formData = new FormData();
     formData.append("mail", email);
     formData.append("files", file);
-    formData.append("version", version);
+    formData.append("version", compilerVersion);
     formData.append("company", companyName);
 
     // fetch('http://127.0.0.1:8000/audits', {
@@ -573,7 +594,7 @@ const FlatContractForm = () => {
         setShowScanResult(true);
         generateTable(data);
         // setFile(null);
-        console.log(data);
+        // console.log(data);
         if (credit > 1 && rcredit > 1) {
           generatePDF(data);
         }
@@ -582,6 +603,8 @@ const FlatContractForm = () => {
         console.error("Error:", error);
         setLoading(false);
       });
+
+      toast.success('Awesome! The AI scan is now underway');
   };
 
   function generateTable(data) {
@@ -597,11 +620,11 @@ const FlatContractForm = () => {
       5 -
       Number(
         data.findings[finding_names[0]] +
-          data.findings[finding_names[1]] +
-          data.findings[finding_names[2]] +
-          3
+        data.findings[finding_names[1]] +
+        data.findings[finding_names[2]] +
+        3
       ) *
-        0.239;
+      0.239;
 
     setcritical(data.findings[finding_names[0]]);
     setmedium(data.findings[finding_names[1]]);
@@ -619,6 +642,7 @@ const FlatContractForm = () => {
     setLoading(false);
   }
 
+  
   const blurryDivStyle = {
     filter: loading ? "blur(5px)" : "blur(0px)",
   };
@@ -738,6 +762,7 @@ const FlatContractForm = () => {
     );
   };
 
+
   const getScanHistory = async () => {
     setLoading(true);
 
@@ -758,7 +783,7 @@ const FlatContractForm = () => {
         throw new Error("Network response was not ok.");
       })
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         setTableData(data);
         setTableDataInd(data.slice(0, 10));
         setTotHistory(
@@ -806,7 +831,7 @@ const FlatContractForm = () => {
         throw new Error("Network response was not ok.");
       })
       .then((data) => {
-        console.log(JSON.parse(data[0].reportdata));
+        // console.log(JSON.parse(data[0].reportdata));
         generatePDF(JSON.parse(data[0].reportdata));
       })
       .catch((error) => {
@@ -932,7 +957,7 @@ const FlatContractForm = () => {
                           rel="noopener noreferrer"
                           onClick={(e) => {
                             e.preventDefault();
-                            console.log(row.id);
+                            // console.log(row.id);
                             downloadReport(row.id);
                           }}
                         >
@@ -978,7 +1003,7 @@ const FlatContractForm = () => {
       setplanid(planid);
 
       const transactionid = "Tr-" + uuidv4().toString(36).slice(-6);
-      console.log("Txn_ID : ", transactionid);
+      // console.log("Txn_ID : ", transactionid);
 
       const response2 = await fetch(
         "https://139-59-5-56.nip.io:3443/payment-insert",
@@ -996,7 +1021,7 @@ const FlatContractForm = () => {
       );
 
       const data = await response2.json();
-      console.log("db entry data : ", data);
+      // console.log("db entry data : ", data);
 
       if (!data.status) {
         console.log("Failed DB payment Entry");
@@ -1382,7 +1407,6 @@ const FlatContractForm = () => {
   }
   const generatePDF = async (reportData) => {
     try {
-      console.log(11);
       const date = formatDate(reportData.date);
       // const logo = logo;
       const pdf = new jsPDF("p", "mm", "a4");
@@ -1504,7 +1528,7 @@ const FlatContractForm = () => {
           return [lowerKey, value];
         })
         .reverse();
-      console.log(findingsData);
+      // console.log(findingsData);
       pdf.autoTable({
         startY: pdf.lastAutoTable.finalY + 30,
         head: findingsHeaders,
@@ -1525,8 +1549,8 @@ const FlatContractForm = () => {
 
       const labels = findingsData.map((item) => item[0]);
       const data = findingsData.map((item) => item[1]);
-      console.log(labels);
-      console.log(data);
+      // console.log(labels);
+      // console.log(data);
       const ctx = canvas.getContext("2d");
       const chartData = {
         labels: labels, // Using the first column of findingData's item[0] ['CRITICAL', 'MEDIUM', 'LOW', 'INFORMATIONAL', 'OPTIMIZATIONS'] as labels
@@ -2073,7 +2097,7 @@ const FlatContractForm = () => {
       pdf.text("hello@securedapp.in", 10, 290, null, null, "left");
 
       pdf.save("Securedapp_SolidityShield_Report.pdf");
-      console.log(24);
+      // console.log(24);
     } catch (e) {
       console.log("error: ", e);
     }
@@ -2164,7 +2188,7 @@ const FlatContractForm = () => {
           <>
             <div className="flex justify-center items-center mt-[50px] lg:px-0 md:px-[50px] px-[20px]">
               <SectionHeader
-                content={"Select Flatten Contract : Select Compiler : Scan"}
+                content={"Select Flatten Contract : Scan"}
               />
             </div>
 
@@ -2173,27 +2197,13 @@ const FlatContractForm = () => {
                 <div className="md:w-3/6 w-full ">
                   <input
                     type="file"
+                    accept=".sol"
                     className="md:w-11/12 w-full border rounded-[20px] p-3 placeholder:text-white file-input-info:text-white"
                     onChange={handleFileChange}
                   />
                 </div>
 
-                <div className="md:w-1/6 w-full ">
-                  <select
-                    value={version}
-                    onChange={(e) => {
-                      setVersion(e.target.value);
-                    }}
-                    className="md:w-11/12 w-full border rounded-[20px] p-3 text-white"
-                    style={{ backgroundColor: "black" }}
-                  >
-                    {versionOptions.map((version) => (
-                      <option key={version} value={version}>
-                        {version} Compiler Version
-                      </option>
-                    ))}
-                  </select>
-                </div>
+                
 
                 <div className="md:w-1/6 w-full">
                   <input
