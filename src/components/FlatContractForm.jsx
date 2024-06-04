@@ -248,12 +248,12 @@ const FlatContractForm = () => {
 
   useEffect(() => {
     var user = sessionStorage.getItem("session_user");
-    console.log("session : ", user);
+    // console.log("session : ", user);
     // var user_mail = user[0].mail
     if (user == null) {
-      console.log("login session");
+      // console.log("login session");
     } else {
-      console.log("existing login session");
+      // console.log("existing login session");
       const bytes = CryptoJS.AES.decrypt(user, "secretKey123");
       const email = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
       setEmail(email);
@@ -432,7 +432,7 @@ const FlatContractForm = () => {
         throw new Error("Network response was not ok.");
       })
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         if (data.length == 0) toast("User Detail Error");
         let userdata = data[0];
 
@@ -488,7 +488,7 @@ const FlatContractForm = () => {
         throw new Error("Network response was not ok.");
       })
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         if (data.length == 0) toast("Wrong OTP");
         let userdata = data[0];
 
@@ -552,12 +552,10 @@ const FlatContractForm = () => {
       return;
   }
 
-  console.log(`Compiler version: ${compilerVersion}`);
-
-
+  // console.log(`Compiler version: ${compilerVersion}`);
 
     if (rcredit < 1) {
-      toast("No Credit, Purchase a Plan");
+      toast("No Credit, Please Purchase a Plan to scan");
       return;
     }
 
@@ -565,6 +563,7 @@ const FlatContractForm = () => {
     const formData = new FormData();
     formData.append("mail", email);
     formData.append("files", file);
+    formData.append("version", compilerVersion);
     formData.append("company", companyName);
 
     // fetch('http://127.0.0.1:8000/audits', {
@@ -583,7 +582,7 @@ const FlatContractForm = () => {
         setShowScanResult(true);
         generateTable(data);
         // setFile(null);
-        console.log(data);
+        // console.log(data);
         if (credit > 1 && rcredit > 1) {
           generatePDF(data);
         }
@@ -772,7 +771,7 @@ const FlatContractForm = () => {
         throw new Error("Network response was not ok.");
       })
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         setTableData(data);
         setTableDataInd(data.slice(0, 10));
         setTotHistory(
@@ -820,7 +819,7 @@ const FlatContractForm = () => {
         throw new Error("Network response was not ok.");
       })
       .then((data) => {
-        console.log(JSON.parse(data[0].reportdata));
+        // console.log(JSON.parse(data[0].reportdata));
         generatePDF(JSON.parse(data[0].reportdata));
       })
       .catch((error) => {
@@ -946,7 +945,7 @@ const FlatContractForm = () => {
                           rel="noopener noreferrer"
                           onClick={(e) => {
                             e.preventDefault();
-                            console.log(row.id);
+                            // console.log(row.id);
                             downloadReport(row.id);
                           }}
                         >
@@ -992,7 +991,7 @@ const FlatContractForm = () => {
       setplanid(planid);
 
       const transactionid = "Tr-" + uuidv4().toString(36).slice(-6);
-      console.log("Txn_ID : ", transactionid);
+      // console.log("Txn_ID : ", transactionid);
 
       const response2 = await fetch(
         "https://139-59-5-56.nip.io:3443/payment-insert",
@@ -1010,7 +1009,7 @@ const FlatContractForm = () => {
       );
 
       const data = await response2.json();
-      console.log("db entry data : ", data);
+      // console.log("db entry data : ", data);
 
       if (!data.status) {
         console.log("Failed DB payment Entry");
@@ -1396,7 +1395,6 @@ const FlatContractForm = () => {
   }
   const generatePDF = async (reportData) => {
     try {
-      console.log(11);
       const date = formatDate(reportData.date);
       // const logo = logo;
       const pdf = new jsPDF("p", "mm", "a4");
@@ -1518,7 +1516,7 @@ const FlatContractForm = () => {
           return [lowerKey, value];
         })
         .reverse();
-      console.log(findingsData);
+      // console.log(findingsData);
       pdf.autoTable({
         startY: pdf.lastAutoTable.finalY + 30,
         head: findingsHeaders,
@@ -1539,8 +1537,8 @@ const FlatContractForm = () => {
 
       const labels = findingsData.map((item) => item[0]);
       const data = findingsData.map((item) => item[1]);
-      console.log(labels);
-      console.log(data);
+      // console.log(labels);
+      // console.log(data);
       const ctx = canvas.getContext("2d");
       const chartData = {
         labels: labels, // Using the first column of findingData's item[0] ['CRITICAL', 'MEDIUM', 'LOW', 'INFORMATIONAL', 'OPTIMIZATIONS'] as labels
@@ -2087,7 +2085,7 @@ const FlatContractForm = () => {
       pdf.text("hello@securedapp.in", 10, 290, null, null, "left");
 
       pdf.save("Securedapp_SolidityShield_Report.pdf");
-      console.log(24);
+      // console.log(24);
     } catch (e) {
       console.log("error: ", e);
     }
