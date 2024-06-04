@@ -221,41 +221,7 @@ const FlatContractForm = () => {
   // const [showPlans, setshowPlans] = useState(false);   // for scan history and scan plans
 
   const [showScanResult, setShowScanResult] = useState(false); // for scan results
-
   const [companyName, setcompanyName] = useState("");
-  const [version, setVersion] = useState("0.8.17");
-  const versionOptions = [
-    "0.7.0",
-    "0.7.1",
-    "0.7.2",
-    "0.7.3",
-    "0.7.4",
-    "0.7.5",
-    "0.7.6",
-    "0.8.0",
-    "0.8.1",
-    "0.8.2",
-    "0.8.3",
-    "0.8.4",
-    "0.8.5",
-    "0.8.6",
-    "0.8.7",
-    "0.8.8",
-    "0.8.9",
-    "0.8.10",
-    "0.8.11",
-    "0.8.12",
-    "0.8.13",
-    "0.8.14",
-    "0.8.15",
-    "0.8.16",
-    "0.8.17",
-    "0.8.18",
-    "0.8.19",
-    "0.8.20",
-    "0.8.21",
-  ];
-
   const [email, setEmail] = useState("");
   const [file, setFile] = useState(null);
   const [critical, setcritical] = useState(0);
@@ -294,6 +260,17 @@ const FlatContractForm = () => {
       updateUserSession(email);
     }
   }, []);
+
+
+  const isFlattened = (contracts) => {
+    return !/import\s+/i.test(contracts);
+  };
+
+
+  const detectCompilerVersion = (contracts) => {
+    const match = contracts.match(/pragma solidity \^?([0-9]+\.[0-9]+\.[0-9]+);/);
+    return match ? match[1] : null;
+  };
 
   const customStyles = {
     overlay: {
@@ -375,7 +352,20 @@ const FlatContractForm = () => {
   };
 
   const handleFileChange = (e) => {
-    setFile(e.target.files[0]);
+    // setFile(e.target.files[0]);
+    const selectedFile = e.target.files[0];
+    if (selectedFile && selectedFile.name.endsWith('.sol')) {
+        const reader = new FileReader();
+        reader.onload = (event) => {
+            setcontracts(event.target.result);
+        };
+        reader.readAsText(selectedFile);
+        setFile(selectedFile);
+    } else {
+        toast.error('Only .sol files are allowed.');
+        setFile(null);
+        setcontracts('');
+    }
   };
 
   const sendOTP = async () => {
@@ -404,7 +394,7 @@ const FlatContractForm = () => {
         "Content-type": "application/json",
       },
     })
-      .then((res) => {})
+      .then((res) => { })
       .then((data) => {
         toast.success("OTP Send Successfully, Check Mail");
         setshowsendotp(false);
@@ -545,6 +535,27 @@ const FlatContractForm = () => {
       return;
     }
 
+    if (!contracts) {
+      toast.error('No contract file uploaded.');
+      return;
+  }
+
+  if (!isFlattened(contracts)) {
+      toast.error('The contract must be flattened before submission.');
+      return;
+  }
+
+  
+  const compilerVersion = detectCompilerVersion(contracts);
+  if (!compilerVersion) {
+      toast.error('Could not detect the compiler version.');
+      return;
+  }
+
+  console.log(`Compiler version: ${compilerVersion}`);
+
+
+
     if (rcredit < 1) {
       toast("No Credit, Purchase a Plan");
       return;
@@ -554,7 +565,6 @@ const FlatContractForm = () => {
     const formData = new FormData();
     formData.append("mail", email);
     formData.append("files", file);
-    formData.append("version", version);
     formData.append("company", companyName);
 
     // fetch('http://127.0.0.1:8000/audits', {
@@ -582,6 +592,8 @@ const FlatContractForm = () => {
         console.error("Error:", error);
         setLoading(false);
       });
+
+      toast.success('Contract submitted successfully!');
   };
 
   function generateTable(data) {
@@ -597,11 +609,11 @@ const FlatContractForm = () => {
       5 -
       Number(
         data.findings[finding_names[0]] +
-          data.findings[finding_names[1]] +
-          data.findings[finding_names[2]] +
-          3
+        data.findings[finding_names[1]] +
+        data.findings[finding_names[2]] +
+        3
       ) *
-        0.239;
+      0.239;
 
     setcritical(data.findings[finding_names[0]]);
     setmedium(data.findings[finding_names[1]]);
@@ -619,6 +631,7 @@ const FlatContractForm = () => {
     setLoading(false);
   }
 
+  
   const blurryDivStyle = {
     filter: loading ? "blur(5px)" : "blur(0px)",
   };
@@ -737,6 +750,7 @@ const FlatContractForm = () => {
       </div>
     );
   };
+
 
   const getScanHistory = async () => {
     setLoading(true);
@@ -2164,7 +2178,7 @@ const FlatContractForm = () => {
           <>
             <div className="flex justify-center items-center mt-[50px] lg:px-0 md:px-[50px] px-[20px]">
               <SectionHeader
-                content={"Select Flatten Contract : Select Compiler : Scan"}
+                content={"Select Flatten Contract : Scan"}
               />
             </div>
 
@@ -2173,27 +2187,13 @@ const FlatContractForm = () => {
                 <div className="md:w-3/6 w-full ">
                   <input
                     type="file"
+                    accept=".sol"
                     className="md:w-11/12 w-full border rounded-[20px] p-3 placeholder:text-white file-input-info:text-white"
                     onChange={handleFileChange}
                   />
                 </div>
 
-                <div className="md:w-1/6 w-full ">
-                  <select
-                    value={version}
-                    onChange={(e) => {
-                      setVersion(e.target.value);
-                    }}
-                    className="md:w-11/12 w-full border rounded-[20px] p-3 text-white"
-                    style={{ backgroundColor: "black" }}
-                  >
-                    {versionOptions.map((version) => (
-                      <option key={version} value={version}>
-                        {version} Compiler Version
-                      </option>
-                    ))}
-                  </select>
-                </div>
+                
 
                 <div className="md:w-1/6 w-full">
                   <input
