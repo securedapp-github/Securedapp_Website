@@ -268,8 +268,20 @@ const FlatContractForm = () => {
 
 
   const detectCompilerVersion = (contracts) => {
-    const match = contracts.match(/pragma solidity \^?([0-9]+\.[0-9]+\.[0-9]+);/);
-    return match ? match[1] : null;
+      const matches = contracts.match(/pragma solidity \^?([0-9]+\.[0-9]+\.[0-9]+);/g);
+      if (!matches) return null;
+
+      const versions = matches.map(match => match.match(/([0-9]+\.[0-9]+\.[0-9]+)/)[0]);
+      versions.sort((a, b) => {
+        const [majorA, minorA, patchA] = a.split('.').map(Number);
+        const [majorB, minorB, patchB] = b.split('.').map(Number);
+
+        if (majorA !== majorB) return majorB - majorA;
+        if (minorA !== minorB) return minorB - minorA;
+        return patchB - patchA;
+      });
+
+      return versions[0];
   };
 
   const customStyles = {
@@ -592,7 +604,7 @@ const FlatContractForm = () => {
         setLoading(false);
       });
 
-      toast.success('Contract submitted successfully!');
+      toast.success('Awesome! The AI scan is now underway');
   };
 
   function generateTable(data) {
