@@ -239,6 +239,11 @@ const FlatContractForm = () => {
   const [page, setPage] = useState(1);
   const [totHistory, setTotHistory] = useState(0);
   const [tableDataInd, setTableDataInd] = useState([]);
+  const [inputTypes, setInputTypes] = useState([]);
+  const [contractAddress, setContractAddress] = useState('');
+  const [githubUrl, setGithubUrl] = useState('');
+  const [etherscanUrl, setEtherscanUrl] = useState('');
+  const [compilerVersion,setcompilerVersion] = useState('')
 
   //Invoice States
   const [planid, setplanid] = useState(0);
@@ -261,27 +266,108 @@ const FlatContractForm = () => {
     }
   }, []);
 
+  const handleInputTypeChange = (event) => {
+    const options = event.target.options;
+    const selectedOptions = [];
+    for (let i = 0; i < options.length; i++) {
+      if (options[i].selected) {
+        selectedOptions.push(options[i].value);
+      }
+    }
+    setInputTypes(selectedOptions);
+  };
+
+  const corsProxyUrl = 'https://cors.bridged.cc/';
+
+  const githuburlfetch = async (repoUrl) => {
+    try {
+      // Modify the URL to fetch raw content
+      let rawUrl = repoUrl;
+
+      // Convert blob URL to raw URL
+      if (repoUrl.includes('/blob/')) {
+        rawUrl = repoUrl.replace('/blob/', '/raw/');
+      } else if (!repoUrl.includes('/raw/')) {
+        // Assume fetching from the root of the default branch
+        rawUrl = `${repoUrl.replace(/\/$/, '')}/raw/master/`;
+      }
+
+      const response = await fetch(`${corsProxyUrl}${rawUrl}`);
+      if (!response.ok) {
+        throw new Error(`Failed to fetch content: ${response.statusText}`);
+      }
+      return await response.text();
+    } catch (error) {
+      console.error("Error fetching content:", error);
+      return null;
+    }
+  };
+
+  const fetchContractAddressFromURL = async (url) => {
+    try {
+      const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+      const response = await fetch(proxyUrl + url);
+      const html = await response.text();
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(html, 'text/html');
+
+      // On Etherscan, the contract address can be directly parsed from the URL
+      const addressMatch = url.match(/\/address\/(0x[a-fA-F0-9]{40})/);
+      if (addressMatch) {
+        const address = addressMatch[1];
+        return address;
+      } else {
+        throw new Error('Contract address not found in the URL');
+      }
+    } catch (error) {
+      console.error("Error fetching contract address from URL:", error);
+      throw error;
+    }
+  };
 
   const isFlattened = (contracts) => {
     return !/import\s+/i.test(contracts);
   };
 
+  const isContractFlattened = (source) => {
+    const lines = source.split('\n');
+    const hasImports = lines.some(line => line.trim().startsWith('import'));
+
+    if (!hasImports) {
+      // Extract and show the compiler version
+      const pragmaLine = lines.find(line => line.trim().startsWith('pragma solidity'));
+      if (pragmaLine) {
+        const compilerVersionMatch = pragmaLine.match(/pragma solidity\s+(.+);/);
+        if (compilerVersionMatch && compilerVersionMatch[1]) {
+          return compilerVersionMatch[1];
+        }
+      }
+      return 'Unknown';
+    } else {
+      return null;
+    }
+  };
 
   const detectCompilerVersion = (contracts) => {
-      const matches = contracts.match(/pragma solidity \^?([0-9]+\.[0-9]+\.[0-9]+);/g);
-      if (!matches) return null;
+    const contractsString = Array.isArray(contracts) ? contracts.join(' ') : contracts;
+    if (typeof contractsString !== 'string') {
+      throw new TypeError('Expected a string or an array of strings.');
+    }
 
-      const versions = matches.map(match => match.match(/([0-9]+\.[0-9]+\.[0-9]+)/)[0]);
-      versions.sort((a, b) => {
-        const [majorA, minorA, patchA] = a.split('.').map(Number);
-        const [majorB, minorB, patchB] = b.split('.').map(Number);
+    const matches = contractsString.match(/pragma solidity \^?([0-9]+\.[0-9]+\.[0-9]+);/g);
+    if (!matches) return null;
 
-        if (majorA !== majorB) return majorB - majorA;
-        if (minorA !== minorB) return minorB - minorA;
-        return patchB - patchA;
-      });
+    const versions = matches.map(match => match.match(/([0-9]+\.[0-9]+\.[0-9]+)/)[0]);
+    versions.sort((a, b) => {
+      const [majorA, minorA, patchA] = a.split('.').map(Number);
+      const [majorB, minorB, patchB] = b.split('.').map(Number);
 
-      return versions[0];
+      if (majorA !== majorB) return majorB - majorA;
+      if (minorA !== minorB) return minorB - minorA;
+      return patchB - patchA;
+    });
+
+    return versions[0];
   };
 
   const customStyles = {
@@ -367,16 +453,16 @@ const FlatContractForm = () => {
     // setFile(e.target.files[0]);
     const selectedFile = e.target.files[0];
     if (selectedFile && selectedFile.name.endsWith('.sol')) {
-        const reader = new FileReader();
-        reader.onload = (event) => {
-            setcontracts(event.target.result);
-        };
-        reader.readAsText(selectedFile);
-        setFile(selectedFile);
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        setcontracts(event.target.result);
+      };
+      reader.readAsText(selectedFile);
+      setFile(selectedFile);
     } else {
-        toast.error('Only .sol files are allowed.');
-        setFile(null);
-        setcontracts('');
+      toast.error('Only .sol files are allowed.');
+      setFile(null);
+      setcontracts('');
     }
   };
 
@@ -534,7 +620,23 @@ const FlatContractForm = () => {
     setLoading(false);
   };
 
-  const handleSubmit = (e) => {
+  const fetchContractSourceCode = async (contractAddress) => {
+    try {
+      const apiUrl = `https://api.etherscan.io/api?module=contract&action=getsourcecode&address=${contractAddress}`; // Make sure to replace 'YourApiKeyToken' with your actual Etherscan API key
+      const response = await fetch(apiUrl);
+      const data = await response.json();
+      if (data.status === '1' && data.result.length > 0) {
+        return data.result[0].SourceCode;
+      } else {
+        throw new Error("Failed to retrieve contract source code.");
+      }
+    } catch (error) {
+      console.error("Error fetching contract source code:", error);
+      return null;
+    }
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (companyName == "") {
@@ -542,29 +644,80 @@ const FlatContractForm = () => {
       return;
     }
 
-    if (!file) {
-      toast("Please select a file.");
-      return;
+    if (inputTypes.includes('github') && githubUrl) {
+      if (!githubUrl) {
+        toast("Please enter the link.");
+        return;
+      }
+      if (githubUrl) {
+        console.log(githubUrl);
+        const sourceCode = await githuburlfetch(githubUrl);
+        if (sourceCode) {
+          const compilerVersion = isContractFlattened(sourceCode);
+          if (compilerVersion) {
+            console.log('Compiler Version:', compilerVersion);
+          } else {
+            alert('The contract is not flattened.');
+          }
+        } else {
+          alert('Failed to fetch contract source code.');
+        }
+      }
     }
 
-    if (!contracts) {
-      toast.error('No contract file uploaded.');
-      return;
-  }
+    if (inputTypes.includes('etherscan') && etherscanUrl) {
+      if (!etherscanUrl) {
+        toast("Please enter the link.");
+        return;
+      }
+      else if (etherscanUrl) {
+        const contractAddress = await fetchContractAddressFromURL(etherscanUrl);
+        if (contractAddress) {
+          const sourceCode = await fetchContractSourceCode(contractAddress);
+          if (sourceCode) {
+            const compilerVersion = isContractFlattened(sourceCode);
+            if (compilerVersion) {
+              console.log('Compiler Version:', compilerVersion);
+            } else {
+              alert('The contract is not flattened.');
+            }
+          } else {
+            alert('Failed to fetch contract source code.');
+          }
+        } else {
+          alert('Failed to fetch contract address from URL.');
+        }
+      }
+    };
 
-  if (!isFlattened(contracts)) {
-      toast.error('The contract must be flattened before submission.');
-      return;
-  }
+    if (inputTypes.includes('file') && file) {
 
-  
-  const compilerVersion = detectCompilerVersion(contracts);
-  if (!compilerVersion) {
-      toast.error('Could not detect the compiler version.');
-      return;
-  }
+      if (!file) {
+        toast.error("Please select a file.");
+        return;
+      }
 
-  // console.log(`Compiler version: ${compilerVersion}`);
+      if (!contracts) {
+        toast.error('No contract file uploaded.');
+        return;
+      }
+
+      if (!isFlattened(contracts)) {
+        toast.error('The contract must be flattened before submission.');
+        return;
+      }
+
+
+      const compilerVersion = detectCompilerVersion(contracts);
+      if (!compilerVersion) {
+        toast.error('Could not detect the compiler version.');
+        return;
+      }
+
+      console.log(`Compiler version: ${compilerVersion}`);
+    }
+
+
 
     if (rcredit < 1) {
       toast("No Credit, Please Purchase a Plan to scan");
@@ -604,7 +757,7 @@ const FlatContractForm = () => {
         setLoading(false);
       });
 
-      toast.success('Awesome! The AI scan is now underway');
+    toast.success('Awesome! The AI scan is now underway');
   };
 
   function generateTable(data) {
@@ -642,7 +795,7 @@ const FlatContractForm = () => {
     setLoading(false);
   }
 
-  
+
   const blurryDivStyle = {
     filter: loading ? "blur(5px)" : "blur(0px)",
   };
@@ -2194,23 +2347,67 @@ const FlatContractForm = () => {
 
             <form onSubmit={handleSubmit} style={{ marginBottom: "20px" }}>
               <div className="flex md:flex-row flex-col gap-4 min-w-full justify-between mt-[30px] px-[80px]">
-                <div className="md:w-3/6 w-full ">
+
+                <div className="md:w-2/6 w-full ">
+
+                  <select value={inputTypes} onChange={handleInputTypeChange} style={{ backgroundColor: "black" }} className="md:w-11/12 w-full border text-white rounded-[20px] p-3  file-input-info:text-white">
+                    <option className="text-white" value="github">GitHub Link</option>
+                    <option className="text-white" value="etherscan">Etherscan Link</option>
+                    <option className="text-white" value="file">File Upload</option>
+                  </select>
+                </div>
+
+                {inputTypes.includes('github') && (
+                  <div className="md:w-2/6 w-full ">
+                    <input
+                      type="text"
+                      className="md:w-11/12 w-full border rounded-[20px] p-3 text-white file-input-info:text-white"
+                      placeholder="Enter Github Url"
+                      style={{ backgroundColor: "black" }}
+                      value={githubUrl}
+                      onChange={(e) => setGithubUrl(e.target.value)}
+                    />
+                  </div>
+                )}
+                {inputTypes.includes('etherscan') && (
+                  <div className="md:w-2/6 w-full ">
+                    <input
+                      type="text"
+                      className="md:w-11/12 w-full border rounded-[20px] p-3 text-white file-input-info:text-white"
+                      placeholder="Enter the Url"
+                      style={{ backgroundColor: "black" }}
+                      value={etherscanUrl}
+                      onChange={(e) => setEtherscanUrl(e.target.value)}
+                    />
+                  </div>
+                )}
+                {inputTypes.includes('file') && (
+                  <div className="md:w-2/6 w-full ">
+                    <input
+                      type="file"
+                      accept=".sol"
+                      className="md:w-11/12 w-full border rounded-[20px] p-3 text-white file-input-info:text-white"
+                      onChange={handleFileChange}
+                    />
+                  </div>
+                )}
+
+                {/* <div className="md:w-3/6 w-full ">
                   <input
                     type="file"
                     accept=".sol"
                     className="md:w-11/12 w-full border rounded-[20px] p-3 placeholder:text-white file-input-info:text-white"
                     onChange={handleFileChange}
                   />
-                </div>
+                </div> */}
 
-                
 
                 <div className="md:w-1/6 w-full">
                   <input
                     type="text"
                     placeholder="Company Name"
                     onChange={(e) => setCompanyName(e.target.value)}
-                    className="md:w-11/12 w-full border rounded-[20px] p-3 placeholder:text-white file-input-info:text-white"
+                    className="md:w-11/12 w-full border rounded-[20px] p-3 text-white file-input-info:text-white"
                     style={{ backgroundColor: "black" }}
                   />
                 </div>
