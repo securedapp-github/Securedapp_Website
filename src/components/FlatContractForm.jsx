@@ -15,6 +15,7 @@ import sha256 from "crypto-js/sha256";
 import { Buffer } from "buffer";
 import axios from "axios";
 import Chart from "chart.js/auto";
+
 const { v4: uuidv4 } = require("uuid");
 const fakeData = [
   {
@@ -998,13 +999,19 @@ const FlatContractForm = () => {
       },
     })
       .then((response) => {
+        console.log(response);
         if (response.ok) {
           return response.json();
         }
         toast("Invalid Network response ");
       })
       .then((data) => {
-        // console.log(JSON.parse(data[0].reportdata));
+        // if (PurchasePlan(0)) {
+        //   console.log("PDF generation is not available for free plan users.");
+        //   toast("PDF generation is not available for free plan users.");
+        //   return;
+        // }
+        console.log(JSON.parse(data[0].reportdata));
         generatePDF(JSON.parse(data[0].reportdata));
       })
       .catch((error) => {
@@ -1271,7 +1278,7 @@ const FlatContractForm = () => {
             <h1 className="text-white font-sans text-[18px] font-normal leading-[30px]">
               {" "}
               Scan your smart contracts for security vulnerabilities with
-              SecureDApp’’s Solidity Shield. Our automated scanning engine will
+              SecureDApp’s Solidity Shield. Our automated scanning engine will
               identify and report on potential security risks, helping you to
               keep your contracts safe and secure.
             </h1>
@@ -1580,6 +1587,9 @@ const FlatContractForm = () => {
   }
   const generatePDF = async (reportData) => {
     try {
+      console.log("Starting PDF generation");
+      console.log("Report Data:", reportData);
+
       const date = formatDate(reportData.date);
       // const logo = logo;
       const pdf = new jsPDF("p", "mm", "a4");
@@ -1701,8 +1711,47 @@ const FlatContractForm = () => {
           return [lowerKey, value];
         })
         .reverse();
-      // console.log(findingsData);
-      pdf.autoTable({
+       console.log(findingsData);
+
+       const vulnerabilityData = {
+        high_issues: 5,
+        medium_issues: 10,
+        low_issues: 15,
+        informational_issues: 2,
+        optimization_issues: 3
+      };
+      const transformedData = {};
+
+      for (let key in vulnerabilityData) {
+        let lowerKey = key.toLowerCase();
+
+        if (lowerKey === "high_issues") {
+          transformedData["CRITICAL"] = vulnerabilityData[key];
+        } else if (lowerKey === "medium_issues") {
+          transformedData["MEDIUM"] = vulnerabilityData[key];
+        } else if (lowerKey === "low_issues") {
+          transformedData["LOW"] = vulnerabilityData[key];
+        } else if (lowerKey === "informational_issues") {
+          transformedData["INFORMATIONAL"] = vulnerabilityData[key];
+        } else if (lowerKey === "optimization_issues") {
+          transformedData["OPTIMIZATIONS"] = vulnerabilityData[key];
+        }
+      }
+
+      // Create an array of vulnerability analysis details
+      // const vulnerabilityAnalysis = [
+      //   { type: "CRITICAL", issue: "Unencrypted Sensitive Data in Session Storage", recommendation: "Store keys in environment variables and use secure methods to handle sensitive data." },
+      //   { type: "CRITICAL", issue: "Weak Encryption Method", recommendation: "Use a more secure key management system and ensure encryption keys are kept secret." },
+      //   { type: "MEDIUM", issue: "Insecure API Endpoints", recommendation: "Store API endpoints in environment variables and ensure they are not exposed in the client-side code." },
+      //   { type: "MEDIUM", issue: "Insecure Data Handling", recommendation: "Remove or securely manage placeholder data." },
+      //   { type: "LOW", issue: "Potential Information Disclosure", recommendation: "Remove or obfuscate logs that contain sensitive information." },
+      //   { type: "LOW", issue: "Hardcoded API Keys and Endpoints", recommendation: "Use environment variables for managing keys and endpoints." },
+      //   { type: "INFORMATIONAL", issue: "Email Validation", recommendation: "Use a more comprehensive email validation library if needed for production-grade applications." },
+      //   { type: "INFORMATIONAL", issue: "Basic Error Handling", recommendation: "Implement more robust error handling and user feedback mechanisms." },
+      //   { type: "OPTIMIZATIONS", issue: "Unoptimized Component Rendering", recommendation: "Conditionally render components to optimize performance." },
+      // ];
+
+       pdf.autoTable({
         startY: pdf.lastAutoTable.finalY + 30,
         head: findingsHeaders,
         body: findingsData,
@@ -1714,6 +1763,8 @@ const FlatContractForm = () => {
           fontSize: 12, // Adjust font size if needed
         },
       });
+
+
 
       //graph for audit findings
       const canvas = document.createElement("canvas");
@@ -1974,9 +2025,19 @@ const FlatContractForm = () => {
         "immutable-states solution: Declare state variables as immutable where appropriate to prevent unintended modification and ensure data consistency. Immutable variables cannot be altered after initialization, enhancing contract security and reducing the risk of unintentional state changes.",
       ];
       let t;
+
+      //   Object.keys(reportData.findings).map((finding) => {
+      //     arr.push(finding);
+      //     // if (reportData[finding]) {
+      //     //     Vularr.push([finding, reportData[finding]]);
+      //     // }
+      // });
+
+
+
       if (reportData[1] != null) {
         pdf.addPage();
-        [1, 2, 3, 4, 5].forEach((index) => {
+        [1, 2, 3, 4, 5].map((index) => {
           if (reportData[index] && Object.keys(reportData[index]).length > 0) {
             let headString = "";
             switch (index) {
@@ -2010,6 +2071,7 @@ const FlatContractForm = () => {
             vulnerabilitiesData.map((a) => {
               arr.push(a[0]);
             });
+
             // pdf.autoTable({
             //   head: [[headString, "Locations"]],
             //   body: vulnerabilitiesData,
@@ -2020,6 +2082,7 @@ const FlatContractForm = () => {
             startY = pdf.previousAutoTable.finalY + 10;
           }
         });
+
         arr.map((text) => {
           for (let text1 of textArray) {
             if (text1.includes(text)) {
@@ -2083,9 +2146,89 @@ const FlatContractForm = () => {
         const restOfWords = words.slice(1).join(" ");
         return capitalizedFirstWord + " " + restOfWords;
       }
+      const findings = reportData.findings;
+      console.log(findings);
+      
+      // Determine the critical level based on findings
+      // let criticalLevel = "low";
+      
+      // if (findings.high_issues > 7) {
+      //   criticalLevel = "high";
+      // } else if (findings.medium_issues > 4) {
+      //   criticalLevel = "medium";
+      // }
+
+      // console.log(criticalLevel);
+      
+      // Categorize findings into categories
+      const categorizeFindings = (findings) => {
+        const categories = [];
+      
+        // Define levels based on findings  
+        const levels = {
+          high_issues: "high",
+          medium_issues: "medium",
+          low_issues: "low",
+          informational_issues: "INFORMATIONAL",
+          optimization_issues: "OPTIMIZATIONS",
+        };
+      
+        // Iterate through findings keys
+        for (let key in findings) {
+          let lowerKey = key.toLowerCase();
+          let category = levels[lowerKey];
+      
+          if (category) {
+            categories.push([category, findings[key]]);
+          }
+        }
+      
+        return categories;
+      };
+      
+      
+      const categorizedFindings = categorizeFindings(findings);
+      console.log(categorizedFindings);
+      
+      const vulnerabilityCategories = [
+        { name: reportData[1], level: 'High' },
+        { name: reportData[2], level: 'Medium' },
+        { name: reportData[3], level: 'Low' },
+        { name: reportData[4], level: 'Informational' },
+        { name: reportData[5], level: 'Optimizational' }
+      ];
+      
+       
+      // const getCriticalLevel = (reportData) => {
+      //   if (reportData[1]) {
+      //     console.log('high');
+      //     return 'High';
+      //   } else if (reportData[2]) {
+      //     console.error('error');
+      //     console.log('medium');
+      //     return 'Medium';
+      //   } else if (reportData[3]) {
+      //     console.error('error');
+      //     console.log('low');
+      //     return 'Low';
+      //   } else if (reportData[4]) {
+      //     console.error('error');
+      //     console.log('info');
+      //     return 'Informational';
+      //   } else if (reportData[5]) {
+      //     console.error('error');
+      //     console.log('opti');
+      //     return 'Optimization';
+      //   } else {
+      //     return 'Unknown'; // Default case if none of the keys are present
+      //   }
+      // };
+      // const B = getCriticalLevel(reportData);
+
 
       for (let a of arr) {
-        let p = [removeDashAndCapitalizeFirstWord(a), "High"];
+        let category = vulnerabilityCategories.find(category => category.name.hasOwnProperty(a));
+        let p = [removeDashAndCapitalizeFirstWord(a), category.level ];
         pdf.setFontSize(18); // Change font size to 18
         pdf.setFont("times", "bold"); // Set font to bold
         pdf.text("Vulnerabilities Details", 75, 19);
@@ -2136,6 +2279,7 @@ const FlatContractForm = () => {
             handleTextWrapping(sol[1], 520, 15, 235);
           }
         });
+
         pdf.addImage(logo, "JPEG", 10, 11, 10, 10);
         pdf.setFontSize(13);
         pdf.setFont("times", "bold");
@@ -2203,6 +2347,7 @@ const FlatContractForm = () => {
           "It remains the responsibility of the software's maintainers and users to ensure its security and proper functionality. SecureDApp does not accept any liability for any damage or loss caused due to overlooked vulnerabilities or misinterpretations in this report.",
         ],
       ];
+
       pdf.autoTable({
         head: [["Topic", "Description"]],
         body: disclaimerData,
@@ -2228,6 +2373,7 @@ const FlatContractForm = () => {
         ["Website", "securedapp.io"],
         ["Business Hours", "Monday to Friday, 9 AM - 6 PM IST"],
       ];
+
       pdf.autoTable({
         head: [["", ""]],
         body: contactData,
@@ -2268,10 +2414,13 @@ const FlatContractForm = () => {
         "left"
       );
       pdf.text("hello@securedapp.in", 10, 290, null, null, "left");
-
       pdf.save("Securedapp_SolidityShield_Report.pdf");
+      console.log("PDF generation completed");
+      console.log(pdf);
+      return pdf;
       // console.log(24);
-    } catch (e) {
+    }
+    catch (e) {
       console.log("error: ", e);
     }
   };
