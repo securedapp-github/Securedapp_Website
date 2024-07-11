@@ -1585,7 +1585,7 @@ const FlatContractForm = () => {
         return "th";
     }
   }
-  const generatePDF = async (reportData,) => {
+  const generatePDF = async (reportData) => {
     try {
       console.log("Starting PDF generation");
       console.log("Report Data:", reportData);
@@ -2191,11 +2191,11 @@ const FlatContractForm = () => {
       console.log(categorizedFindings);
       
       const vulnerabilityCategories = [
-        { name: reportData[1], level: 'high' },
-        { name: reportData[2], level: 'medium' },
-        { name: reportData[3], level: 'low' },
-        { name: reportData[4], level: 'informational' },
-        { name: reportData[5], level: 'optimizational' }
+        { name: reportData[1], level: 'High' },
+        { name: reportData[2], level: 'Medium' },
+        { name: reportData[3], level: 'Low' },
+        { name: reportData[4], level: 'Informational' },
+        { name: reportData[5], level: 'Optimizational' }
       ];
       
        
