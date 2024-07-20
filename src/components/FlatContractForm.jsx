@@ -268,7 +268,7 @@ const FlatContractForm = () => {
     }
   }, []);
 
-  
+
 
   const handleChain = (event) => {
     const options = event.target.options;
@@ -314,7 +314,7 @@ const FlatContractForm = () => {
       const file = new File([blob], `${companyName}.sol`, { type: 'text/plain' });
       setFile(file);
       const sourceCode = content;
-      return {sourceCode, file};
+      return { sourceCode, file };
 
     } catch (error) {
       console.error("Error fetching content:", error);
@@ -620,22 +620,24 @@ const FlatContractForm = () => {
   const fetchContractSourceCode = async (contractAddress, _chain) => {
     try {
 
-      const chain_list = { 
-       "0": "https://api.etherscan.io/api",
-       "1": "https://api-sepolia.etherscan.io/api",
-       "2": "https://api.polygonscan.com/api",
-       "3": "https://api-amoy.polygonscan.com/api" }
+      const chain_list = {
+        "0": "https://api.etherscan.io/api",
+        "1": "https://api-sepolia.etherscan.io/api",
+        "2": "https://api.polygonscan.com/api",
+        "3": "https://api-amoy.polygonscan.com/api"
+      }
 
-       const api_list = { 
+      const api_list = {
         "0": "6MKDUY9RMC8JDHQYY73V1G49SF3HHYGFVB",
         "1": "6MKDUY9RMC8JDHQYY73V1G49SF3HHYGFVB",
         "2": "WBAH3VYD76KXB7RXCXK81P8SC9GTVMDB3W",
-        "3": "WBAH3VYD76KXB7RXCXK81P8SC9GTVMDB3W" }
+        "3": "WBAH3VYD76KXB7RXCXK81P8SC9GTVMDB3W"
+      }
 
       const apiUrl = `${chain_list[_chain]}?module=contract&action=getsourcecode&address=${contractAddress}&apikey=${api_list[_chain]}`;
 
       const response = await fetch(apiUrl);
-     
+
       const data = await response.json();
       // console.log("API resposne = ", response.json());
       if (data.status == '1' && data.result.length > 0) {
@@ -656,7 +658,7 @@ const FlatContractForm = () => {
     let compilerVersion;
     const formData = new FormData();
 
-    if(inputTypes == ""){
+    if (inputTypes == "") {
       toast("Please Select a source");
       return;
     }
@@ -675,7 +677,7 @@ const FlatContractForm = () => {
       }
       if (githubUrl) {
         console.log(githubUrl);
-        const {sourceCode, file} = await githuburlfetch(githubUrl);
+        const { sourceCode, file } = await githuburlfetch(githubUrl);
         formData.append("files", file);
         if (sourceCode) {
           compilerVersion = isContractFlattened(sourceCode);
@@ -700,23 +702,23 @@ const FlatContractForm = () => {
       }
       else if (etherscanUrl && chain) {
         // console.log(contractAddress);
-          const sourceCode = await fetchContractSourceCode(etherscanUrl, chain);
-          const blob = new Blob([sourceCode], { type: 'text/plain' });
-          const file = new File([blob], `${companyName}.sol`, { type: 'text/plain' });
-          setFile(file);
-          formData.append("files", file);
+        const sourceCode = await fetchContractSourceCode(etherscanUrl, chain);
+        const blob = new Blob([sourceCode], { type: 'text/plain' });
+        const file = new File([blob], `${companyName}.sol`, { type: 'text/plain' });
+        setFile(file);
+        formData.append("files", file);
 
-          if (sourceCode) {
-            compilerVersion = isContractFlattened(sourceCode);
-            if (compilerVersion) {
-              console.log('Compiler Version:', compilerVersion);
-            } else {
-              alert('The contract is not flattened.');
-            }
+        if (sourceCode) {
+          compilerVersion = isContractFlattened(sourceCode);
+          if (compilerVersion) {
+            console.log('Compiler Version:', compilerVersion);
           } else {
-            alert('Failed to fetch contract source code.');
+            alert('The contract is not flattened.');
           }
-        
+        } else {
+          alert('Failed to fetch contract source code.');
+        }
+
       }
     };
 
@@ -798,7 +800,7 @@ const FlatContractForm = () => {
       "optimization_issues",
     ];
 
-    var score = 5 - ( (Number(data.findings[finding_names[0]]) + Number(data.findings[finding_names[1]]) + Number(data.findings[finding_names[2]])) / 30 )* 5;
+    var score = 5 - ((Number(data.findings[finding_names[0]]) + Number(data.findings[finding_names[1]]) + Number(data.findings[finding_names[2]])) / 30) * 5;
 
     setcritical(data.findings[finding_names[0]]);
     setmedium(data.findings[finding_names[1]]);
@@ -1711,9 +1713,9 @@ const FlatContractForm = () => {
           return [lowerKey, value];
         })
         .reverse();
-       console.log(findingsData);
+      console.log(findingsData);
 
-       const vulnerabilityData = {
+      const vulnerabilityData = {
         high_issues: 5,
         medium_issues: 10,
         low_issues: 15,
@@ -1751,7 +1753,7 @@ const FlatContractForm = () => {
       //   { type: "OPTIMIZATIONS", issue: "Unoptimized Component Rendering", recommendation: "Conditionally render components to optimize performance." },
       // ];
 
-       pdf.autoTable({
+      pdf.autoTable({
         startY: pdf.lastAutoTable.finalY + 30,
         head: findingsHeaders,
         body: findingsData,
@@ -2034,6 +2036,8 @@ const FlatContractForm = () => {
       // });
 
 
+      let vulnerabilitiesData = [];
+
 
       if (reportData[1] != null) {
         pdf.addPage();
@@ -2058,17 +2062,35 @@ const FlatContractForm = () => {
                 break;
             }
             // const vulnerabilitiesData = Object.entries(reportData[index]).map(([type, locations]) => [type, locations.join(', ')]);
-            const vulnerabilitiesData = Object.entries(reportData[index]).map(
+            // const vulnerabilitiesData = Object.entries(reportData[index]).map(
+            //   ([type, locations]) => {
+            //     console.log(locations);
+            //     // console.log(type);
+            //     // Remove "contracts/" prefix from each location string if present
+            //     const cleanedLocations = locations.map((location) =>
+            //       location.replace(/^contracts\//, "")
+            //     );
+            //     console.log(cleanedLocations);
+            //     return [type, cleanedLocations.join(", ")];
+            //   }
+            // );
+
+            // vulnerabilitiesData.map((a) => {
+            //   arr.push(a[0]);
+            // });
+
+            const currentData = Object.entries(reportData[index]).map(
               ([type, locations]) => {
-                // Remove "contracts/" prefix from each location string if present
                 const cleanedLocations = locations.map((location) =>
                   location.replace(/^contracts\//, "")
                 );
-                return [type, cleanedLocations.join(", ")];
+                return [type, cleanedLocations];
               }
             );
 
-            vulnerabilitiesData.map((a) => {
+            vulnerabilitiesData = [...vulnerabilitiesData, ...currentData];
+
+            currentData.map((a) => {
               arr.push(a[0]);
             });
 
@@ -2148,10 +2170,10 @@ const FlatContractForm = () => {
       }
       const findings = reportData.findings;
       console.log(findings);
-      
+
       // Determine the critical level based on findings
       // let criticalLevel = "low";
-      
+
       // if (findings.high_issues > 7) {
       //   criticalLevel = "high";
       // } else if (findings.medium_issues > 4) {
@@ -2159,11 +2181,11 @@ const FlatContractForm = () => {
       // }
 
       // console.log(criticalLevel);
-      
+
       // Categorize findings into categories
       const categorizeFindings = (findings) => {
         const categories = [];
-      
+
         // Define levels based on findings  
         const levels = {
           high_issues: "high",
@@ -2172,24 +2194,24 @@ const FlatContractForm = () => {
           informational_issues: "INFORMATIONAL",
           optimization_issues: "OPTIMIZATIONS",
         };
-      
+
         // Iterate through findings keys
         for (let key in findings) {
           let lowerKey = key.toLowerCase();
           let category = levels[lowerKey];
-      
+
           if (category) {
             categories.push([category, findings[key]]);
           }
         }
-      
+
         return categories;
       };
-      
-      
+
+
       const categorizedFindings = categorizeFindings(findings);
       console.log(categorizedFindings);
-      
+
       const vulnerabilityCategories = [
         { name: reportData[1], level: 'High' },
         { name: reportData[2], level: 'Medium' },
@@ -2197,51 +2219,27 @@ const FlatContractForm = () => {
         { name: reportData[4], level: 'Informational' },
         { name: reportData[5], level: 'Optimizational' }
       ];
-      
-       
-      // const getCriticalLevel = (reportData) => {
-      //   if (reportData[1]) {
-      //     console.log('high');
-      //     return 'High';
-      //   } else if (reportData[2]) {
-      //     console.error('error');
-      //     console.log('medium');
-      //     return 'Medium';
-      //   } else if (reportData[3]) {
-      //     console.error('error');
-      //     console.log('low');
-      //     return 'Low';
-      //   } else if (reportData[4]) {
-      //     console.error('error');
-      //     console.log('info');
-      //     return 'Informational';
-      //   } else if (reportData[5]) {
-      //     console.error('error');
-      //     console.log('opti');
-      //     return 'Optimization';
-      //   } else {
-      //     return 'Unknown'; // Default case if none of the keys are present
-      //   }
-      // };
-      // const B = getCriticalLevel(reportData);
+
 
 
       for (let a of arr) {
         let category = vulnerabilityCategories.find(category => category.name.hasOwnProperty(a));
-        let p = [removeDashAndCapitalizeFirstWord(a), category.level ];
+        let p = [removeDashAndCapitalizeFirstWord(a), category.level];
+        const entry = vulnerabilitiesData.find(([type]) => type === a);
+        console.log(entry);
+        const cleanedLocations = entry ? entry[1] : [];
+        let yCoord = 35;
         pdf.setFontSize(18); // Change font size to 18
         pdf.setFont("times", "bold"); // Set font to bold
-        pdf.text("Vulnerabilities Details", 75, 19);
-
+        pdf.text("Vulnerabilities Details", 75, yCoord - 16); //19
         pdf.setFont("times", "normal");
         pdf.setFontSize(14);
 
         Vularr.map((arr1) => {
           if (arr1[0].includes(a)) {
             arr1[0] = removeDashAndCapitalizeFirstWord(arr1[0]);
-
             pdf.autoTable({
-              startY: 35,
+              startY: yCoord,
               head: [["Vulnerability Found", "Critical Level"]], // Empty header row
               body: [p],
               styles: {
@@ -2259,24 +2257,67 @@ const FlatContractForm = () => {
                 // },
               },
             });
+
+            // Update yCoord based on autoTable
+            yCoord = pdf.lastAutoTable.finalY + 10;
+            const maxLocationsPerColumn = 6;
+            let columnOffset = 0;
+
+
             pdf.setFontSize(18);
             pdf.setFont("times", "bold");
-            pdf.text("Description", 15, 145);
+            pdf.text("Location", 15, yCoord);//100
+            yCoord += 6; // Adjust Y coordinate for the first location
+
+            cleanedLocations.forEach((location, index) => {
+              if (index > 0 && index % maxLocationsPerColumn === 0) {
+                columnOffset += 250; // Move to the next column after every six locations
+                yCoord = pdf.lastAutoTable.finalY + 20; // Reset yCoord for new column
+              }
+              pdf.setFont("times", "normal");
+              pdf.setFontSize(10); // Smaller font size for location text
+              handleTextWrapping(location, 220, 25 + columnOffset, yCoord); // Indent text to appear like a dropdown
+
+              // Increment Y coordinate for the next location
+              yCoord += 8; // Adjust this value to reduce the spacing between locations
+            });
+            // pdf.setFont("times", "normal");
+            // pdf.setFontSize(12);
+            // handleTextWrapping(vulnerabilityData, 520, 15, 110);
+
+            pdf.setFontSize(18);
+            pdf.setFont("times", "bold");
+            pdf.text("Description", 15, yCoord + 30);//145
             pdf.setFont("times", "normal");
             pdf.setFontSize(12);
-            handleTextWrapping(arr1[1], 520, 15, 155);
+            yCoord += 10;
+            handleTextWrapping(arr1[1], 520, 15, yCoord + 30);
+
+            // Vularr.map((arr1) => {
+            //   if (arr1[0].includes(a)) {
+            //     arr1[0] = removeDashAndCapitalizeFirstWord(arr1[0]);
+            //     handleTextWrapping(arr1[1], 520, 15, yCoord);
+            //     yCoord += 20; // Increment Y coordinate for the next section
+            //   }
+            // });
+            // handleTextWrapping(arr1[1], 520, 15, 155);
           }
         });
+
 
         solution.map((sol) => {
           if (sol[0].includes(a)) {
             pdf.setFontSize(18);
             pdf.setFont("times", "bold");
-            pdf.text("Recommended Solution", 15, 225);
+            pdf.text("Recommended Solution", 15, yCoord + 60);//225
             // pdf.text(sol[1], 15, 135);
             pdf.setFont("times", "normal");
             pdf.setFontSize(12);
-            handleTextWrapping(sol[1], 520, 15, 235);
+            yCoord += 10;
+            handleTextWrapping(sol[1], 520, 15, yCoord + 60);
+            // handleTextWrapping(sol[1], 520, 15, 235);
+            // Increment Y coordinate for the next section
+            yCoord += 20;
           }
         });
 
@@ -2520,7 +2561,7 @@ const FlatContractForm = () => {
                 <div className="md:w-1/5 w-full ">
 
                   <select value={inputTypes} onChange={handleInputTypeChange} style={{ backgroundColor: "black" }} className="md:w-11/12 w-full border text-white rounded-[20px] p-3  file-input-info:text-white">
-                  <option className="text-white" value="">Select Source</option>
+                    <option className="text-white" value="">Select Source</option>
                     <option className="text-white" value="github">GitHub</option>
                     <option className="text-white" value="etherscan">Contract Address</option>
                     <option className="text-white" value="file">Upload File</option>
@@ -2541,10 +2582,10 @@ const FlatContractForm = () => {
                 )}
 
                 {inputTypes.includes('etherscan') && (
-                    <div className="md:w-2/6 w-full ">
+                  <div className="md:w-2/6 w-full ">
 
                     <select value={chain} onChange={handleChain} style={{ backgroundColor: "black" }} className="md:w-11/12 w-full border text-white rounded-[20px] p-3  file-input-info:text-white">
-                    <option className="text-white" value="">Select Chain</option>
+                      <option className="text-white" value="">Select Chain</option>
                       <option className="text-white" value="0">Ethereum Mainnet</option>
                       <option className="text-white" value="1">Sepolia</option>
                       <option className="text-white" value="2">Polygon Mainnet</option>
@@ -2595,7 +2636,7 @@ const FlatContractForm = () => {
                     SCAN
                   </button>
                 </div>
-                
+
               </div>
             </form>
           </>
@@ -2606,9 +2647,9 @@ const FlatContractForm = () => {
         {showPlans && (
           <>
             <HistorySection />
-            
-            
-             <Plans />
+
+
+            <Plans />
           </>
         )}
       </div>
