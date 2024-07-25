@@ -259,6 +259,8 @@ const FooterInAbout = () => {
           </div>
         </div>
         <div className=" flex flex-col items-center justify-between  sm:flex-row py-1 md:py-0  text-[#FFFFFF] px-[0px] sm:px-[20px]">Powered By VettedCode Technologies India Pvt. Ltd.</div>
+        <div className=" flex flex-col items-center justify-between  sm:flex-row py-1 md:py-0  text-[#FFFFFF] px-[0px] sm:px-[20px]">Sister Company Of V2B Tech Solutions.</div>
+
 
       </div>
     </footer>

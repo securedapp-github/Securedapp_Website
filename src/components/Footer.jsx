@@ -272,8 +272,10 @@ const Footer = () => {
             </a>
           </div>
         </div>
-        <div className=" flex flex-col items-center justify-between py-1 md:py-0  sm:flex-row  text-[#FFFFFF] px-[0px] sm:px-[20px]">Powered By VettedCode Technologies India Pvt. Ltd.</div>
+        <div className=" flex flex-col items-center justify-between py-1 md:py-0  sm:flex-row  text-[#FFFFFF] px-[0px] sm:px-[20px]">Powered By VettedCode Technologies India Pvt. Ltd. </div> 
+        <div className=" flex flex-col items-center justify-between py-1 md:py-0  sm:flex-row  text-[#FFFFFF] px-[0px] sm:px-[20px]">Sister Company Of V2B Tech Solutions.</div> 
 
+       
       </div>
     </footer>
   );
