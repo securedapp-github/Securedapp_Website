@@ -789,7 +789,7 @@ const FlatContractForm = () => {
     }
   }, []);
 
-
+  
 
   const handleChain = (event) => {
     const options = event.target.options;
@@ -1301,7 +1301,9 @@ const FlatContractForm = () => {
         // setFile(null);
         // console.log(data);
         if (credit > 1 && rcredit > 1) {
-          generatePDF(data);
+          const fileName = `${companyName}_audit_by_securedapp.pdf`;
+          generatePDF(data, fileName);
+          // generatePDF(data);
         }
       })
       .catch((error) => {
@@ -1537,13 +1539,13 @@ const FlatContractForm = () => {
 
   const downloadReport = async (id) => {
     setLoading(true);
-
+    
     // fetch('http://127.0.0.1:8000/getReport', {
 
     fetch("https://139-59-5-56.nip.io:3443/getReport", {
       method: "POST",
       body: JSON.stringify({
-        id: id,
+        id: id 
       }),
       headers: {
         "Content-type": "application/json",
@@ -1551,6 +1553,8 @@ const FlatContractForm = () => {
     })
       .then((response) => {
         console.log(response);
+        // console.log('download');
+        
         if (response.ok) {
           return response.json();
         }
@@ -1563,7 +1567,9 @@ const FlatContractForm = () => {
         //   return;
         // }
         console.log(JSON.parse(data[0].reportdata));
-        generatePDF(JSON.parse(data[0].reportdata));
+        const fileName = `Securedapp_Audit_Report.pdf`;
+        generatePDF(JSON.parse(data[0].reportdata), fileName);
+        // generatePDF(JSON.parse(data[0].reportdata));
       })
       .catch((error) => {
         console.error("Error:", error);
@@ -1689,7 +1695,7 @@ const FlatContractForm = () => {
                           onClick={(e) => {
                             e.preventDefault();
                             // console.log(row.id);
-                            downloadReport(row.id);
+                            downloadReport(row.id); 
                           }}
                         >
                           Download Report
@@ -1710,18 +1716,17 @@ const FlatContractForm = () => {
                   Prev
                 </button>
                 <div>
-                {getVisiblePages().map((p, index) => (
-                <button
-                  key={index}
-                  onClick={() => typeof p === "number" && setPage(p)}
-                  className={`px-3 py-2 font-medium  ${
-                    p === page ? "bg-[#12D576] text-white" : "bg-neutral-500 text-black"
-                  }`}
-                >
-                  {p}
-                </button>
-              ))}
-              </div>
+                  {getVisiblePages().map((p, index) => (
+                    <button
+                      key={index}
+                      onClick={() => typeof p === "number" && setPage(p)}
+                      className={`px-3 py-2 font-medium  ${p === page ? "bg-[#12D576] text-white" : "bg-neutral-500 text-black"
+                        }`}
+                    >
+                      {p}
+                    </button>
+                  ))}
+                </div>
                 <button
                   onClick={() => {
                     handleNext();
@@ -2149,7 +2154,7 @@ const FlatContractForm = () => {
         return "th";
     }
   }
-  const generatePDF = async (reportData) => {
+  const generatePDF = async (reportData , fileName) => {
     try {
       console.log("Starting PDF generation");
       console.log("Report Data:", reportData);
@@ -2571,7 +2576,8 @@ const FlatContractForm = () => {
         "assert-dos solution: Mitigate risks associated with excessive assert statements that could lead to denial-of-service (DoS) attacks. Use assert statements judiciously and ensure that they do not introduce vulnerabilities or performance issues.",
         "useless-statements solution: Remove unused statements to improve contract readability, reduce complexity, and optimize gas usage. Conduct regular code reviews and refactorings to identify and eliminate redundant or obsolete statements.",
         "useless-modifiers solution: Remove unused modifiers to improve contract readability, reduce complexity, and optimize gas usage. Conduct regular code reviews and refactorings to identify and eliminate redundant or obsolete modifiers.",
-        "useless-assembly solution: Eliminate unnecessary assembly code to improve contract readability, reduce complexity, and optimize gas usage. Refactor code to use standard Solidity constructs whenever possible to maintain code consistency and readability.",
+        "useless timestamp solution: Using block.timestamp in smart contracts can be risky due to potential miner manipulation. To mitigate this, avoid relying on exact timestamps, use time buffers, consider alternatives like block.number, and perform regular testing and audits to ensure reliability and security.",
+        // "useless-assembly solution: Eliminate unnecessary assembly code to improve contract readability, reduce complexity, and optimize gas usage. Refactor code to use standard Solidity constructs whenever possible to maintain code consistency and readability.",
         "unchecked-tx-origin solution: Safely handle usage of tx.origin to prevent issues with authentication or authorization. Use alternative authentication mechanisms and avoid relying solely on tx.origin for access control to prevent potential security risks.",
         "unchecked-delegatecall solution: Handle unchecked delegatecall operations carefully to prevent issues with gas usage or unexpected behavior related to delegatecall invocations. Implement proper validation checks and error handling to ensure safe and secure delegatecall operations.",
         "unused-struct-members solution: Remove unused members from structs to improve contract readability, reduce complexity, and optimize gas usage. Conduct regular code reviews and refactorings to identify and eliminate redundant or obsolete struct members",
@@ -2822,16 +2828,16 @@ const FlatContractForm = () => {
 
             // Update yCoord based on autoTable
             yCoord = pdf.lastAutoTable.finalY + 10;
+            const maxLocations = 5; 
             const maxLocationsPerColumn = 6;
             let columnOffset = 0;
 
-
             pdf.setFontSize(18);
             pdf.setFont("times", "bold");
-            pdf.text("Location", 15, yCoord);//100
+            pdf.text("Location", 15, yCoord);
             yCoord += 6; // Adjust Y coordinate for the first location
 
-            cleanedLocations.forEach((location, index) => {
+            cleanedLocations.slice(0, maxLocations).forEach((location, index) => {
               if (index > 0 && index % maxLocationsPerColumn === 0) {
                 columnOffset += 250; // Move to the next column after every six locations
                 yCoord = pdf.lastAutoTable.finalY + 20; // Reset yCoord for new column
@@ -3017,7 +3023,12 @@ const FlatContractForm = () => {
         "left"
       );
       pdf.text("hello@securedapp.in", 10, 290, null, null, "left");
-      pdf.save("Securedapp_SolidityShield_Report.pdf");
+      // const fileName = `${companyName}_audit_by_securedapp`;
+      // console.log(companyName);
+      // pdf.save('Securedapp_Audit_Report');
+      // console.log(fileName);
+      pdf.save(fileName);
+      console.log(fileName);
       console.log("PDF generation completed");
       console.log(pdf);
       return pdf;
@@ -3184,6 +3195,7 @@ const FlatContractForm = () => {
                   <input
                     type="text"
                     placeholder="Company Name"
+                    value={companyName}
                     onChange={(e) => setCompanyName(e.target.value)}
                     className="md:w-11/12 w-full border rounded-[20px] p-3 text-white file-input-info:text-white"
                     style={{ backgroundColor: "black" }}
